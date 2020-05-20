@@ -5,10 +5,9 @@
 <html> 
 <head>
 <meta charset="UTF-8">
-<title>main page</title> 
+<title>main page</title>
 </head>
 <body>
-	
 
 	<!-- img slide --> 
 			<div id="mainImgDiv" class="w-full my-0 mx-auto">
@@ -48,7 +47,10 @@
 						</button>
 					</div>
 				</div>
+<<<<<<< HEAD
+=======
 				 <!-- mainMoreDiv end -->
+>>>>>>> refs/heads/workBranch
 				<!-- 이미지/프로젝트명/남은기간 -->
 				<div id="mid_Div_Campaign" class="flex">
 					<div id="mid_cam_01" class="mx-2 flex-initial w-1/3">
@@ -305,7 +307,7 @@
 						</iframe>
 					</div> 
 				</div>  
-			</div>  
+			</div> 
 
    			<!-- 위로 이동 -->  
 			<div class="page_up_div text-2xl border border-gray text-center rounded h-12 w-12 bg-black opacity-75 text-white">
