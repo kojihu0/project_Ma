@@ -12,7 +12,18 @@ $(function(){
 	            $(this).parents('.modal').addClass('hidden');
 	        });
 	    });
-
+	$('#deleteBtn').on('click', function(e){
+	        e.preventDefault();
+	        $($(this).data('target')).fadeIn(function(){
+	            $(this).removeClass('hidden');
+	        });
+	    });
+	
+	    $('.modal .close').on('click', function(){
+	        $(this).parents('.modal').fadeOut(function(){
+	            $(this).parents('.modal').addClass('hidden');
+	        });
+	    });
 
 
 
@@ -216,7 +227,6 @@ function regExpChk() {
 	
 }
 function CoporateRegExpChk() {
-	
 	//사업자 등록번호 
 	reg = /^[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]$/;
 	if(!reg.test(document.getElementById("coporateText").value)){
@@ -253,6 +263,7 @@ function CoporateRegExpChk() {
 		
 }
 
+
 $(function(){
 	$("#updateBtn").click(function(){
 		emailReg = /^\w{2,20}[@][a-zA-Z]{2,10}[.][a-zA-Z]{2,3}([.][a-zA-Z]{2,3})?$/;
@@ -268,10 +279,7 @@ $(function(){
 		}else if(!phoneNumberReg.test(document.getElementById("phoneNumberText").value)){
 			alert("휴대폰번호를 잘못 입력하셨습니다 ");
 		}
-		
-		
 	});
-	
 	$("#coporateUpdateButton").click(function(){
 		emailReg = /^\w{2,20}[@][a-zA-Z]{2,10}[.][a-zA-Z]{2,3}([.][a-zA-Z]{2,3})?$/;
 		
@@ -282,7 +290,7 @@ $(function(){
 		
 	});
 });
-
+//===========================mypage=================================================================
 
 
 

@@ -124,7 +124,7 @@
 					      <input  type="submit" value="수정하기" class=" mb-12 mt-8 bg-danger text-white bg-blue-500 hover:bg-blue-700 text-white font-bold py-4 px-5 rounded">
 					  		<input  type="button" value="홈으로" class="gohome mb-12 mt-8 bg-danger text-white bg-blue-500 hover:bg-blue-700 text-white font-bold py-4 px-5 rounded">
 						</div>
-						
+						<<input id="deleteBtn" type="submit" data-target="#deleteFrm" value="회원 탈퇴" class="deleteBtn absolute mb-12 mt-8 bg-danger text-white bg-blue-500 hover:bg-blue-700 text-white font-bold py-4 px-5 rounded">
 					</form>	
 		 		</div>
 			</div>	

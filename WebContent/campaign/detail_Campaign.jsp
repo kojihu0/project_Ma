@@ -444,28 +444,31 @@
 					</div>
 				</div>
 				<!--리워드-->
+				
 				<div id="donate" class="rewards w-1/4">
 					<div class="reward-item relative my-4 p-8 bg-white border border-gray">
-						<p class="text-lg mb-4 font-bold">10,000원 후원</p>
-						<div class="mb-4">
-							<p class="mb-2 text-gray-darkest">나무 한 그루</p>
-							<p class="text-gray-dark text-sm">후원자 이름표가 달린 나무 한 그루 식재<br>기념뱃지 1종</p>
-						</div>
-						<div class="mb-4 text-sm">
-							<p class="text-gray-dark">배송비</p>
-							<p>3000원</p>
-						</div>
-						<div class="mb-8 text-sm">
-							<p class="text-gray-dark">리워드 발송 시작일</p>
-							<p>2020년 5월</p>
-						</div>
-						<div class="text-sm">
-							<p class="text-brand mb-2">제한수량 100개 <span class="ml-2 px-2 bg-brand-light text-brand">90개 남음</span></p>
-							<p>10개 후원됨</p>
-						</div>
-						<a href="<%=projectPath %>/payment/paymentProcess.do" class="overlay absolute block top-0 bottom-0 left-0 w-full bg-brand opacity-0 hover:opacity-75 duration-300">
-							<span class="donate-this absolute text-white font-bold text-lg">후원하기</span>
-						</a>
+					<input type="hidden" value="" name="reward_no"/>
+							<p class="text-lg mb-4 font-bold" name="reward_price"></p>원 후원
+							<div class="mb-4">
+								<p class="mb-2 text-gray-darkest">나무 한 그루</p>
+								<p class="text-gray-dark text-sm">후원자 이름표가 달린 나무 한 그루 식재<br>기념뱃지 1종</p>
+							</div>
+							<div class="mb-4 text-sm">
+								<p class="text-gray-dark">배송비</p>
+								<p>3000원</p>
+							</div>
+							<div class="mb-8 text-sm">
+								<p class="text-gray-dark">리워드 발송 시작일</p>
+								<p>2020년 5월</p>
+							</div>
+							<div class="text-sm">
+								<p class="text-brand mb-2">제한수량 100개 <span class="ml-2 px-2 bg-brand-light text-brand">90개 남음</span></p>
+								<p>10개 후원됨</p>
+							</div>
+						
+							<a href="<%=projectPath%>/payment/paymentProcessOk.do" class="overlay absolute block top-0 bottom-0 left-0 w-full bg-brand opacity-0 hover:opacity-75 duration-300">
+								<span class="donate-this absolute text-white font-bold text-lg">후원하기</span>
+							</a>
 					</div>
 					<div class="reward-item relative my-4 p-8 bg-white border border-gray">
 						<p class="text-lg mb-4 font-bold">20,000원 후원</p>
