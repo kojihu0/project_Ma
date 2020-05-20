@@ -34,8 +34,8 @@
 					</div>
 				</div>
 				<div class="input-field mb-4">
-					<label for="cam_story" class="inline-block my-4">캠페인 스토리</label>
-					<textarea name="cam_story" id="cam_story" class="appearance-none border border-gray rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"></textarea>
+					<label for="cam_content" class="inline-block my-4">캠페인 스토리</label>
+					<textarea name="cam_content" id="cam_content" class="appearance-none border border-gray rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"></textarea>
 				</div>
 				<div class="input-field mb-4">
 					<label for="cam_desc" class="inline-block my-4">간략 설명</label>
