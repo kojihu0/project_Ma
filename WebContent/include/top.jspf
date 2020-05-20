@@ -15,9 +15,9 @@
 	<link href="<%=projectPath %>/lib/css/slick.css" rel="stylesheet" type="text/css"/>
 	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-	<script src="<%=projectPath %>/js/jquery-ui.min.js"></script>
-	<script src="<%=projectPath %>/js/datepicker-ko.js"></script>
-	<script src="<%=projectPath %>/js/jquery.number.min.js"></script>
+	<script src="<%=projectPath %>/lib/js/jquery-ui.min.js"></script>
+	<script src="<%=projectPath %>/lib/js/datepicker-ko.js"></script>
+	<script src="<%=projectPath %>/lib/js/jquery.number.min.js"></script>
 	<script src="<%=projectPath %>/lib/ckeditor/ckeditor.js"></script>
 	<script src="<%=projectPath %>/lib/js/slick.js" type="text/javascript"></script>
 
