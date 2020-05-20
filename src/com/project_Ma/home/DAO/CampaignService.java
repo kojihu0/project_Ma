@@ -9,7 +9,7 @@ public interface CampaignService {
 	public List<CampaignVO> allCamList();
 	public List<CampaignVO> allCamList(CampaignVO vo);
 	//1개선택
-	public void selectCam(CampaignVO vo);
+	public void selectCam(int camNo);
 	//등록
 	public int insertCam(CampaignVO vo);
 	//수정
