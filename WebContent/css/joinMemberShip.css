@@ -1,0 +1,128 @@
+@charset "UTF-8";
+
+#joinMemberShipDiv{
+	margin:0 auto;
+	
+	width:640px;
+	margin-bottom:20px;
+	margin-top:60px
+}
+input[type=checkbox] {  
+    display: none;  
+}
+
+input[type=checkbox] + label{
+    display: inline-block;  
+    cursor: pointer;  
+    position: relative;  
+    padding-left: 25px;  
+    margin-right: 15px;  
+    font-size: 13px;
+}
+
+input[type=checkbox]+ label:before {     
+
+    content: "";  
+    display: inline-block;  
+    width: 20px;  
+    height: 20px;  
+    margin-right: 10px;  
+    position: absolute;  
+    left: 0;  
+    bottom: 1px;  
+    background-color: white;  
+    border:1px rgb(0,162,232) solid;
+    box-shadow: inset 0px 1px 1px 0px rgba(0, 0, 0, .3), 0px 1px 0px 0px rgba(255, 255, 255, .8);  
+}
+input[type=checkbox]:checked + label:before { 
+
+    content: "\2713";  /* 체크모양 */
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, .2);  
+    font-size: 18px; 
+    font-weight:800; 
+    color: #fff;  
+    background:rgb(0,162,232);
+    text-align: center;  
+    line-height: 18px;  
+
+} 
+
+#allAgreementText{
+	
+	font-weight:bold;
+	font-size:1.3em	
+}
+
+#joinMenberShipForm{
+	smargin : 0 auto;
+}
+#agreementForm{
+	
+	width:500px;
+	margin-left:120px
+}
+#idForm{
+	margin: 0 auto
+}
+#agreementForm>button{
+	float:right;
+	color:gray
+}
+
+#agreementForm>h5{
+	margin-left:23px
+	
+}
+#agreementForm>checkbox{
+margin-top:-10px	
+}
+#joinMemberShiptext{ 
+	margin-top:10px;
+	margin-bottom:10px;
+
+}
+#subText{
+	font-size:10px
+}
+
+#joinMemberShipText2{
+	margin-top:20px;
+	
+}
+#emailChkBtn{
+	position:absolute;
+	margin-left:-95px;
+	margin-top:2px
+}
+#blnCheckBtn{
+	position:absolute;
+	margin-left:-95px;
+	margin-top:2px
+	
+}
+#joinMembershipCheckBtn{
+	position:absolute;
+	margin-left:-95px;
+	margin-top:2px
+}
+#joinMembershipEmailCheckBtn{
+	position:absolute;
+	margin-left:-95px;
+	margin-top:2px
+}
+#completeBtn{
+	margin-top:10px;
+	margin-bottom:20px
+}
+#ModalcompleteBtn{
+	margin-top:10px;
+	margin-bottom:20px
+}
+#coporate_CompleteBtn{
+	margin-top:10px;
+	margin-bottom:20px
+}
+
+#joinMembershipModalWindow{
+	border : 1px red solid 
+}

@@ -1,0 +1,32 @@
+@charset "UTF-8";
+
+
+#information {margin-left: 50px;}
+
+#myInformation {margin-top: 20px;}
+
+.mpMenu{width:1400px;margin:0 auto;margin-top:10px;}
+
+.informationFrm{width:1280px;margin-top:20px;margin-bottom:10px;margin:0 auto;margin-top:20px;margin-bottom:20px}
+
+#hr{border :1px gray solid; background:gray; margin-bottom:20px}
+
+#sponList {margin-top: 20px;}
+
+#wishList {margin-top: 20px;}
+
+.gohome {margin-left: 10px}
+
+#address {width: 700px;}
+
+#addr1 {margin-bottom: 5px}
+
+#updateButton {margin-left: 500px;margin-bottom: 20px}
+
+#dokdo {margin-left: 35px;margin-top: 20px;margin-bottom: 20px}
+
+#sponGoods {margin-top: 20px;margin-bottom: 20px;}
+
+#move-ico {margin-left: 540px; margin-top:-73px}
+
+#table{margin:0 auto;margin-bottom:20px}
