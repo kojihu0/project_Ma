@@ -1,19 +1,35 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html> 
 <head>
-<meta charset="UTF-8">
+<meta http-equiv="Content-Type" charset="text/html; UTF-8">
 <title>paymentProcess</title>
+<meta name="viewport" content="width=device-width, initial-scale=1"/> 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<script type="text/JavaScript" src="http://code.jquery.com/jquery-1.7.min.js"></script>
+<script type="text/JavaScript" src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+<script type="text/javascript">
+	function openDaumZipAddress() {
+		new daum.Postcode({
+			oncomplete:function(data) {
+				jQuery("#reward_addr_num").val(data.zonecode);
+				jQuery("#reward_addr_main").val(data.address);
+				jQuery("#reward_addr_sub").focus();
+			}
+		}).open();
+	}
+</script>
 </head>
 <body>
-
+<form>
 	<div class="w-full max-w-screen-xl my-12 mx-auto">
 				<div class="flex my-5">
 					<div class="border w-40 h-8 text-center bg-danger text-white rounded">펀딩금액</div>
 					<div>
 						<a id="a"><div class="ml-24">펀딩금액이 많은이들에게 큰도움이 됩니다.</div></a>
-						<div class="ml-24 mt-3"><input type="text" class="border h-12 text-center rounded" id="fund">원을 후원합니다</div>
+						<div class="ml-24 mt-3"><input type="text" class="border h-12 text-center rounded" name="funding_price" id="fund">원을 후원합니다</div>
 						<div class="text-danger ml-24 hidden" id="a1">펀딩금액을 입력해주세요.</div>
 						<div class="text-danger ml-24 hidden" id="a2">숫자를 입력해주세요.</div>
 					</div>
@@ -22,7 +38,7 @@
 					<div class="border w-40 h-8 text-center bg-danger text-white rounded">후원금 더하기(선택)</div>
 					<div>
 						<a id="z"><div class="ml-24">후원금을 더하여 펀딩할 수 있습니다. 추가 후원금을 입력하시겠습니까?</div></a>
-						<div class="ml-24 mt-3"><input type="text" class="border h-12 text-center rounded" id="addFund">원을 추가로 후원합니다</div>
+						<div class="ml-24 mt-3"><input type="text" class="border h-12 text-center rounded" name="add_price" id="addFund">원을 추가로 후원합니다</div>
 						<div class="text-danger ml-24 hidden" id="z1">숫자를 입력해주세요.</div>
 					</div>
 				</div>
@@ -47,10 +63,10 @@
 					<div class="border w-40 h-8 text-center bg-danger text-white rounded">마일리지 사용</div>
 					<div> 
 						<div class="flex">
-							<div class="ml-24"><input type="checkbox" class="border mr-2 w-5 h-5" id="mBox"></div>
+							<div class="ml-24"><input type="checkbox" class="border mr-2 w-5 h-5" id="mBox"/></div>
 							<a id="mile1"><div style="position:relative; top:-3px;">모두사용(보유 마일리지 <span id="mileage">1234</span>M)</div></a>
 						</div>
-						<input type="text" class="border h-12 ml-24 mt-3 text-center rounded" id="mTxt">M 사용하기
+						<input type="text" class="border h-12 ml-24 mt-3 text-center rounded" name="mileage" id="mTxt">M 사용하기
 						<div class="text-danger ml-24 hidden" id="txt">입력하신 값이 보유하신 마일리지보다 높습니다. 사용불가 합니다.</div>
 						<div class="text-danger ml-24 hidden" id="mile2">숫자를 입력해주세요.</div>
 					</div> 
@@ -58,7 +74,7 @@
 				<div class="flex my-5">
 					<div class="border w-40 h-8 text-center bg-danger text-white rounded">최종금액</div>
 					<div>
-						<div class="ml-24 leading-8">총 <span id="total">0</span>원을 후원합니다</div>
+						<div class="ml-24 leading-8">총 <span id="total" name="total_price">0</span>원을 후원합니다</div>
 					</div>
 				</div>
 				<div class="my-5 text-xl">배송지 정보</div>
@@ -70,8 +86,8 @@
 				<div class="flex my-5">
 					<div>이메일<i class="xi-star text-xl" style="color:rgb(255,153,000)"></i></div>
 					<a id="f"><div>  
-						<input type="text" class="border h-8 ml-24 rounded email1"/>@  
-						<input id="domain" type="text" class="border h-8 text-center rounded email2"/> 	
+						<input type="text" name="id" class="border h-8 ml-24 rounded email1"/>@  
+						<input id="domain" name="domain" type="text" class="border h-8 text-center rounded email2"/> 	
 						<div class="inline-block relative w-40">
 							<select id="email" onclick="inputDomain()" class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
 								<option>직접입력</option>
@@ -95,8 +111,8 @@
 					<div>연락처1<i class="xi-star text-xl" style="color:rgb(255,153,000)"></i></div>
 					<a id="c"><div class="ml-24 flex">
 					     <div class="h-8 w-40 text-center">010</div>
-				 		- <input type="text" class="border h-8 ml-1 mr-1 text-center rounded tel1" maxlength="4"/>
-						- <input type="text" class="border h-8 ml-1 text-center rounded tel2" maxlength="4"/>
+				 		- <input type="text" name="reward_phone1" class="border h-8 ml-1 mr-1 text-center rounded tel1" maxlength="4"/>
+						- <input type="text" name="reward_phone2" class="border h-8 ml-1 text-center rounded tel2" maxlength="4"/>
 					</div></a>
 					<div class="text-danger ml-5 hidden" id="c1">연락처를 입력해주세요.</div>
 					<div class="text-danger ml-5 hidden" id="c2">숫자 4자리를 입력해주세요.</div>
@@ -105,7 +121,7 @@
 					<a id="n"><div>연락처2</div></a>
 					<div>
 						<div class="inline-block relative w-40 ml-24">
-							<select class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
+							<select name="reward_tel1" class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
 								   <option>02</option>
 								   <option>051</option>
 								   <option>053</option>
@@ -127,8 +143,8 @@
 					    		<svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
 					  		</div>
 				 		</div>
-				 		- <input type="text" class="border h-8 text-center rounded tel3" maxlength="4"/>
-						- <input type="text" class="border h-8 text-center rounded tel4" maxlength="4"/>
+				 		- <input name="reward_tel2" type="text" class="border h-8 text-center rounded tel3" maxlength="4"/>
+						- <input name="reward_tel3" type="text" class="border h-8 text-center rounded tel4" maxlength="4"/>
 						<div class="text-danger hidden" style="margin-left:300px;"id="n1">숫자를 입력해주세요.</div>
 						<div class="text-danger hidden" style="margin-left:300px;" id="n2">잘못된 연락처입니다. 다시 입력해주세요.</div>
 					</div>
@@ -137,13 +153,13 @@
 					<div>배송지<i class="xi-star text-xl" style="color:rgb(255,153,000)"></i></div>
 					<a id="d"><div class="ml-24">
 						<div class="flex">
-							<input type="text" class="border h-8 w-32 rounded addr1"  maxlength="5"/>
-							<button class="ml-3 border rounded w-20">우편번호</button>
+							<input id="reward_addr_num" type="text" class="border h-8 w-32 rounded addr1 text-center" maxlength="5" readonly/>
+							<input type="button" onClick="openDaumZipAddress();" class="ml-3 border rounded w-20" value="주소검색"/>
 							<div class="text-danger ml-5 hidden" id="d1">주소를 입력해주세요.</div>
 							<div class="text-danger ml-5 hidden" id="d2">잘못된 형식입니다. 다시 입력해주세요</div>
 						</div>
-						<input type="text" class="border mt-3 h-8 rounded addr2" style="width:630px">
-						<div><input type="text" class="border mt-3 h-8 rounded" style="width:315px"placeholder="상세주소"></div>
+						<input id="reward_addr_main" type="text" class="border mt-3 h-8 rounded addr2" style="width:630px" readonly>
+						<div><input id="reward_addr_sub" type="text" class="border mt-3 h-8 rounded" style="width:315px"placeholder="상세주소"></div>
 					</div></a>
 				</div>
 				<div class="flex my-5">
@@ -301,9 +317,8 @@
 				    </label>
 			    </div>
 			    <a href="#" id="pay"><div class="w-32 h-10 border my-20 mx-auto text-center rounded ">
-					<div class="justify-center leading-9 h-full" id="payReser">결제 예약하기</div>
-				</div></a>
+					<input type="submit"value="결제 예약하기"class="justify-center leading-9 h-full w-full" id="payReser"/></div></a>
 			</div>
-
+		</form>
 </body>
 </html>
