@@ -8,16 +8,17 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.project_Ma.home.Command_Interface;
 
-public class Command_CampaignWrite implements Command_Interface {
+public class CommandCampaignWriteOk implements Command_Interface {
 
-	public Command_CampaignWrite() {
+	public CommandCampaignWriteOk() {
 		// TODO Auto-generated constructor stub
 	}
 
 	@Override
-	public String processStart(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		return "/mypage/campaignWrite.jsp";
+	public String processStart(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		return "/mypage/campaignWriteOk";
 	}
 
 }

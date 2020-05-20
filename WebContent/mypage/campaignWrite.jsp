@@ -17,7 +17,7 @@
 		<div class="alert-empty bg-danger-light border-t border-b border-danger text-danger px-4 py-3 hidden mb-8" role="alert">
 			<p class="text-lg font-bold">모든 항목을 입력해야합니다.</p>
 		</div>
-		<form id="campaignEditor" method="POST" action="" enctype="multipart/form-data" onsubmit="return editor_validation(this)">
+		<form id="campaignEditor" method="POST" action="/mypage/campaignWriteOk.do" enctype="multipart/form-data" onsubmit="return editor_validation(this)">
 			<!--캠페인 정보-->
 			<h2 class="mb-4 border-b border-solid border-gray-dark pb-4">캠페인 정보</h2>
 			<div class="mb-8 px-4">
