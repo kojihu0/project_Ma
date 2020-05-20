@@ -7,3 +7,4 @@ public interface CommandMemberShipService {
 	public int coporateInsert(int user_no);
 	
 }
+	
