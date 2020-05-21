@@ -17,7 +17,11 @@
 		<div class="alert-empty bg-danger-light border-t border-b border-danger text-danger px-4 py-3 hidden mb-8" role="alert">
 			<p class="text-lg font-bold">모든 항목을 입력해야합니다.</p>
 		</div>
+<<<<<<< HEAD
 		<form id="campaignEditor" method="POST" action="" enctype="multipart/form-data" onsubmit="return editor_validation(this)">
+=======
+		<form id="campaignEditor" method="POST" action="/mypage/campaignWriteOk.do" enctype="multipart/form-data" onsubmit="return editor_validation(this)">
+>>>>>>> refs/heads/pro_L
 			<!--캠페인 정보-->
 			<h2 class="mb-4 border-b border-solid border-gray-dark pb-4">캠페인 정보</h2>
 			<div class="mb-8 px-4">
@@ -34,8 +38,13 @@
 					</div>
 				</div>
 				<div class="input-field mb-4">
+<<<<<<< HEAD
 					<label for="cam_story" class="inline-block my-4">캠페인 스토리</label>
 					<textarea name="cam_story" id="cam_story" class="appearance-none border border-gray rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"></textarea>
+=======
+					<label for="cam_content" class="inline-block my-4">캠페인 스토리</label>
+					<textarea name="cam_content" id="cam_content" class="appearance-none border border-gray rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"></textarea>
+>>>>>>> refs/heads/pro_L
 				</div>
 				<div class="input-field mb-4">
 					<label for="cam_desc" class="inline-block my-4">간략 설명</label>

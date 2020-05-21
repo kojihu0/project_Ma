@@ -11,7 +11,7 @@
 			 <form method="post" action="/project_Ma/joinMembership/completedJoin.html" onsubmit="return regExpChk()">
 				<p class="text-center text-4xl font-bold">회원가입</p>
 				<div id="joinMenberShipForm">
-					<div id="agreementForm"><input type="checkbox" id="allAgreement">
+					<div id="agreementForm"><input type="checkbox" class="checkBox" id="allAgreement">
 						<label for="allAgreement" id="allAgreementText">전체동의</label>
 						<button><a href="#" data-target="#agreementModal" id="move-ico">〉</a></button><br/>
 						<h5>체리트리 서비스 이용약관(필수),개인정보 수집 및 이용동의(필수),<br/>마케팅정보 수집동의(선택)</h5><br/>

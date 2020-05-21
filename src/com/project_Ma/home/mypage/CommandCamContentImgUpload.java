@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.project_Ma.home.Command_Interface;
 
-public class Command_CampaignWrite implements Command_Interface {
+public class CommandCamContentImgUpload implements Command_Interface {
 
-	public Command_CampaignWrite() {
+	public CommandCamContentImgUpload() {
 		// TODO Auto-generated constructor stub
 	}
 
 	@Override
 	public String processStart(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		return "/mypage/campaignWrite.jsp";
+		// TODO Auto-generated method stub
+		return "/mypage/camContentImgUpload.do";
 	}
 
 }
