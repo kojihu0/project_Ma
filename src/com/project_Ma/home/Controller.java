@@ -26,7 +26,7 @@ public class Controller extends HttpServlet {
 	//MapCollection
 	Map<String, Command_Interface> map = new HashMap<String, Command_Interface>(); 
 	
-	//»óÀ§ classÀÇ »ý¼ºÀÚ ¿ì¼± ½ÇÇà.
+	//ï¿½ï¿½ï¿½ï¿½ classï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ì¼± ï¿½ï¿½ï¿½ï¿½.
     public Controller() {
         super();       
     }
@@ -39,7 +39,7 @@ public class Controller extends HttpServlet {
 			FileInputStream fileInputStream = new FileInputStream(propertiesFile);
 			propertiesObj.load(fileInputStream);
 		}catch(IOException ie) {
-			System.out.println("Properties ÆÄÀÏÀ» ÀÔÃâ·Â °úÁ¤¿¡¼­ ¹®Á¦°¡ »ý°å½À´Ï´Ù." + ie.getMessage());
+			System.out.println("Properties error" + ie.getMessage());
 			ie.getStackTrace();
 		}
 		//---properties file -> class for Map add
@@ -47,21 +47,21 @@ public class Controller extends HttpServlet {
 			Enumeration propertiesKeyList = propertiesObj.propertyNames();
 			
 			while(propertiesKeyList.hasMoreElements()) {
-				//key¸¦ ÅëÇØ¼­ ÇØ´ç keyÀÇ value°ªÀ» ClassName¿¡ ÀúÀå.
+				//keyï¿½ï¿½ ï¿½ï¿½ï¿½Ø¼ï¿½ ï¿½Ø´ï¿½ keyï¿½ï¿½ valueï¿½ï¿½ï¿½ï¿½ ClassNameï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.
 				String key 			= (String)propertiesKeyList.nextElement();
 				String className 	= propertiesObj.getProperty(key);
 				
 				//--key  and className Confirm
 				System.out.println("key : " + key + "    className : " + className);
 				
-				//--StringÀ» °´Ã¼È­.
-				Class 				commandClass = Class.forName(className);	 //getDeclaredConstructors() class ¾ÈÀÇ ¸ðµç constructor¿¡ Á¢±ÙÇÑ´Ù.
+				//--Stringï¿½ï¿½ ï¿½ï¿½Ã¼È­.
+				Class 				commandClass = Class.forName(className);	 //getDeclaredConstructors() class ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ constructorï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
 				Command_Interface 	commandInter = (Command_Interface)commandClass.getDeclaredConstructors()[0].newInstance();
-				//--Map¿¡ »ðÀÔ.
+				//--Mapï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.
 				map.put(key, commandInter);
 			}	
 		}catch(Exception e) {
-			System.out.println("propertiesÆÄÀÏÀ» °´Ã¼È­ ÇÏ¿© Map¿¡ Ãß°¡ÇÏ´Â µµÁß¿¡ ¿¡·¯ ¹ß»ý." + e.getMessage());
+			System.out.println("properties error" + e.getMessage());
 			e.getStackTrace();
 		}
 	}
@@ -71,19 +71,19 @@ public class Controller extends HttpServlet {
 		String uri 		= request.getRequestURI();
 		String contextPath 	= request.getContextPath();
 		
-		//Á¢¼Ó ÁÖ¼Ò.
+		//ï¿½ï¿½ï¿½ï¿½ ï¿½Ö¼ï¿½.
 		String commandAddr = uri.substring(contextPath.length());
 		
 		//confirm
 		System.out.println("commandAddr : " + commandAddr);
 		
-		//Command_Interface¿¡ mapÀÇ º§·ù °ª ´ëÀÔ.
+		//Command_Interfaceï¿½ï¿½ mapï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.
 		Command_Interface commandInter = map.get(commandAddr);
 		
-		//processStart()->viewFileName ¹Þ¾Æ¿À±â 
+		//processStart()->viewFileName ï¿½Þ¾Æ¿ï¿½ï¿½ï¿½ 
 		String viewFileName = commandInter.processStart(request, response);
 		
-		//requestDispatcher->Å¬¶óÀÌ¾ðÆ®·Î µ¥ÀÌÅÍ Àü¼Û.
+		//requestDispatcher->Å¬ï¿½ï¿½ï¿½Ì¾ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.
 		RequestDispatcher reqeustDispatcher = request.getRequestDispatcher(viewFileName);
 		reqeustDispatcher.forward(request,response);
 	}

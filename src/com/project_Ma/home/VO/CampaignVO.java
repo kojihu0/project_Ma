@@ -1,8 +1,12 @@
 package com.project_Ma.home.VO;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class CampaignVO {
 	private int camNo;
 	private String userid;
+	private List<String> camImgList;
 	private String camImgPath;
 	private String camTitle;
 	private String camContent;
@@ -40,6 +44,16 @@ public class CampaignVO {
 
 	public void setCamImgPath(String camImgPath) {
 		this.camImgPath = camImgPath;
+		camImgList = Arrays.asList(camImgPath.split("|"));
+	}
+	
+	public List<String> getCamImgList() {
+		return camImgList;
+	}
+	
+	public void setCamImgList(List<String> newImgFileList) {
+		this.camImgList = newImgFileList;
+		camImgPath = String.join("|", newImgFileList.toArray(new String[newImgFileList.size()]));
 	}
 
 	public String getCamTitle() {

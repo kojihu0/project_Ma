@@ -17,11 +17,7 @@
 		<div class="alert-empty bg-danger-light border-t border-b border-danger text-danger px-4 py-3 hidden mb-8" role="alert">
 			<p class="text-lg font-bold">모든 항목을 입력해야합니다.</p>
 		</div>
-<<<<<<< HEAD
-		<form id="campaignEditor" method="POST" action="" enctype="multipart/form-data" onsubmit="return editor_validation(this)">
-=======
-		<form id="campaignEditor" method="POST" action="/mypage/campaignWriteOk.do" enctype="multipart/form-data" onsubmit="return editor_validation(this)">
->>>>>>> refs/heads/pro_L
+		<form id="campaignEditor" method="POST" action="<%=projectPath %>/mypage/campaignWriteOk.do" enctype="multipart/form-data" onsubmit="return editor_validation(this)">
 			<!--캠페인 정보-->
 			<h2 class="mb-4 border-b border-solid border-gray-dark pb-4">캠페인 정보</h2>
 			<div class="mb-8 px-4">
@@ -38,13 +34,8 @@
 					</div>
 				</div>
 				<div class="input-field mb-4">
-<<<<<<< HEAD
-					<label for="cam_story" class="inline-block my-4">캠페인 스토리</label>
-					<textarea name="cam_story" id="cam_story" class="appearance-none border border-gray rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"></textarea>
-=======
 					<label for="cam_content" class="inline-block my-4">캠페인 스토리</label>
 					<textarea name="cam_content" id="cam_content" class="appearance-none border border-gray rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"></textarea>
->>>>>>> refs/heads/pro_L
 				</div>
 				<div class="input-field mb-4">
 					<label for="cam_desc" class="inline-block my-4">간략 설명</label>
@@ -89,7 +80,7 @@
 			<!--캠페인 정보-->
 			<!--리워드 정보-->
 			<div class="mb-8">
-				<label for="cam_reward_status" class="inline-block my-4 mr-4 font-bold text-lg">리워드가 존재하는 캠페인입니다.</label><input type="checkbox" name="cam_reward_status" id="cam_reward_status" value="true"/>
+				<label for="cam_reward_status" class="inline-block my-4 mr-4 font-bold text-lg">리워드가 존재하는 캠페인입니다.</label><input type="checkbox" name="cam_reward_status" id="cam_reward_status" value="1"/>
 			</div>
 			<div id="rewards" class="hidden">
 			<h2 class="mb-4 border-b border-solid border-gray-dark pb-4">리워드 정보</h2>

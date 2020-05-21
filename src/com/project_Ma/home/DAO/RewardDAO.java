@@ -24,7 +24,7 @@ public class RewardDAO extends ConnectionDB implements RewardService {
 		try {
 			connDB();
 		} catch (Exception e) {
-			System.out.println("¸®¿öµå Ãâ·Â ¿¡·¯");
+			System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
 			e.printStackTrace();
 		} finally {
 			closeDB();
@@ -51,7 +51,7 @@ public class RewardDAO extends ConnectionDB implements RewardService {
 			
 			result = pstmt.executeUpdate();
 		} catch (Exception e) {
-			System.out.println("¸®¿öµå µî·Ï ¿¡·¯");
+			System.out.println("ë¦¬ì›Œë“œ ë“±ë¡ ì—ëŸ¬");
 			e.printStackTrace();
 		} finally {
 			closeDB();
