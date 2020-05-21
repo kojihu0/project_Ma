@@ -9,24 +9,23 @@
 </head>
 <body>
 
-	<!-- merge test -->
 	<!-- img slide --> 
 			<div id="mainImgDiv" class="w-full my-0 mx-auto">
 				<div class="w-full my-0 mx-auto bg-gray-lighter">
 					<div class="slider single-item">
-						<div class="slide-img w-full bg-cover relative" style="background-image:url('/project_Ma/img/img_main/mainslider01.png')">
-							<div class="slide-text absolute text-white">
+						<div class="slide-img w-full bg-cover relative" style="background-image:url('<%=projectPath%>/img/img_main/mainslider01.png')">
+							<div class="slide-text absolute text-white"> 
 								<h1 class="font-bold text-3xl mb-4">대통령은 헌법과 법률이<br> 정하는 바에 의하여 공무원을 임면한다.</h1>
 								<p>정부는 예산에 변경을 가할 필요가 있을 때에는 추가경정예산안을 편성하여 국회에 제출할 수 있다.</p>
 							</div>
 						</div>
-						<div class="slide-img w-full bg-cover relative" style="background-image:url('/project_Ma/img/img_main/mainslider02.png')">
+						<div class="slide-img w-full bg-cover relative" style="background-image:url('<%=projectPath%>/img/img_main/mainslider02.png')">
 							<div class="slide-text absolute text-white">
 								<h1 class="font-bold text-3xl mb-4">모든 국민은 근로의 권리를 가진다.</h1>
 								<p>국가는 사회적·경제적 방법으로 근로자의 고용의 증진과 적정임금의 보장에 노력하여야 하며,<br>법률이 정하는 바에 의하여 최저임금제를 시행하여야 한다.</p>
 							</div>
 						</div>
-						<div class="slide-img w-full bg-cover relative" style="background-image:url('/project_Ma/img/img_main/mainslider03.png')">
+						<div class="slide-img w-full bg-cover relative" style="background-image:url('<%=projectPath%>/img/img_main/mainslider03.png')">
 							<div class="slide-text absolute">
 								<h1 class="font-bold text-3xl mb-4">밝은 그들의 것이다.<br>보라, 지혜는 가치를 듣기만 위하여서.</h1>
 								<p>피가 그와 구하지 튼튼하며, 용감하고 생명을 끓는다.</p>
@@ -36,19 +35,19 @@
 				</div>
 			</div>
 			<!-- img slide end -->
+			
 			<!-- nowCampaign -->
-			<div id="nowCampaign"
-				class="rounded-lg mt-4 w-full max-w-screen-xl my-0 mx-auto">
+			<div id="nowCampaign" class="rounded-lg mt-4 w-full max-w-screen-xl my-0 mx-auto">
+				<!-- mainMoreDiv start -->
 				<div id="mainMoreDiv_01" class="w-16">
 					<div class="mid_title">
-						이 캠페인은 어떠세요?<br /> <span id="mid_title_word" class="mid_title_word"> 당신의 작은 <span class="text-danger" >사랑</span>이 큰 도움이
-							됩니다 
-						</span> 
+						이 캠페인은 어떠세요?<br /> <span id="mid_title_word" class="mid_title_word"> 당신의 작은 <span class="text-danger" >사랑</span>이 큰 도움이 됩니다 </span> 
 						<button id="moreButton" class="text-2xl border-b">
-							<a href="<%=projectPath %>/campaign/all_Campaign.do">more</a>
+							<a href="<%=projectPath %>/campaign/all_Campaign.do">more</a> 
 						</button>
 					</div>
 				</div>
+				<!-- mainMoreDiv end -->
 				<!-- 이미지/프로젝트명/남은기간 -->
 				<div id="mid_Div_Campaign" class="flex">
 					<div id="mid_cam_01" class="mx-2 flex-initial w-1/3">
