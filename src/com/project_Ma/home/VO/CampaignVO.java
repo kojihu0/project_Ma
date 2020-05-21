@@ -12,7 +12,7 @@ public class CampaignVO {
 	private int goalPrice;
 	private int minPrice;
 	private int maxPrice;
-	private String camRewardStatus;
+	private int camRewardStatus = 0;
 	private String camRegiDate;
 	
 	public CampaignVO() {
@@ -106,11 +106,11 @@ public class CampaignVO {
 		this.maxPrice = maxPrice;
 	}
 
-	public String getCamRewardStatus() {
+	public int getCamRewardStatus() {
 		return camRewardStatus;
 	}
 
-	public void setCamRewardStatus(String camRewardStatus) {
+	public void setCamRewardStatus(int camRewardStatus) {
 		this.camRewardStatus = camRewardStatus;
 	}
 
