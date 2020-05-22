@@ -41,14 +41,14 @@
 							class="xi-mail text-3xl  text-gray"></i>
 						<div style="margin-left: 150px"
 							class="text-xl text-gray  -mt-8 w-6/12">
-							<a href="/project_Ma/joinMembership/user_join.html">이메일로 가입하기</a>
+							<a href="<%=projectPath %>/joinMembership/join_User.do">이메일로 가입하기</a>
 						</div>
 						<div style="margin-top: 20px" class="text-gray ">
-							<a href="/project_Ma/joinMembership/coporate_join.html">법인
+							<a href="/project_Ma/joinMembership/join_Corporate.do">법인
 								회원가입</a>
 						</div>
 						<div style="width: 450px; margin-top: 20px; margin-right: 100px">
-							이미 체리트리 계정이 있나요?<a href="/project_Ma/login/login.html" style="margin-left: 100px"
+							이미 체리트리 계정이 있나요?<a href="<%=projectPath %>/login/login.do" style="margin-left: 100px"
 								class="underline text-danger">로그인</a>
 						</div>
 					</div>

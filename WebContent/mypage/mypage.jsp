@@ -29,7 +29,7 @@
 			      <label class="block uppercase tracking-wide text-gray-darker text-xs font-bold mb-2" for="grid-name">
 			        Name
 			      </label>
-			      <input class="appearance-none block w-full  text-gray-darkest text-2xl border-b border-info  py-5 px-5 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-danger" id="grid-name" type="text">
+			      <input value="${vo.user_name }"name="user_name"class="appearance-none block w-full  text-gray-darkest text-2xl border-b border-info  py-5 px-5 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-danger" id="grid-name" type="text">
 			    </div>
 			  </div>
 			  <div class="flex flex-wrap -mx-3 mb-6">
@@ -37,7 +37,7 @@
 			      <label class="block uppercase tracking-wide text-gray-darker text-xs font-bold mb-2" for="grid-id">
 			        ID
 			      </label>
-			      <input class="appearance-none block w-full  text-gray-darkest text-2xl border-b border-info   py-5 px-5 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-danger" id="grid-id" type="text">
+			      <input value='${vo.user_id }'name="user_id" class="appearance-none block w-full  text-gray-darkest text-2xl border-b border-info   py-5 px-5 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-danger" readonly="readonly" id="grid-id" type="text">
 			    </div>
 			  </div>
 			  <div class="flex flex-wrap -mx-3 mb-6">
@@ -45,8 +45,8 @@
 			      <label class="block uppercase tracking-wide text-gray-darker text-xs font-bold mb-2" for="grid-password">
 			        Password
 			      </label>
-			      <input class="appearance-none block w-full bg-gray-200 text-gray-darkest text-2xl border-b border-info border-gray-200  py-5 px-5 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-danger" id="grid-password" type="password">
-			      <input data-target="#passwordUpdate" id="move-ico" type="submit" value="비밀번호 변경" class="absolute bg-danger text-white hover:bg-danger-dark text-white font-bold py-4 px-5 rounded">
+			      <input ${vo.user_pw } name="user_pw" class="appearance-none block w-full bg-gray-200 text-gray-darkest text-2xl border-b border-info border-gray-200  py-5 px-5 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-danger" id="grid-password" type="password">
+			      <input  data-target="#passwordUpdate" id="move-ico" type="submit" value="비밀번호 변경" class="absolute bg-danger text-white hover:bg-danger-dark text-white font-bold py-4 px-5 rounded">
 			    </div>
 			  </div>
 			  <div class="flex flex-wrap -mx-3 mb-6">
@@ -54,7 +54,7 @@
 			      <label class="block uppercase tracking-wide text-gray-darker text-xs font-bold mb-2" for="grid-email">
 			        E-mail
 			      </label>
-			      <input class="appearance-none block w-full  text-gray-darkest text-2xl border-b border-info border-gray-200  py-5 px-5 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-danger" id="grid-email" type="text">
+			      <input ${vo.user_email } name="user_email"class="appearance-none block w-full  text-gray-darkest text-2xl border-b border-info border-gray-200  py-5 px-5 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-danger" id="grid-email" type="text">
 			    
 			    </div>
 			  </div>
@@ -63,7 +63,7 @@
 			      <label class="block uppercase tracking-wide text-gray-darker text-xs font-bold mb-2" for="grid-password">
 			        tel
 			      </label>
-			      <input class="appearance-none block w-full  text-gray-darkest text-2xl border-b border-info border-gray-200  py-5 px-5 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-danger" id="grid-password" type="text">
+			      <input ${vo.user_tel } name="user_tel" class="appearance-none block w-full  text-gray-darkest text-2xl border-b border-info border-gray-200  py-5 px-5 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-danger" id="grid-password" type="text">
 			    </div>
 			  </div>
 			    <div class="flex flex-wrap -mx-3 mb-6">
@@ -71,7 +71,7 @@
 			      <label class="block uppercase tracking-wide text-gray-darker text-xs font-bold mb-2" for="grid-address">
 			       Address
 			      </label>
-			      <input class="appearance-none block w-full  text-gray-darkest text-2xl border-b border-info py-5 px-5 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-danger" id="grid-address" type="text">
+			      <input ${vo.addr_no } name="addr_no"class="appearance-none block w-full  text-gray-darkest text-2xl border-b border-info py-5 px-5 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-danger" id="grid-address" type="text">
 			     <input id="move-ico" type="submit" value="우편번호 검색" class="absolute bg-danger text-white hover:bg-danger-dark text-white font-bold py-4 px-5 rounded">
 			    </div>
 			  </div>
@@ -80,14 +80,14 @@
 			      <label class="block uppercase tracking-wide text-gray-darker text-xs font-bold mb-2" for="grid-main">
 			        main
 			      </label>
-			      <input class="appearance-none block w-full  text-gray-darkest text-2xl border-b border-info py-5 px-5 leading-tight focus:outline-none focus:bg-white focus:border-danger" id="grid-main" type="text">
+			      <input ${vo.addr_main } name="addr_main" class="appearance-none block w-full  text-gray-darkest text-2xl border-b border-info py-5 px-5 leading-tight focus:outline-none focus:bg-white focus:border-danger" id="grid-main" type="text">
 			    </div>
 			    
 			     <div class="w-full md:w-3/6 px-3 mb-6 md:mb-0">
 			      <label class="block uppercase tracking-wide text-gray-darker text-xs font-bold mb-2" for="grid-sub">
 			        sub
 			      </label>
-			      <input class="appearance-none block w-full  text-gray-darkest text-2xl border-b border-info py-5 px-5 leading-tight focus:outline-none focus:bg-white focus:border-danger" id="grid-sub" type="text">
+			      <input ${vo.addr_sub } name="addr_sub" class="appearance-none block w-full  text-gray-darkest text-2xl border-b border-info py-5 px-5 leading-tight focus:outline-none focus:bg-white focus:border-danger" id="grid-sub" type="text">
 			     </div>
 			    </div>
 			    <div style="width:200px;height:110px; margin : 0 auto;">
