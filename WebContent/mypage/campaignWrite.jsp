@@ -177,3 +177,10 @@
 		</form>
 	</div>
 </div>
+<script type="text/javascript">
+$(function(){
+	CKEDITOR.replace('cam_content', {
+		filebrowserUploadUrl:'<%=projectPath%>/editorImgUpload/editorImgUpload.do'
+	});
+});
+</script>

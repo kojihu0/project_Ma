@@ -18,7 +18,7 @@ public class CommandCampaignWriteOk implements Command_Interface {
 
 	@Override
 	public String processStart(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-		String imgPath = req.getServletContext().getRealPath("/uploads/img/campaign");
+		String imgPath = req.getServletContext().getRealPath("/img/campaign");
 		System.out.println(imgPath);
 		
 		CampaignVO vo = new CampaignVO();

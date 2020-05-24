@@ -135,7 +135,6 @@ $(function(){
 		});
 
 	});
-	CKEDITOR.replace('cam_content');
 });
 
 //유효성검사

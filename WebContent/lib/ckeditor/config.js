@@ -27,5 +27,6 @@ CKEDITOR.editorConfig = function( config ) {
 
 	config.removeButtons = 'Source,Save,Templates,NewPage,Preview,Print,PasteFromWord,Scayt,Form,Checkbox,Radio,TextField,Textarea,Select,Button,ImageButton,HiddenField,Flash,Iframe,Language,Anchor,About,Styles,Maximize,PageBreak,BidiLtr,BidiRtl,CreateDiv';
 	config.extraPlugins = 'youtube';
-	config.filebrowserUploadUrl = '/file_upload.jsp';
+	config.extraPlugins = 'filebrowser';
+	config.filebrowserUploadUrl="/project_Ma/editorImgUpload/editorImgUpload.do";
 };
