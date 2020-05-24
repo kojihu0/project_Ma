@@ -1,4 +1,4 @@
-package com.project_Ma.home.mypage;
+package com.project_Ma.home.editorImgUpload;
 
 import java.io.IOException;
 
@@ -8,9 +8,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.project_Ma.home.Command_Interface;
 
-public class CommandCamContentImgUpload implements Command_Interface {
+public class CommandEditorImgUpload implements Command_Interface {
 
-	public CommandCamContentImgUpload() {
+	public CommandEditorImgUpload() {
 		// TODO Auto-generated constructor stub
 	}
 
