@@ -13,7 +13,6 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
-import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
 
 import com.project_Ma.home.Command_Interface;
@@ -58,10 +57,9 @@ public class CommandEditorImgUpload implements Command_Interface {
 				}
 			}
 		}catch (Exception e) {
-			System.out.println("ÀÌ¹ÌÁöÆÄÀÏ¾÷·Îµå¿¡·¯");
+			System.out.println("íŒŒì¼ì—…ë¡œë“œì—ëŸ¬");
 			e.printStackTrace();
 		}
-		req.setAttribute("CKEditorFuncNum", req.getParameter("CKEditorFuncNum"));
 		req.setAttribute("uploaded", uploaded);
 		req.setAttribute("filename", filename);
 		req.setAttribute("url", url);

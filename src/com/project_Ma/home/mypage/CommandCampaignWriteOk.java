@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Enumeration;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.UUID;
@@ -20,11 +21,12 @@ import org.apache.commons.io.FilenameUtils;
 
 import com.project_Ma.home.Command_Interface;
 import com.project_Ma.home.DAO.CampaignDAO;
+import com.project_Ma.home.DAO.RewardDAO;
 import com.project_Ma.home.VO.CampaignVO;
 import com.project_Ma.home.VO.RewardVO;
 
 public class CommandCampaignWriteOk implements Command_Interface {
-
+	String encode = "UTF-8";
 	public CommandCampaignWriteOk() {
 		// TODO Auto-generated constructor stub
 	}
@@ -33,12 +35,12 @@ public class CommandCampaignWriteOk implements Command_Interface {
 	public String processStart(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		String imgPath = req.getServletContext().getRealPath("/img/campaign");
 		
-		req.setCharacterEncoding("UTF-8");
+		req.setCharacterEncoding(encode);
 		System.out.println(imgPath);
 		
 		CampaignVO vo = new CampaignVO();
-		RewardVO rvo = new RewardVO();
-		
+		int rewardCnt = 0;
+		HashMap<String, String> rewardList = new HashMap<String, String>();
 		HttpSession session = req.getSession();
 		
 		vo.setUserid((String) session.getAttribute("user_id"));
@@ -51,7 +53,7 @@ public class CommandCampaignWriteOk implements Command_Interface {
 		
 		//파일업로드 핸들러
 		ServletFileUpload upload = new ServletFileUpload(fac);
-		upload.setHeaderEncoding("UTF-8");
+		upload.setHeaderEncoding(encode);
 		upload.setFileSizeMax(maxSize); //최대파일사이즈
 		
 		try {
@@ -62,39 +64,46 @@ public class CommandCampaignWriteOk implements Command_Interface {
 				FileItem item = iter.next();
 			
 				if(item.isFormField()) { //input
-					String inputValue = item.getFieldName();
-					if(inputValue.equals("cam_title")) {
-						vo.setCamTitle(item.getString("UTF-8"));
+					String inputName = item.getFieldName();
+					int rewardSap = inputName.indexOf("[");
+					
+					if(inputName.equals("cam_title")) {
+						vo.setCamTitle(item.getString(encode));
 					}
-					if(inputValue.equals("cam_start")) {
-						vo.setCamStart(item.getString("UTF-8"));
+					if(inputName.equals("cam_start")) {
+						vo.setCamStart(item.getString(encode));
 					}
-					if(inputValue.equals("cam_end")) {
-						vo.setCamEnd(item.getString("UTF-8"));
+					if(inputName.equals("cam_end")) {
+						vo.setCamEnd(item.getString(encode));
 					}
-					if(inputValue.equals("cam_goal_price")) {
-						vo.setCamGoalPrice(Integer.parseInt(item.getString("UTF-8").replace(",", "")));
+					if(inputName.equals("cam_goal_price")) {
+						vo.setCamGoalPrice(Integer.parseInt(item.getString(encode).replace(",", "")));
 					}
-					if(inputValue.equals("cam_min_price")) {
-						vo.setCamMinPrice(Integer.parseInt(item.getString("UTF-8").replace(",", "")));
+					if(inputName.equals("cam_min_price")) {
+						vo.setCamMinPrice(Integer.parseInt(item.getString(encode).replace(",", "")));
 					}
-					if(inputValue.equals("cam_max_price")) {
-						vo.setCamMaxPrice(Integer.parseInt(item.getString("UTF-8").replace(",", "")));
+					if(inputName.equals("cam_max_price")) {
+						vo.setCamMaxPrice(Integer.parseInt(item.getString(encode).replace(",", "")));
 					}
-					if(inputValue.equals("cam_content")) {
-						vo.setCamContent(item.getString("UTF-8"));
+					if(inputName.equals("cam_content")) {
+						vo.setCamContent(item.getString(encode));
 					}
-					if(inputValue.equals("cam_desc")) {
-						vo.setCamDesc(item.getString("UTF-8"));
+					if(inputName.equals("cam_desc")) {
+						vo.setCamDesc(item.getString(encode));
 					}
-					if(inputValue.equals("cam_reward_status")) {
-						if(item.getString("UTF-8") != null && !item.getString("UTF-8").equals("")) { //리워드 있음
+					if(inputName.equals("cam_reward_status")) {
+						if(item.getString(encode) != null && !item.getString(encode).equals("")) { //리워드 있음
 							vo.setCamRewardStatus(1);
-							
 						}
 						else { //리워드 없음
 							vo.setCamRewardStatus(0);
 						}
+					}
+					if(inputName.equals("reward_cnt")) {
+						rewardCnt = Integer.parseInt(item.getString(encode));
+					}
+					if(rewardSap!=-1 && inputName.substring(0, rewardSap).equals("reward")) {
+						rewardList.put(inputName, item.getString(encode));
 					}
 				}
 				else { //file
@@ -110,16 +119,16 @@ public class CommandCampaignWriteOk implements Command_Interface {
 					item.write(uploadedFile);
 					vo.setCamImgList(uploadFileList);
 				}
-			}
+			} //while
 		} catch (Exception e) {
 			System.out.println("파일업로드에러");
 			e.printStackTrace();
 		}
 		
 		CampaignDAO dao = new CampaignDAO();
+		RewardDAO rdao = new RewardDAO();
 		int camInsCnt = dao.insertCam(vo);
-		int rwInsCnt;
-		
+		int rwInsCnt = 0;
 		
 		//캠페인추가 실패 시 업로드된 이미지 삭제
 		if(camInsCnt <= 0) {
@@ -131,12 +140,24 @@ public class CommandCampaignWriteOk implements Command_Interface {
 			}
 		}
 		
-//		if(vo.getCamRewardStatus() == 1) {
-//			rvo.setCamNo(camInsCnt);
-//			
-//			RewardDAO rdao = new RewardDAO();
-//			rvo.setRewardName(mr.getParameter("reward"));
-//		}
+		if(vo.getCamRewardStatus() == 1) {
+			for(int i=1; i<=rewardCnt; i++) {
+				RewardVO rvo = new RewardVO();
+				rvo.setCamNo(camInsCnt);
+				rvo.setRewardName(rewardList.get("reward[reward_name_"+i+"]"));
+				rvo.setRewardContent(rewardList.get("reward[reward_desc_"+i+"]"));
+				rvo.setRewardPrice(Integer.parseInt(rewardList.get("reward[reward_price_"+i+"]").replace(",", "")));
+				rvo.setRewardQuantity(Integer.parseInt(rewardList.get("reward[reward_limit_"+i+"]").replace(",", "")));
+				rvo.setDeliveryPrice(Integer.parseInt(rewardList.get("reward[del_fee_"+i+"]").replace(",", "")));
+				rvo.setDeliveryExYear(rewardList.get("reward[del_year_"+i+"]"));
+				rvo.setDeliveryExMonth(rewardList.get("reward[del_month_"+i+"]"));
+				rvo.setDeliveryExDateDetail(rewardList.get("reward[del_date_detail_"+i+"]"));
+				rwInsCnt += rdao.insertRewardList(rvo);
+			}
+			if(rwInsCnt<=0) {
+				camInsCnt=0;
+			}
+		}
 		
 		req.setAttribute("camInsCnt", camInsCnt);
 		return "/mypage/campaignWriteOk.jsp";

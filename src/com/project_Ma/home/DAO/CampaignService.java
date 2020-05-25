@@ -5,15 +5,15 @@ import java.util.List;
 import com.project_Ma.home.VO.CampaignVO;
 
 public interface CampaignService {
-	//ÀüÃ¼¸ñ·Ï
+	//ï¿½ï¿½Ã¼ï¿½ï¿½ï¿½
 	public List<CampaignVO> allCamList();
 	public List<CampaignVO> allCamList(CampaignVO vo);
-	//1°³¼±ÅÃ
-	public void selectCam(int camNo);
-	//µî·Ï
+	//1ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	public void selectCam(CampaignVO vo);
+	//ï¿½ï¿½ï¿½
 	public int insertCam(CampaignVO vo);
-	//¼öÁ¤
+	//ï¿½ï¿½ï¿½ï¿½
 	public int updateCam(CampaignVO vo);
-	//»èÁ¦
+	//ï¿½ï¿½ï¿½ï¿½
 	public int deleteCam(CampaignVO vo);
 }

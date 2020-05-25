@@ -7,6 +7,8 @@ public class RewardVO {
 	private int rewardQuantity;
 	private int rewardPrice;
 	private String rewardContent;
+	private String deliveryExYear;
+	private String deliveryExMonth;
 	private String deliveryExDate;
 	private String deliveryExDateDetail;
 	private int deliveryPrice;
@@ -62,12 +64,32 @@ public class RewardVO {
 	public void setRewardContent(String rewardContent) {
 		this.rewardContent = rewardContent;
 	}
+	
+	public String getDeliveryExYear() {
+		return deliveryExYear;
+	}
+
+	public void setDeliveryExYear(String deliveryExYear) {
+		this.deliveryExYear = deliveryExYear;
+	}
+
+	public String getDeliveryExMonth() {
+		return deliveryExMonth;
+	}
+
+	public void setDeliveryExMonth(String deliveryExMonth) {
+		this.deliveryExMonth = deliveryExMonth;
+	}
 
 	public String getDeliveryExDate() {
+		deliveryExDate = deliveryExYear + "-" + deliveryExMonth;
 		return deliveryExDate;
 	}
 
 	public void setDeliveryExDate(String deliveryExDate) {
+		String[] splitDate = deliveryExDate.split("-");
+		deliveryExYear = splitDate[0];
+		deliveryExMonth = splitDate[1];
 		this.deliveryExDate = deliveryExDate;
 	}
 

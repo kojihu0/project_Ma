@@ -4,7 +4,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page trimDirectiveWhitespaces="true" %>
 <%
-//{'uploaded':${uploaded}, 'filename':'${filename}', 'url':'${url}'}
 response.setContentType("application/json");
 JSONObject obj = new JSONObject();
 obj.put("uploaded", request.getAttribute("uploaded"));

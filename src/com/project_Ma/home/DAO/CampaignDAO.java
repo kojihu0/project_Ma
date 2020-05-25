@@ -24,11 +24,31 @@ public class CampaignDAO extends ConnectionDB implements CampaignService{
 	}
 
 	@Override
-	public void selectCam(int camNo) {
+	public void selectCam(CampaignVO vo) {
 		try {
 			connDB();
-			sql = "select cam_no, user_id, cam_title, cam_start, cam_end, goal_price, min_price, max_price, cam_img_path, cam_reward_status, cam_content, cam_desc, cam_regidate"
+			sql = "select cam_no, user_id, cam_title, to_char(cam_start, 'yyyy-mm-dd') cam_start, to_char(cam_end, 'yyyy-mm-dd') cam_end, cam_goal_price, cam_min_price, cam_max_price,"
+					+ " cam_img, cam_reward_status, cam_content, cam_desc, cam_regi"
 					+ " from campaign where cam_no=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, vo.getCamNo());
+			result = pstmt.executeQuery();
+			if(result.next()) {
+				vo.setCamNo(result.getInt(1));
+				vo.setUserid(result.getString(2));
+				vo.setCamTitle(result.getString(3));
+				vo.setCamStart(result.getString(4));
+				vo.setCamEnd(result.getString(5));
+				vo.setCamGoalPrice(result.getInt(6));
+				vo.setCamMinPrice(result.getInt(7));
+				vo.setCamMaxPrice(result.getInt(8));
+				vo.setCamImg(result.getString(9));
+				vo.setCamRewardStatus(result.getInt(10));
+				vo.setCamContent(result.getString(11));
+				vo.setCamDesc(result.getString(12));
+				vo.setCamRegi(result.getString(13));
+			}
+			
 		} catch (Exception e) {
 			System.out.println("캠페인선택에러");
 			e.printStackTrace();

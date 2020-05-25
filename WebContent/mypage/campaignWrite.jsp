@@ -1,12 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<script>
-$(function(){
-	CKEDITOR.replace('cam_content',{
-		filebrowserUploadUrl: '<%=projectPath%>/editorImgUpload/editorImgUpload.do'
-	});
-});
-</script>
 <ul class="flex mpMenu">
 	<li class="flex-1 mr-2">
 	  <a class="text-center block border border-blue rounded py-3 px-5 bg-danger hover:bg-danger-dark text-white" href="<%=projectPath %>/mypage/coporatePage.jsp">법인 정보</a>
@@ -90,6 +83,7 @@ $(function(){
 				<label for="cam_reward_status" class="inline-block my-4 mr-4 font-bold text-lg">리워드가 존재하는 캠페인입니다.</label><input type="checkbox" name="cam_reward_status" id="cam_reward_status" value="1"/>
 			</div>
 			<div id="rewards" class="hidden">
+			<input type="hidden" id="reward_cnt" name="reward_cnt" value="1">
 			<h2 class="mb-4 border-b border-solid border-gray-dark pb-4">리워드 정보</h2>
 			<div class="reward-wrap mb-8">
 				<div id="reward-fieldset-1" data-number="1" class="reward-fieldset bg-gray-lightest px-4 mb-4">
@@ -139,15 +133,15 @@ $(function(){
 								<div class="inline-block relative w-1/2 mr-2"><!--select-->
 									<select name="reward[del_month_1]" id="del_month_1" data-name="del_month" class="block appearance-none w-full bg-white border border-gray hover:border-gray-dark px-4 py-2 pr-8 rounded leading-tight focus:outline-none focus:shadow-outline">
 										<option value="0">월</option>
-										<option value="1">1</option>
-										<option value="2">2</option>
-										<option value="3">3</option>
-										<option value="4">4</option>
-										<option value="5">5</option>
-										<option value="6">6</option>
-										<option value="7">7</option>
-										<option value="8">8</option>
-										<option value="9">9</option>
+										<option value="01">1</option>
+										<option value="02">2</option>
+										<option value="03">3</option>
+										<option value="04">4</option>
+										<option value="05">5</option>
+										<option value="06">6</option>
+										<option value="07">7</option>
+										<option value="08">8</option>
+										<option value="09">9</option>
 										<option value="10">10</option>
 										<option value="11">11</option>
 										<option value="12">12</option>
