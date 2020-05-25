@@ -58,6 +58,7 @@ $(function(){
 	});
 		
 });
+
 $(function(){
 		$("#pw-success").hide();
 		$("#pw-danger").hide();
@@ -87,7 +88,6 @@ $(function(){
 			var pwd1=$("#pw").val();
 			var pwd2=$("#pwChk").val();
 			if(pwd1 !="" || pwd2 !=""){
-				
 				//패스워드 텍스트창 확인창에서 값을 가져와서 패스워드 창이 공백일때 if문으로 들어와서 
 				//다음 if문에서 패스워드창과 패스워드체크창을 비교하여 맞을경우 일치 틀릴경우 불일치 보여준다 
 				if(pwd1 == pwd2){
@@ -103,7 +103,9 @@ $(function(){
 			}	
 			}
 		});
-	//비밀번호 변경 텍스트 창 
+});		
+	//비밀번호 변경 텍스트 창
+$(function(){
 		$("#modal-pw-success").hide();
 		$("#modal-pw-danger").hide();
 		$("input").keyup(function(){
@@ -123,12 +125,14 @@ $(function(){
 			}	
 			}
 		});
+		
+
 		//모달창 비밀번호 유효성 검사
 		$("#mcBtn").attr('disabled',true);
 		
 		$("#mcBtn").click(function(){
 			reg =  /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$/;
-			var pwd=$("#modalPw").val();
+	
 			var pwd1=$("#modalPwChk").val();
 			var pwd2=$("#modalPwChk2").val();
 		
@@ -140,7 +144,32 @@ $(function(){
 				$("#mcBtn").attr('disabled',false);
 			}
 		});
+		
+		
 });
+$(function(){
+	//--------------------------------------
+	$("#modal-del-pw-success").hide();
+	$("#modal-del-pw-danger").hide();
+	$("input").keyup(function(){
+		var pwd1=$("#modalDelPwChk").val();
+		var pwd2=$("#modalDelPwChk2").val();
+		if(pwd1 !="" || pwd2 !=""){
+			//패스워드 텍스트창 확인창에서 값을 가져와서 패스워드 창이 공백일때 if문으로 들어와서 
+			//다음 if문에서 패스워드창과 패스워드체크창을 비교하여 맞을경우 일치 틀릴경우 불일치 보여준다 
+			if(pwd1 == pwd2){
+			$("#modal-del-pw-success").show();
+			$("#modal-del-pw-danger").hide();
+			$("input[type=submit]").removeAttr("disabled");
+			}else{
+			$("#modal-del-pw-success").hide();
+			$("#modal-del-pw-danger").show();
+			$("input[type=submit]").attr("disabled","disabled");
+			}
+		}
+	});
+});
+
 
 $(function(){
 	$("#coporate_CompleteBtn").click(function(){

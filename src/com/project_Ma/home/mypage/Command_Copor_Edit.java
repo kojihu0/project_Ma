@@ -11,9 +11,9 @@ import com.project_Ma.home.Command_Interface;
 import com.project_Ma.home.DAO.MemberDataDAO;
 import com.project_Ma.home.VO.MemberVO;
 
-public class Command_Corpo_Edit implements Command_Interface {
+public class Command_Copor_Edit implements Command_Interface {
 
-	public Command_Corpo_Edit() {
+	public Command_Copor_Edit() {
 		// TODO Auto-generated constructor stub
 	}
 

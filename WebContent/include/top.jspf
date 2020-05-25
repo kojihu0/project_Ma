@@ -6,7 +6,6 @@
 <head>
 <meta charset="UTF-8">
    <title>ChariTree</title>
-   
    <!--공통 라이브러리-->
    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
@@ -39,6 +38,9 @@
    <script src="<%=projectPath %>/js/serviceCenter.js" type="text/javascript"></script>
    
 </head>
+
+
+
 <body>
    <div class="page"> 
       <!--헤더(메뉴)--> 

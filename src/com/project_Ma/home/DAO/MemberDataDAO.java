@@ -40,22 +40,68 @@ public class MemberDataDAO extends ConnectionDB implements Command_Member_Inform
 	}
 
 	@Override
-	public int userDataUpdate() {
+	public int userDataUpdate(MemberVO vo) {
 		int cnt = 0; 
 		try {
+			connDB();
+			sql="update user_info set user_name=?,user_email=?,user_tel=?,addr_no=?,addr_main=?,addr_sub=? where user_id=?";
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, vo.getUser_name());
+			pstmt.setString(2, vo.getUser_email());
+			pstmt.setString(3, vo.getUser_tel());
+			pstmt.setString(4, vo.getAddr_no());
+			pstmt.setString(5, vo.getAddr_main());
+			pstmt.setString(6, vo.getAddr_sub());
+			pstmt.setString(7, vo.getUser_id());
 			
-			
+			cnt = pstmt.executeUpdate();
 		}catch(Exception e) {
-			
+			System.out.println("회원정보 수정 실패--->"+e.getMessage());
+			e.printStackTrace();
 		}finally{
+			closeDB();
+		}
+		return cnt;
+	}
+	public int userPwUpdate(MemberVO vo) {
+		int cnt = 0; 
+		try {
+			connDB();
+			sql="update user_info set user_pw=? where user_id=?";
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, vo.getUser_pw());
+			pstmt.setString(2, vo.getUser_id());
+			cnt = pstmt.executeUpdate();
+		}catch (Exception e) {
+			System.out.println("유저 비밀번호 수정 에러 -->"+e.getMessage());
+			e.printStackTrace();
+		}finally {
 			closeDB();
 		}
 		return cnt;
 	}
 
 	@Override
-	public int userDataDelete() {
-		return 0;
+	public int userDataDelete(MemberVO vo) {
+		int cnt = 0;
+		try {
+			connDB();
+			sql="delete from user_info where user_name=? and user_id=? and user_pw=?";
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1,vo.getUser_name());
+			pstmt.setString(2,vo.getUser_id());
+			pstmt.setString(3,vo.getUser_pw());
+			
+			cnt = pstmt.executeUpdate();
+			
+		}catch (Exception e){
+			System.out.println("회원탈퇴 에러-->"+e.getMessage());
+			e.printStackTrace();
+		}finally {
+			closeDB();
+		}
+		
+		return cnt;
 	}
 
 	@Override
@@ -88,13 +134,52 @@ public class MemberDataDAO extends ConnectionDB implements Command_Member_Inform
 	}
 
 	@Override
-	public int corpoDataUpdate() {
-		return 0;
+	public int corpoDataUpdate(MemberVO vo) {
+		int cnt = 0;
+		try {
+			connDB();
+			sql="update user_info set user_name=?,user_email=?,user_tel=?,addr_no=?,addr_main=?,addr_sub=?,corpo_name=?,corpo_no=?,corpo_regi_no=? where user_id=?";
+			pstmt= conn.prepareStatement(sql);
+			pstmt.setString(1,vo.getUser_name());
+			pstmt.setString(2,vo.getUser_email());
+			pstmt.setString(3,vo.getUser_tel());
+			pstmt.setString(4,vo.getAddr_no());
+			pstmt.setString(5,vo.getAddr_main());
+			pstmt.setString(6,vo.getAddr_no());
+			pstmt.setString(7,vo.getCorpo_name());
+			pstmt.setLong(8,vo.getCorpo_no());
+			pstmt.setLong(9,vo.getCorpo_regi_no());
+			pstmt.setString(10,vo.getUser_id());
+			
+			cnt = pstmt.executeUpdate();
+		}catch (Exception e) {
+			System.out.println("법인정보 수정 에러 -- >"+e.getMessage());
+			e.printStackTrace();
+		}finally {
+			closeDB();
+		}
+		return cnt;
 	}
 
 	@Override
-	public int corpoDataDelete() {
-		return 0;
+	public int corpoDataDelete(MemberVO vo) {
+		int cnt = 0; 
+		try {
+			connDB();
+			sql="delete from user_info where user_name=?,user_id=?,user_pw=?";
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, vo.getUser_name());
+			pstmt.setString(2, vo.getUser_id());
+			pstmt.setString(3,vo.getUser_pw());
+			cnt = pstmt.executeUpdate();
+			
+		}catch (Exception e) {
+			System.out.println("법인정보 삭제 에러 -->"+e.getMessage());
+			e.printStackTrace();
+		}finally {
+			closeDB();
+		}
+		return cnt;
 	}
 
 }

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,7 +24,9 @@
 	 		</div>
 	 		
 		<!-- 후원상품 -->
-		  <div class="w-full max-w-4xl mx-auto my-8">
+	
+		
+		<div class="w-full max-w-4xl mx-auto my-8">
 			<div class="max-w-sm w-full lg:max-w-full lg:flex mb-8">
 			  <div class="w-1/3 flex-none bg-cover rounded-t rounded-t-none rounded-l text-center overflow-hidden" title="Woman holding a mug">
 					<img class="w-full h-full object-cover"src="/project_Ma/img/img_List/africa.jpg"/> 			 
@@ -39,13 +42,16 @@
 			      </p>
 			      <p class="mt-4 text-gray-darkest">후원 금액: 10000원&nbsp;&nbsp;&nbsp;&nbsp;후원 날짜: 4월 30일</p>
 			       <div class="relative w-full h-2 rounded-md bg-info-light mt-8">
-                        <div class="absolute w-1/5 h-full border-solid border-gray border bg-danger rounded-md">
-                        </div>
+                        <div class="absolute w-1/5 h-full border-solid border-gray border bg-danger rounded-md"></div>
                         <label class="text-danger font-semibold" style="font-size:14px;float:right;margin-top:15px">6일남음</label>
 			    	</div>
 			  	</div>
 			   </div>
 		 	 </div>
+		
+		
+	
+		  
 			<!-- 두번째 후원 -->
 			<div class="max-w-sm w-full lg:max-w-full lg:flex mb-8">
 			  <div class="w-1/3 flex-none bg-cover rounded-t rounded-t-none rounded-l text-center overflow-hidden" title="Woman holding a mug">
