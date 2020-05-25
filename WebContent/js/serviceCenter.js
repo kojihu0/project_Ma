@@ -2,7 +2,7 @@
  * 
  */
 
-$(function(){ 
+$(function(){
 	$("p.title").on('click',function(){
 		console.log("눌리는 건가?"); 
 		$(this).next(".answer").slideToggle(100);

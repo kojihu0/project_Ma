@@ -27,7 +27,7 @@ public class ConnectionDB {
 			
 			conn = ds.getConnection();
 		}catch(Exception e) {
-			System.out.println("µ¥ÀÌÅÍ º£ÀÌ½º ¿¬°á¿¡¼­ ¹®Á¦°¡ ¹ß»ıÇß½À´Ï´Ù." + e.getMessage());
+			System.out.println("ë°ì´í„°ë² ì´ìŠ¤ ì—°ê²°ì—ì„œ ì—ëŸ¬ ë°œìƒ." + e.getMessage());
 			e.getStackTrace();	
 		}
 		return conn;
@@ -36,10 +36,11 @@ public class ConnectionDB {
 	public void closeDB() {
 		try {
 			if(result != null) result.close();
-			if(pstmt != null) result.close();
+			if(pstmt != null) pstmt.close();
 			if(conn != null) conn.close();
+			
 		}catch(Exception e) {
-			System.out.println("DB ¿¬°á Á¾·á¿¡¼­ ¹®Á¦°¡ ¹ß»ıÇß½À´Ï´Ù." + e.getMessage());
+			System.out.println("ë°ì´í„° ë² ì´ìŠ¤ ì—°ê²° ì¢…ë£Œì—ì„œ ì—ëŸ¬ ë°œìƒ" + e.getMessage());
 			e.getStackTrace();
 		}
 	}//closeDB end
