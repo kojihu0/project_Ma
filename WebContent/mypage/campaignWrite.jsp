@@ -1,5 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<script>
+$(function(){
+	CKEDITOR.replace('cam_content',{
+		filebrowserUploadUrl: '<%=projectPath%>/editorImgUpload/editorImgUpload.do'
+	});
+});
+</script>
 <ul class="flex mpMenu">
 	<li class="flex-1 mr-2">
 	  <a class="text-center block border border-blue rounded py-3 px-5 bg-danger hover:bg-danger-dark text-white" href="<%=projectPath %>/mypage/coporatePage.jsp">법인 정보</a>
@@ -29,7 +36,7 @@
 					<label for="cam_img_path" class="inline-block my-4">이미지</label>
 					<p class="text-sm text-gray-dark mb-2">5MB이하의 이미지(jpeg, gif, png, bmp) 파일만 최대 3장 업로드 가능합니다.</p>
 					<div class="bg-gray-lightest rounded pt-4 pl-4">
-						<input type="file" name="cam_img_path" id="cam_img_path" accept="image/png, image/jpeg, image/gif, image/bmp" multiple/>
+						<input type="file" name="cam_img" id="cam_img" accept="image/png, image/jpeg, image/gif, image/bmp" multiple/>
 						<div id="imgPrevew" class="flex flex-wrap w-full mt-4"></div>
 					</div>
 				</div>
@@ -56,14 +63,14 @@
 					<div class="w-1/2 pr-2">
 						<label for="min_price" class="inline-block my-4">최저금액</label>
 						<div class="relative">
-							<input type="text" name="min_price" value="0" id="min_price" class="number-format min_money appearance-none border border-gray rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline">
+							<input type="text" name="cam_min_price" value="0" id="cam_min_price" class="number-format min_money appearance-none border border-gray rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline">
 							<div class="absolute inset-y-0 right-0 py-2 px-3 text-gray-darkest">원</div>
 						</div>
 					</div>
 					<div class="w-1/2 pl-2">
 						<label for="max_price" class="inline-block my-4">최대금액</label>
 						<div class="relative">
-							<input type="text" name="max_price" value="0" id="max_price" class="number-format max_money appearance-none border border-gray rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline">
+							<input type="text" name="cam_max_price" value="0" id="cam_max_price" class="number-format max_money appearance-none border border-gray rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline">
 							<div class="absolute inset-y-0 right-0 py-2 px-3 text-gray-darkest">원</div>
 						</div>
 					</div>
@@ -72,7 +79,7 @@
 				<div class="input-field mb-4 pr-4">
 					<label for="goal_price" class="block mt-8 mb-4">목표금액</label>
 					<div class="relative w-1/2">
-						<input type="text" name="goal_price" id="goal_price" value="0" class="number-format goal appearance-none border border-gray rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline">
+						<input type="text" name="cam_goal_price" id="cam_goal_price" value="0" class="number-format goal appearance-none border border-gray rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline">
 						<div class="absolute inset-y-0 right-0 py-2 px-3 text-gray-darkest">원</div>
 					</div>
 				</div>

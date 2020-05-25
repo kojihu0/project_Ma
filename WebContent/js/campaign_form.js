@@ -104,7 +104,7 @@ $(function(){
 
 	//이미지 업로드
 	var imgs = [];
-	$('#cam_img_path').on('change', function(e){
+	$('#cam_img').on('change', function(e){
 		imgs = [];
 		$('#imgPrevew').empty();
 
@@ -127,7 +127,7 @@ $(function(){
 			}
 			else{
 				alert('2mb이하 이미지 파일만 업로드 가능합니다.');
-				$('#campaign_img').val('');
+				$('#cam_img').val('');
 				return false;
 			}
 			
@@ -135,7 +135,7 @@ $(function(){
 		});
 
 	});
-	CKEDITOR.replace('cam_content');
+	
 });
 
 //유효성검사
@@ -165,17 +165,17 @@ function editor_validation(){
 	
 
 	//시작일,종료일
-	var start_date = $('input[name=start_date]').val();
-	var startDateArr = start_date.split('-');
-	var end_date = $('input[name=end_date]').val();
-	var endDateArr = end_date.split('-');
+	var cam_start_date = $('input[name=cam_start_date]').val();
+	var startDateArr = cam_start_date.split('-');
+	var cam_end_date = $('input[name=cam_end_date]').val();
+	var endDateArr = cam_end_date.split('-');
 
 	var startDateCompare = new Date(startDateArr[0], parseInt(startDateArr[1])-1, startDateArr[2]);
     var endDateCompare = new Date(endDateArr[0], parseInt(endDateArr[1])-1, endDateArr[2]);
          
 	if(startDateCompare.getTime() > endDateCompare.getTime()) {
 		$('.alert-date').removeClass('hidden');
-		scrollTopOfForm('input[name=start_date]');
+		scrollTopOfForm('input[name=cam_start_date]');
 		flag == false;
 	}
 	

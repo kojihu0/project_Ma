@@ -43,8 +43,8 @@ public class CampaignDAO extends ConnectionDB implements CampaignService{
 		
 		try {
 			connDB();
-			sql = "insert into campaign(cam_no, user_id, cam_title, cam_start, cam_end, goal_price, min_price, max_price, "
-					+ "cam_img_path, cam_reward_status, cam_content, cam_desc, cam_regidate)"
+			sql = "insert into campaign(cam_no, user_id, cam_title, cam_start, cam_end, cam_goal_price, cam_min_price, cam_max_price, "
+					+ "cam_img, cam_reward_status, cam_content, cam_desc, cam_regi)"
 					+ " values(cam_sq.nextval, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, sysdate)";
 			pstmt = conn.prepareStatement(sql);
 			
@@ -52,10 +52,10 @@ public class CampaignDAO extends ConnectionDB implements CampaignService{
 			pstmt.setString(2, vo.getCamTitle());
 			pstmt.setString(3, vo.getCamStart());
 			pstmt.setString(4, vo.getCamEnd());
-			pstmt.setInt(5, vo.getGoalPrice());
-			pstmt.setInt(6, vo.getMinPrice());
-			pstmt.setInt(7, vo.getMaxPrice());
-			pstmt.setString(8, vo.getCamImgPath());
+			pstmt.setInt(5, vo.getCamGoalPrice());
+			pstmt.setInt(6, vo.getCamMinPrice());
+			pstmt.setInt(7, vo.getCamMaxPrice());
+			pstmt.setString(8, vo.getCamImg());
 			pstmt.setInt(9, vo.getCamRewardStatus());
 			pstmt.setString(10, vo.getCamContent());
 			pstmt.setString(11, vo.getCamDesc());
@@ -63,7 +63,7 @@ public class CampaignDAO extends ConnectionDB implements CampaignService{
 			cnt = pstmt.executeUpdate();
 			
 			if(cnt>0) {
-				sql = "select cam_sq.currval cam_no from campaign";
+				sql = "select cam_sq.currval from campaign";
 				pstmt = conn.prepareStatement(sql);
 				result = pstmt.executeQuery(); 
 				
@@ -77,7 +77,7 @@ public class CampaignDAO extends ConnectionDB implements CampaignService{
 		} finally {
 			closeDB();
 		}
-		
+		System.out.println("캠페인등록 cnt값");
 		return cnt;
 	}
 

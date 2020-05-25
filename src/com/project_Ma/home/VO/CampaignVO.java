@@ -13,11 +13,11 @@ public class CampaignVO {
 	private String camDesc;
 	private String camStart;
 	private String camEnd;
-	private int goalPrice;
-	private int minPrice;
-	private int maxPrice;
+	private int camGoalPrice;
+	private int camMinPrice;
+	private int camMaxPrice;
 	private int camRewardStatus = 0;
-	private String camRegiDate;
+	private String camRegi;
 	
 	public CampaignVO() {
 	}
@@ -38,11 +38,11 @@ public class CampaignVO {
 		this.userid = userid;
 	}
 
-	public String getCamImgPath() {
+	public String getCamImg() {
 		return camImgPath;
 	}
 
-	public void setCamImgPath(String camImgPath) {
+	public void setCamImg(String camImgPath) {
 		this.camImgPath = camImgPath;
 		camImgList = Arrays.asList(camImgPath.split("|"));
 	}
@@ -96,28 +96,28 @@ public class CampaignVO {
 		this.camEnd = camEnd;
 	}
 
-	public int getGoalPrice() {
-		return goalPrice;
+	public int getCamGoalPrice() {
+		return camGoalPrice;
 	}
 
-	public void setGoalPrice(int goalPrice) {
-		this.goalPrice = goalPrice;
+	public void setCamGoalPrice(int goalPrice) {
+		this.camGoalPrice = goalPrice;
 	}
 
-	public int getMinPrice() {
-		return minPrice;
+	public int getCamMinPrice() {
+		return camMinPrice;
 	}
 
-	public void setMinPrice(int minPrice) {
-		this.minPrice = minPrice;
+	public void setCamMinPrice(int minPrice) {
+		this.camMinPrice = minPrice;
 	}
 
-	public int getMaxPrice() {
-		return maxPrice;
+	public int getCamMaxPrice() {
+		return camMaxPrice;
 	}
 
-	public void setMaxPrice(int maxPrice) {
-		this.maxPrice = maxPrice;
+	public void setCamMaxPrice(int maxPrice) {
+		this.camMaxPrice = maxPrice;
 	}
 
 	public int getCamRewardStatus() {
@@ -128,11 +128,11 @@ public class CampaignVO {
 		this.camRewardStatus = camRewardStatus;
 	}
 
-	public String getCamRegiDate() {
-		return camRegiDate;
+	public String getCamRegi() {
+		return camRegi;
 	}
 
-	public void setCamRegiDate(String camRegiDate) {
-		this.camRegiDate = camRegiDate;
+	public void setCamRegi(String camRegiDate) {
+		this.camRegi = camRegiDate;
 	}
 }
