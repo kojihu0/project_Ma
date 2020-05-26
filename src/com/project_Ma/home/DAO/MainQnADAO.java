@@ -14,12 +14,36 @@ public class MainQnADAO extends ConnectionDB{
 		
 	}
 	//---질문등록을 위한 insert
-	public int insertMainQnA() {
+	public int insertMainQnA(MainQnAVO vo) {
 		int result = 0;
 		
 		try {
 			connDB();
+			sql = "INSERT INTO main_qna("
+					+ "service_no,"
+					+ "user_id, "
+					+ "service_title,"
+					+ "service_secret,"
+					+ "service_content,"
+					+ "service_regi)"
+					
+					+ "VALUES("
+					+ "main_qna_sq.nextval,"
+					+ "?,"
+					+ "?,"
+					+ "?,"
+					+ "?,"
+					+ "TO_DATE(SYSDATE, 'YY-MM-DD hh:mi')"
+					+ ")";
+					
+			pstmt = conn.prepareStatement(sql);
 			
+			pstmt.setString(1, "aaaa");
+			pstmt.setString(2, vo.getService_title());
+			pstmt.setInt(3, vo.getService_secret()); 
+			pstmt.setString(4, vo.getService_content());
+			
+			result = pstmt.executeUpdate();
 			
 		}catch(Exception e) {
 			System.out.println("메인 QnA 등록에서 문제가 생겼습니다." + e.getMessage());
@@ -31,7 +55,6 @@ public class MainQnADAO extends ConnectionDB{
 		
 		return result;
 	}
-
 	//---질문 및 답
 	public List<MainQnAVO> selectMainQnA(MainQnAPageVO pVo) {
 		List<MainQnAVO> list = new ArrayList<MainQnAVO>();
@@ -111,7 +134,6 @@ public class MainQnADAO extends ConnectionDB{
 		
 		return list;
 	}
-
 	public int getTotalRecord(MainQnAPageVO vo) {
 		int totalRecord = 0;
 		try {
@@ -132,9 +154,6 @@ public class MainQnADAO extends ConnectionDB{
 		}finally {
 			closeDB();
 		}
-		
-		
-		
 		return totalRecord;
 	}
 	

@@ -5,7 +5,6 @@ $(function(){
 	
 		var scrollPos = $(window).scrollTop();
 		 
-			console.log(scrollPos);
 			if(scrollPos > 1200){  
 				$(".youtube_ment_01").stop().animate({
 					'opacity':'1', 

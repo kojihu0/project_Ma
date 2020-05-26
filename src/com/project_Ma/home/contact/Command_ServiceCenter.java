@@ -20,24 +20,9 @@ public class Command_ServiceCenter implements Command_Interface {
 	@Override
 	public String processStart(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-		request.setCharacterEncoding("UTF-8");
+	    request.setCharacterEncoding("UTF-8");
 		
-		MainQnAPageVO 	pVo  = new MainQnAPageVO(); 
-		MainQnADAO 		dao  = new MainQnADAO();
-		
-		//---페이지 번호 구하기.
-		String pageNumStr = request.getParameter("pageNum"); 
-		
-		if(pageNumStr != null) {
-			pVo.setPageNum(Integer.parseInt(pageNumStr));
-		}
-		
-		//--- 질문 리스트 받아오기.
-		pVo.setTotalRecord(dao.getTotalRecord(pVo));
-		List<MainQnAVO> selectAllList = dao.selectMainQnA(pVo);
-		//---질문리스트, 답변 리스트, 서버에 세텡.
-		request.setAttribute("selectAllList", selectAllList);
-		request.setAttribute("pVo", pVo);
+	
 			
 		return "/contact/serviceCenter.jsp";
 	}
