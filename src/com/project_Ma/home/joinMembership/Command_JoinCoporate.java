@@ -8,9 +8,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.project_Ma.home.Command_Interface;
 
-public class Command_JoinCorporate implements Command_Interface {
+public class Command_JoinCoporate implements Command_Interface {
 
-	public Command_JoinCorporate() {
+	public Command_JoinCoporate() {
 		
 	}
 
@@ -18,7 +18,7 @@ public class Command_JoinCorporate implements Command_Interface {
 	public String processStart(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		return "/joinMembership/join_Corporate.jsp"; 
+		return "/joinMembership/join_Coporate.jsp"; 
 	}
 
 }

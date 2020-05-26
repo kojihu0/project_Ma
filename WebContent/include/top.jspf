@@ -15,7 +15,11 @@
 	<link href="<%=projectPath %>/lib/css/slick.css" rel="stylesheet" type="text/css"/>
 	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<<<<<<< HEAD
 	<script src="<%=projectPath %>/lib/js/jquery-ui.min.js"></script>
+=======
+	<script src="<%=projectPath %>/lib/js/jquery-ui.min.js"></script> 
+>>>>>>> refs/remotes/origin/workBranch
 	<script src="<%=projectPath %>/lib/js/datepicker-ko.js"></script>
 	<script src="<%=projectPath %>/lib/js/jquery.number.min.js"></script>
 	<script src="<%=projectPath %>/lib/ckeditor/ckeditor.js"></script>
@@ -58,8 +62,8 @@
 									<li class="menu-item mr-8 w-1/6"><a href="<%=projectPath %>/campaign/pre_Campaign.do" class="block bg-brand hover:bg-brand-dark px-4 py-2">오픈 예정 캠페인</a></li>
 									<li class="menu-item mr-8 w-1/6"><a href="<%=projectPath %>/campaign/ex_Campaign.do" class="block bg-brand hover:bg-brand-dark px-4 py-2">지난 캠페인</a></li>
 								</ul>
-							</div>
-						</li> 
+							</div> 
+						</li>  
 						<li class="menu-item text-center flex items-center mr-2"><a href="<%=projectPath %>/about_us/about_us.do" class="inline-block py-8 px-4">회사 소개</a></li>
 						<li class="menu-item text-center flex items-center mr-2"><a href="<%=projectPath %>/news/notice.do" class="inline-block py-8 px-4">새 소식</a></li>
 						<li class="menu-item text-center flex items-center mr-2"><a href="<%=projectPath %>/contact/serviceCenter.do" class="inline-block py-8 px-4">고객센터</a></li>

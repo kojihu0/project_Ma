@@ -5,7 +5,6 @@ $(function(){
 	
 		var scrollPos = $(window).scrollTop();
 		 
-			console.log(scrollPos);
 			if(scrollPos > 1200){  
 				$(".youtube_ment_01").stop().animate({
 					'opacity':'1', 
@@ -122,6 +121,7 @@ $(function(){
         $($(this).attr('href')).addClass('active');
     });
 
+    
     $('a.qna-title').on('click', function(e){
         e.preventDefault();
         $($(this).attr('href')).toggleClass('hidden');

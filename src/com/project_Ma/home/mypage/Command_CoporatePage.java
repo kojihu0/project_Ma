@@ -8,9 +8,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.project_Ma.home.Command_Interface;
 
-public class Command_CorporatePage implements Command_Interface {
+public class Command_CoporatePage implements Command_Interface {
 
-	public Command_CorporatePage() {
+	public Command_CoporatePage() {
 		
 	}
 
@@ -18,7 +18,7 @@ public class Command_CorporatePage implements Command_Interface {
 	public String processStart(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		return "/mypage/corporatePage.jsp";
+		return "/mypage/coporatePage.jsp";
 	}
 
 }
