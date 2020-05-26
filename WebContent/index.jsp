@@ -8,11 +8,7 @@
 <title>main page</title>
 </head>
 <body>
-<<<<<<< HEAD
-
-=======
 <!-- MERGE_hsl -->
->>>>>>> refs/remotes/origin/workBranch
 	<!-- img slide --> 
 			<div id="mainImgDiv" class="w-full my-0 mx-auto">
 				<div class="w-full my-0 mx-auto bg-gray-lighter">
@@ -51,25 +47,6 @@
 						</button>
 					</div>
 				</div>
-<<<<<<< HEAD
-				<!-- mainMoreDiv end -->
-				<!-- 이미지/프로젝트명/남은기간 -->
-				<div id="mid_Div_Campaign" class="flex">
-					<div id="mid_cam_01" class="mx-2 flex-initial w-1/3">
-						<div
-							class="mid_cam_img rounded-lg my-4 my-0 mx-auto border-solid border-4 border-gray">
-							<a href="<%=projectPath %>/campaign/detail_Campaign.do"><img src="img/img_main/main_temple_01.jpg" alt="/project_Ma/campaign/campaign_detail.html" /></a>
-						</div>
-
-						<div class="mid_cam_name"><a href="<%=projectPath %>/campaign/detail_Campaign.do">문화재 복원 캠페인!</a></div>
-
-						<div class="flex pre_date rounded-lg mt-2 my-0 mx-auto">
-							<div class="mid-genre">자선캠페인</div>
-							<div class="mid_bar_div flex-initial">
-								<div id="mid_emptyBar_01" class="relative  h-2 rounded">
-									<div id="mid_colorBar_01"
-										class="relative bg-danger h-2 rounded"></div>
-=======
 				 <!-- mainMoreDiv end -->
 				 
 				<!-- mid_Div_Campaign 이미지/프로젝트명/남은기간 -->
@@ -90,7 +67,6 @@
 									<div class="mid_D_day w-1/3 flex-initial"> 
 										<span class="percentage text-danger">50.00%</span><br/>${lst.cam_remainDay}&nbsp;일 남음.
 									</div>
->>>>>>> refs/remotes/origin/workBranch
 								</div>
 							</div>
 						</c:forEach>
