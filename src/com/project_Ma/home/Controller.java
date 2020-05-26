@@ -1,6 +1,6 @@
 package com.project_Ma.home;
 
-//io
+//io 
 import java.io.FileInputStream;
 //error
 import java.io.IOException;
@@ -61,7 +61,7 @@ public class Controller extends HttpServlet {
 				map.put(key, commandInter);
 			}	
 		}catch(Exception e) {
-			System.out.println("properties������ ��üȭ �Ͽ� Map�� �߰��ϴ� ���߿� ���� �߻�." + e.getMessage());
+			System.out.println("properties  mapping에서 에러 발생." + e.getMessage());
 			e.getStackTrace();
 		}
 	}

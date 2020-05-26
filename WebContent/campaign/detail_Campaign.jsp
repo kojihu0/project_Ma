@@ -349,7 +349,7 @@
 										<textarea name="qna_question" id="qna_question" placeholder="로그인해야 문의 작성이 가능합니다." class="appearance-none border border-gray rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline h-24 bg-gray-lightest"></textarea>
 									</div>
 									<div class="text-right mb-4">
-										<lable for="is_secret" class="mr-4"><span class="mr-2">비밀글</span><input type="checkbox" name="is_secret" id="is_secret"/></lable>
+										<label for="is_secret" class="mr-4"><span class="mr-2">비밀글</span><input type="checkbox" name="is_secret" id="is_secret"/></label>
 										<input type="submit" value="등록" class="bg-brand hover:bg-brand-dark text-white font-bold py-2 px-4 rounded"/>
 									</div>
 								</form>

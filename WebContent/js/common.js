@@ -122,6 +122,7 @@ $(function(){
         $($(this).attr('href')).addClass('active');
     });
 
+    
     $('a.qna-title').on('click', function(e){
         e.preventDefault();
         $($(this).attr('href')).toggleClass('hidden');

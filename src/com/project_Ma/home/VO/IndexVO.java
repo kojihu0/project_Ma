@@ -8,7 +8,7 @@ public class IndexVO {
 	private String  cam_start;
 	private String  cam_end;
 	private String  cam_img_path;
-	private int  cam_remainDay;
+	private int  	cam_remainDay;
 	 
 	public IndexVO() {
 		
