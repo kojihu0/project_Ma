@@ -2,10 +2,15 @@ package com.project_Ma.home.DAO;
 
 import java.sql.SQLException;
 import java.sql.Savepoint;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.project_Ma.home.ConnectionDB;
+import com.project_Ma.home.VO.CamCommentVO;
+import com.project_Ma.home.VO.CamNoticeVO;
+import com.project_Ma.home.VO.CamQnaVO;
 import com.project_Ma.home.VO.CampaignVO;
+import com.project_Ma.home.VO.PaymentVO;
 import com.project_Ma.home.VO.RewardVO;
 
 public class CampaignDAO extends ConnectionDB implements CampaignService{
@@ -30,26 +35,31 @@ public class CampaignDAO extends ConnectionDB implements CampaignService{
 	public void selectCam(CampaignVO vo) {
 		try {
 			connDB();
-			sql = "select cam_no, user_id, cam_title, to_char(cam_start, 'yyyy-mm-dd') cam_start, to_char(cam_end, 'yyyy-mm-dd') cam_end, cam_goal_price, cam_min_price, cam_max_price,"
+			sql = "select cam_no, cam.user_id, author.user_name, author.corpo_name, author.corpo_no, cam_title,"
+					+ " to_char(cam_start, 'yyyy-mm-dd') cam_start, to_char(cam_end, 'yyyy-mm-dd') cam_end,"
+					+ " cam_goal_price, cam_min_price, cam_max_price,"
 					+ " cam_img, cam_reward_status, cam_content, cam_desc, cam_regi"
-					+ " from campaign where cam_no=?";
+					+ " from campaign cam, user_info author where cam_no=? and cam.user_id=author.user_id";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, vo.getCamNo());
 			result = pstmt.executeQuery();
 			if(result.next()) {
 				vo.setCamNo(result.getInt(1));
 				vo.setUserid(result.getString(2));
-				vo.setCamTitle(result.getString(3));
-				vo.setCamStart(result.getString(4));
-				vo.setCamEnd(result.getString(5));
-				vo.setCamGoalPrice(result.getInt(6));
-				vo.setCamMinPrice(result.getInt(7));
-				vo.setCamMaxPrice(result.getInt(8));
-				vo.setCamImg(result.getString(9));
-				vo.setCamRewardStatus(result.getInt(10));
-				vo.setCamContent(result.getString(11));
-				vo.setCamDesc(result.getString(12));
-				vo.setCamRegi(result.getString(13));
+				vo.setUserName(result.getString(3));
+				vo.setCorpoName(result.getString(4));
+				vo.setCorpoNo(result.getInt(5));
+				vo.setCamTitle(result.getString(6));
+				vo.setCamStart(result.getString(7));
+				vo.setCamEnd(result.getString(8));
+				vo.setCamGoalPrice(result.getInt(9));
+				vo.setCamMinPrice(result.getInt(10));
+				vo.setCamMaxPrice(result.getInt(11));
+				vo.setCamImg(result.getString(12));
+				vo.setCamRewardStatus(result.getInt(13));
+				vo.setCamContent(result.getString(14));
+				vo.setCamDesc(result.getString(15));
+				vo.setCamRegi(result.getString(16));
 			}
 			
 		} catch (Exception e) {
@@ -189,5 +199,107 @@ public class CampaignDAO extends ConnectionDB implements CampaignService{
 		// TODO Auto-generated method stub
 		return 0;
 	}
-
+	
+	public List<CamNoticeVO> camNoticeList(int camNo){
+		List<CamNoticeVO> camNoticeList = new ArrayList<CamNoticeVO>();
+		try {
+			connDB();
+			sql = "select notice_no, cam_no, to_char(cam_notice_date, 'yyyy-mm-dd'), cam_notice_title, cam_notice_content"
+					+ " from cam_notice where cam_no=? order by cam_notice_date desc";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, camNo);
+			result = pstmt.executeQuery();
+			while(result.next()) {
+				CamNoticeVO vo = new CamNoticeVO();
+				vo.setCamNoticeNo(result.getInt(1));
+				vo.setCamNo(result.getInt(2));
+				vo.setCamNoticeDate(result.getString(3));
+				vo.setCamNoticeTitle(result.getString(4));
+				vo.setCamNoticeContent(result.getString(5));
+			}
+		} catch (Exception e) {
+			System.out.println("캠페인 업데이트리스트 조회 에러");
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		return camNoticeList;
+	}
+	
+	public List<PaymentVO> camDonatorList(int camNo){
+		List<PaymentVO> camDonatorList = new ArrayList<PaymentVO>();
+		try {
+			connDB();
+			sql = "";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, camNo);
+			result = pstmt.executeQuery();
+			while(result.next()) {
+				
+			}
+		} catch (Exception e) {
+			System.out.println("캠페인 후원자목록 조회 에러");
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		return camDonatorList;
+	}
+	
+	public List<CamCommentVO> camCommentList(int camNo){
+		List<CamCommentVO> camCommentList = new ArrayList<CamCommentVO>();
+		try {
+			connDB();
+			sql = "select c.comment_no, c.user_id, c.cam_no, c.comment_content, c.comment_parent_no, to_char(c.comment_regi, 'yyyy-mm-dd hh:mi'),"
+					+ " re.comment_no, re.user_id, re.cam_no, re.comment_content, re.comment_parent_no, to_char(re.comment_regi, 'yyyy-mm-dd hh:mi')"
+					+ " from cam_comment c left outer join cam_comment re"
+					+ " on c.comment_no=re.comment_parent_no"
+					+ " where c.cam_no=? and c.comment_parent_no=0 order by c.comment_regi desc";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, camNo);
+			result = pstmt.executeQuery();
+			while(result.next()) {
+				CamCommentVO vo = new CamCommentVO();
+				vo.setCommentNo(result.getInt(1));
+				vo.setUserid(result.getString(2));
+				vo.setCamNo(result.getInt(3));
+				vo.setCommentContent(result.getString(4));
+				vo.setCommentParentNo(result.getInt(5));
+				vo.setCommentDate(result.getString(6));
+				vo.setReplyCommentNo(result.getInt(7));
+				vo.setReplyUserid(result.getString(8));
+				vo.setReplyCamNo(result.getInt(9));
+				vo.setReplyCommentContent(result.getString(10));
+				vo.setReplyCommentParentNo(result.getInt(11));
+				vo.setReplyCommentDate(result.getString(12));
+				camCommentList.add(vo);
+			}
+		} catch (Exception e) {
+			System.out.println("캠페인 댓글목록 조회 에러");
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		return camCommentList;
+	}
+	
+	public List<CamQnaVO> camQnaList(int camNo){
+		List<CamQnaVO> camQnaList = new ArrayList<CamQnaVO>();
+		try {
+			connDB();
+			sql = "";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, camNo);
+			result = pstmt.executeQuery();
+			while(result.next()) {
+				
+			}
+		} catch (Exception e) {
+			System.out.println("캠페인 업데이트내역 조회 에러");
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		return camQnaList;
+	}
 }

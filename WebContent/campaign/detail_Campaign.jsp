@@ -85,15 +85,13 @@ DateFormat df = new SimpleDateFormat("dd");
 							<div class="company-info bg-white mt-16">
 								<h2 class="mb-4">단체·기업 정보</h2>
 								<div class="flex items-center border border-gray p-4">
-									<div class="company-name flex items-center w-2/5 border-r border-gray border-dashed pr-4">
-										<div class="company-photo rounded-full border border-gray w-20 h-20 p-4 mr-2 overflow-hidden">
-											<img src="/project_Ma/img/icons8-forest-48.png" class="w-full">
-										</div>
-										<div class="font-bold"><a href="#">사단법인 나무심기 운동본부</a></div>
+									<div class="company-name flex items-center w-2/5 border-r border-gray border-dashed pr-4 text-lg">
+										<div class="font-bold">${vo.corpoName}</div>
 									</div>
 									<div class="company-detail w-3/5 pl-4">
 										<div class="company-desc text-gray-darker text-sm">
-											사단법인 나무심기 운동본부입니다. 재판의 심리와 판결은 공개한다. 다만, 심리는 국가의 안전보장 또는 안녕질서를 방해하거나 선량한 풍속을 해할 염려가 있을 때에는 법원의 결정으로 공개하지 아니할 수 있다.
+											<span class="pr-4"><span class="text-black">대표자명:</span> ${vo.userName}</span>
+											<span><span class="text-black">법인(사업자)번호:</span> ${vo.corpoNo}</span>
 										</div>
 									</div>
 								</div>
@@ -287,30 +285,27 @@ DateFormat df = new SimpleDateFormat("dd");
 								</form>
 							</div>
 							<ul class="campaign-comment-list">
+							<c:if test="${commentLst!='' && commentLst!=null}">
+								<c:forEach var="cvo" items="${commentLst}">
 								<li class="mb-8">
+									<c:if test="${cvo.commentParentNo == 0}">
 									<div class="comment-container">
-										<p class="comment-author font-bold mb-2">홍길동<span class="text-gray-dark text-sm font-normal ml-4">2020-04-27</span></p>
-										<div class="comment-text text-gray-darkest">응원합니다.</div>
+										<p class="comment-author font-bold mb-2">${cvo.userid}<span class="px-1 text-info-dark text-sm font-normal ml-2 bg-info-light">후원자</span><span class="text-gray-dark text-sm font-normal ml-4">${cvo.commentDate}</span></p>
+										<div class="comment-text text-gray-darkest">${cvo.commentContent}</div>
 									</div>
+									</c:if>
+									<c:if test="${cvo.replyCommentParentNo == cvo.commentNo}">
 									<div class="comment-reply mt-4 py-4 px-8 bg-gray-lightest">
-										<p class="comment-author font-bold mb-2 text-success">나무심기 운동본부<span class="text-gray-dark text-sm font-normal ml-4">2020-04-27</span></p>
-										<div class="comment-text text-gray-darkest">응원 감사드립니다^^</div>
+										<p class="comment-author font-bold mb-2"><i class="xi-subdirectory-arrow pr-2"></i><span class="text-success">${cvo.replyUserid}</span><span class="text-gray-dark text-sm font-normal ml-4">${cvo.replyCommentDate}</span></p>
+										<div class="comment-text text-gray-darkest pl-6">${cvo.replyCommentContent}</div>
 									</div>
+									</c:if>
 								</li>
-								<li class="mb-8">
-									<div class="comment-container">
-										<p class="comment-author font-bold mb-2">홍길동<span class="px-1 text-info-dark text-sm font-normal ml-2 bg-info-light">후원자</span><span class="text-gray-dark text-sm font-normal ml-4">2020-04-27</span></p>
-										<div class="comment-text text-gray-darkest">응원합니다.</div>
-									</div>
-								</li>
-								<li class="mb-8">
-									<p class="comment-author font-bold mb-2">홍길동<span class="text-gray-dark text-sm font-normal ml-4">2020-04-27</span></p>
-									<div class="comment-text text-gray-darkest">응원합니다.</div>
-								</li>
-								<li class="mb-8">
-									<p class="comment-author font-bold mb-2">홍길동<span class="text-gray-dark text-sm font-normal ml-4">2020-04-27</span></p>
-									<div class="comment-text text-gray-darkest">응원합니다.</div>
-								</li>		
+								</c:forEach>
+							</c:if>
+							<c:if test="${commentLst=='' || commentLst==null}">
+								<p>아직 이 캠페인에 대한 응원·의견이 없습니다.</p>
+							</c:if>
 							</ul>
 							<ul class="pagenation flex items-center justify-center my-4">
 								<li class="page-item disabled"><a class="page-link block py-1 px-2 hover:text-brand pointer-events-none" href="#"><i class="xi-angle-left-min"></i></a></li>

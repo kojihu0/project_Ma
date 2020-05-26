@@ -6,6 +6,9 @@ import java.util.List;
 public class CampaignVO {
 	private int camNo;
 	private String userid;
+	private String userName;
+	private String corpoName;
+	private int corpoNo;
 	private List<String> camImgList;
 	private String camImg;
 	private String camTitle;
@@ -36,6 +39,30 @@ public class CampaignVO {
 
 	public void setUserid(String userid) {
 		this.userid = userid;
+	}
+	
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+	public String getCorpoName() {
+		return corpoName;
+	}
+
+	public void setCorpoName(String corpoName) {
+		this.corpoName = corpoName;
+	}
+
+	public int getCorpoNo() {
+		return corpoNo;
+	}
+
+	public void setCorpoNo(int corpoNo) {
+		this.corpoNo = corpoNo;
 	}
 
 	public String getCamImg() {
