@@ -20,6 +20,7 @@ $(function(){
 });
 
 $(function(){ 
+
 	function email(url,params,msg){
 	$.ajax({
 		url : url,
@@ -47,14 +48,14 @@ $(function(){
 
 //이메일 인증코드 받기 joinMembershipEmailCheckBtn 
 	$(document).on("click",'#joinMembershipEmailCheckBtn',function(){
-		var url="<%=projectPath%>/joinMembership/join_User.do";
+		var url="<%=projectPath%>/joinMembership/emailCode.do";
 		var params = "user_email="+$("#e-mailText").val(); 
 		var msg = "이메일로 인증코드를 전송하였습니다.";
 		email(url,params,msg);
 	});
 //이메일 인증하기 
 	$(document).on("click",'#joinMembershipEmailCheckBtn2',function(){
-		var url="<%=projectPath%>/joinMembership/emailCode.do";
+		var url="<%=projectPath%>/joinMembership/emailCheckCode.do";
 		var params = "user_email2="+$("#user_email2").val();
 		var msg = "이메일 인증이 완료 되었습니다.";
 		email(url,params,msg);

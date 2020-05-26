@@ -7,7 +7,7 @@
 <title>login</title>
 </head>
 <script>
-   $(function(){
+   $(function(){S
       $("#loginFrm").submit(function(){
          if($("#userid").val()==""){
             alert("아이디를 입력해주세요.");
@@ -66,7 +66,7 @@
                      <a class="inline-block align-baseline font-bold text-sm hover:text-gray mx-10 underline" href="<%=projectPath%>/joinMembership/join_MembershipSelect.do">
                           일반 회원가입
                         </a>
-                        <a class="inline-block align-baseline font-bold text-sm hover:text-gray mx-10 underline" href="<%=projectPath%>/joinMembership/join_Corporate.do">
+                        <a class="inline-block align-baseline font-bold text-sm hover:text-gray mx-10 underline" href="<%=projectPath%>/joinMembership/join_Coporate.do">
                           법인 회원가입
                         </a>
                   </div>

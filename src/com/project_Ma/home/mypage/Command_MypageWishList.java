@@ -18,7 +18,7 @@ public class Command_MypageWishList implements Command_Interface {
 	public String processStart(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		return "mypage/mypageWishList";
+		return "/mypage/mypageWishList.jsp";
 	}
 
 }

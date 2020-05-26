@@ -9,8 +9,7 @@
 		<div
 			class="w-full max-w-screen-xl my-0 mx-auto flex justify-between text-white px-8 xl:px-0">
 			<div>
-				<a href="<%=projectPath%>/terms/tos.do"
-					class="inline-block py-4 mr-8">이용약관</a> <a
+				<a href="<%=projectPath%>/terms/tos.do"	class="inline-block py-4 mr-8">이용약관</a> <a
 					href="<%=projectPath%>/terms/private.do" class="inline-block py-4">개인정보
 					처리방침</a>
 			</div>
@@ -63,59 +62,44 @@
 </div>
 </div>
 <!-- 약관동의-->
-<form id="agreementModal"
-	class="modal w-full h-screen bg-black opacity-100 fixed top-0 hidden m-0 m-auto">
+<form id="agreementModal"class="modal w-full h-screen bg-black opacity-100 fixed top-0 hidden m-0 m-auto">
 	<div class="bg-white  mt-20 h-auto w-1/5 m-0 m-auto">
-		<div
-			class="close text-black inline-block text-xl top-0 left-0 p-4 cursor-pointer">
+		<div class="close text-black inline-block text-xl top-0 left-0 p-4 cursor-pointer">
 			<i class="xi-close"></i>
 		</div>
-		<br />
+		<br/>
 		<div class="ml-8">
 			<label class="text-3xl font-bold">약관동의</label>
 			<p>약관에 동의하셔야 합니다.</p>
-			<br />
+			<br/>
 			<div class="mt-2">
 				<input type="checkbox" value="no" class="checkBox" id="modalAllAgreement">
 				<label for="modalAllAgreement" id="allAgreementText">전체동의</label><br />
 				<input type="checkbox" class="checkBox" id="ServiceAgreement">
-				<label for="ServiceAgreement" class="mt-8 text-gray">체리트리
-					서비스 이용약관(필수)</label><br />
+				<label for="ServiceAgreement" class="mt-8 text-gray">체리트리 서비스 이용약관(필수)</label><br/>
 				<div>
 					<div class="mt-6 text-gray">
-						회원약관 <input value="내용보기"
-							onclick="if(this.parentNode.getElementsByTagName('div')[0].style.display != ''){this.parentNode.getElementsByTagName('div')[0].style.display = '';this.value = '내용닫기';}else{this.parentNode.getElementsByTagName('div')[0].style.display = 'none'; this.value = '내용보기';}"
-							style="margin-left: 155px" type="button" id="ajaxButton"
-							class="-mt-24   text-xs bg-white underline" />
-						<div id="txtDiv" class="background-gray w-full"
-							style="display: none; overflow: scroll; height: 50px; overflow-x: hidden;"></div>
+						회원약관 <input value="내용보기"onclick="if(this.parentNode.getElementsByTagName('div')[0].style.display != ''){this.parentNode.getElementsByTagName('div')[0].style.display = '';this.value = '내용닫기';}else{this.parentNode.getElementsByTagName('div')[0].style.display = 'none'; this.value = '내용보기';}" style="margin-left: 155px" type="button" id="ajaxButton" class="-mt-24   text-xs bg-white underline" />
+						<div id="txtDiv" class="background-gray w-full"style="display: none; overflow: scroll; height: 50px; overflow-x: hidden;"></div>
 					</div>
-				</div>
-				<br />
-
+				</div><br/>
 				<div>
 					<div class="text-gray">
-						펀딩 서비스 이용약관 <input value="내용보기"
-							onclick="if(this.parentNode.getElementsByTagName('div')[0].style.display != ''){this.parentNode.getElementsByTagName('div')[0].style.display = '';this.value = '내용닫기';}else{this.parentNode.getElementsByTagName('div')[0].style.display = 'none'; this.value = '내용보기';}"
-							type="button" id="ajaxButton2"
-							class="ml-20 text-xs bg-white underline"
-							style="margin-left: 73px" />
-						<div id="txtDiv2" class="background-gray w-full"style="display: none; overflow: scroll; height: 50px; overflow-x: hidden"></div>
+					펀딩 서비스 이용약관 <input value="내용보기"	onclick="if(this.parentNode.getElementsByTagName('div')[0].style.display != ''){this.parentNode.getElementsByTagName('div')[0].style.display = '';this.value = '내용닫기';}else{this.parentNode.getElementsByTagName('div')[0].style.display = 'none'; this.value = '내용보기';}"type="button" id="ajaxButton2" class="ml-20 text-xs bg-white underline"style="margin-left: 73px" />
+						<div id="txtDiv2" class="background-gray w-full"style="display: none; overflow: scroll; height: 50px; overflow-x: hidden">
+						</div>
 					</div>
 				</div>
 				<div>
-					<input type="checkbox" class="checkBox" id="informationAgreement"><label	class="mt-8 text-gray" for="informationAgreement"id="allAgreementText2">개인정보 수집 및 이용동의(필수)</label> <inputvalue="내용보기" class="bg-white underline text-gray text-xs"	onclick="if(this.parentNode.getElementsByTagName('div')[0].style.display != ''){this.parentNode.getElementsByTagName('div')[0].style.display = '';this.value = '내용닫기';}else{this.parentNode.getElementsByTagName('div')[0].style.display = 'none'; this.value = '내용보기';}"type="button" id="ajaxButton3" />
+					<input type="checkbox" class="checkBox" id="informationAgreement"><label class="mt-8 text-gray" for="informationAgreement"id="allAgreementText2">개인정보 수집 및 이용동의(필수)</label> <inputvalue="내용보기" class="bg-white underline text-gray text-xs"	onclick="if(this.parentNode.getElementsByTagName('div')[0].style.display != ''){this.parentNode.getElementsByTagName('div')[0].style.display = '';this.value = '내용닫기';}else{this.parentNode.getElementsByTagName('div')[0].style.display = 'none'; this.value = '내용보기';}"type="button" id="ajaxButton3" />
 					<div id="txtDiv3" class="text-gray background-gray w-full"style="display: none; overflow: scroll; height: 50px; overflow-x: hidden;"></div>
 				</div>
 				<input type="checkbox" class="checkBox" id="marketingAgreement">
-				<label class="mt-8 mb-8 text-gray" for="marketingAgreement"id="allAgreementText2">마케팅 정보 및 수신(선택)</label><br /> <inputtype="submit" value="확인" id="ModalcompleteBtn"class="bg-danger w-5/6 hover:bg-danger-dark text-white font-bold py-2 px-4 rounded ml-3 ">
+				<label class="mt-8 mb-8 text-gray" for="marketingAgreement"id="allAgreementText2">마케팅 정보 및 수신(선택)</label><br /> <input type="submit" value="확인" id="ModalcompleteBtn"class="bg-danger w-5/6 hover:bg-danger-dark text-white font-bold py-2 px-4 rounded ml-3 ">
 			</div>
 		</div>
 	</div>
 </form>
-
-
 </div>
 </body>
-
 </html>

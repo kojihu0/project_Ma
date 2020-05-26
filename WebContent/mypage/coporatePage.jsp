@@ -9,13 +9,13 @@
 <body>
 	<ul class="mpMenu flex">
 	  <li class="flex-1 mr-2">
-	    <a class="text-center block border border-blue-500 rounded py-3 px-5 bg-danger-dark hover:bg-danger-dark text-white" href="<%=projectPath%>/mypage/corporatePage.jsp">법인 정보</a>
+	    <a class="text-center block border border-blue-500 rounded py-3 px-5 bg-danger-dark hover:bg-danger-dark text-white" href="<%=projectPath%>/mypage/corporatePage.do">법인 정보</a>
 	  </li>
 	  <li class="flex-1 mr-2">
-	    <a class="text-center block border border-blue-500 rounded py-3 px-5 bg-danger hover:bg-danger-dark text-white" href="<%=projectPath%>/mypage/campaignControlPage.jsp">캠페인 관리</a>
+	    <a class="text-center block border border-blue-500 rounded py-3 px-5 bg-danger hover:bg-danger-dark text-white" href="<%=projectPath%>/mypage/campaignControlPage.do">캠페인 관리</a>
 	  </li>
 	  <li class="flex-1 mr-2">
-	    <a class="text-center block border border-blue-500 rounded py-3 px-5 bg-danger hover:bg-danger-dark text-white" href="<%=projectPath%>/mypage/campaignWrite.jsp">캠페인 등록</a>
+	    <a class="text-center block border border-blue-500 rounded py-3 px-5 bg-danger hover:bg-danger-dark text-white" href="<%=projectPath%>/mypage/campaignWrite.do">캠페인 등록</a>
 	  </li>
 	 </ul>
 <div id="myInformation" class="tab-content"><!-- 내정보 탭-->

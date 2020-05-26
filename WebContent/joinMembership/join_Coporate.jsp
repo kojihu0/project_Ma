@@ -58,14 +58,14 @@ $(function(){
 
 //이메일 인증코드 받기 joinMembershipEmailCheckBtn 
 	$(document).on("click",'#joinMembershipEmailCheckBtn',function(){
-		var url="<%=projectPath%>/joinMembership/join_User.do";
+		var url="<%=projectPath%>/joinMembership/emailCode.do";
 		var params = "user_email="+$("#e-mailText").val(); 
 		var msg = "이메일로 인증코드를 전송하였습니다.";
 		email(url,params,msg);
 	});
 //이메일 인증하기 
 	$(document).on("click",'#joinMembershipEmailCheckBtn2',function(){
-		var url="<%=projectPath%>/joinMembership/emailCode.do";
+		var url="<%=projectPath%>/joinMembership/emailCheckCode.do";
 		var params = "user_email2="+$("#user_email2").val();
 		var msg = "이메일 인증이 완료 되었습니다.";
 		email(url,params,msg);
@@ -85,44 +85,35 @@ $(function(){
 	<h5>체리트리  서비스 이용약관(필수),개인정보 수집 및 이용동의(필수),마케팅 정보 수신(선택)</h5><br/> 
 	<form onsubmit="return CoporateRegExpChk()" action="<%=projectPath%>/joinMembership/join_MemberShipCpOk.do" method="post" id="idForm"class="mb-4">
 	    <div id="joinMemberShiptext">
-	    	  <h3 id="subText2">법인 정보</h3><br/>
-		      <input  name="corpo_regi_no" id="coporateText" class="number-only shadow appearance-none border-gray-dark  w-5/6 py-3 px-4 text-black leading-tight focus:outline-none focus:shadow-outline"  type="text" maxlength="10" placeholder="사업자등록번호">
-		      <input type="button"  value="중복체크"id="blnCheckBtn" class="bg-danger hover:bg-danger-dark text-white font-bold py-2 px-4 rounded">
-		       <input type="hidden" id="regi_no_Status" value="N"/><!-- 아이디 중복검사 여부 설정 -->				
-			  <br/>
+    	  <h3 id="subText2">법인 정보</h3><br/>
+	      <input  name="corpo_regi_no" id="coporateText" class="number-only shadow appearance-none border-gray-dark  w-5/6 py-3 px-4 text-black leading-tight focus:outline-none focus:shadow-outline"  type="text" maxlength="10" placeholder="사업자등록번호">
+	      <input type="button"  value="중복체크"id="blnCheckBtn" class="bg-danger hover:bg-danger-dark text-white font-bold py-2 px-4 rounded">
+	      <input type="hidden" id="regi_no_Status" value="N"/><!-- 아이디 중복검사 여부 설정 -->				
+		  <br/>
 		 </div>
-		  <input id="userNameText" name="user_name"class="shadow appearance-none border-gray-dark  w-5/6 py-3 px-4 text-black leading-tight focus:outline-none focus:shadow-outline" type="text" placeholder="대표자명">
-		 <div id="joinMemberShiptext">
-      		<input name="corpo_name" id="coporateName"  class="shadow appearance-none border-gray-darker  w-5/6 py-3 px-4 text-black leading-tight focus:outline-none focus:shadow-outline"  type="text" placeholder="법인명"><br/>
-  		</div>
+	    <input id="userNameText" name="user_name"class="shadow appearance-none border-gray-dark  w-5/6 py-3 px-4 text-black leading-tight focus:outline-none focus:shadow-outline" type="text" placeholder="대표자명">
+	    <div id="joinMemberShiptext">
+     		<input name="corpo_name" id="coporateName"  class="shadow appearance-none border-gray-darker  w-5/6 py-3 px-4 text-black leading-tight focus:outline-none focus:shadow-outline"  type="text" placeholder="법인명"><br/>
+  		 </div>
   		<div id="joinMemberShiptext">
       		<input id="registerNumber" name="corpo_no" class=" number-only shadow appearance-none border-gray-darker  w-5/6 py-3 px-4 text-black leading-tight focus:outline-none focus:shadow-outline"  type="text" maxlength="13" placeholder="법인등록번호(13자리)"><br/>
   		</div>
   		<input id="idText" name="user_id"class="shadow appearance-none border-gray-dark  w-5/6 py-3 px-4 text-black leading-tight focus:outline-none focus:shadow-outline" id="coporateText" type="text" placeholder="아이디">
-				      <input type="button" value="중복체크" id="joinMembershipCheckBtn" class="bg-danger hover:bg-danger-dark text-white font-bold py-2 px-4 rounded"><a href="#" data-target="#idCheck" id="move-ico"><br/></a>
-	 <input type="hidden" id="idStatus" value="N"/><!-- 아이디 중복검사 여부 설정 -->
+	    <input type="button" value="중복체크" id="joinMembershipCheckBtn" class="bg-danger hover:bg-danger-dark text-white font-bold py-2 px-4 rounded"><a href="#" data-target="#idCheck" id="move-ico"><br/></a>
+		<input type="hidden" id="idStatus" value="N"/><!-- 아이디 중복검사 여부 설정 -->
       		<h3 id="subText2">계정 정보</h3><br/>
-      		
-      		
-      		
-      		
-      		
       		<div id="joinMemberShipText2" class="emailFrm">
       		<input id="e-mailText" name="user_email" class="shadow appearance-none border-gray-dark  w-5/6 py-3 px-4 text-black leading-tight focus:outline-none focus:shadow-outline"  type="text" placeholder="이메일">
       		<input type="button" value="인증하기"id="joinMembershipEmailCheckBtn" class="bg-danger hover:bg-danger-dark text-white font-bold py-2 px-4 rounded">
 				<br/>
 			<label id="subText">위 이메일로 인증번호가 발송됩니다.</label><br/>
       	</div>
-      	
    		<div class="emailchkFrm mt-4" style="width:500px;display:none">
 	   		<input name="user_email2"id="user_email2"class="shadow appearance-none border-gray-dark  w-5/6 py-3 px-4 text-black leading-tight focus:outline-none focus:shadow-outline"  type="text" placeholder="이메일인증">
 	   		<input type="hidden" name="emailCheckResult" id="emailCheckResult" value="no"/>
 	   		<input type="button" id="joinMembershipEmailCheckBtn2" value="인증하기" class="bg-danger hover:bg-danger-dark text-white font-bold py-2 px-4 rounded">	<br/>
 	   		<label id="subText" class="text-danger">위 이메일로 인증번호가 발송되었습니다.</label><br/>	
    		</div>
-   		
-   		
-   	
       	  <input  name="user_tel" class="number-only shadow appearance-none border-gray-dark  w-5/6 py-3 px-4 text-black leading-tight focus:outline-none focus:shadow-outline"  type="text" placeholder="법인전화번호">
       	<div id="joinMemberShiptext">
       		<input id="pw" name="user_pw" class="shadow appearance-none border-gray-dark  w-5/6 py-3 px-4 text-black leading-tight focus:outline-none focus:shadow-outline"  type="password" placeholder="비밀번호">

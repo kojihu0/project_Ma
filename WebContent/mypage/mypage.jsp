@@ -10,13 +10,13 @@
 	<nav>
 		<ul class="mpMenu flex">
 		  <li class="flex-1 mr-2">
-		    <a class="text-center block border border-blue-500 rounded py-3 px-5 bg-danger-dark hover:bg-danger-dark text-white" href="<%=projectPath %>/mypage/mypage.jsp">내 정보</a>
+		    <a class="text-center block border border-blue-500 rounded py-3 px-5 bg-danger-dark hover:bg-danger-dark text-white" href="<%=projectPath %>/mypage/mypage.do">내 정보</a>
 		  </li>
 		  <li class="flex-1 mr-2">
 		    <a class="text-center block border border-blue-500 rounded py-3 px-5 bg-danger hover:bg-danger-dark text-white" href="<%=projectPath %>/mypage/mypageSpon.do">후원 목록</a>
 		  </li>
 		  <li class="flex-1 mr-2">
-		    <a class="text-center block border border-blue-500 rounded py-3 px-5 bg-danger hover:bg-danger-dark text-white" href="<%=projectPath %>/mypage/mypageWishList.jsp">위시 리스트</a>
+		    <a class="text-center block border border-blue-500 rounded py-3 px-5 bg-danger hover:bg-danger-dark text-white" href="<%=projectPath %>/mypage/mypageWishList.do">위시 리스트</a>
 		  </li>
 		 </ul>
 	</nav>
@@ -55,7 +55,6 @@
 				        E-mail
 				      </label>
 				      <input value="${vo.user_email }" name="user_email"class="appearance-none block w-full  text-gray-darkest text-2xl border-b border-info border-gray-200  py-5 px-5 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-danger" id="grid-email" type="text">
-				    
 				    </div>
 				  </div>
 				  <div class="flex flex-wrap -mx-3 mb-6">
@@ -72,7 +71,7 @@
 				       Address
 				      </label>
 				      <input value="${vo.addr_no }" name="addr_no"class="appearance-none block w-full  text-gray-darkest text-2xl border-b border-info py-5 px-5 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-danger" id="grid-address" type="text">
-				     <input id="move-ico" type="submit" value="우편번호 검색" class="absolute bg-danger text-white hover:bg-danger-dark text-white font-bold py-4 px-5 rounded">
+				     <input id="move-ico" type="button" value="우편번호 검색" class="absolute bg-danger text-white hover:bg-danger-dark text-white font-bold py-4 px-5 rounded">
 				    </div>
 				  </div>
 				   <div class="flex flex-wrap -mx-3 mb-2">
@@ -97,8 +96,7 @@
 				</form>	
 	 		</div>
 		   </div>
-	
-		   <!-- 회원탈퇴  -->
+<!-- 회원탈퇴  -->
 <div id="deleteFrm"class="modal w-full h-screen bg-black opacity-100 fixed top-0 hidden m-0 m-auto">
 	<form class="bg-white h-auto mt-32 w-3/12 m-0 m-auto" action="<%=projectPath%>/mypage/user_del.do">
 		<div class="close text-black inline-block text-xl top-0 left-0 p-4 cursor-pointer">
@@ -122,7 +120,7 @@
 		<input type="submit" value="탈퇴하기" class="bg-danger hover:bg-danger-dark  ml-12 w-3/4 text-white font-bold py-2 px-4 rounded mb-8 mt-8">
 	</form>
 </div>	
-	   <!-- 비밀번호 변경창  -->
+<!-- 비밀번호 변경창  -->
 <div id="passwordUpdate"class="modal w-full h-screen bg-black opacity-100 fixed top-0 hidden m-0 m-auto">
 	<form class="bg-white h-auto mt-32 w-3/12 m-0 m-auto" action="<%=projectPath%>/mypage/pwEditOk.do">
 		<div class="close text-black inline-block text-xl top-0 left-0 p-4 cursor-pointer"><i class="xi-close"></i></div><br/>

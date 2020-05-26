@@ -110,7 +110,6 @@
 				</div>
 			</div>
 			<!-- nowCampaign end -->
-
 			<!-- otherCampaign start -->
 			<div id="otherCampaign"
 				class="w-full max-w-screen-xl my-0 mx-auto">

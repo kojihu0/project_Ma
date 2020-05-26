@@ -22,7 +22,7 @@ public class Command_EmailCheck implements Command_Interface {
 			request.setAttribute("code", "yes");
 			
 		}
-		return "/joinMembership/emailCode.jsp";
+		return "/joinMembership/emailCheckCode.jsp";
 	}
 
 }
