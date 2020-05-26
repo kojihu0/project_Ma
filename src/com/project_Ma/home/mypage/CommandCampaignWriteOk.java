@@ -126,10 +126,27 @@ public class CommandCampaignWriteOk implements Command_Interface {
 		}
 		
 		CampaignDAO dao = new CampaignDAO();
-		RewardDAO rdao = new RewardDAO();
-		int camInsCnt = dao.insertCam(vo);
-		int rwInsCnt = 0;
+		int camInsCnt = 0;
 		
+		if(vo.getCamRewardStatus() == 1) {
+			List<RewardVO> rwList = new ArrayList<RewardVO>();
+			for(int i=1; i<=rewardCnt; i++) {
+				RewardVO rvo = new RewardVO();
+				rvo.setRewardName(rewardList.get("reward[reward_name_"+i+"]"));
+				rvo.setRewardContent(rewardList.get("reward[reward_desc_"+i+"]"));
+				rvo.setRewardPrice(Integer.parseInt(rewardList.get("reward[reward_price_"+i+"]").replace(",", "")));
+				rvo.setRewardQuantity(Integer.parseInt(rewardList.get("reward[reward_limit_"+i+"]").replace(",", "")));
+				rvo.setDeliveryPrice(Integer.parseInt(rewardList.get("reward[del_fee_"+i+"]").replace(",", "")));
+				rvo.setDeliveryExYear(rewardList.get("reward[del_year_"+i+"]"));
+				rvo.setDeliveryExMonth(rewardList.get("reward[del_month_"+i+"]"));
+				rvo.setDeliveryExDateDetail(rewardList.get("reward[del_date_detail_"+i+"]"));
+				rwList.add(rvo);
+			}
+			camInsCnt = dao.insertCam(vo, rwList);
+		}
+		else {
+			camInsCnt = dao.insertCam(vo);
+		}
 		//캠페인추가 실패 시 업로드된 이미지 삭제
 		if(camInsCnt <= 0) {
 			for(int i=0; i<uploadFileList.size(); i++) {
@@ -139,26 +156,6 @@ public class CommandCampaignWriteOk implements Command_Interface {
 				}
 			}
 		}
-		
-		if(vo.getCamRewardStatus() == 1) {
-			for(int i=1; i<=rewardCnt; i++) {
-				RewardVO rvo = new RewardVO();
-				rvo.setCamNo(camInsCnt);
-				rvo.setRewardName(rewardList.get("reward[reward_name_"+i+"]"));
-				rvo.setRewardContent(rewardList.get("reward[reward_desc_"+i+"]"));
-				rvo.setRewardPrice(Integer.parseInt(rewardList.get("reward[reward_price_"+i+"]").replace(",", "")));
-				rvo.setRewardQuantity(Integer.parseInt(rewardList.get("reward[reward_limit_"+i+"]").replace(",", "")));
-				rvo.setDeliveryPrice(Integer.parseInt(rewardList.get("reward[del_fee_"+i+"]").replace(",", "")));
-				rvo.setDeliveryExYear(rewardList.get("reward[del_year_"+i+"]"));
-				rvo.setDeliveryExMonth(rewardList.get("reward[del_month_"+i+"]"));
-				rvo.setDeliveryExDateDetail(rewardList.get("reward[del_date_detail_"+i+"]"));
-				rwInsCnt += rdao.insertRewardList(rvo);
-			}
-			if(rwInsCnt<=0) {
-				camInsCnt=0;
-			}
-		}
-		
 		req.setAttribute("camInsCnt", camInsCnt);
 		return "/mypage/campaignWriteOk.jsp";
 	}

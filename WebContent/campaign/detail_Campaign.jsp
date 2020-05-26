@@ -3,6 +3,7 @@
 <%@page import="java.text.DateFormat"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%
 Calendar cal = Calendar.getInstance();
 
@@ -15,29 +16,21 @@ DateFormat df = new SimpleDateFormat("dd");
 					<!--슬라이더-->
 					<div class="campaign-slider-wrapper relative mb-8">
 						<div class="campaign-slider w-full overflow-hidden">
+						<c:forTokens items="${vo.camImg}" delims="|" var="imgsrc">
 							<div class="slide">
-								<img src="/project_Ma/img/img_main/main_tree_01.jpg" class="object-cover w-full">
+								<img src="<%=projectPath%>/img/campaign/${imgsrc}" class="object-cover w-full">
 							</div>
-							<div class="slide">
-								<img src="/project_Ma/img/campaign/tree1.jpg" class="object-cover w-full">
-							</div>
-							<div class="slide">
-								<img src="/project_Ma/img/campaign/tree2.jpg" class="object-cover w-full">
-							</div>
+						</c:forTokens>
 						</div>
 						<button class="campaign-slider-arrow prev absolute left-0 z-50 bg-black text-white"><i class="xi-angle-left-thin"></i></button>
 						<button class="campaign-slider-arrow next absolute right-0 z-50 bg-black text-white"><i class="xi-angle-right-thin"></i></button>
 					</div>
 					<div class="campaign-slider-nav flex">
+					<c:forTokens items="${vo.camImg}" delims="|" var="imgsrc">
 						<div class="slider-nav-item w-1/3 h-32 mr-4 cursor-pointer rounded overflow-hidden active">
-							<img alt="prd_img" src="/project_Ma/img/img_main/main_tree_01.jpg" class="object-cover w-full h-32 transform hover:scale-125 duration-300">
+							<img alt="prd_img" src="<%=projectPath%>/img/campaign/${imgsrc}" class="object-cover w-full h-32 transform hover:scale-125 duration-300">
 						</div>
-						<div class="slider-nav-item w-1/3 h-32 mr-4 cursor-pointer rounded overflow-hidden">
-							<img alt="prd_img" src="/project_Ma/img/campaign/tree1.jpg"  class="object-cover w-full h-32 transform hover:scale-125 duration-300">
-						</div>
-						<div class="slider-nav-item w-1/3 h-32 cursor-pointer rounded overflow-hidden">
-							<img alt="prd_img" src="/project_Ma/img/campaign/tree2.jpg" class="object-cover w-full h-32 transform hover:scale-125 duration-300">
-						</div>
+					</c:forTokens>
 					</div>
 					<!--슬라이더-->
 				</div>

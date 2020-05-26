@@ -22,7 +22,6 @@ public class Command_DeCam implements Command_Interface {
 	@Override
 	public String processStart(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		CampaignVO vo = new CampaignVO();
-		RewardVO rvo = new RewardVO();
 		
 		vo.setCamNo(Integer.parseInt(req.getParameter("no")));
 		

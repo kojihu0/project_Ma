@@ -7,7 +7,7 @@ public class CampaignVO {
 	private int camNo;
 	private String userid;
 	private List<String> camImgList;
-	private String camImgPath;
+	private String camImg;
 	private String camTitle;
 	private String camContent;
 	private String camDesc;
@@ -39,21 +39,21 @@ public class CampaignVO {
 	}
 
 	public String getCamImg() {
-		return camImgPath;
+		return camImg;
 	}
 
-	public void setCamImg(String camImgPath) {
-		this.camImgPath = camImgPath;
-		camImgList = Arrays.asList(camImgPath.split("|"));
+	public void setCamImg(String camImg) {
+		this.camImg = camImg;
 	}
 	
 	public List<String> getCamImgList() {
+		camImgList = Arrays.asList(camImg.split("|"));
 		return camImgList;
 	}
 	
-	public void setCamImgList(List<String> newImgFileList) {
-		this.camImgList = newImgFileList;
-		camImgPath = String.join("|", newImgFileList.toArray(new String[newImgFileList.size()]));
+	public void setCamImgList(List<String> camImgList) {
+		camImg = String.join("|", camImgList.toArray(new String[camImgList.size()]));
+		this.camImgList = camImgList;
 	}
 
 	public String getCamTitle() {
@@ -73,6 +73,7 @@ public class CampaignVO {
 	}
 
 	public String getCamDesc() {
+		camDesc = camDesc.replaceAll("\r\n","<br/>");
 		return camDesc;
 	}
 

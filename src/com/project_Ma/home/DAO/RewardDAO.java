@@ -53,29 +53,29 @@ public class RewardDAO extends ConnectionDB implements RewardService {
 
 	@Override
 	public int insertRewardList(RewardVO vo) {
-		int result = 0;
-		try {
-			connDB();
-			sql = "insert into reward(reward_no, cam_no, reward_name, reward_quantity, reward_price, reward_content, delivery_ex_date, delivery_ex_date_detail, delivery_price)"
-					+ " values(reward_sq.nextval, ?, ?, ?, ?, ?, to_date(?, 'yyyy-mm'), ?, ?)";
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, vo.getCamNo());
-			pstmt.setString(2, vo.getRewardName());
-			pstmt.setInt(3, vo.getRewardQuantity());
-			pstmt.setInt(4, vo.getRewardPrice());
-			pstmt.setString(5, vo.getRewardContent());
-			pstmt.setString(6, vo.getDeliveryExDate());
-			pstmt.setString(7, vo.getDeliveryExDateDetail());
-			pstmt.setInt(8, vo.getDeliveryPrice());
-			
-			result = pstmt.executeUpdate();
-		} catch (Exception e) {
-			System.out.println("리워드 등록 에러");
-			e.printStackTrace();
-		} finally {
-			closeDB();
-		}
-		return result;
+//		int result = 0;
+//		try {
+//			connDB();
+//			sql = "insert into reward(reward_no, cam_no, reward_name, reward_quantity, reward_price, reward_content, delivery_ex_date, delivery_ex_date_detail, delivery_price)"
+//					+ " values(reward_sq.nextval, ?, ?, ?, ?, ?, to_date(?, 'yyyy-mm'), ?, ?)";
+//			pstmt = conn.prepareStatement(sql);
+//			pstmt.setInt(1, vo.getCamNo());
+//			pstmt.setString(2, vo.getRewardName());
+//			pstmt.setInt(3, vo.getRewardQuantity());
+//			pstmt.setInt(4, vo.getRewardPrice());
+//			pstmt.setString(5, vo.getRewardContent());
+//			pstmt.setString(6, vo.getDeliveryExDate());
+//			pstmt.setString(7, vo.getDeliveryExDateDetail());
+//			pstmt.setInt(8, vo.getDeliveryPrice());
+//			
+//			result = pstmt.executeUpdate();
+//		} catch (Exception e) {
+//			System.out.println("리워드 등록 에러");
+//			e.printStackTrace();
+//		} finally {
+//			closeDB();
+//		}
+		return 0;
 	}
 
 	@Override

@@ -58,6 +58,7 @@ public class RewardVO {
 	}
 
 	public String getRewardContent() {
+		rewardContent = rewardContent.replaceAll("\r\n","<br/>");
 		return rewardContent;
 	}
 
