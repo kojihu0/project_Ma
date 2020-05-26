@@ -46,7 +46,7 @@
 						</button>
 					</div>
 				</div>
-				 <!-- mainMoreDiv end -->
+				<!-- mainMoreDiv end -->
 				<!-- 이미지/프로젝트명/남은기간 -->
 				<div id="mid_Div_Campaign" class="flex">
 					<div id="mid_cam_01" class="mx-2 flex-initial w-1/3">

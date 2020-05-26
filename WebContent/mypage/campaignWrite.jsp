@@ -17,11 +17,7 @@
 		<div class="alert-empty bg-danger-light border-t border-b border-danger text-danger px-4 py-3 hidden mb-8" role="alert">
 			<p class="text-lg font-bold">모든 항목을 입력해야합니다.</p>
 		</div>
-<<<<<<< HEAD
-		<form id="campaignEditor" method="POST" action="" enctype="multipart/form-data" onsubmit="return editor_validation(this)">
-=======
-		<form id="campaignEditor" method="POST" action="/mypage/campaignWriteOk.do" enctype="multipart/form-data" onsubmit="return editor_validation(this)">
->>>>>>> refs/heads/pro_L
+		<form id="campaignEditor" method="POST" action="<%=projectPath %>/mypage/campaignWriteOk.do" enctype="multipart/form-data" onsubmit="return editor_validation(this)">
 			<!--캠페인 정보-->
 			<h2 class="mb-4 border-b border-solid border-gray-dark pb-4">캠페인 정보</h2>
 			<div class="mb-8 px-4">
@@ -33,18 +29,13 @@
 					<label for="cam_img_path" class="inline-block my-4">이미지</label>
 					<p class="text-sm text-gray-dark mb-2">5MB이하의 이미지(jpeg, gif, png, bmp) 파일만 최대 3장 업로드 가능합니다.</p>
 					<div class="bg-gray-lightest rounded pt-4 pl-4">
-						<input type="file" name="cam_img_path" id="cam_img_path" accept="image/png, image/jpeg, image/gif, image/bmp" multiple/>
+						<input type="file" name="cam_img" id="cam_img" accept="image/png, image/jpeg, image/gif, image/bmp" multiple/>
 						<div id="imgPrevew" class="flex flex-wrap w-full mt-4"></div>
 					</div>
 				</div>
 				<div class="input-field mb-4">
-<<<<<<< HEAD
-					<label for="cam_story" class="inline-block my-4">캠페인 스토리</label>
-					<textarea name="cam_story" id="cam_story" class="appearance-none border border-gray rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"></textarea>
-=======
 					<label for="cam_content" class="inline-block my-4">캠페인 스토리</label>
 					<textarea name="cam_content" id="cam_content" class="appearance-none border border-gray rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"></textarea>
->>>>>>> refs/heads/pro_L
 				</div>
 				<div class="input-field mb-4">
 					<label for="cam_desc" class="inline-block my-4">간략 설명</label>
@@ -65,14 +56,14 @@
 					<div class="w-1/2 pr-2">
 						<label for="min_price" class="inline-block my-4">최저금액</label>
 						<div class="relative">
-							<input type="text" name="min_price" value="0" id="min_price" class="number-format min_money appearance-none border border-gray rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline">
+							<input type="text" name="cam_min_price" value="0" id="cam_min_price" class="number-format min_money appearance-none border border-gray rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline">
 							<div class="absolute inset-y-0 right-0 py-2 px-3 text-gray-darkest">원</div>
 						</div>
 					</div>
 					<div class="w-1/2 pl-2">
 						<label for="max_price" class="inline-block my-4">최대금액</label>
 						<div class="relative">
-							<input type="text" name="max_price" value="0" id="max_price" class="number-format max_money appearance-none border border-gray rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline">
+							<input type="text" name="cam_max_price" value="0" id="cam_max_price" class="number-format max_money appearance-none border border-gray rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline">
 							<div class="absolute inset-y-0 right-0 py-2 px-3 text-gray-darkest">원</div>
 						</div>
 					</div>
@@ -81,7 +72,7 @@
 				<div class="input-field mb-4 pr-4">
 					<label for="goal_price" class="block mt-8 mb-4">목표금액</label>
 					<div class="relative w-1/2">
-						<input type="text" name="goal_price" id="goal_price" value="0" class="number-format goal appearance-none border border-gray rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline">
+						<input type="text" name="cam_goal_price" id="cam_goal_price" value="0" class="number-format goal appearance-none border border-gray rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline">
 						<div class="absolute inset-y-0 right-0 py-2 px-3 text-gray-darkest">원</div>
 					</div>
 				</div>
@@ -89,9 +80,10 @@
 			<!--캠페인 정보-->
 			<!--리워드 정보-->
 			<div class="mb-8">
-				<label for="cam_reward_status" class="inline-block my-4 mr-4 font-bold text-lg">리워드가 존재하는 캠페인입니다.</label><input type="checkbox" name="cam_reward_status" id="cam_reward_status" value="true"/>
+				<label for="cam_reward_status" class="inline-block my-4 mr-4 font-bold text-lg">리워드가 존재하는 캠페인입니다.</label><input type="checkbox" name="cam_reward_status" id="cam_reward_status" value="1"/>
 			</div>
 			<div id="rewards" class="hidden">
+			<input type="hidden" id="reward_cnt" name="reward_cnt" value="1">
 			<h2 class="mb-4 border-b border-solid border-gray-dark pb-4">리워드 정보</h2>
 			<div class="reward-wrap mb-8">
 				<div id="reward-fieldset-1" data-number="1" class="reward-fieldset bg-gray-lightest px-4 mb-4">
@@ -141,15 +133,15 @@
 								<div class="inline-block relative w-1/2 mr-2"><!--select-->
 									<select name="reward[del_month_1]" id="del_month_1" data-name="del_month" class="block appearance-none w-full bg-white border border-gray hover:border-gray-dark px-4 py-2 pr-8 rounded leading-tight focus:outline-none focus:shadow-outline">
 										<option value="0">월</option>
-										<option value="1">1</option>
-										<option value="2">2</option>
-										<option value="3">3</option>
-										<option value="4">4</option>
-										<option value="5">5</option>
-										<option value="6">6</option>
-										<option value="7">7</option>
-										<option value="8">8</option>
-										<option value="9">9</option>
+										<option value="01">1</option>
+										<option value="02">2</option>
+										<option value="03">3</option>
+										<option value="04">4</option>
+										<option value="05">5</option>
+										<option value="06">6</option>
+										<option value="07">7</option>
+										<option value="08">8</option>
+										<option value="09">9</option>
 										<option value="10">10</option>
 										<option value="11">11</option>
 										<option value="12">12</option>

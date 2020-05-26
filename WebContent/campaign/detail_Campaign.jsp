@@ -1,12 +1,14 @@
+<%@page import="java.util.Calendar"%>
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.text.DateFormat"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%
+Calendar cal = Calendar.getInstance();
+
+DateFormat df = new SimpleDateFormat("dd");
+%>
 	<div class="w-full bg-gray-lightest">
 		<div class="w-full max-w-screen-xl my-0 mx-auto px-8 xl:px-0 py-8"><!-- 상세페이지 -->
 			<div class="w-full flex mb-4"><!-- 상단 -->
@@ -14,39 +16,31 @@
 					<!--슬라이더-->
 					<div class="campaign-slider-wrapper relative mb-8">
 						<div class="campaign-slider w-full overflow-hidden">
+						<c:forTokens items="${vo.camImg}" delims="|" var="imgsrc">
 							<div class="slide">
-								<img src="/project_Ma/img/img_main/main_tree_01.jpg" class="object-cover w-full">
+								<img src="<%=projectPath%>/img/campaign/${imgsrc}" class="object-cover w-full">
 							</div>
-							<div class="slide">
-								<img src="/project_Ma/img/campaign/tree1.jpg" class="object-cover w-full">
-							</div>
-							<div class="slide">
-								<img src="/project_Ma/img/campaign/tree2.jpg" class="object-cover w-full">
-							</div>
+						</c:forTokens>
 						</div>
 						<button class="campaign-slider-arrow prev absolute left-0 z-50 bg-black text-white"><i class="xi-angle-left-thin"></i></button>
 						<button class="campaign-slider-arrow next absolute right-0 z-50 bg-black text-white"><i class="xi-angle-right-thin"></i></button>
 					</div>
 					<div class="campaign-slider-nav flex">
+					<c:forTokens items="${vo.camImg}" delims="|" var="imgsrc">
 						<div class="slider-nav-item w-1/3 h-32 mr-4 cursor-pointer rounded overflow-hidden active">
-							<img alt="prd_img" src="/project_Ma/img/img_main/main_tree_01.jpg" class="object-cover w-full h-32 transform hover:scale-125 duration-300">
+							<img alt="prd_img" src="<%=projectPath%>/img/campaign/${imgsrc}" class="object-cover w-full h-32 transform hover:scale-125 duration-300">
 						</div>
-						<div class="slider-nav-item w-1/3 h-32 mr-4 cursor-pointer rounded overflow-hidden">
-							<img alt="prd_img" src="/project_Ma/img/campaign/tree1.jpg"  class="object-cover w-full h-32 transform hover:scale-125 duration-300">
-						</div>
-						<div class="slider-nav-item w-1/3 h-32 cursor-pointer rounded overflow-hidden">
-							<img alt="prd_img" src="/project_Ma/img/campaign/tree2.jpg" class="object-cover w-full h-32 transform hover:scale-125 duration-300">
-						</div>
+					</c:forTokens>
 					</div>
 					<!--슬라이더-->
 				</div>
 				<div class="w-1/2">
-					<h1 class="mb-4 text-3xl font-bold">우리강산 나무심기 캠페인</h1>
-					<p class="mb-4 text-gray-dark">주며, 없는 내는 목숨이 피다. 가슴에 피는 무엇을 따뜻한 무엇을 있음으로써 있다. 얼음과 넣는 품었기 우리의 위하여, 아니한 그들에게 반짝이는 힘있다. 그들의 두기 위하여, 구하기 만물은 속에서 새가 곧 이상의 사막이다.</p>
+					<h1 class="mb-4 text-3xl font-bold">${vo.camTitle}</h1>
+					<p class="mb-4 text-gray-dark">${vo.camDesc}</p>
 					<p class="mb-4 text-2xl font-bold">23일 남음</p>
 					<div class="flex justify-between items-baseline flex-grow-0 mb-2">
 						<p class="inline-block text-brand"><span class="text-2xl font-bold">36,500,000</span>원 후원</p>
-						<p class="inline-block">목표금액 100,000,000원</p>
+						<p class="inline-block">목표금액 ${vo.camGoalPrice}원</p>
 					</div>
 					<div class="progress relative bg-gray-lighter mb-4 rounded overflow-hidden">
 						<div class="progress-bar absolute top-0 bottom-0 left-0 bg-brand" style="width:36.5%"></div>
@@ -54,7 +48,7 @@
 					<p class="mb-4"><span class="text-2xl font-bold">36.5</span>% 달성</p>
 					<p class="mb-4"><span class="text-2xl font-bold">100</span>명 후원</p>
 					<div class="p-4 bg-brand-light text-sm">
-						<p class="text-brand"><span class="font-bold mr-2">펀딩기간</span>2020-04-05 ~ 2020-04-28</p>
+						<p class="text-brand"><span class="font-bold mr-2">펀딩기간</span>${vo.camStart} ~ ${vo.camEnd}</p>
 						<p class="text-gray-darkest">목표금액 100% 달성시에만 결제</p>
 					</div>
 					<!--버튼--> 
@@ -64,10 +58,10 @@
 					</div>
 					<div class="share text-2xl text-gray-darker my-4 text-right">
 						<div class="inline-block w-10 h-10 leading-10 text-center mr-2"><i class="xi-share-alt"></i></div>
-						<button title="페이스북에 공유하기" data-sns="facebook" data-url="charitree.fezze.name" class="btn-share-sns inline-block w-8 h-10 leading-10 text-center hover:text-brand duration-300"><i class="xi-facebook"></i></button>
-						<button title="카카오톡에 공유하기" data-sns="kakaotalk" data-url="charitree.fezze.name" data-text="ChariTree" class="btn-share-sns inline-block w-8 h-10 leading-10 text-center hover:text-brand duration-300"><i class="xi-kakaotalk"></i></button>
-						<button title="트위터에 공유하기" data-sns="twitter" data-url="charitree.fezze.name" data-text="ChariTree" class="btn-share-sns inline-block w-8 h-10 leading-10 text-center hover:text-brand duration-300"><i class="xi-twitter"></i></button>
-						<button title="URL 복사" data-clipboard-text="https://charitree.fezze.name" class="copy_url inline-block w-8 h-10 leading-10 text-center hover:text-brand duration-300"><i class="xi-link"></i></button>
+						<button title="페이스북에 공유하기" data-sns="facebook" data-url="" class="btn-share-sns inline-block w-8 h-10 leading-10 text-center hover:text-brand duration-300"><i class="xi-facebook"></i></button>
+						<button title="카카오톡에 공유하기" data-sns="kakaotalk" data-url="" data-text="ChariTree" class="btn-share-sns inline-block w-8 h-10 leading-10 text-center hover:text-brand duration-300"><i class="xi-kakaotalk"></i></button>
+						<button title="트위터에 공유하기" data-sns="twitter" data-url="" data-text="ChariTree" class="btn-share-sns inline-block w-8 h-10 leading-10 text-center hover:text-brand duration-300"><i class="xi-twitter"></i></button>
+						<button title="URL 복사" data-clipboard-text="<%=request.getRequestURL() %>?no=${vo.camNo}" class="copy_url inline-block w-8 h-10 leading-10 text-center hover:text-brand duration-300"><i class="xi-link"></i></button>
 					</div>
 				</div>
 			</div><!-- 상단 -->
@@ -86,30 +80,18 @@
 					<div class="campaign-tab-content px-16"><!--스토리-->
 						<div id="story" class="tab-content-item active">
 							<div class="story-content">
-								<p>국무총리·국무위원 또는 정부위원은 국회나 그 위원회에 출석하여 국정처리상황을 보고하거나 의견을 진술하고 질문에 응답할 수 있다. 국회는 법률에 저촉되지 아니하는 범위안에서 의사와 내부규율에 관한 규칙을 제정할 수 있다. 헌법재판소의 장은 국회의 동의를 얻어 재판관중에서 대통령이 임명한다.</p>
-								<p>법관은 탄핵 또는 금고 이상의 형의 선고에 의하지 아니하고는 파면되지 아니하며, 징계처분에 의하지 아니하고는 정직·감봉 기타 불리한 처분을 받지 아니한다. 모든 국민은 보건에 관하여 국가의 보호를 받는다. 국회는 헌법개정안이 공고된 날로부터 60일 이내에 의결하여야 하며, 국회의 의결은 재적의원 3분의 2 이상의 찬성을 얻어야 한다.</p>
-								<p>헌법재판소에서 법률의 위헌결정, 탄핵의 결정, 정당해산의 결정 또는 헌법소원에 관한 인용결정을 할 때에는 재판관 6인 이상의 찬성이 있어야 한다. 국군의 조직과 편성은 법률로 정한다. 여자의 근로는 특별한 보호를 받으며, 고용·임금 및 근로조건에 있어서 부당한 차별을 받지 아니한다. 국회의원은 국가이익을 우선하여 양심에 따라 직무를 행한다.</p>
-								<img src="/project_Ma/img/img_main/main_tree_01.jpg"/>
-								<p>국회의원은 국회에서 직무상 행한 발언과 표결에 관하여 국회외에서 책임을 지지 아니한다. 국교는 인정되지 아니하며, 종교와 정치는 분리된다. 저작자·발명가·과학기술자와 예술가의 권리는 법률로써 보호한다. 대한민국은 국제평화의 유지에 노력하고 침략적 전쟁을 부인한다. 타인의 범죄행위로 인하여 생명·신체에 대한 피해를 받은 국민은 법률이 정하는 바에 의하여 국가로부터 구조를 받을 수 있다.</p>
-								<img src="/project_Ma/img/campaign/tree1.jpg"/>
-								<p>이 헌법에 의한 최초의 대통령의 임기는 이 헌법시행일로부터 개시한다. 대통령은 법률안의 일부에 대하여 또는 법률안을 수정하여 재의를 요구할 수 없다. 정당은 그 목적·조직과 활동이 민주적이어야 하며, 국민의 정치적 의사형성에 참여하는데 필요한 조직을 가져야 한다. 대통령의 임기가 만료되는 때에는 임기만료 70일 내지 40일전에 후임자를 선거한다.</p>
-								<p>누구든지 체포 또는 구속을 당한 때에는 즉시 변호인의 조력을 받을 권리를 가진다. 다만, 형사피고인이 스스로 변호인을 구할 수 없을 때에는 법률이 정하는 바에 의하여 국가가 변호인을 붙인다. 언론·출판에 대한 허가나 검열과 집회·결사에 대한 허가는 인정되지 아니한다. 이 헌법중 공무원의 임기 또는 중임제한에 관한 규정은 이 헌법에 의하여 그 공무원이 최초로 선출 또는 임명된 때로부터 적용한다.</p>
-								<img src="/project_Ma/img/campaign/tree2.jpg"/>
-								<p>재산권의 행사는 공공복리에 적합하도록 하여야 한다. 국무총리는 국회의 동의를 얻어 대통령이 임명한다. 계엄을 선포한 때에는 대통령은 지체없이 국회에 통고하여야 한다. 군인은 현역을 면한 후가 아니면 국무위원으로 임명될 수 없다. 대통령의 임기연장 또는 중임변경을 위한 헌법개정은 그 헌법개정 제안 당시의 대통령에 대하여는 효력이 없다.</p>
-								<p>법률이 헌법에 위반되는 여부가 재판의 전제가 된 경우에는 법원은 헌법재판소에 제청하여 그 심판에 의하여 재판한다. 헌법재판소는 법률에 저촉되지 아니하는 범위안에서 심판에 관한 절차, 내부규율과 사무처리에 관한 규칙을 제정할 수 있다. 헌법개정안이 제2항의 찬성을 얻은 때에는 헌법개정은 확정되며, 대통령은 즉시 이를 공포하여야 한다.</p>
+							${vo.camContent}
 							</div>
 							<div class="company-info bg-white mt-16">
 								<h2 class="mb-4">단체·기업 정보</h2>
 								<div class="flex items-center border border-gray p-4">
-									<div class="company-name flex items-center w-2/5 border-r border-gray border-dashed pr-4">
-										<div class="company-photo rounded-full border border-gray w-20 h-20 p-4 mr-2 overflow-hidden">
-											<img src="/project_Ma/img/icons8-forest-48.png" class="w-full">
-										</div>
-										<div class="font-bold"><a href="#">사단법인 나무심기 운동본부</a></div>
+									<div class="company-name flex items-center w-2/5 border-r border-gray border-dashed pr-4 text-lg">
+										<div class="font-bold">${vo.corpoName}</div>
 									</div>
 									<div class="company-detail w-3/5 pl-4">
 										<div class="company-desc text-gray-darker text-sm">
-											사단법인 나무심기 운동본부입니다. 재판의 심리와 판결은 공개한다. 다만, 심리는 국가의 안전보장 또는 안녕질서를 방해하거나 선량한 풍속을 해할 염려가 있을 때에는 법원의 결정으로 공개하지 아니할 수 있다.
+											<span class="pr-4"><span class="text-black">대표자명:</span> ${vo.userName}</span>
+											<span><span class="text-black">법인(사업자)번호:</span> ${vo.corpoNo}</span>
 										</div>
 									</div>
 								</div>
@@ -303,30 +285,27 @@
 								</form>
 							</div>
 							<ul class="campaign-comment-list">
+							<c:if test="${commentLst!='' && commentLst!=null}">
+								<c:forEach var="cvo" items="${commentLst}">
 								<li class="mb-8">
+									<c:if test="${cvo.commentParentNo == 0}">
 									<div class="comment-container">
-										<p class="comment-author font-bold mb-2">홍길동<span class="text-gray-dark text-sm font-normal ml-4">2020-04-27</span></p>
-										<div class="comment-text text-gray-darkest">응원합니다.</div>
+										<p class="comment-author font-bold mb-2">${cvo.userid}<span class="px-1 text-info-dark text-sm font-normal ml-2 bg-info-light">후원자</span><span class="text-gray-dark text-sm font-normal ml-4">${cvo.commentDate}</span></p>
+										<div class="comment-text text-gray-darkest">${cvo.commentContent}</div>
 									</div>
+									</c:if>
+									<c:if test="${cvo.replyCommentParentNo == cvo.commentNo}">
 									<div class="comment-reply mt-4 py-4 px-8 bg-gray-lightest">
-										<p class="comment-author font-bold mb-2 text-success">나무심기 운동본부<span class="text-gray-dark text-sm font-normal ml-4">2020-04-27</span></p>
-										<div class="comment-text text-gray-darkest">응원 감사드립니다^^</div>
+										<p class="comment-author font-bold mb-2"><i class="xi-subdirectory-arrow pr-2"></i><span class="text-success">${cvo.replyUserid}</span><span class="text-gray-dark text-sm font-normal ml-4">${cvo.replyCommentDate}</span></p>
+										<div class="comment-text text-gray-darkest pl-6">${cvo.replyCommentContent}</div>
 									</div>
+									</c:if>
 								</li>
-								<li class="mb-8">
-									<div class="comment-container">
-										<p class="comment-author font-bold mb-2">홍길동<span class="px-1 text-info-dark text-sm font-normal ml-2 bg-info-light">후원자</span><span class="text-gray-dark text-sm font-normal ml-4">2020-04-27</span></p>
-										<div class="comment-text text-gray-darkest">응원합니다.</div>
-									</div>
-								</li>
-								<li class="mb-8">
-									<p class="comment-author font-bold mb-2">홍길동<span class="text-gray-dark text-sm font-normal ml-4">2020-04-27</span></p>
-									<div class="comment-text text-gray-darkest">응원합니다.</div>
-								</li>
-								<li class="mb-8">
-									<p class="comment-author font-bold mb-2">홍길동<span class="text-gray-dark text-sm font-normal ml-4">2020-04-27</span></p>
-									<div class="comment-text text-gray-darkest">응원합니다.</div>
-								</li>		
+								</c:forEach>
+							</c:if>
+							<c:if test="${commentLst=='' || commentLst==null}">
+								<p>아직 이 캠페인에 대한 응원·의견이 없습니다.</p>
+							</c:if>
 							</ul>
 							<ul class="pagenation flex items-center justify-center my-4">
 								<li class="page-item disabled"><a class="page-link block py-1 px-2 hover:text-brand pointer-events-none" href="#"><i class="xi-angle-left-min"></i></a></li>
@@ -446,102 +425,41 @@
 				<!--리워드-->
 				
 				<div id="donate" class="rewards w-1/4">
+				<c:if test="${vo.camRewardStatus == 1}">
+				<c:forEach var="rvo" items="${rwList}">
 					<div class="reward-item relative my-4 p-8 bg-white border border-gray">
-					<input type="hidden" value="" name="reward_no"/>
-							<p class="text-lg mb-4 font-bold" name="reward_price"></p>원 후원
-							<div class="mb-4">
-								<p class="mb-2 text-gray-darkest">나무 한 그루</p>
-								<p class="text-gray-dark text-sm">후원자 이름표가 달린 나무 한 그루 식재<br>기념뱃지 1종</p>
-							</div>
-							<div class="mb-4 text-sm">
-								<p class="text-gray-dark">배송비</p>
-								<p>3000원</p>
-							</div>
-							<div class="mb-8 text-sm">
-								<p class="text-gray-dark">리워드 발송 시작일</p>
-								<p>2020년 5월</p>
-							</div>
-							<div class="text-sm">
-								<p class="text-brand mb-2">제한수량 100개 <span class="ml-2 px-2 bg-brand-light text-brand">90개 남음</span></p>
-								<p>10개 후원됨</p>
-							</div>
-						
-							<a href="<%=projectPath%>/payment/paymentProcessOk.do" class="overlay absolute block top-0 bottom-0 left-0 w-full bg-brand opacity-0 hover:opacity-75 duration-300">
-								<span class="donate-this absolute text-white font-bold text-lg">후원하기</span>
-							</a>
-					</div>
-					<div class="reward-item relative my-4 p-8 bg-white border border-gray">
-						<p class="text-lg mb-4 font-bold">20,000원 후원</p>
+						<p class="text-lg mb-4 font-bold">${rvo.rewardPrice}원 후원</p>
 						<div class="mb-4">
-							<p class="mb-2 text-gray-darkest">나무 두 그루</p>
-							<p class="text-gray-dark text-sm">후원자 이름표가 달린 나무 두 그루 식재<br>기념뱃지 2종</p>
+							<p class="mb-2 text-gray-darkest">${rvo.rewardName}</p>
+							<p class="text-gray-dark text-sm">${rvo.rewardContent}</p>
 						</div>
 						<div class="mb-4 text-sm">
 							<p class="text-gray-dark">배송비</p>
-							<p>3000원</p>
+							<p>${rvo.deliveryPrice}원</p>
 						</div>
 						<div class="mb-8 text-sm">
 							<p class="text-gray-dark">리워드 발송 시작일</p>
-							<p>2020년 5월</p>
+							<p>${rvo.deliveryExYear}년 ${rvo.deliveryExMonth}월</p>
+							<p>${rvo.deliveryExDateDetail}</p>
 						</div>
 						<div class="text-sm">
-							<p class="text-brand mb-2">제한수량 100개 <span class="ml-2 px-2 bg-brand-light text-brand">90개 남음</span></p>
+							<p class="text-brand mb-2">제한수량 ${rvo.rewardQuantity}개 <span class="ml-2 px-2 bg-brand-light text-brand">90개 남음</span></p>
 							<p>10개 후원됨</p>
 						</div>
-						<a href="<%=projectPath %>/payment/paymentProcess.do" class="overlay absolute block top-0 bottom-0 left-0 w-full bg-brand opacity-0 hover:opacity-75 duration-300">
+						<a href="<%=projectPath %>/payment/paymentProcess.do?reward_no=${rvo.rewardNo}&reward_status=${vo.camRewardStatus}" class="overlay absolute block top-0 bottom-0 left-0 w-full bg-brand opacity-0 hover:opacity-75 duration-300">
 							<span class="donate-this absolute text-white font-bold text-lg">후원하기</span>
 						</a>
 					</div>
-					<div class="reward-item relative my-4 p-8 bg-white border border-gray">
-						<p class="text-lg mb-4 font-bold">50,000원 후원</p>
-						<div class="mb-4">
-							<p class="mb-2 text-gray-darkest">나무심기 레귤러</p>
-							<p class="text-gray-dark text-sm">후원자 이름표가 달린 나무 여섯 그루 식재<br>기념뱃지 전종 1세트</p>
-						</div>
-						<div class="mb-4 text-sm">
-							<p class="text-gray-dark">배송비</p>
-							<p>3000원</p>
-						</div>
-						<div class="mb-8 text-sm">
-							<p class="text-gray-dark">리워드 발송 시작일</p>
-							<p>2020년 5월</p>
-						</div>
-						<div class="text-sm">
-							<p class="text-brand mb-2">제한수량 100개 <span class="ml-2 px-2 bg-brand-light text-brand">90개 남음</span></p>
-							<p>10개 후원됨</p>
-						</div>
-						<a href="<%=projectPath %>/payment/paymentProcess.do" class="overlay absolute block top-0 bottom-0 left-0 w-full bg-brand opacity-0 hover:opacity-75 duration-300">
-							<span class="donate-this absolute text-white font-bold text-lg">후원하기</span>
-						</a>
-					</div>
-					<div class="reward-item relative my-4 p-8 bg-white border border-gray">
-						<p class="text-lg mb-4 font-bold">100,000원 후원</p>
-						<div class="mb-4">
-							<p class="mb-2 text-gray-darkest">나무심기 패밀리</p>
-							<p class="text-gray-dark text-sm">후원자 가족 전원 이름표가 달린 나무 가족 수대로 식재<br>기념뱃지 전종 2세트</p>
-						</div>
-						<div class="mb-4 text-sm">
-							<p class="text-gray-dark">배송비</p>
-							<p>3000원</p>
-						</div>
-						<div class="mb-8 text-sm">
-							<p class="text-gray-dark">리워드 발송 시작일</p>
-							<p>2020년 5월</p>
-						</div>
-						<div class="text-sm">
-							<p class="text-brand mb-2">제한수량 100개 <span class="ml-2 px-2 bg-brand-light text-brand">90개 남음</span></p>
-							<p>10개 후원됨</p>
-						</div>
-						<a href="<%=projectPath %>/payment/paymentProcess.do" class="overlay absolute block top-0 bottom-0 left-0 w-full bg-brand opacity-0 duration-300">
-							<span class="donate-this absolute text-white font-bold text-lg">후원하기</span>
-						</a>
-					</div>
+				</c:forEach>
+				</c:if>
+				<c:if test="${vo.camRewardStatus == 0}">
 					<div class="reward-item relative my-4 p-8 bg-white border border-gray">
 						<p>리워드 없이 후원하기</p>
-						<a href="<%=projectPath %>/payment/paymentProcess.do" class="overlay absolute block top-0 bottom-0 left-0 w-full bg-brand opacity-0 duration-300">
+						<a href="<%=projectPath %>/payment/paymentProcess.do?reward_status=${vo.camRewardStatus}" class="overlay absolute block top-0 bottom-0 left-0 w-full bg-brand opacity-0 duration-300">
 							<span class="donate-this absolute text-white font-bold text-lg">후원하기</span>
 						</a>
 					</div>
+				</c:if>
 				</div>
 				<!--리워드-->
 			</div><!-- 본문 -->
@@ -590,5 +508,3 @@
 
 	});
 	</script>
-</body>
-</html>

@@ -1,19 +1,26 @@
 package com.project_Ma.home.VO;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class CampaignVO {
 	private int camNo;
 	private String userid;
-	private String camImgPath;
+	private String userName;
+	private String corpoName;
+	private int corpoNo;
+	private List<String> camImgList;
+	private String camImg;
 	private String camTitle;
 	private String camContent;
 	private String camDesc;
 	private String camStart;
 	private String camEnd;
-	private int goalPrice;
-	private int minPrice;
-	private int maxPrice;
+	private int camGoalPrice;
+	private int camMinPrice;
+	private int camMaxPrice;
 	private int camRewardStatus = 0;
-	private String camRegiDate;
+	private String camRegi;
 	
 	public CampaignVO() {
 	}
@@ -33,13 +40,47 @@ public class CampaignVO {
 	public void setUserid(String userid) {
 		this.userid = userid;
 	}
-
-	public String getCamImgPath() {
-		return camImgPath;
+	
+	public String getUserName() {
+		return userName;
 	}
 
-	public void setCamImgPath(String camImgPath) {
-		this.camImgPath = camImgPath;
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+	public String getCorpoName() {
+		return corpoName;
+	}
+
+	public void setCorpoName(String corpoName) {
+		this.corpoName = corpoName;
+	}
+
+	public int getCorpoNo() {
+		return corpoNo;
+	}
+
+	public void setCorpoNo(int corpoNo) {
+		this.corpoNo = corpoNo;
+	}
+
+	public String getCamImg() {
+		return camImg;
+	}
+
+	public void setCamImg(String camImg) {
+		this.camImg = camImg;
+	}
+	
+	public List<String> getCamImgList() {
+		camImgList = Arrays.asList(camImg.split("|"));
+		return camImgList;
+	}
+	
+	public void setCamImgList(List<String> camImgList) {
+		camImg = String.join("|", camImgList.toArray(new String[camImgList.size()]));
+		this.camImgList = camImgList;
 	}
 
 	public String getCamTitle() {
@@ -59,6 +100,7 @@ public class CampaignVO {
 	}
 
 	public String getCamDesc() {
+		camDesc = camDesc.replaceAll("\r\n","<br/>");
 		return camDesc;
 	}
 
@@ -82,28 +124,28 @@ public class CampaignVO {
 		this.camEnd = camEnd;
 	}
 
-	public int getGoalPrice() {
-		return goalPrice;
+	public int getCamGoalPrice() {
+		return camGoalPrice;
 	}
 
-	public void setGoalPrice(int goalPrice) {
-		this.goalPrice = goalPrice;
+	public void setCamGoalPrice(int goalPrice) {
+		this.camGoalPrice = goalPrice;
 	}
 
-	public int getMinPrice() {
-		return minPrice;
+	public int getCamMinPrice() {
+		return camMinPrice;
 	}
 
-	public void setMinPrice(int minPrice) {
-		this.minPrice = minPrice;
+	public void setCamMinPrice(int minPrice) {
+		this.camMinPrice = minPrice;
 	}
 
-	public int getMaxPrice() {
-		return maxPrice;
+	public int getCamMaxPrice() {
+		return camMaxPrice;
 	}
 
-	public void setMaxPrice(int maxPrice) {
-		this.maxPrice = maxPrice;
+	public void setCamMaxPrice(int maxPrice) {
+		this.camMaxPrice = maxPrice;
 	}
 
 	public int getCamRewardStatus() {
@@ -114,11 +156,11 @@ public class CampaignVO {
 		this.camRewardStatus = camRewardStatus;
 	}
 
-	public String getCamRegiDate() {
-		return camRegiDate;
+	public String getCamRegi() {
+		return camRegi;
 	}
 
-	public void setCamRegiDate(String camRegiDate) {
-		this.camRegiDate = camRegiDate;
+	public void setCamRegi(String camRegiDate) {
+		this.camRegi = camRegiDate;
 	}
 }

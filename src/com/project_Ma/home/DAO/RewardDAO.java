@@ -23,8 +23,27 @@ public class RewardDAO extends ConnectionDB implements RewardService {
 		List<RewardVO> rewardList = new ArrayList<RewardVO>();
 		try {
 			connDB();
+			sql = "select reward_no, cam_no, reward_name, reward_quantity, reward_price, reward_content,"
+					+ " to_char(delivery_ex_date, 'yyyy-mm') delivery_ex_date, delivery_ex_date_detail, delivery_price"
+					+ " from reward where cam_no=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, camNo);
+			result = pstmt.executeQuery();
+			while(result.next()) {
+				RewardVO vo = new RewardVO();
+				vo.setRewardNo(result.getInt(1));
+				vo.setCamNo(result.getInt(2));
+				vo.setRewardName(result.getString(3));
+				vo.setRewardQuantity(result.getInt(4));
+				vo.setRewardPrice(result.getInt(5));
+				vo.setRewardContent(result.getString(6));
+				vo.setDeliveryExDate(result.getString(7));
+				vo.setDeliveryExDateDetail(result.getString(8));
+				vo.setDeliveryPrice(result.getInt(9));
+				rewardList.add(vo);
+			}
 		} catch (Exception e) {
-			System.out.println("∏ÆøˆµÂ √‚∑¬ ø°∑Ø");
+			System.out.println("Î¶¨ÏõåÎìúÏÑ†ÌÉùÏóêÎü¨");
 			e.printStackTrace();
 		} finally {
 			closeDB();
@@ -34,29 +53,29 @@ public class RewardDAO extends ConnectionDB implements RewardService {
 
 	@Override
 	public int insertRewardList(RewardVO vo) {
-		int result = 0;
-		try {
-			connDB();
-			sql = "insert into reward(reward_no, cam_no, reward_name, reward_quantity, reward_price, reward_content, delivery_ex_date, delivery_ex_date_detain, delivery_price)"
-					+ " values(reward_sq.nextval, ?, ?, ?, ?, ?, ?, ?, ?)";
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, vo.getCamNo());
-			pstmt.setString(2, vo.getRewardName());
-			pstmt.setInt(3, vo.getRewardQuantity());
-			pstmt.setInt(4, vo.getRewardPrice());
-			pstmt.setString(5, vo.getRewardContent());
-			pstmt.setString(6, "to_date("+vo.getDeliveryExDate()+", 'yyyy-mm')");
-			pstmt.setString(7, vo.getDeliveryExDateDetail());
-			pstmt.setInt(8, vo.getDeliveryPrice());
-			
-			result = pstmt.executeUpdate();
-		} catch (Exception e) {
-			System.out.println("∏ÆøˆµÂ µÓ∑œ ø°∑Ø");
-			e.printStackTrace();
-		} finally {
-			closeDB();
-		}
-		return result;
+//		int result = 0;
+//		try {
+//			connDB();
+//			sql = "insert into reward(reward_no, cam_no, reward_name, reward_quantity, reward_price, reward_content, delivery_ex_date, delivery_ex_date_detail, delivery_price)"
+//					+ " values(reward_sq.nextval, ?, ?, ?, ?, ?, to_date(?, 'yyyy-mm'), ?, ?)";
+//			pstmt = conn.prepareStatement(sql);
+//			pstmt.setInt(1, vo.getCamNo());
+//			pstmt.setString(2, vo.getRewardName());
+//			pstmt.setInt(3, vo.getRewardQuantity());
+//			pstmt.setInt(4, vo.getRewardPrice());
+//			pstmt.setString(5, vo.getRewardContent());
+//			pstmt.setString(6, vo.getDeliveryExDate());
+//			pstmt.setString(7, vo.getDeliveryExDateDetail());
+//			pstmt.setInt(8, vo.getDeliveryPrice());
+//			
+//			result = pstmt.executeUpdate();
+//		} catch (Exception e) {
+//			System.out.println("Î¶¨ÏõåÎìú Îì±Î°ù ÏóêÎü¨");
+//			e.printStackTrace();
+//		} finally {
+//			closeDB();
+//		}
+		return 0;
 	}
 
 	@Override
