@@ -18,6 +18,7 @@ public class Command_Mypage implements Command_Interface {
 	public String processStart(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 	
+		
 		return "/mypage/mypage.jsp";
 	}
 
