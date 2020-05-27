@@ -54,23 +54,6 @@ $(function(){
 		        }
 		      ]   
 	});
-	
-	var preCampaign = 4;
-	var remainDayArr;
-	 
-	
-	for(i=0; i<=preCampaign; i++){ 
-		remainDayArr = $("#date_0" + i).text(); 
-		console.log(remainDayArr);  
-		 	
-		var result = dateDiff(remainDayArr, new Date()); 
-		if(result == "0"){
-			console.log(result);
-			$("#re_0" + i).text("오늘 Open!");  
-		}else{
-			$("#re_0" + i).text((result) + "일 남음"); 
-		}
-	}   
 });	
 
  

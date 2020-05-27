@@ -54,12 +54,12 @@
 	top:10%;
 }
 .slick-dots li button:before{
-	font-size:40px;
+	font-size:20px;
 	margin:0px auto;  
 } 
 .slick-dots li.slick-active button:before{
 	color:#fff;
-	font-size:40px;  
+	font-size:20px;  
 }
     
 #mainImgDiv div>.slider>.slick-prev_01 {

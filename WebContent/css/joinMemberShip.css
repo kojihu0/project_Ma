@@ -113,6 +113,11 @@ input.checkBox+label:before {
 	margin-left: -95px;
 	margin-top: 2px
 }
+#joinMembershipEmailCheckBtn2 {
+	position: absolute;
+	margin-left: -95px;
+	margin-top: 2px
+}
 
 #completeBtn {
 	margin-top: 10px;

@@ -1,113 +1,83 @@
 package com.project_Ma.home.VO;
 
 public class RewardVO {
-	private int rewardNo;
-	private int camNo;
-	private String rewardName;
-	private int rewardQuantity;
-	private int rewardPrice;
-	private String rewardContent;
-	private String deliveryExYear;
-	private String deliveryExMonth;
-	private String deliveryExDate;
-	private String deliveryExDateDetail;
-	private int deliveryPrice;
+	private int reward_no;
+	private int cam_no;
+	private String reward_name;
+	private int reward_quantity;
+	private int reward_price;
+	private String reward_content;
+	private String delivery_ex_year;
+	private String delivery_ex_month;
+	private String delivery_ex_date;
+	private String delivery_ex_date_detail;
+	private int delivery_price;
+	public int getReward_no() {
+		return reward_no;
+	}
+	public void setReward_no(int reward_no) {
+		this.reward_no = reward_no;
+	}
+	public int getCam_no() {
+		return cam_no;
+	}
+	public void setCam_no(int cam_no) {
+		this.cam_no = cam_no;
+	}
+	public String getReward_name() {
+		return reward_name;
+	}
+	public void setReward_name(String reward_name) {
+		this.reward_name = reward_name;
+	}
+	public int getReward_quantity() {
+		return reward_quantity;
+	}
+	public void setReward_quantity(int reward_quantity) {
+		this.reward_quantity = reward_quantity;
+	}
+	public int getReward_price() {
+		return reward_price;
+	}
+	public void setReward_price(int reward_price) {
+		this.reward_price = reward_price;
+	}
+	public String getReward_content() {
+		return reward_content;
+	}
+	public void setReward_content(String reward_content) {
+		this.reward_content = reward_content;
+	}
+	public String getDelivery_ex_year() {
+		return delivery_ex_year;
+	}
+	public void setDelivery_ex_year(String delivery_ex_year) {
+		this.delivery_ex_year = delivery_ex_year;
+	}
+	public String getDelivery_ex_month() {
+		return delivery_ex_month;
+	}
+	public void setDelivery_ex_month(String delivery_ex_month) {
+		this.delivery_ex_month = delivery_ex_month;
+	}
+	public String getDelivery_ex_date() {
+		return delivery_ex_date;
+	}
+	public void setDelivery_ex_date(String delivery_ex_date) {
+		this.delivery_ex_date = delivery_ex_date;
+	}
+	public String getDelivery_ex_date_detail() {
+		return delivery_ex_date_detail;
+	}
+	public void setDelivery_ex_date_detail(String delivery_ex_date_detail) {
+		this.delivery_ex_date_detail = delivery_ex_date_detail;
+	}
+	public int getDelivery_price() {
+		return delivery_price;
+	}
+	public void setDelivery_price(int delivery_price) {
+		this.delivery_price = delivery_price;
+	}
 	
-	public RewardVO() {
-		// TODO Auto-generated constructor stub
-	}
-
-	public int getRewardNo() {
-		return rewardNo;
-	}
-
-	public void setRewardNo(int rewardNo) {
-		this.rewardNo = rewardNo;
-	}
-
-	public int getCamNo() {
-		return camNo;
-	}
-
-	public void setCamNo(int camNo) {
-		this.camNo = camNo;
-	}
-
-	public String getRewardName() {
-		return rewardName;
-	}
-
-	public void setRewardName(String rewardName) {
-		this.rewardName = rewardName;
-	}
-
-	public int getRewardQuantity() {
-		return rewardQuantity;
-	}
-
-	public void setRewardQuantity(int rewardQuantity) {
-		this.rewardQuantity = rewardQuantity;
-	}
-
-	public int getRewardPrice() {
-		return rewardPrice;
-	}
-
-	public void setRewardPrice(int rewardPrice) {
-		this.rewardPrice = rewardPrice;
-	}
-
-	public String getRewardContent() {
-		rewardContent = rewardContent.replaceAll("\r\n","<br/>");
-		return rewardContent;
-	}
-
-	public void setRewardContent(String rewardContent) {
-		this.rewardContent = rewardContent;
-	}
-	
-	public String getDeliveryExYear() {
-		return deliveryExYear;
-	}
-
-	public void setDeliveryExYear(String deliveryExYear) {
-		this.deliveryExYear = deliveryExYear;
-	}
-
-	public String getDeliveryExMonth() {
-		return deliveryExMonth;
-	}
-
-	public void setDeliveryExMonth(String deliveryExMonth) {
-		this.deliveryExMonth = deliveryExMonth;
-	}
-
-	public String getDeliveryExDate() {
-		deliveryExDate = deliveryExYear + "-" + deliveryExMonth;
-		return deliveryExDate;
-	}
-
-	public void setDeliveryExDate(String deliveryExDate) {
-		String[] splitDate = deliveryExDate.split("-");
-		deliveryExYear = splitDate[0];
-		deliveryExMonth = splitDate[1];
-		this.deliveryExDate = deliveryExDate;
-	}
-
-	public String getDeliveryExDateDetail() {
-		return deliveryExDateDetail;
-	}
-
-	public void setDeliveryExDateDetail(String deliveryExDateDetail) {
-		this.deliveryExDateDetail = deliveryExDateDetail;
-	}
-
-	public int getDeliveryPrice() {
-		return deliveryPrice;
-	}
-
-	public void setDeliveryPrice(int deliveryPrice) {
-		this.deliveryPrice = deliveryPrice;
-	}
 	
 }

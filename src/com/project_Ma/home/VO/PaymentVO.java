@@ -1,15 +1,15 @@
+
 package com.project_Ma.home.VO;
 
 public class PaymentVO {
-	private int donate_no;
+	private int payment_no;
 	private String user_id;
 	private int cam_no;
 	private int reward_no;
-	private int reward_status;
 	private int funding_price;
 	private int add_price;
-	private int price_anonymous;
-	private int name_anonymous;
+	private int price_anonymous=0;//0:공개 1:비공개
+	private int name_anonymous=0;//0:공개 1:비공개
 	private int mileage;
 	private int total_price;
 	private String donate_date;
@@ -31,23 +31,27 @@ public class PaymentVO {
 	private String reward_tel2;
 	private String reward_tel3;
 	
-	private String reward_name;//결제자
 	private String payment_status;//결제상태
 	private String delivery_date;//배송날짜
 	private int delivery_no;//운송장번호
 	private String delivery_memo;//배송메모
+	private String delivery_date_detail;
 	private String reciever;//수취인
+	private int delivery_price;
+	private int payment_card_num;//결제카드 끝에 4자리 번호
 	
 	public PaymentVO() {
 	}
-
-	public int getDonate_no() {
-		return donate_no;
+	
+	public int getPayment_no() {
+		return payment_no;
 	}
 
-	public void setDonate_no(int donate_no) {
-		this.donate_no = donate_no;
+
+	public void setPayment_no(int payment_no) {
+		this.payment_no = payment_no;
 	}
+
 
 	public String getUser_id() {
 		return user_id;
@@ -72,15 +76,6 @@ public class PaymentVO {
 	public void setReward_no(int reward_no) {
 		this.reward_no = reward_no;
 	}
-
-	public int getReward_status() {
-		return reward_status;
-	}
-
-	public void setReward_status(int reward_status) {
-		this.reward_status = reward_status;
-	}
-
 	public int getFunding_price() {
 		return funding_price;
 	}
@@ -95,6 +90,7 @@ public class PaymentVO {
 
 	public void setAdd_price(int add_price) {
 		this.add_price = add_price;
+		total_price = add_price + funding_price;
 	}
 
 	public int getPrice_anonymous() {
@@ -216,7 +212,12 @@ public class PaymentVO {
 	}
 
 	public String getReward_tel() {
-		return reward_tel1+"-"+reward_tel2+"-"+reward_tel3;
+		if((reward_tel2 == null || reward_tel2=="") || (reward_tel3==null || reward_tel3=="")) {
+			reward_tel ="";
+			return reward_tel;
+		}else {
+			return reward_tel1+"-"+reward_tel2+"-"+reward_tel3;
+		}
 	}
 
 	public void setReward_tel(String reward_tel) {
@@ -249,14 +250,6 @@ public class PaymentVO {
 
 	public void setReward_tel3(String reward_tel3) {
 		this.reward_tel3 = reward_tel3;
-	}
-
-	public String getReward_name() {
-		return reward_name;
-	}
-
-	public void setReward_name(String reward_name) {
-		this.reward_name = reward_name;
 	}
 
 	public String getPayment_status() {
@@ -298,5 +291,30 @@ public class PaymentVO {
 	public void setReciever(String reciever) {
 		this.reciever = reciever;
 	}
+
+	public String getDelivery_date_detail() {
+		return delivery_date_detail;
+	}
+
+	public void setDelivery_date_detail(String delivery_date_detail) {
+		this.delivery_date_detail = delivery_date_detail;
+	}
+
+	public int getDelivery_price() {
+		return delivery_price;
+	}
+
+	public void setDelivery_price(int delivery_price) {
+		this.delivery_price = delivery_price;
+	}
+
+	public int getPayment_card_num() {
+		return payment_card_num;
+	}
+
+	public void setPayment_card_num(int payment_card_num) {
+		this.payment_card_num = payment_card_num;
+	}
+	
 	
 }

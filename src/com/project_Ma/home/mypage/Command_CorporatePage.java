@@ -18,7 +18,7 @@ public class Command_CorporatePage implements Command_Interface {
 	public String processStart(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		return "/mypage/corporatePage.jsp";
+		return "/mypage/coporatePage.jsp";
 	}
 
 }

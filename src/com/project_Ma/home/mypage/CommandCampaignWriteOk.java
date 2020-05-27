@@ -21,8 +21,10 @@ import org.apache.commons.io.FilenameUtils;
 
 import com.project_Ma.home.Command_Interface;
 import com.project_Ma.home.DAO.CampaignDAO;
+import com.project_Ma.home.DAO.MypageCamDAO;
 import com.project_Ma.home.DAO.RewardDAO;
 import com.project_Ma.home.VO.CampaignVO;
+import com.project_Ma.home.VO.MypageCamVO;
 import com.project_Ma.home.VO.RewardVO;
 
 public class CommandCampaignWriteOk implements Command_Interface {
@@ -38,7 +40,7 @@ public class CommandCampaignWriteOk implements Command_Interface {
 		req.setCharacterEncoding(encode);
 		System.out.println(imgPath);
 		
-		CampaignVO vo = new CampaignVO();
+		MypageCamVO vo = new MypageCamVO();
 		int rewardCnt = 0;
 		HashMap<String, String> rewardList = new HashMap<String, String>();
 		HttpSession session = req.getSession();
@@ -125,21 +127,21 @@ public class CommandCampaignWriteOk implements Command_Interface {
 			e.printStackTrace();
 		}
 		
-		CampaignDAO dao = new CampaignDAO();
+		MypageCamDAO dao = new MypageCamDAO();
 		int camInsCnt = 0;
 		
 		if(vo.getCamRewardStatus() == 1) {
 			List<RewardVO> rwList = new ArrayList<RewardVO>();
 			for(int i=1; i<=rewardCnt; i++) {
 				RewardVO rvo = new RewardVO();
-				rvo.setRewardName(rewardList.get("reward[reward_name_"+i+"]"));
-				rvo.setRewardContent(rewardList.get("reward[reward_desc_"+i+"]"));
-				rvo.setRewardPrice(Integer.parseInt(rewardList.get("reward[reward_price_"+i+"]").replace(",", "")));
-				rvo.setRewardQuantity(Integer.parseInt(rewardList.get("reward[reward_limit_"+i+"]").replace(",", "")));
-				rvo.setDeliveryPrice(Integer.parseInt(rewardList.get("reward[del_fee_"+i+"]").replace(",", "")));
-				rvo.setDeliveryExYear(rewardList.get("reward[del_year_"+i+"]"));
-				rvo.setDeliveryExMonth(rewardList.get("reward[del_month_"+i+"]"));
-				rvo.setDeliveryExDateDetail(rewardList.get("reward[del_date_detail_"+i+"]"));
+				rvo.setReward_name(rewardList.get("reward[reward_name_"+i+"]"));
+				rvo.setReward_content(rewardList.get("reward[reward_desc_"+i+"]"));
+				rvo.setReward_price(Integer.parseInt(rewardList.get("reward[reward_price_"+i+"]").replace(",", "")));
+				rvo.setReward_quantity(Integer.parseInt(rewardList.get("reward[reward_limit_"+i+"]").replace(",", "")));
+				rvo.setDelivery_price(Integer.parseInt(rewardList.get("reward[del_fee_"+i+"]").replace(",", "")));
+				rvo.setDelivery_ex_year(rewardList.get("reward[del_year_"+i+"]"));
+				rvo.setDelivery_ex_month(rewardList.get("reward[del_month_"+i+"]"));
+				rvo.setDelivery_ex_date_detail(rewardList.get("reward[del_date_detail_"+i+"]"));
 				rwList.add(rvo);
 			}
 			camInsCnt = dao.insertCam(vo, rwList);

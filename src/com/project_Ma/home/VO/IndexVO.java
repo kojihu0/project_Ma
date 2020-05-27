@@ -8,6 +8,7 @@ public class IndexVO {
 	private String  cam_start;
 	private String  cam_end;
 	private String  cam_img_path;
+	private int  	cam_remainDay;
 	 
 	public IndexVO() {
 		
@@ -15,9 +16,22 @@ public class IndexVO {
 	//----------------------------
 	
 	
+	
 	public int getCam_no() {
 		return cam_no;
 	}
+
+	public int getCam_remainDay() {
+		return cam_remainDay; 
+	}
+
+
+
+	public void setCam_remainDay(int cam_remainDay) {
+		this.cam_remainDay = cam_remainDay;
+	}
+
+
 
 	public String getCam_img_path() {
 		return cam_img_path;
@@ -51,6 +65,8 @@ public class IndexVO {
 
 	public String getCam_end() {
 		return cam_end;
+		
+		
 	}
 
 	public void setCam_end(String cam_end) {

@@ -13,7 +13,7 @@
 				<div class="text-center my-10">회원가입을 축하합니다!<br><span class="text-danger">ChariTree</span>에서는 항상 회원님들의 입장에서<br>
 				보다 좋은 서비스를 받으실 수 있도록 노력하겠습니다.<br>감사합니다 :D</div>
 			</div>
-			<a href="/project_Ma/index.html"><div class="w-24 h-10 border my-5 mx-auto text-center rounded">
+			<a href="<%=projectPath%>/index.jsp"><div class="w-24 h-10 border my-5 mx-auto text-center rounded">
 					<div class="justify-center leading-9 home h-full w-full">홈으로</div>
 				</div></a>
 
