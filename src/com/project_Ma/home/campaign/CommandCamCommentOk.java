@@ -11,7 +11,6 @@ import com.project_Ma.home.Command_Interface;
 public class CommandCamCommentOk implements Command_Interface {
 
 	public CommandCamCommentOk() {
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override

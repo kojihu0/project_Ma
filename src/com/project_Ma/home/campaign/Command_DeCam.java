@@ -40,7 +40,6 @@ public class Command_DeCam implements Command_Interface {
 		
 		RewardDAO rdao = new RewardDAO();
 		List<RewardVO> rwList = rdao.allRewardList(camNo);
-		System.out.println(vo.getUserid());
 		req.setAttribute("vo", vo); //캠페인정보
 		req.setAttribute("rwList", rwList); //리워드정보
 		//req.setAttribute("noticeLst", noticeLst);//업데이트(공지사항)

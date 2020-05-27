@@ -21,7 +21,6 @@ public class Command_PreCam implements Command_Interface {
 	public String processStart(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String pageNumStr = request.getParameter("pageNum");
 		PagingVO pageVO = new PagingVO();
-		//페이지 번호가 전송된 경우만  페이지번호를 변경한다.
 		if(pageNumStr != null) {
 			pageVO.setPageNum(Integer.parseInt(pageNumStr));
 		}
