@@ -1,6 +1,3 @@
-<%@page import="java.util.Calendar"%>
-<%@page import="java.text.SimpleDateFormat"%>
-<%@page import="java.text.DateFormat"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -50,7 +47,7 @@
 					<!--버튼--> 
 					<div class="mt-8 mb-4 flex justify-end">
 						<a href="#donate" class="btn-donate bg-brand hover:bg-brand-dark text-white py-2 px-4 w-1/2 rounded inline-block text-lg text-center font-bold">후원하기</a>
-						<a href="#" class="add-wishlist relative ml-2 bg-white border border-gray-dark text-gray-dark w-12 rounded inline-block text-2xl text-center"><span class="wishlist-ico align-middle"></span></a>
+						<a id="addWishList" href="/campaign/wishOk.do?cam_no=${vo.camNo}" class="add-wishlist relative ml-2 bg-white border border-gray-dark text-gray-dark w-12 rounded inline-block text-2xl text-center"><span class="wishlist-ico align-middle"></span></a>
 					</div>
 					<div class="share text-2xl text-gray-darker my-4 text-right">
 						<div class="inline-block w-10 h-10 leading-10 text-center mr-2"><i class="xi-share-alt"></i></div>
@@ -141,7 +138,7 @@
 										</td>
 										<td class="p-4">
 										<c:if test="${dvo.price_anonymous==0}"><fmt:formatNumber value="${dvo.funding_price}" pattern="#,###"/>원</c:if>
-										<c:if test="${dvo.price_anonymous==1}">익명</c:if>
+										<c:if test="${dvo.price_anonymous==1}">공개 안 함</c:if>
 										</td>
 										<td class="p-4">${dvo.donate_date}</td>
 									</tr>
@@ -153,9 +150,9 @@
 						<div id="comments" class="tab-content-item"><!--응원글-->
 							<h1 class="my-4">응원·의견</h1>
 							<div class="mb-8">
-								<form method="POST" action="<%=projectPath%>/campaign/camCommentOk.do" enctype="multipart/form-data" onsubmit="return campaign_comment_validation()" class="campaign-comment-form">
-									<label for="campaign_comment"></label>
-									<textarea name="campaign_comment" id="campaign_comment" placeholder="로그인해야 응원글을 남길 수 있습니다." class="appearance-none border border-gray rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline h-24 bg-gray-lightest"></textarea>
+								<form method="POST" action="<%=projectPath%>/campaign/camCommentOk.do?cam_no=${vo.camNo}" enctype="multipart/form-data" onsubmit="return campaign_comment_validation()" class="campaign-comment-form">
+									<label for="comment_content"></label>
+									<textarea name="comment_content" id="comment_content" placeholder="로그인해야 응원글을 남길 수 있습니다." class="appearance-none border border-gray rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline h-24 bg-gray-lightest"></textarea>
 									<div class="text-right">
 										<input type="submit" value="응원하기" class="bg-brand hover:bg-brand-dark text-white font-bold py-2 px-4 rounded"/>
 									</div>
@@ -274,8 +271,8 @@
 							<p>${rvo.delivery_ex_date_detail}</p>
 						</div>
 						<div class="text-sm">
-							<p class="text-brand mb-2">제한수량 ${rvo.reward_quantity}개 <span class="ml-2 px-2 bg-brand-light text-brand">90개 남음</span></p>
-							<p>10개 후원됨</p>
+							<p class="text-brand mb-2">제한수량 ${rvo.reward_quantity}개 <span class="ml-2 px-2 bg-brand-light text-brand">${rvo.reward_quantity-rvo.donateCnt}개 남음</span></p>
+							<p>${rvo.donateCnt}개 후원됨</p>
 						</div>
 						<a href="<%=projectPath %>/payment/paymentProcess.do?reward_no=${rvo.reward_no}&reward_status=${vo.camRewardStatus}" class="overlay absolute block top-0 bottom-0 left-0 w-full bg-brand opacity-0 hover:opacity-75 duration-300">
 							<span class="donate-this absolute text-white font-bold text-lg">후원하기</span>
@@ -336,6 +333,26 @@
 		window.onresize=function(){
 			$(window).on('scroll', sticky_banner);
 		}
-
+		
 	});
 	</script>
+	<c:if test="${loginStatus == null || loginStatus == '' || loginStatus =='N'}">
+	<script>
+	//위시리스트
+	$('#addWishList').on('click', function(e){
+		e.preventDefault();
+		alert('로그인 후 이용가능합니다.');
+	});
+	</script>
+	</c:if>
+	<c:if test="${loginStatus != null &&  loginStatus != '' && loginStatus=='Y'}">
+	<script>
+	//위시리스트
+	$('#addWishList').on('click', function(e){
+		e.preventDefault();
+		$.ajax({
+			url: $(this).attr('href'),
+		});
+	});
+	</script>
+	</c:if>

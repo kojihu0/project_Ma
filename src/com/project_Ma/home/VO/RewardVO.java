@@ -12,6 +12,7 @@ public class RewardVO {
 	private String delivery_ex_date;
 	private String delivery_ex_date_detail;
 	private int delivery_price;
+	private int donateCnt;
 	public int getReward_no() {
 		return reward_no;
 	}
@@ -82,6 +83,11 @@ public class RewardVO {
 	public void setDelivery_price(int delivery_price) {
 		this.delivery_price = delivery_price;
 	}
-	
+	public int getDonateCnt() {
+		return donateCnt;
+	}
+	public void setDonateCnt(int donateCnt) {
+		this.donateCnt = donateCnt;
+	}
 	
 }

@@ -23,9 +23,12 @@ public class RewardDAO extends ConnectionDB implements RewardService {
 		List<RewardVO> rewardList = new ArrayList<RewardVO>();
 		try {
 			connDB();
-			sql = "select reward_no, cam_no, reward_name, reward_quantity, reward_price, reward_content,"
-					+ " to_char(delivery_ex_date, 'yyyy-mm') delivery_ex_date, delivery_ex_date_detail, delivery_price"
-					+ " from reward where cam_no=?";
+			sql = "select r2.reward_no, r2.cam_no, r2.reward_name, r2.reward_quantity, r2.reward_price, r2.reward_content,"
+					+ " to_char(r2.delivery_ex_date, 'yyyy-mm'), r2.delivery_ex_date_detail, r2.delivery_price, cnt_donate"
+					+ " from(select r.reward_no, count(p.user_id) cnt_donate"
+					+ "   from reward r left outer join payment p"
+					+ "   on r.reward_no=p.reward_no where r.cam_no=? group by p.reward_no, r.reward_no order by r.reward_no) r1, reward r2"
+					+ " where r1.reward_no=r2.reward_no";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, camNo);
 			result = pstmt.executeQuery();
@@ -40,6 +43,7 @@ public class RewardDAO extends ConnectionDB implements RewardService {
 				vo.setDelivery_ex_date(result.getString(7));
 				vo.setDelivery_ex_date_detail(result.getString(8));
 				vo.setDelivery_price(result.getInt(9));
+				vo.setDonateCnt(result.getInt(10));
 				rewardList.add(vo);
 			}
 		} catch (Exception e) {

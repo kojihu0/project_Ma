@@ -198,7 +198,12 @@ public class CamDetailDAO extends ConnectionDB{
 		// TODO Auto-generated method stub
 		return 0;
 	}
-
+	
+	public int updateCam(CamDetailVO vo, List<RewardVO> rwList) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	
 	public int deleteCam(CamDetailVO vo) {
 		// TODO Auto-generated method stub
 		return 0;
@@ -298,7 +303,7 @@ public class CamDetailDAO extends ConnectionDB{
 		return camCommentList;
 	}
 	
-	public int insertCamComment(CamDetailVO vo) {
+	public int insertCamComment(CamCommentVO vo) {
 		int cnt = 0;
 		try {
 			connDB();
@@ -307,7 +312,7 @@ public class CamDetailDAO extends ConnectionDB{
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, vo.getUserid());
 			pstmt.setInt(2, vo.getCamNo());
-			pstmt.setString(3, vo.getCamContent());
+			pstmt.setString(3, vo.getCommentContent());
 			cnt = pstmt.executeUpdate();
 		} catch (Exception e) {
 			System.out.println("캠페인 코멘트 등록 에러");

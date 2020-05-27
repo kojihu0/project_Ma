@@ -22,7 +22,7 @@ public class Command_AllCam implements Command_Interface {
 	public String processStart(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String pageNumStr = request.getParameter("pageNum");
 		PagingVO pageVO = new PagingVO();
-		//ÆäÀÌÁö ¹øÈ£°¡ Àü¼ÛµÈ °æ¿ì¸¸  ÆäÀÌÁö¹øÈ£¸¦ º¯°æÇÑ´Ù.
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È£ï¿½ï¿½ ï¿½ï¿½ï¿½Ûµï¿½ ï¿½ï¿½ì¸¸  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È£ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
 		if(pageNumStr != null) {
 			pageVO.setPageNum(Integer.parseInt(pageNumStr));
 		}
