@@ -31,15 +31,15 @@ public class RewardDAO extends ConnectionDB implements RewardService {
 			result = pstmt.executeQuery();
 			while(result.next()) {
 				RewardVO vo = new RewardVO();
-				vo.setRewardNo(result.getInt(1));
-				vo.setCamNo(result.getInt(2));
-				vo.setRewardName(result.getString(3));
-				vo.setRewardQuantity(result.getInt(4));
-				vo.setRewardPrice(result.getInt(5));
-				vo.setRewardContent(result.getString(6));
-				vo.setDeliveryExDate(result.getString(7));
-				vo.setDeliveryExDateDetail(result.getString(8));
-				vo.setDeliveryPrice(result.getInt(9));
+				vo.setReward_no(result.getInt(1));
+				vo.setCam_no(result.getInt(2));
+				vo.setReward_name(result.getString(3));
+				vo.setReward_quantity(result.getInt(4));
+				vo.setReward_price(result.getInt(5));
+				vo.setReward_content(result.getString(6));
+				vo.setDelivery_ex_date(result.getString(7));
+				vo.setDelivery_ex_date_detail(result.getString(8));
+				vo.setDelivery_price(result.getInt(9));
 				rewardList.add(vo);
 			}
 		} catch (Exception e) {

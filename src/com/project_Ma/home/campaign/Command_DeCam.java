@@ -9,11 +9,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.project_Ma.home.Command_Interface;
 import com.project_Ma.home.DAO.CampaignDAO;
+import com.project_Ma.home.DAO.MypageCamDAO;
 import com.project_Ma.home.DAO.RewardDAO;
 import com.project_Ma.home.VO.CamCommentVO;
 import com.project_Ma.home.VO.CamNoticeVO;
 import com.project_Ma.home.VO.CamQnaVO;
 import com.project_Ma.home.VO.CampaignVO;
+import com.project_Ma.home.VO.MypageCamVO;
 import com.project_Ma.home.VO.PaymentVO;
 import com.project_Ma.home.VO.RewardVO;
 
@@ -25,11 +27,11 @@ public class Command_DeCam implements Command_Interface {
 
 	@Override
 	public String processStart(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-		CampaignVO vo = new CampaignVO();
+		MypageCamVO vo = new MypageCamVO();
 		
 		vo.setCamNo(Integer.parseInt(req.getParameter("no")));
 		int camNo = vo.getCamNo();
-		CampaignDAO dao = new CampaignDAO();
+		MypageCamDAO dao = new MypageCamDAO();
 		dao.selectCam(vo);
 		//List<CamNoticeVO> noticeLst = dao.camNoticeList(camNo);
 		//List<PaymentVO> donatorLst = dao.camDonatorList(camNo);

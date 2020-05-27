@@ -7,6 +7,8 @@ public class RewardVO {
 	private int reward_quantity;
 	private int reward_price;
 	private String reward_content;
+	private String delivery_ex_year;
+	private String delivery_ex_month;
 	private String delivery_ex_date;
 	private String delivery_ex_date_detail;
 	private int delivery_price;
@@ -45,6 +47,18 @@ public class RewardVO {
 	}
 	public void setReward_content(String reward_content) {
 		this.reward_content = reward_content;
+	}
+	public String getDelivery_ex_year() {
+		return delivery_ex_year;
+	}
+	public void setDelivery_ex_year(String delivery_ex_year) {
+		this.delivery_ex_year = delivery_ex_year;
+	}
+	public String getDelivery_ex_month() {
+		return delivery_ex_month;
+	}
+	public void setDelivery_ex_month(String delivery_ex_month) {
+		this.delivery_ex_month = delivery_ex_month;
 	}
 	public String getDelivery_ex_date() {
 		return delivery_ex_date;

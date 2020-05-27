@@ -29,7 +29,7 @@ public class Command_Copor_EditOk implements Command_Interface {
 		vo.setAddr_sub(request.getParameter("addr_sub"));
 		vo.setCorpo_name(request.getParameter("corpo_name"));
 		vo.setCorpo_no(Long.parseLong(request.getParameter("corpo_no")));
-		vo.setCorpo_regi_no(Long.parseLong(request.getParameter("corpo_regi_no")));
+		vo.setCorpo_regi_no(Integer.parseInt(request.getParameter("corpo_regi_no")));
 		vo.setUser_id(request.getParameter("user_id"));
 		
 		MemberDataDAO dao = new MemberDataDAO();
