@@ -44,42 +44,44 @@
 
 
 <body>
-   <div class="page"> 
-      <!--헤더(메뉴)--> 
-      <header id="site-header" class="border-b border-solid border-gray flex items-center relative">
-         <div class="w-full max-w-screen-xl my-0 mx-auto flex items-center justify-between flex-wrap px-8 xl:px-0">
-            <div id="siteLogo" class="flex-shrink-0 w-1/4"> 
-               <a href="<%=projectPath %>/index.do"><img class="w-64" src="<%=projectPath %>/img/chariTree_logo.png"></a>   
-            </div>
-            <nav id="site-navigation" class="flex items-center justify-between flex-wrap flex-grow w-3/4">
-               <ul class="nav-menu flex items-center flex-wrap flex-grow block text-lg">
-                  <li class="menu-item text-center has-child flex items-center mr-2">
-                     <a href="<%=projectPath %>/campaign/all_Campaign.do" class="inline-block py-8 px-4">캠페인</a>
-                     <div class="sub-menu absolute z-50 border-b border-solid border-gray bg-white w-full left-0 hidden">
-                        <ul class="w-full max-w-screen-xl my-0 mx-auto flex items-center h-20 text-white">
-                           <li class="menu-item mr-8 w-1/6"><a href="<%=projectPath %>/campaign/all_Campaign.do" class="block bg-brand hover:bg-brand-dark px-4 py-2">모든 캠페인</a></li>
-                           <li class="menu-item mr-8 w-1/6"><a href="<%=projectPath %>/campaign/pre_Campaign.do" class="block bg-brand hover:bg-brand-dark px-4 py-2">오픈 예정 캠페인</a></li>
-                           <li class="menu-item mr-8 w-1/6"><a href="<%=projectPath %>/campaign/ex_Campaign.do" class="block bg-brand hover:bg-brand-dark px-4 py-2">지난 캠페인</a></li>
-                        </ul>
-                     </div>
-                  </li> 
-                  <li class="menu-item text-center flex items-center mr-2"><a href="<%=projectPath %>/about_us/about_Us.do" class="inline-block py-8 px-4">회사 소개</a></li>
-                  <li class="menu-item text-center flex items-center mr-2"><a href="<%=projectPath %>/news/notice.do" class="inline-block py-8 px-4">새 소식</a></li>
-                  <li class="menu-item text-center flex items-center mr-2"><a href="<%=projectPath %>/contact/serviceCenter.do" class="inline-block py-8 px-4">고객센터</a></li>
-                  <li class="menu-item text-center flex items-center"><a href="#" data-target="#searchModal" id="search-ico" class="inline-block py-8 px-4"><i class="xi-search"></i></a></li>
-               </ul>
-               <ul class="login-menu flex items-center justify-between flex-wrap block text-gray-darker">       
-               <c:if test="${loginStatus == null || loginStatus == '' || loginStatus =='N'}">
-                  <li class="menu-item text-center mr-4"><a href="<%=projectPath %>/login/login.do" class="inline-block">로그인</a></li>
-                  <li class="menu-item text-center"><a href="<%=projectPath %>/joinMembership/join_MembershipSelect.do" class="inline-block">회원가입</a></li>
-               </c:if>
-               <c:if test="${loginStatus != null &&  loginStatus != '' && loginStatus=='Y'}">
-                  <li class="menu-item text-center mr-4"> <span class="mr-4">${user_name}님 </span><a href="<%=projectPath%>/login/logOut.do" class="inline-block">로그아웃</a></li>
-                  <li class="menu-item text-center"><a href="<%=projectPath %>/mypage/mypage.do" class="inline-block">마이페이지</a></li>
-               </c:if>
-               </ul>
-            </nav>
-         </div>
-      </header>
-      <!-- content -->
-      <div id="content" class="w-full my-0 mx-auto">
+	<div class="page"> 
+		<!--헤더(메뉴)--> 
+		<header id="site-header" class="border-b border-solid border-gray flex items-center relative">
+			<div class="w-full max-w-screen-xl my-0 mx-auto flex items-center justify-between flex-wrap px-8 xl:px-0">
+				<div id="siteLogo" class="flex-shrink-0 w-1/4"> 
+					<a href="<%=projectPath %>/index.do"><img class="w-64" src="<%=projectPath %>/img/chariTree_logo.png"></a>	
+				</div>
+				<nav id="site-navigation" class="flex items-center justify-between flex-wrap flex-grow w-3/4">
+					<ul class="nav-menu flex items-center flex-wrap flex-grow block text-lg">
+						<li class="menu-item text-center has-child flex items-center mr-2">
+							<a href="<%=projectPath %>/campaign/all_Campaign.do" class="inline-block py-8 px-4">캠페인</a>
+							<div class="sub-menu absolute z-50 border-b border-solid border-gray bg-white w-full left-0 hidden">
+								<ul class="w-full max-w-screen-xl my-0 mx-auto flex items-center h-20 text-white">
+									<li class="menu-item mr-8 w-1/6"><a href="<%=projectPath %>/campaign/all_Campaign.do" class="block bg-brand hover:bg-brand-dark px-4 py-2">모든 캠페인</a></li>
+									<li class="menu-item mr-8 w-1/6"><a href="<%=projectPath %>/campaign/ex_Campaign.do" class="block bg-brand hover:bg-brand-dark px-4 py-2">오픈 예정 캠페인</a></li>
+									<li class="menu-item mr-8 w-1/6"><a href="<%=projectPath %>/campaign/pre_Campaign.do" class="block bg-brand hover:bg-brand-dark px-4 py-2">지난 캠페인</a></li>
+								</ul>
+							</div>
+						</li> 
+						<li class="menu-item text-center flex items-center mr-2"><a href="<%=projectPath %>/about_us/about_us.do" class="inline-block py-8 px-4">회사 소개</a></li>
+						<li class="menu-item text-center flex items-center mr-2"><a href="<%=projectPath %>/news/notice.do" class="inline-block py-8 px-4">새 소식</a></li>
+						<li class="menu-item text-center flex items-center mr-2"><a href="<%=projectPath %>/contact/serviceCenter.do" class="inline-block py-8 px-4">고객센터</a></li>
+						<li class="menu-item text-center flex items-center"><a href="#" data-target="#searchModal" id="search-ico" class="inline-block py-8 px-4"><i class="xi-search"></i></a></li>
+					</ul>
+					<ul class="login-menu flex items-center justify-between flex-wrap block text-gray-darker"> 		
+					<c:if test="${loginStatus == null || loginStatus == '' || loginStatus =='N'}">
+						<li class="menu-item text-center mr-4"><a href="<%=projectPath %>/login/login.do" class="inline-block">로그인</a></li>
+						<li class="menu-item text-center"><a href="<%=projectPath %>/joinMembership/join_MembershipSelect.do" class="inline-block">회원가입</a></li>
+					</c:if>
+					<c:if test="${loginStatus != null &&  loginStatus != '' && loginStatus=='Y'}">
+						<li class="menu-item text-center mr-4"> <span class="mr-4">${user_name}님 </span><a href="<%=projectPath%>/login/logOut.do" class="inline-block">로그아웃</a></li>
+						<c:if test="${rank_code==1}"><li class="menu-item text-center"><a href="<%=projectPath %>/mypage/mypage.do" class="inline-block">마이페이지</a></li></c:if>
+					    <c:if test="${rank_code==2}"><li class="menu-item text-center"><a href="<%=projectPath %>/mypage/coporatePage.do" class="inline-block">마이페이지</a></li></c:if>
+					    <c:if test="${rank_code==0}"><li class="menu-item text-center"><a href="#" class="inline-block">마이페이지</a></li></c:if>
+					</c:if>
+					</ul>
+				</nav>
+			</div>
+		</header>
+		<!-- content -->
+		<div id="content" class="w-full my-0 mx-auto">
