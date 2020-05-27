@@ -1,4 +1,4 @@
-package com.project_Ma.home.mypage;
+package com.project_Ma.home.joinMembership;
 
 import java.io.IOException;
 
@@ -8,17 +8,17 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.project_Ma.home.Command_Interface;
 
-public class Command_CorporatePage implements Command_Interface {
+public class Command_JoinCoporate implements Command_Interface {
 
-	public Command_CorporatePage() {
+	public Command_JoinCoporate() {
 		
 	}
 
 	@Override
 	public String processStart(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
-		return "/mypage/corporatePage.jsp";
+		
+		return "/joinMembership/join_Coporate.jsp"; 
 	}
 
 }

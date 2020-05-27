@@ -8,7 +8,7 @@
 <title>main page</title>
 </head>
 <body>
-
+<!-- MERGE_hsl -->
 	<!-- img slide --> 
 			<div id="mainImgDiv" class="w-full my-0 mx-auto">
 				<div class="w-full my-0 mx-auto bg-gray-lighter">
@@ -43,146 +43,71 @@
 					<div class="mid_title">
 						이 캠페인은 어떠세요?<br /> <span id="mid_title_word" class="mid_title_word"> 당신의 작은 <span class="text-danger" >사랑</span>이 큰 도움이 됩니다 </span> 
 						<button id="moreButton" class="text-2xl border-b">
-							<a href="<%=projectPath %>/campaign/all_Campaign.do">more</a> 
+							<a href="<%=projectPath %>/campaign/all_Campaign.do">more</a>  
 						</button>
 					</div>
 				</div>
-				<!-- mainMoreDiv end -->
-				<!-- 이미지/프로젝트명/남은기간 -->
-				<div id="mid_Div_Campaign" class="flex">
-					<div id="mid_cam_01" class="mx-2 flex-initial w-1/3">
-						<div
-							class="mid_cam_img rounded-lg my-4 my-0 mx-auto border-solid border-4 border-gray">
-							<a href="<%=projectPath %>/campaign/detail_Campaign.do"><img src="img/img_main/main_temple_01.jpg" alt="/project_Ma/campaign/campaign_detail.html" /></a>
-						</div>
-
-						<div class="mid_cam_name"><a href="<%=projectPath %>/campaign/detail_Campaign.do">문화재 복원 캠페인!</a></div>
-
-						<div class="flex pre_date rounded-lg mt-2 my-0 mx-auto">
-							<div class="mid-genre">자선캠페인</div>
-							<div class="mid_bar_div flex-initial">
-								<div id="mid_emptyBar_01" class="relative  h-2 rounded">
-									<div id="mid_colorBar_01"
-										class="relative bg-danger h-2 rounded"></div>
+				 <!-- mainMoreDiv end -->
+				 
+				<!-- mid_Div_Campaign 이미지/프로젝트명/남은기간 -->
+					<div id="mid_Div_Campaign" class="flex">
+						<c:forEach var="lst" items="${list }"> 
+							<div id="mid_cam_01" class="mx-2 flex-initial w-1/3">
+								<div class="mid_cam_img rounded-lg my-4 my-0 mx-auto border-solid border-4 border-gray">
+									<a href="<%=projectPath %>/campaign/detail_Campaign.do?no=${lst.cam_no}"><img src="<%=projectPath %>/img/${lst.cam_img_path}" alt="${lst.cam_title }" /></a>
+								</div> 
+								<div class="mid_cam_name"><a href="<%=projectPath %>/campaign/detail_Campaign.do?no=${lst.cam_no}">${lst.cam_title }</a></div>
+								<div class="flex pre_date rounded-lg mt-2 my-0 mx-auto">
+									<div class="mid-genre">자선캠페인</div>
+									<div class="mid_bar_div flex-initial">
+										<div id="mid_emptyBar_01" class="relative  h-2 rounded"> 
+											<div id="mid_colorBar_01" class="relative bg-danger h-2 rounded"></div>
+										</div>
+									</div>
+									<div class="mid_D_day w-1/3 flex-initial"> 
+										<span class="percentage text-danger">50.00%</span><br/>${lst.cam_remainDay}&nbsp;일 남음.
+									</div>
 								</div>
 							</div>
-							<div class="mid_D_day w-1/3 flex-initial">
-								<span class="percentage text-danger">50.00%</span><br /> 13일 남음
-							</div>
-						</div>
-					</div> 
-					<div id="mid_cam_02" class="mx-2 flex-initial w-1/3"> 
-						<div class="mid_cam_img rounded-lg my-4 my-0 mx-auto border-solid border-4 border-gray">
-							<a href="<%=projectPath %>/campaign/detail_Campaign.do"><img src="img/img_main/main_tree_01.jpg" alt="" /></a> 
-						</div>
-						<div class="mid_cam_name"><a href="<%=projectPath %>/campaign/detail_Campaign.do">나무를 심자!</a></div>
-
-						<div class="flex pre_date rounded-lg mt-2 my-0 mx-auto">
-							<div class="mid-genre">자선캠페인</div>
-							<div class="mid_bar_div flex-initial">
-								<div id="mid_emptyBar_02" class="relative  h-2 rounded">
-									<div id="mid_colorBar_02" class="relative  bg-danger h-2 rounded"></div>
-								</div>
-							</div>
-							<div class="mid_D_day w-1/3 flex-initial">
-								<span class="percentage text-danger">85.00%</span><br /> 7일 남음
-							</div>
-						</div>
-					</div> 
-					<div id="mid_cam_03" class="mx-2 flex-initial w-1/3">
-						<div class="mid_cam_img rounded-lg my-4 my-0 mx-auto border-solid border-4 border-gray">
-							<a href="<%=projectPath %>/campaign/detail_Campaign.do"><img src="img/img_main/main_woman_01.jpg" alt="" /></a>
-						</div>
-						<div class="mid_cam_name"><a href="<%=projectPath %>/campaign/detail_Campaign.do"s>당신의 도움을 필요로 합니다!</a></div>
-
-						<div class="flex pre_date rounded-lg mt-2 my-0 mx-auto">
-							<div class="mid-genre">자선캠페인</div>
-							<div class="mid_bar_div flex-initial">
-								<div id="mid_emptyBar_03" class="relative  h-2 rounded">
-									<div id="mid_colorBar_03"
-										class="relative  bg-danger h-2 rounded"></div>
-								</div>
-							</div>
-							<div class="mid_D_day w-1/3 flex-initial">
-								<span class="percentage text-danger">75.00%</span><br /> 21일 남음
-							</div>
-						</div>
+						</c:forEach>
 					</div>
-				</div>
-			</div>
-			<!-- nowCampaign end -->
+			</div><!-- nowCampaign end -->
 
 			<!-- otherCampaign start -->
-			<div id="otherCampaign"
-				class="w-full max-w-screen-xl my-0 mx-auto">
+			<div id="otherCampaign" class="w-full max-w-screen-xl my-0 mx-auto"> 
 				<div class="flex">
 					<div id="preCamDiv" class="flex-initial w-2/3 relative">
 						<div id="pre_open_div" class="">
 							주목하세요! 곧 오픈합니다!<br /> 
-							<span id="mid_title_word_02" class="mid_title_word"> 도움이 필요해요<span class="text-danger" >기쁨</span>을
-								나줘주세요.</span>
+							<span id="mid_title_word_02" class="mid_title_word"> 도움이 필요해요<span class="text-danger" >기쁨</span>을나줘주세요.</span>
 						</div>
 					<!-- 오픈예정 캠페인 이미지, 캠페인명, 예정일 -->
-					<div id="main_carousel" class="relative">
+					<div id="main_carousel" class="relative"> 
 						<div id="carousel_Slick" class="flex">
-							<div class="carousel_Div flex-initial">
-								<div class="carou_cam_img rounded-lg mb-4 mx-auto">
-									<img src="img/img_List/africa.jpg" alt="" />
-								</div>
-
-								<div class="carou_cam_name rounded-lg my-0 mx-auto">아프리카
-									지원 캠페인</div>
-
-								<div id="date_01" class="carou_cam_date rounded-lg mt-2 my-0 mx-auto">
-									2020-05-01<span id="re_01" class="remainDay text-danger"></span>
-								</div>
-							</div> 
-
-							<div class="carousel_Div flex-initial">
-								<div class="carou_cam_img rounded-lg mb-4 mx-auto">
-									<img src="img/img_List/dokdo.jpg" alt="" />
-								</div>
-
-								<div class="carou_cam_name rounded-lg my-0 mx-auto">독도는
-									한국땅임.</div>
-
-								<div id="date_02"
-									class="carou_cam_date rounded-lg mt-2 my-0 mx-auto ">
-									2020-06-26<span id="re_02" class="remainDay text-danger"></span>
-								</div>
+						<c:forEach var="lst2" items="${exOpenList }">				
+								<div class="carousel_Div flex-initial"> 
+									<div class="carou_cam_img rounded-lg mb-4 mx-auto"> 
+										<img src="<%=projectPath %>/img/${lst2.cam_img_path}" alt="${lst2.cam_title}" /> 
+									</div>
+									<div class="carou_cam_name rounded-lg my-0 mx-auto">${lst2.cam_title }</div>
+									<div class="date_01 carou_cam_date rounded-lg mt-2 my-0 mx-auto"> 
+										시작일 : ${lst2.cam_start }					
+										<c:if test="${lst2.cam_remainDay > 0}">
+											<span class="re_01 remainDay text-danger">${lst2.cam_remainDay }&nbsp;일 후 OPEN</span>
+										</c:if>
+										<c:if test="${lst2.cam_remainDay <= 0}">
+											<span class="re_01 remainDay text-danger">&nbsp;OPEN!</span>
+										</c:if>
+									</div>
+								</div>  
+						</c:forEach>	
+					   	</div><!-- main_carousel -->
+					   		<div class="carousel-btn-wrap absolute bottom-0 right-0">
+								<button type='button' class='slick-prev_02'><i class='xi-angle-left-min'></i></button>
+								<button type='button' class='slick-next_02'><i class='xi-angle-right-min'></i></button>
 							</div>
-							<div class="carousel_Div flex-initial">
-								<div class="carou_cam_img rounded-lg mb-4 mx-auto">
-									<img src="img/img_List/boyukwon.jpg" alt="" />
-								</div>
-
-								<div class="carou_cam_name rounded-lg my-0 mx-auto">아이가
-									먼저다.훠훠훠</div>
-
-								<div id="date_03" class="carou_cam_date rounded-lg my-0 mx-auto">
-									2020-05-26 <span id="re_03" class="remainDay text-danger"></span>
-								</div>
-
-							</div>
-							<div class="carousel_Div flex-initial">
-								<div class="carou_cam_img rounded-lg mb-4 mx-auto">
-									<img src="img/img_List/culture.jpg" alt="" />
-								</div>
-
-								<div class="carou_cam_name rounded-lg my-0 mx-auto">문화재
-									복원할거임. 암튼 할거임.</div>
-
-								<div id="date_04" class="carou_cam_date rounded-lg mt-2 my-0 mx-auto ">
-									2020-05-27 <span id="re_04" class="remainDay text-danger "></span>
-								</div>
-							</div>
-						</div>
-						<div class="carousel-btn-wrap absolute bottom-0 right-0">
-							<button type='button' class='slick-prev_02'><i class='xi-angle-left-min'></i></button>
-							<button type='button' class='slick-next_02'><i class='xi-angle-right-min'></i></button>
-						</div>
-					</div><!-- main_carousel -->
-				</div>
+					</div>
+				</div><!-- preCamDiv 오픈예정-->
 				<!-- deadlineDiv -->
 				<div id="deadlineDiv" class="flex-initial w-1/3">
 					<div id="dead_Line_Div" class="mt-2 mt-8 my-4 mx-auto">
@@ -191,92 +116,33 @@
 						</span>
 					</div>
 					<div id="dead_scroll_Div" class="w-full overflow-y-scroll">
-						<div class="dead_scroll_box flex w-full">
-							<div class="d_box mx-2  flex-initial w-2/3">
-								<div class="d_camBar  w-full my-2 h-8">
-									<div id="d_emptyBar_01" class="relative mx-4  h-2 rounded">
-										<div id="d_colorBar_01" class="relative  bg-danger h-2 rounded"></div>
-									</div>
-								</div>
-								<div class="d_camName  w-full h-16">
-									<span>75%</span>
-								</div>
-								<div class="d_camTitle w-full h-16">사랑의 나눔</div>
-							</div>
-							<div class="d_Img  flex-initial w-1/3">
-								<a href="<%=projectPath %>/campaign/detail_Campaign.do"><img src="<%=projectPath %>/img/img_main/main_woman_01.jpg" alt="" /></a>
-							</div>
-						</div>
-						<div class="dead_scroll_box flex w-full">
-							<div class="d_box mx-2  flex-initial w-2/3">
-								<div class="d_camBar   w-full my-2 h-8">
-									<div id="d_emptyBar_02" class="relative mx-4  h-2 rounded">
-										<div id="d_colorBar_02" class="relative top-0  bg-danger h-2 rounded"></div>
-									</div>
-								</div>
-								<div class="d_camName  w-full h-16">
-									<span>50%</span>
-								</div>
-								<div class="d_camTitle w-full h-16">문화재 복원 캠페인</div>
-							</div>
-							<div class="d_Img rounded-lg flex-initial w-1/3">
-								<a href="<%=projectPath %>/campaign/detail_Campaign.do"><img src="<%=projectPath %>/img/img_main/main_temple_01.jpg"
-									alt="" /></a>
-							</div>
-						</div>
-						<div class="dead_scroll_box flex w-full">
-							<div class="d_box mx-2  flex-initial w-2/3">
-								<div class="d_camBar w-full my-2 h-8">
-									<div id="d_emptyBar_03"
-										class="relative mx-4  h-2 rounded">
-										<div id="d_colorBar_03" class="relative top-0  bg-danger h-2 rounded"></div>
-									</div>
-								</div>
-								<div class="d_camName  w-full h-16">
-									<span>85%</span>
-								</div>
-								<div class="d_camTitle w-full h-16">사랑 나무 심기</div>
-							</div> 
-							<div class="d_Img rounded-lg flex-initial w-1/3">
-								<a href="<%=projectPath %>/campaign/detail_Campaign.do"><img src="<%=projectPath %>/img/img_List/tree.jpg" alt="" /></a>
-							</div>
-						</div>
+						<c:forEach var="lst3" items="${deadLineList }">
 							<div class="dead_scroll_box flex w-full">
-								<div class="d_box mx-2 rounded-lg flex-initial w-2/3">
+								<div class="d_box mx-2  flex-initial w-2/3">
 									<div class="d_camBar  w-full my-2 h-8">
-										<div id="d_emptyBar_04" class="relative mx-4  h-2 rounded">
-											<div id="d_colorBar_04" class="relative top-0  bg-danger h-2 rounded"></div>
+										<div id="d_emptyBar_01" class="relative mx-4  h-2 rounded">
+											<div id="d_colorBar_01" class="relative  bg-danger h-2 rounded"></div>
 										</div>
 									</div>
 									<div class="d_camName  w-full h-16">
-										<span>15%</span>
+										<c:if test="${lst3.cam_remainDay > 0}">
+											<span>${lst3.cam_remainDay }일 후 마감</span>
+										</c:if>
+										<c:if test="${lst3.cam_remainDay <= 0}">
+											<span>마 감!</span>
+										</c:if>		
 									</div>
-									<div class="d_camTitle w-full h-16">사랑의 나눔</div>
+									<div class="d_camTitle w-full h-16">${lst3.cam_title }</div>
 								</div>
-								<div class="d_Img rounded-lg flex-initial w-1/3">
-									<a href="<%=projectPath %>/campaign/detail_Campaign.do"><img src="img/img_List/africa.jpg" alt="" /></a>
+								<div class="d_Img  flex-initial w-1/3">
+									<a href="<%=projectPath %>/campaign/detail_Campaign.do"><img src="<%=projectPath %>/img/${lst3.cam_img_path}" alt="${lst.cam_title }" /></a>
 								</div>
 							</div>
-							<div class="dead_scroll_box flex w-full">
-								<div class="d_box mx-2 rounded-lg flex-initial w-2/3">
-									<div class="d_camBar w-full my-2 h-8">
-										<div id="d_emptyBar_05" class="relative mx-4  h-2 rounded">
-											<div id="d_colorBar_05" class="relative top-0  bg-danger h-2 rounded"></div>
-										</div>
-									</div>
-									<div class="d_camName  w-full h-16">
-										<span>45%</span>
-									</div>
-									<div class="d_camTitle w-full h-16">사랑의 나눔</div>
-								</div>
-								<div class="d_Img rounded-lg flex-initial w-1/3">
-									<a href="/project_Ma/campaign/campaign_detail.html"><img src="img/img_List/boyukwon.jpg" alt="" /></a>
-								</div>
-							</div>
-						</div>
+						</c:forEach>
 					</div><!-- deadlineDiv -->
-				</div><!-- preCamDiv 오픈예정-->
-			</div><!-- otherCampaign end -->
+				</div>
+			</div>
+		</div><!-- otherCampaign end -->
 
 			<div id="article_title" class="article_title w-full max-w-screen-xl my-0 mx-auto">		
 				<p>최근 이슈<br/>  

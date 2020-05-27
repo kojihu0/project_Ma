@@ -9,8 +9,7 @@
 		<div
 			class="w-full max-w-screen-xl my-0 mx-auto flex justify-between text-white px-8 xl:px-0">
 			<div>
-				<a href="<%=projectPath%>/terms/tos.do"
-					class="inline-block py-4 mr-8">이용약관</a> <a
+				<a href="<%=projectPath%>/terms/tos.do"	class="inline-block py-4 mr-8">이용약관</a> <a
 					href="<%=projectPath%>/terms/private.do" class="inline-block py-4">개인정보
 					처리방침</a>
 			</div>
@@ -63,143 +62,44 @@
 </div>
 </div>
 <!-- 약관동의-->
-<form id="agreementModal"
-	class="modal w-full h-screen bg-black opacity-100 fixed top-0 hidden m-0 m-auto">
+<form id="agreementModal"class="modal w-full h-screen bg-black opacity-100 fixed top-0 hidden m-0 m-auto">
 	<div class="bg-white  mt-20 h-auto w-1/5 m-0 m-auto">
-		<div
-			class="close text-black inline-block text-xl top-0 left-0 p-4 cursor-pointer">
+		<div class="close text-black inline-block text-xl top-0 left-0 p-4 cursor-pointer">
 			<i class="xi-close"></i>
 		</div>
-		<br />
+		<br/>
 		<div class="ml-8">
 			<label class="text-3xl font-bold">약관동의</label>
 			<p>약관에 동의하셔야 합니다.</p>
-			<br />
+			<br/>
 			<div class="mt-2">
-				<input type="checkbox" class="checkBox" id="modalAllAgreement">
+				<input type="checkbox" value="no" class="checkBox" id="modalAllAgreement">
 				<label for="modalAllAgreement" id="allAgreementText">전체동의</label><br />
 				<input type="checkbox" class="checkBox" id="ServiceAgreement">
-				<label for="ServiceAgreement" class="mt-8 text-gray">체리트리
-					서비스 이용약관(필수)</label><br />
+				<label for="ServiceAgreement" class="mt-8 text-gray">체리트리 서비스 이용약관(필수)</label><br/>
 				<div>
 					<div class="mt-6 text-gray">
-						회원약관 <input value="내용보기"
-							onclick="if(this.parentNode.getElementsByTagName('div')[0].style.display != ''){this.parentNode.getElementsByTagName('div')[0].style.display = '';this.value = '내용닫기';}else{this.parentNode.getElementsByTagName('div')[0].style.display = 'none'; this.value = '내용보기';}"
-							style="margin-left: 155px" type="button" id="ajaxButton"
-							class="-mt-24   text-xs bg-white underline" />
-						<div id="txtDiv" class="background-gray w-full"
-							style="display: none; overflow: scroll; height: 50px; overflow-x: hidden;"></div>
+						회원약관 <input value="내용보기"onclick="if(this.parentNode.getElementsByTagName('div')[0].style.display != ''){this.parentNode.getElementsByTagName('div')[0].style.display = '';this.value = '내용닫기';}else{this.parentNode.getElementsByTagName('div')[0].style.display = 'none'; this.value = '내용보기';}" style="margin-left: 155px" type="button" id="ajaxButton" class="-mt-24   text-xs bg-white underline" />
+						<div id="txtDiv" class="background-gray w-full"style="display: none; overflow: scroll; height: 50px; overflow-x: hidden;"></div>
 					</div>
-				</div>
-				<br />
-
+				</div><br/>
 				<div>
 					<div class="text-gray">
-						펀딩 서비스 이용약관 <input value="내용보기"
-							onclick="if(this.parentNode.getElementsByTagName('div')[0].style.display != ''){this.parentNode.getElementsByTagName('div')[0].style.display = '';this.value = '내용닫기';}else{this.parentNode.getElementsByTagName('div')[0].style.display = 'none'; this.value = '내용보기';}"
-							type="button" id="ajaxButton2"
-							class="ml-20 text-xs bg-white underline"
-							style="margin-left: 73px" />
-						<div id="txtDiv2" class="background-gray w-full"
-							style="display: none; overflow: scroll; height: 50px; overflow-x: hidden"></div>
+					펀딩 서비스 이용약관 <input value="내용보기"	onclick="if(this.parentNode.getElementsByTagName('div')[0].style.display != ''){this.parentNode.getElementsByTagName('div')[0].style.display = '';this.value = '내용닫기';}else{this.parentNode.getElementsByTagName('div')[0].style.display = 'none'; this.value = '내용보기';}"type="button" id="ajaxButton2" class="ml-20 text-xs bg-white underline"style="margin-left: 73px" />
+						<div id="txtDiv2" class="background-gray w-full"style="display: none; overflow: scroll; height: 50px; overflow-x: hidden">
+						</div>
 					</div>
 				</div>
-
-
 				<div>
-					<input type="checkbox" class="checkBox" id="informationAgreement"><label
-						class="mt-8 text-gray" for="informationAgreement"
-						id="allAgreementText2">개인정보 수집 및 이용동의(필수)</label> <input
-						value="내용보기" class="bg-white underline text-gray text-xs"
-						onclick="if(this.parentNode.getElementsByTagName('div')[0].style.display != ''){this.parentNode.getElementsByTagName('div')[0].style.display = '';this.value = '내용닫기';}else{this.parentNode.getElementsByTagName('div')[0].style.display = 'none'; this.value = '내용보기';}"
-						type="button" id="ajaxButton3" />
-					<div id="txtDiv3" class="text-gray background-gray w-full"
-						style="display: none; overflow: scroll; height: 50px; overflow-x: hidden;"></div>
+					<input type="checkbox" class="checkBox" id="informationAgreement"><label class="mt-8 text-gray" for="informationAgreement"id="allAgreementText2">개인정보 수집 및 이용동의(필수)</label> <inputvalue="내용보기" class="bg-white underline text-gray text-xs"	onclick="if(this.parentNode.getElementsByTagName('div')[0].style.display != ''){this.parentNode.getElementsByTagName('div')[0].style.display = '';this.value = '내용닫기';}else{this.parentNode.getElementsByTagName('div')[0].style.display = 'none'; this.value = '내용보기';}"type="button" id="ajaxButton3" />
+					<div id="txtDiv3" class="text-gray background-gray w-full"style="display: none; overflow: scroll; height: 50px; overflow-x: hidden;"></div>
 				</div>
-
 				<input type="checkbox" class="checkBox" id="marketingAgreement">
-				<label class="mt-8 mb-8 text-gray" for="marketingAgreement"
-					id="allAgreementText2">마케팅 정보 및 수신(선택)</label><br /> <input
-					type="submit" value="확인" id="ModalcompleteBtn"
-					class="bg-danger w-5/6 hover:bg-danger-dark text-white font-bold py-2 px-4 rounded ml-3 ">
+				<label class="mt-8 mb-8 text-gray" for="marketingAgreement"id="allAgreementText2">마케팅 정보 및 수신(선택)</label><br /> <input type="submit" value="확인" id="ModalcompleteBtn"class="bg-danger w-5/6 hover:bg-danger-dark text-white font-bold py-2 px-4 rounded ml-3 ">
 			</div>
-
 		</div>
 	</div>
 </form>
-<!-- 회원탈퇴  -->
-<div id="deleteFrm"
-	class="modal w-full h-screen bg-black opacity-100 fixed top-0 hidden m-0 m-auto">
-	<form class="bg-white h-auto mt-32 w-3/12 m-0 m-auto">
-		<div
-			class="close text-black inline-block text-xl top-0 left-0 p-4 cursor-pointer">
-			<i class="xi-close"></i>
-		</div>
-		<br /> <label class="text-3xl font-bold ml-12 mt-8">회원탈퇴</label>
-		<div class="md:w-3/4  mt-4 m-0 m-auto">
-			<input
-				class="bg-gray-200 appearance-none border-2 border-info rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-info-dark"
-				type="text" placeholder="이름"><br />
-		</div>
-		<div class="md:w-3/4  mt-4 m-0 m-auto">
-			<input
-				class="bg-gray-200 appearance-none border-2 border-info rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-info-dark"
-				type="text" placeholder="아이디">
-		</div>
-		<div class="md:w-3/4  mt-4 m-0 m-auto">
-			<input
-				class="bg-gray-200 appearance-none border-2 border-info rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-info-dark"
-				id="modalPwChk" type="password" placeholder="비밀번호">
-		</div>
-		<div class="md:w-3/4  mt-4 m-0 m-auto">
-			<input
-				class="bg-gray-200 appearance-none border-2 border-info rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-info-dark"
-				id="modalPwChk2" type="password" placeholder="비밀번호 확인 ">
-			<div id="modal-pw-success" class="text-success">비밀번호가 일치합니다</div>
-			<div id="modal-pw-danger" class="text-danger">비밀번호가 일치하지 않습니다.
-				다시 입력해 주세요</div>
-		</div>
-		<input type="submit" value="탈퇴하기" id="mcBtn"
-			class="bg-danger hover:bg-danger-dark  ml-12 w-3/4 text-white font-bold py-2 px-4 rounded mb-8 mt-8">
-	</form>
 </div>
-
-<!-- 비밀번호 변경창  -->
-<div id="passwordUpdate"
-	class="modal w-full h-screen bg-black opacity-100 fixed top-0 hidden m-0 m-auto">
-	<form class="bg-white h-auto mt-32 w-3/12 m-0 m-auto">
-		<div
-			class="close text-black inline-block text-xl top-0 left-0 p-4 cursor-pointer">
-			<i class="xi-close"></i>
-		</div>
-		<br /> <label class="text-3xl font-bold ml-12 mt-8">비밀번호 변경</label>
-		<div class="md:w-3/4  mt-4 m-0 m-auto">
-			<input
-				class="bg-gray-200 appearance-none border-2 border-info rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-info-dark"
-				id="modalPw" type="password" placeholder="현재비밀번호"><br /> <label
-				id="subText" class="text-gray text-xs">영문, 숫자, 특수문자를 조합한 8자
-				이상</label><br />
-		</div>
-		<div class="md:w-3/4  mt-4 m-0 m-auto">
-			<input
-				class="bg-gray-200 appearance-none border-2 border-info rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-info-dark"
-				id="modalPwChk" type="password" placeholder="변경비밀번호">
-		</div>
-		<div class="md:w-3/4  mt-4 m-0 m-auto">
-			<input
-				class="bg-gray-200 appearance-none border-2 border-info rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-info-dark"
-				id="modalPwChk2" type="password" placeholder="변경비밀번호 확인">
-			<div id="modal-pw-success" class="text-success">비밀번호가 일치합니다</div>
-			<div id="modal-pw-danger" class="text-danger">비밀번호가 일치하지 않습니다.
-				다시 입력해 주세요</div>
-		</div>
-		<input type="submit" value="변경" id="mcBtn"
-			class="bg-danger hover:bg-danger-dark  ml-12 w-3/4 text-white font-bold py-2 px-4 rounded mb-8 mt-8">
-	</form>
-</div>
-
-
-
 </body>
-
 </html>

@@ -1,6 +1,6 @@
 package com.project_Ma.home;
 
-//io
+//io 
 import java.io.FileInputStream;
 //error
 import java.io.IOException;
@@ -26,7 +26,7 @@ public class Controller extends HttpServlet {
 	//MapCollection
 	Map<String, Command_Interface> map = new HashMap<String, Command_Interface>(); 
 	
-	//���� class�� ������ �켱 ����.
+	//
     public Controller() {
         super();       
     }
@@ -39,7 +39,7 @@ public class Controller extends HttpServlet {
 			FileInputStream fileInputStream = new FileInputStream(propertiesFile);
 			propertiesObj.load(fileInputStream);
 		}catch(IOException ie) {
-			System.out.println("Properties error" + ie.getMessage());
+			System.out.println("Properties 파일을 인풋 하는 과정에서 에러 발생.." + ie.getMessage());
 			ie.getStackTrace();
 		}
 		//---properties file -> class for Map add
@@ -47,7 +47,7 @@ public class Controller extends HttpServlet {
 			Enumeration propertiesKeyList = propertiesObj.propertyNames();
 			
 			while(propertiesKeyList.hasMoreElements()) {
-				//key�� ���ؼ� �ش� key�� value���� ClassName�� ����.
+				//key 문자열 생성 후 프로퍼티에 있는 키 값을 저장, 그리고 그 후 클래스 이름에 해당 키 값을 넣어 값을 가져온 뒤 저장.
 				String key 			= (String)propertiesKeyList.nextElement();
 				String className 	= propertiesObj.getProperty(key);
 				
@@ -61,7 +61,7 @@ public class Controller extends HttpServlet {
 				map.put(key, commandInter);
 			}	
 		}catch(Exception e) {
-			System.out.println("properties error" + e.getMessage());
+			System.out.println("properties  mapping에서 에러 발생." + e.getMessage());
 			e.getStackTrace();
 		}
 	}
@@ -71,19 +71,19 @@ public class Controller extends HttpServlet {
 		String uri 		= request.getRequestURI();
 		String contextPath 	= request.getContextPath();
 		
-		//���� �ּ�.
+		//---commandAddr 저장.
 		String commandAddr = uri.substring(contextPath.length());
 		
 		//confirm
 		System.out.println("commandAddr : " + commandAddr);
 		
-		//Command_Interface�� map�� ���� �� ����.
+		//Command_Interface에 map의 커맨드 주소값에 저장되어있는 값을 불러와서 저장.
 		Command_Interface commandInter = map.get(commandAddr);
 		
-		//processStart()->viewFileName �޾ƿ��� 
+		//processStart()->viewFileName
 		String viewFileName = commandInter.processStart(request, response);
 		
-		//requestDispatcher->Ŭ���̾�Ʈ�� ������ ����.
+		//requestDispatcher
 		RequestDispatcher reqeustDispatcher = request.getRequestDispatcher(viewFileName);
 		reqeustDispatcher.forward(request,response);
 	}
