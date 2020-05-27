@@ -5,7 +5,7 @@
 <html> 
 <head>
 <meta charset="UTF-8">
-<title>main page</title>
+<title>main page</title> 
 </head>
 <body>
 
@@ -48,13 +48,13 @@
 							<a href="<%=projectPath %>/campaign/all_Campaign.do">more</a>
 						</button>
 					</div>
-				</div>
+				</div> 
 				<!-- 이미지/프로젝트명/남은기간 -->
 				<div id="mid_Div_Campaign" class="flex">
 					<div id="mid_cam_01" class="mx-2 flex-initial w-1/3">
 						<div
 							class="mid_cam_img rounded-lg my-4 my-0 mx-auto border-solid border-4 border-gray">
-							<a href="<%=projectPath %>/campaign/detail_Campaign.do"><img src="img/img_main/main_temple_01.jpg" alt="/project_Ma/campaign/campaign_detail.html" /></a>
+							<a href="<%=projectPath %>/campaign/detail_Campaign.do"><img src="/project_Ma/img/img_main/main_temple_01.jpg" alt="/project_Ma/campaign/campaign_detail.html" /></a>
 						</div>
 
 						<div class="mid_cam_name"><a href="<%=projectPath %>/campaign/detail_Campaign.do">문화재 복원 캠페인!</a></div>
@@ -74,7 +74,7 @@
 					</div> 
 					<div id="mid_cam_02" class="mx-2 flex-initial w-1/3"> 
 						<div class="mid_cam_img rounded-lg my-4 my-0 mx-auto border-solid border-4 border-gray">
-							<a href="<%=projectPath %>/campaign/detail_Campaign.do"><img src="img/img_main/main_tree_01.jpg" alt="" /></a> 
+							<a href="<%=projectPath %>/campaign/detail_Campaign.do"><img src="/project_Ma/img/img_main/main_tree_01.jpg" alt="" /></a> 
 						</div>
 						<div class="mid_cam_name"><a href="<%=projectPath %>/campaign/detail_Campaign.do">나무를 심자!</a></div>
 
@@ -92,7 +92,7 @@
 					</div> 
 					<div id="mid_cam_03" class="mx-2 flex-initial w-1/3">
 						<div class="mid_cam_img rounded-lg my-4 my-0 mx-auto border-solid border-4 border-gray">
-							<a href="<%=projectPath %>/campaign/detail_Campaign.do"><img src="img/img_main/main_woman_01.jpg" alt="" /></a>
+							<a href="<%=projectPath %>/campaign/detail_Campaign.do"><img src="/project_Ma/img/img_main/main_woman_01.jpg" alt="" /></a>
 						</div>
 						<div class="mid_cam_name"><a href="<%=projectPath %>/campaign/detail_Campaign.do"s>당신의 도움을 필요로 합니다!</a></div>
 
@@ -128,7 +128,7 @@
 						<div id="carousel_Slick" class="flex">
 							<div class="carousel_Div flex-initial">
 								<div class="carou_cam_img rounded-lg mb-4 mx-auto">
-									<img src="img/img_List/africa.jpg" alt="" />
+									<img src="/project_Ma/img/img_List/africa.jpg" alt="" />
 								</div>
 
 								<div class="carou_cam_name rounded-lg my-0 mx-auto">아프리카
@@ -141,7 +141,7 @@
 
 							<div class="carousel_Div flex-initial">
 								<div class="carou_cam_img rounded-lg mb-4 mx-auto">
-									<img src="img/img_List/dokdo.jpg" alt="" />
+									<img src="/project_Ma/img/img_List/dokdo.jpg" alt="" />
 								</div>
 
 								<div class="carou_cam_name rounded-lg my-0 mx-auto">독도는
@@ -154,7 +154,7 @@
 							</div>
 							<div class="carousel_Div flex-initial">
 								<div class="carou_cam_img rounded-lg mb-4 mx-auto">
-									<img src="img/img_List/boyukwon.jpg" alt="" />
+									<img src="/project_Ma/img/img_List/boyukwon.jpg" alt="" />
 								</div>
 
 								<div class="carou_cam_name rounded-lg my-0 mx-auto">아이가
@@ -167,7 +167,7 @@
 							</div>
 							<div class="carousel_Div flex-initial">
 								<div class="carou_cam_img rounded-lg mb-4 mx-auto">
-									<img src="img/img_List/culture.jpg" alt="" />
+									<img src="/project_Ma/img/img_List/culture.jpg" alt="" />
 								</div>
 
 								<div class="carou_cam_name rounded-lg my-0 mx-auto">문화재

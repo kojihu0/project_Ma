@@ -11,7 +11,7 @@ public class MemberDAO extends ConnectionDB{
 	public void memberLogin(MemberVO vo) {
 		try {
 			connDB();
-			sql = "select user_name from user_info where user_id=? and user_pw=?";
+			sql = "select user_name, rank_code from user_info where user_id=? and user_pw=?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, vo.getUser_id());
 			pstmt.setString(2, vo.getUser_pw());
@@ -19,12 +19,33 @@ public class MemberDAO extends ConnectionDB{
 			
 			if(result.next()) {
 				vo.setUser_name(result.getString(1));
+				vo.setRank_code(result.getInt(2));
 				vo.setLoginStatus("Y");
 			}else {
 				vo.setLoginStatus("N");
 			}
 		}catch(Exception e) {
 			System.out.println("로그인 에러...."+e.getMessage());
+		}finally {
+			closeDB();
+		}
+	}
+	
+	public void getIdFind(MemberVO vo) {
+		try {
+			connDB();
+			sql="select user_id from user_info where user_name=? and user_email=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, vo.getUser_name());
+			pstmt.setString(2, vo.getUser_email());
+			
+			result = pstmt.executeQuery();
+			
+			if(result.next()) {
+				vo.setUser_id(result.getString(1));
+			}
+		}catch(Exception e) {
+			System.out.println("아이디찾기 에러....."+e.getMessage());
 		}finally {
 			closeDB();
 		}

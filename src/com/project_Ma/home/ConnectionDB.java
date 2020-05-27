@@ -36,7 +36,7 @@ public class ConnectionDB {
 	public void closeDB() {
 		try {
 			if(result != null) result.close();
-			if(pstmt != null) result.close();
+			if(pstmt != null) pstmt.close();
 			if(conn != null) conn.close();
 		}catch(Exception e) {
 			System.out.println("DB 연결 종료에서 문제가 발생했습니다." + e.getMessage());

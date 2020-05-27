@@ -1,2 +1,5 @@
 eclipse.preferences.version=1
 encoding//WebContent/css/base.css=UTF-8
+encoding//src/com/project_Ma/home/DAO/MemberDAO.java=UTF-8
+encoding//src/com/project_Ma/home/VO/MemberVO.java=UTF-8
+encoding//src/com/project_Ma/home/VO/PaymentVO.java=UTF-8

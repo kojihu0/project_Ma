@@ -446,9 +446,10 @@
 				<!--리워드-->
 				
 				<div id="donate" class="rewards w-1/4">
+				<form method="post" action="<%=projectPath%>/payment/paymentProcessOk.do">
 					<div class="reward-item relative my-4 p-8 bg-white border border-gray">
-					<input type="hidden" value="" name="reward_no"/>
-							<p class="text-lg mb-4 font-bold" name="reward_price"></p>원 후원
+					<input type="hidden" value="2" name="reward_no"/>
+							<p class="text-lg mb-4 font-bold" >10,000원 후원</p>
 							<div class="mb-4">
 								<p class="mb-2 text-gray-darkest">나무 한 그루</p>
 								<p class="text-gray-dark text-sm">후원자 이름표가 달린 나무 한 그루 식재<br>기념뱃지 1종</p>
@@ -466,10 +467,10 @@
 								<p>10개 후원됨</p>
 							</div>
 						
-							<a href="<%=projectPath%>/payment/paymentProcessOk.do" class="overlay absolute block top-0 bottom-0 left-0 w-full bg-brand opacity-0 hover:opacity-75 duration-300">
+							<input type="submit" class="overlay absolute block top-0 bottom-0 left-0 w-full bg-brand opacity-0 hover:opacity-75 duration-300">
 								<span class="donate-this absolute text-white font-bold text-lg">후원하기</span>
-							</a>
-					</div>
+						</div>
+						</form>
 					<div class="reward-item relative my-4 p-8 bg-white border border-gray">
 						<p class="text-lg mb-4 font-bold">20,000원 후원</p>
 						<div class="mb-4">

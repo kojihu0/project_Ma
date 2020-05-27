@@ -7,13 +7,29 @@
 <title>paymentProcess</title>
 <meta name="viewport" content="width=device-width, initial-scale=1"/> 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 <script type="text/JavaScript" src="http://code.jquery.com/jquery-1.7.min.js"></script>
 <script type="text/JavaScript" src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script type="text/javascript">
+$(function(){
+	$("input:checkbox").on("click", function(){
+		if($("#name_anonymous").prop("checked")){
+			$("#name_anonymous").val(1);
+		}else{
+			$("#name_anonymous").val(0);
+		}
+		if($("#price_anonymous").prop("checked")){
+			$("#price_anonymous").val(1);
+		}else{
+			$("#price_anonymous").val(0);
+		}
+	});
+});
+	
+	
 	function openDaumZipAddress() {
 		new daum.Postcode({
 			oncomplete:function(data) {
+				
 				jQuery("#reward_addr_num").val(data.zonecode);
 				jQuery("#reward_addr_main").val(data.address);
 				jQuery("#reward_addr_sub").focus();
@@ -23,20 +39,20 @@
 </script>
 </head>
 <body>
-<form>
+<form method="post" action="<%=projectPath%>/payment/paymentCompletedOk.do" onsubmit="return pay()">
 	<div class="w-full max-w-screen-xl my-12 mx-auto">
 				<div class="flex my-5">
 					<div class="border w-40 h-8 text-center bg-danger text-white rounded">펀딩금액</div>
 					<div>
 						<a id="a"><div class="ml-24">펀딩금액이 많은이들에게 큰도움이 됩니다.</div></a>
-						<div class="ml-24 mt-3"><input type="text" class="border h-12 text-center rounded" name="funding_price" id="fund">원을 후원합니다</div>
+						<div class="ml-24 mt-3"><input type="text" class="border h-12 text-center rounded" name="funding_price" id="fund" value="${vo.reward_price}" >원을 후원합니다</div>
 						<div class="text-danger ml-24 hidden" id="a1">펀딩금액을 입력해주세요.</div>
 						<div class="text-danger ml-24 hidden" id="a2">숫자를 입력해주세요.</div>
 					</div>
 				</div>
 				<div class="flex my-5">
 					<div class="border w-40 h-8 text-center bg-danger text-white rounded">후원금 더하기(선택)</div>
-					<div>
+					<div> 
 						<a id="z"><div class="ml-24">후원금을 더하여 펀딩할 수 있습니다. 추가 후원금을 입력하시겠습니까?</div></a>
 						<div class="ml-24 mt-3"><input type="text" class="border h-12 text-center rounded" name="add_price" id="addFund">원을 추가로 후원합니다</div>
 						<div class="text-danger ml-24 hidden" id="z1">숫자를 입력해주세요.</div>
@@ -48,11 +64,11 @@
 						<div class="ml-24">참여자 목록에 참여자 이름과 펀딩금액이 공개됩니다. 혹시,조용히 후원하고 싶으시다면,비공개로 선택해주세요.</div>
 						<div class="flex">
 							<label class="inline-flex items-center">
-								<div class="ml-24 mt-3"><input type="checkbox" class="border h-12 mr-2 w-5 h-5"></div>
+								<div class="ml-24 mt-3"><input type="checkbox" name="name_anonymous" class="border h-12 mr-2 w-5 h-5" id="name_anonymous" value="0"></div>
 					    		<span style="position:relative; top:2px;">이름 비공개</span>
 					    	</label>
 					    	<label class="inline-flex items-center">
-								<div class="ml-24 mt-3"><input type="checkbox" class="border h-12 mr-2 w-5 h-5"></div>
+								<div class="ml-24 mt-3"><input type="checkbox" name="price_anonymous" class="border h-12 mr-2 w-5 h-5" id="price_anonymous" value="0"></div>
 					    		<span style="position:relative; top:2px;">펀딩 금액 비공개</span>
 					    	</label>
 						</div>
@@ -80,7 +96,7 @@
 				<div class="my-5 text-xl">배송지 정보</div>
 				<div class="flex my-5">
 					<div>수령인<i class="xi-star text-xl" style="color:rgb(255,153,000)"></i></div>
-					<a id="b"><input type="text" class="border h-8 ml-24 rounded" id="name"/></a>
+					<a id="b"><input type="text" class="border h-8 ml-24 rounded" name="reciever" id="name"/></a>
 					<div class="text-danger ml-5 hidden" id="b1">수령인을 한글(2~7자리)로 입력해주세요.</div>
 				</div>
 				<div class="flex my-5">
@@ -153,19 +169,19 @@
 					<div>배송지<i class="xi-star text-xl" style="color:rgb(255,153,000)"></i></div>
 					<a id="d"><div class="ml-24">
 						<div class="flex">
-							<input id="reward_addr_num" type="text" class="border h-8 w-32 rounded addr1 text-center" maxlength="5" readonly/>
+							<input id="reward_addr_num" name="reward_addr_num" type="text" class="border h-8 w-32 rounded addr1 text-center" maxlength="5" readonly/>
 							<input type="button" onClick="openDaumZipAddress();" class="ml-3 border rounded w-20" value="주소검색"/>
 							<div class="text-danger ml-5 hidden" id="d1">주소를 입력해주세요.</div>
 							<div class="text-danger ml-5 hidden" id="d2">잘못된 형식입니다. 다시 입력해주세요</div>
 						</div>
-						<input id="reward_addr_main" type="text" class="border mt-3 h-8 rounded addr2" style="width:630px" readonly>
-						<div><input id="reward_addr_sub" type="text" class="border mt-3 h-8 rounded" style="width:315px"placeholder="상세주소"></div>
+						<input id="reward_addr_main" name="reward_addr_main" type="text" class="border mt-3 h-8 rounded addr2" style="width:630px" readonly>
+						<div><input id="reward_addr_sub" name="reward_addr_sub" type="text" class="border mt-3 h-8 rounded" style="width:315px"placeholder="상세주소"></div>
 					</div></a>
 				</div>
 				<div class="flex my-5">
 					<div>배송메모</div>
 					<div class="ml-20">
-						<textarea id="replyTxt" class="border rounded" style="width:640px; height:100px;" maxlength="100"></textarea>
+						<textarea id="delivery_memo" name="delivery_memo" class="border rounded" style="width:640px; height:100px;" maxlength="100"></textarea>
 						<div><span id="txtLength">0</span>/100</div>
 					</div>
 				</div>
@@ -186,7 +202,7 @@
 								<input type="text" class="w-16 h-10 mx-2 border bg-white rounded text-center cn1" maxlength="4">
 								<input type="text" class="w-16 h-10 mx-2 border bg-white rounded text-center cn2" maxlength="4">
 								<input type="text" class="w-16 h-10 mx-2 border bg-white rounded text-center cn3" maxlength="4">
-								<input type="text" class="w-16 h-10 mx-2 border bg-white rounded text-center cn4" maxlength="4">
+								<input type="text" name="payment_card_num" class="w-16 h-10 mx-2 border bg-white rounded text-center cn4" maxlength="4">
 							</div>
 							<div class="text-danger mx-2 hidden" id="g1">신용(체크카드)번호 16자리를 입력해주세요</div>
 						</div>
@@ -316,8 +332,8 @@
 						  <span>모두 동의합니다.</span>
 				    </label>
 			    </div>
-			    <a href="#" id="pay"><div class="w-32 h-10 border my-20 mx-auto text-center rounded ">
-					<input type="submit"value="결제 예약하기"class="justify-center leading-9 h-full w-full" id="payReser"/></div></a>
+			    <div class="w-32 h-10 border my-20 mx-auto text-center rounded ">
+					<input type="submit" value="결제 예약하기"class="justify-center leading-9 h-full w-full" id="payReser"/></div>
 			</div>
 		</form>
 </body>
