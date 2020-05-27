@@ -3,7 +3,7 @@ package com.project_Ma.home.VO;
 import java.util.Arrays;
 import java.util.List;
 
-public class MypageCamVO {
+public class CamDetailVO {
 	private int camNo;
 	private String userid;
 	private String userName;
@@ -16,13 +16,17 @@ public class MypageCamVO {
 	private String camDesc;
 	private String camStart;
 	private String camEnd;
+	private String camRemain;
 	private int camGoalPrice;
+	private int camTotalPrice;
 	private int camMinPrice;
 	private int camMaxPrice;
+	private String camPercentage;
+	private int camTotalDonator;
 	private int camRewardStatus = 0;
 	private String camRegi;
 	
-	public MypageCamVO() {
+	public CamDetailVO() {
 	}
 
 	public int getCamNo() {
@@ -123,6 +127,14 @@ public class MypageCamVO {
 	public void setCamEnd(String camEnd) {
 		this.camEnd = camEnd;
 	}
+	
+	public String getCamRemain() {
+		return camRemain;
+	}
+
+	public void setCamRemain(String camRemain) {
+		this.camRemain = camRemain;
+	}
 
 	public int getCamGoalPrice() {
 		return camGoalPrice;
@@ -130,6 +142,14 @@ public class MypageCamVO {
 
 	public void setCamGoalPrice(int goalPrice) {
 		this.camGoalPrice = goalPrice;
+	}
+	
+	public int getCamTotalPrice() {
+		return camTotalPrice;
+	}
+
+	public void setCamTotalPrice(int camTotalPrice) {
+		this.camTotalPrice = camTotalPrice;
 	}
 
 	public int getCamMinPrice() {
@@ -146,6 +166,23 @@ public class MypageCamVO {
 
 	public void setCamMaxPrice(int maxPrice) {
 		this.camMaxPrice = maxPrice;
+	}
+	
+	public String getCamPercentage() {
+		camPercentage = String.format("%.2f", (float)camTotalPrice/(float)camGoalPrice*100);
+		return camPercentage;
+	}
+
+	public void setCamPercentage(String camPercentage) {
+		this.camPercentage = camPercentage;
+	}
+	
+	public int getCamTotalDonator() {
+		return camTotalDonator;
+	}
+
+	public void setCamTotalDonator(int camTotalDonator) {
+		this.camTotalDonator = camTotalDonator;
 	}
 
 	public int getCamRewardStatus() {

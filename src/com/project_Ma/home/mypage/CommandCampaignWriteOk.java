@@ -21,10 +21,10 @@ import org.apache.commons.io.FilenameUtils;
 
 import com.project_Ma.home.Command_Interface;
 import com.project_Ma.home.DAO.CampaignDAO;
-import com.project_Ma.home.DAO.MypageCamDAO;
+import com.project_Ma.home.DAO.CamDetailDAO;
 import com.project_Ma.home.DAO.RewardDAO;
 import com.project_Ma.home.VO.CampaignVO;
-import com.project_Ma.home.VO.MypageCamVO;
+import com.project_Ma.home.VO.CamDetailVO;
 import com.project_Ma.home.VO.RewardVO;
 
 public class CommandCampaignWriteOk implements Command_Interface {
@@ -40,7 +40,7 @@ public class CommandCampaignWriteOk implements Command_Interface {
 		req.setCharacterEncoding(encode);
 		System.out.println(imgPath);
 		
-		MypageCamVO vo = new MypageCamVO();
+		CamDetailVO vo = new CamDetailVO();
 		int rewardCnt = 0;
 		HashMap<String, String> rewardList = new HashMap<String, String>();
 		HttpSession session = req.getSession();
@@ -127,7 +127,7 @@ public class CommandCampaignWriteOk implements Command_Interface {
 			e.printStackTrace();
 		}
 		
-		MypageCamDAO dao = new MypageCamDAO();
+		CamDetailDAO dao = new CamDetailDAO();
 		int camInsCnt = 0;
 		
 		if(vo.getCamRewardStatus() == 1) {
