@@ -4,6 +4,7 @@ package com.project_Ma.home.VO;
 public class PaymentVO {
 	private int payment_no;
 	private String user_id;
+	private String user_name;
 	private int cam_no;
 	private int reward_no;
 	private int funding_price;
@@ -47,11 +48,17 @@ public class PaymentVO {
 		return payment_no;
 	}
 
-
 	public void setPayment_no(int payment_no) {
 		this.payment_no = payment_no;
 	}
 
+	public String getUser_name() {
+		return user_name;
+	}
+
+	public void setUser_name(String user_name) {
+		this.user_name = user_name;
+	}
 
 	public String getUser_id() {
 		return user_id;

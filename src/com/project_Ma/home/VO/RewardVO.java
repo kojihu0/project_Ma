@@ -61,9 +61,13 @@ public class RewardVO {
 		this.delivery_ex_month = delivery_ex_month;
 	}
 	public String getDelivery_ex_date() {
+		delivery_ex_date = delivery_ex_year + "-" + delivery_ex_month;
 		return delivery_ex_date;
 	}
 	public void setDelivery_ex_date(String delivery_ex_date) {
+		String[] splitDate = delivery_ex_date.split("-");
+		delivery_ex_year = splitDate[0];
+		delivery_ex_month = splitDate[1];
 		this.delivery_ex_date = delivery_ex_date;
 	}
 	public String getDelivery_ex_date_detail() {

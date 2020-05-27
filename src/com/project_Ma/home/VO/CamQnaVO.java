@@ -1,23 +1,33 @@
 package com.project_Ma.home.VO;
 
 public class CamQnaVO {
-	private int commentNo;
+	private int qnaNo;
 	private String userid;
 	private int camNo;
-	private int commentParentNo;
-	private String commentContent;
-	private String commmentDate;
+	private int qnaParentNo;
+	private String qnaTitle;
+	private String qnaContent;
+	private String qnaSecret;
+	private String qnaRegi;
+	private int ansQnaNo;
+	private String ansUserid;
+	private int ansCamNo;
+	private int ansQnaParentNo;
+	private String ansQnaTitle;
+	private String ansQnaContent;
+	private String ansQnaSecret;
+	private String ansQnaRegi;
 	
 	public CamQnaVO() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public int getCommentNo() {
-		return commentNo;
+	public int getQnaNo() {
+		return qnaNo;
 	}
 
-	public void setCommentNo(int commentNo) {
-		this.commentNo = commentNo;
+	public void setQnaNo(int qnaNo) {
+		this.qnaNo = qnaNo;
 	}
 
 	public String getUserid() {
@@ -36,29 +46,107 @@ public class CamQnaVO {
 		this.camNo = camNo;
 	}
 
-	public int getCommentParentNo() {
-		return commentParentNo;
+	public int getQnaParentNo() {
+		return qnaParentNo;
 	}
 
-	public void setCommentParentNo(int commentParentNo) {
-		this.commentParentNo = commentParentNo;
+	public void setQnaParentNo(int qnaParentNo) {
+		this.qnaParentNo = qnaParentNo;
 	}
 
-	public String getCommentContent() {
-		return commentContent;
+	public String getQnaTitle() {
+		return qnaTitle;
 	}
 
-	public void setCommentContent(String commentContent) {
-		this.commentContent = commentContent;
+	public void setQnaTitle(String qnaTitle) {
+		this.qnaTitle = qnaTitle;
 	}
 
-	public String getCommmentDate() {
-		return commmentDate;
+	public String getQnaContent() {
+		return qnaContent;
 	}
 
-	public void setCommmentDate(String commmentDate) {
-		this.commmentDate = commmentDate;
+	public void setQnaContent(String qnaContent) {
+		this.qnaContent = qnaContent;
 	}
-	
-	
+
+	public String getQnaSecret() {
+		return qnaSecret;
+	}
+
+	public void setQnaSecret(String qnaSecret) {
+		this.qnaSecret = qnaSecret;
+	}
+
+	public String getQnaRegi() {
+		return qnaRegi;
+	}
+
+	public void setQnaRegi(String qnaRegi) {
+		this.qnaRegi = qnaRegi;
+	}
+
+	public int getAnsQnaNo() {
+		return ansQnaNo;
+	}
+
+	public void setAnsQnaNo(int ansQnaNo) {
+		this.ansQnaNo = ansQnaNo;
+	}
+
+	public String getAnsUserid() {
+		return ansUserid;
+	}
+
+	public void setAnsUserid(String ansUserid) {
+		this.ansUserid = ansUserid;
+	}
+
+	public int getAnsCamNo() {
+		return ansCamNo;
+	}
+
+	public void setAnsCamNo(int ansCamNo) {
+		this.ansCamNo = ansCamNo;
+	}
+
+	public int getAnsQnaParentNo() {
+		return ansQnaParentNo;
+	}
+
+	public void setAnsQnaParentNo(int ansQnaParentNo) {
+		this.ansQnaParentNo = ansQnaParentNo;
+	}
+
+	public String getAnsQnaTitle() {
+		return ansQnaTitle;
+	}
+
+	public void setAnsQnaTitle(String ansQnaTitle) {
+		this.ansQnaTitle = ansQnaTitle;
+	}
+
+	public String getAnsQnaContent() {
+		return ansQnaContent;
+	}
+
+	public void setAnsQnaContent(String ansQnaContent) {
+		this.ansQnaContent = ansQnaContent;
+	}
+
+	public String getAnsQnaSecret() {
+		return ansQnaSecret;
+	}
+
+	public void setAnsQnaSecret(String ansQnaSecret) {
+		this.ansQnaSecret = ansQnaSecret;
+	}
+
+	public String getAnsQnaRegi() {
+		return ansQnaRegi;
+	}
+
+	public void setAnsQnaRegi(String ansQnaRegi) {
+		this.ansQnaRegi = ansQnaRegi;
+	}
 }
