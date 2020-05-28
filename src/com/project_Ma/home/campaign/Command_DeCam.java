@@ -6,10 +6,12 @@ import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.project_Ma.home.Command_Interface;
 import com.project_Ma.home.DAO.CampaignDAO;
 import com.project_Ma.home.DAO.CamDetailDAO;
+import com.project_Ma.home.DAO.CamWishDAO;
 import com.project_Ma.home.DAO.RewardDAO;
 import com.project_Ma.home.VO.CamCommentVO;
 import com.project_Ma.home.VO.CamNoticeVO;
@@ -18,6 +20,7 @@ import com.project_Ma.home.VO.CampaignVO;
 import com.project_Ma.home.VO.CamDetailVO;
 import com.project_Ma.home.VO.PaymentVO;
 import com.project_Ma.home.VO.RewardVO;
+import com.project_Ma.home.VO.WishlistVO;
 
 public class Command_DeCam implements Command_Interface {
 
@@ -27,6 +30,9 @@ public class Command_DeCam implements Command_Interface {
 
 	@Override
 	public String processStart(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+		HttpSession session = req.getSession();
+		String currentUser = (String)session.getAttribute("user_id");
+		
 		CamDetailVO vo = new CamDetailVO();
 		
 		vo.setCamNo(Integer.parseInt(req.getParameter("cam_no")));
@@ -40,8 +46,18 @@ public class Command_DeCam implements Command_Interface {
 		
 		RewardDAO rdao = new RewardDAO();
 		List<RewardVO> rwList = rdao.allRewardList(camNo);
+		
+		//위시리스트
+		WishlistVO wvo = new WishlistVO();
+		wvo.setUserid(currentUser);
+		wvo.setCamNo(vo.getCamNo());
+		
+		CamWishDAO wdao = new CamWishDAO();
+		wdao.selectCamWish(wvo);
+		
 		System.out.println(vo.getUserid());
 		req.setAttribute("vo", vo); //캠페인정보
+		req.setAttribute("wvo", wvo);
 		req.setAttribute("rwList", rwList); //리워드정보
 		req.setAttribute("noticeLst", noticeLst);//업데이트(공지사항)
 		req.setAttribute("donatorLst", donatorLst);//후원자목록

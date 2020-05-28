@@ -47,7 +47,9 @@
 					<!--버튼--> 
 					<div class="mt-8 mb-4 flex justify-end">
 						<a href="#donate" class="btn-donate bg-brand hover:bg-brand-dark text-white py-2 px-4 w-1/2 rounded inline-block text-lg text-center font-bold">후원하기</a>
-						<a id="addWishList" href="/campaign/wishOk.do?cam_no=${vo.camNo}" class="add-wishlist relative ml-2 bg-white border border-gray-dark text-gray-dark w-12 rounded inline-block text-2xl text-center"><span class="wishlist-ico align-middle"></span></a>
+						<a id="addWishList" <c:if test="${wvo.wishNo=='' || wvo.wishNo==null}">href="<%=projectPath%>/campaign/camWishOk.do?cam_no=${vo.camNo}"</c:if> class="add-wishlist relative ml-2 bg-white border border-gray-dark text-gray-dark w-12 rounded inline-block text-2xl text-center">
+							${wvo.wishNo}<span class="wishlist-ico align-middle"></span>
+						</a>
 					</div>
 					<div class="share text-2xl text-gray-darker my-4 text-right">
 						<div class="inline-block w-10 h-10 leading-10 text-center mr-2"><i class="xi-share-alt"></i></div>
@@ -91,10 +93,10 @@
 							</div>
 						</div><!--스토리-->
 						<div id="updates" class="tab-content-item"><!--업데이트-->
-						<c:if test="${noticeLst == null || $noticeLst == '' }">
+						<c:if test="${fn:length(noticeLst)<=0}">
 							<p class="py-8 text-center">아직 이 캠페인에 대한 업데이트 내역이 없습니다.</p>
 						</c:if>
-						<c:if test="${noticeLst != null && $noticeLst != '' }">
+						<c:if test="${fn:length(noticeLst)>0}">
 							<ul class="campaign-update">
 							<c:forEach var="nvo" items="${noticeLst}">
 								<li class="relative px-4 mb-8">
@@ -150,16 +152,24 @@
 						<div id="comments" class="tab-content-item"><!--응원글-->
 							<h1 class="my-4">응원·의견</h1>
 							<div class="mb-8">
-								<form method="POST" action="<%=projectPath%>/campaign/camCommentOk.do?cam_no=${vo.camNo}" enctype="multipart/form-data" onsubmit="return campaign_comment_validation()" class="campaign-comment-form">
+								<c:if test="${loginStatus == null || loginStatus == '' || loginStatus =='N'}">
+								<div class="bg-warning-light border-t-4 border-warning rounded-b text-teal-900 px-4 py-3 shadow-md" role="alert">
+									<p class="text-warning-dark font-bold">로그인 해야 작성이 가능합니다.</p>
+								</div>
+								</c:if>
+								<c:if test="${loginStatus != null &&  loginStatus != '' && loginStatus=='Y'}">
+								<form method="POST" action="<%=projectPath%>/campaign/camCommentOk.do" onsubmit="return campaign_comment_validation()" class="campaign-comment-form">
 									<label for="comment_content"></label>
-									<textarea name="comment_content" id="comment_content" placeholder="로그인해야 응원글을 남길 수 있습니다." class="appearance-none border border-gray rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline h-24 bg-gray-lightest"></textarea>
+									<textarea name="comment_content" id="comment_content" placeholder="캠페인에 대해 따뜻한 응원 한 마디나 의견이 있다면 여기에 작성해주세요." class="appearance-none border border-gray rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline h-24 bg-gray-lightest"></textarea>
+									<input type="hidden" name="cam_no" value="${vo.camNo}"/>
 									<div class="text-right">
 										<input type="submit" value="응원하기" class="bg-brand hover:bg-brand-dark text-white font-bold py-2 px-4 rounded"/>
 									</div>
 								</form>
+								</c:if>
 							</div>
 							<ul class="campaign-comment-list">
-							<c:if test="${commentLst!='' && commentLst!=null}">
+							<c:if test="${fn:length(commentLst)>0}">
 								<c:forEach var="cvo" items="${commentLst}">
 								<li class="mb-8">
 									<c:if test="${cvo.commentParentNo == 0}">
@@ -176,36 +186,45 @@
 									</c:if>
 								</li>
 								</c:forEach>
+								<ul class="pagenation flex items-center justify-center my-4">
+									<li class="page-item disabled"><a class="page-link block py-1 px-2 hover:text-brand pointer-events-none" href="#"><i class="xi-angle-left-min"></i></a></li>
+									<li class="page-item acitve"><a class="page-link block py-1 px-2 hover:text-brand text-brand" href="#">1</a></li>
+									<li class="page-item"><a class="page-link block py-1 px-2 hover:text-brand" href="#">2</a></li>
+									<li class="page-item"><a class="page-link block py-1 px-2 hover:text-brand" href="#">3</a></li>
+									<li class="page-item"><a class="page-link block py-1 px-2 hover:text-brand" href="#">4</a></li>
+									<li class="page-item"><a class="page-link block py-1 px-2 hover:text-brand" href="#">5</a></li>
+									<li class="page-item"><a class="page-link block py-1 px-2 hover:text-brand" href="#"><i class="xi-angle-right-min"></i></a></li>
+								</ul>
 							</c:if>
-							<c:if test="${commentLst=='' || commentLst==null}">
+							<c:if test="${fn:length(commentLst)<=0}">
 								<p class="py-8 text-center">아직 이 캠페인에 대한 응원·의견이 없습니다.</p>
 							</c:if>
-							</ul>
-							<ul class="pagenation flex items-center justify-center my-4">
-								<li class="page-item disabled"><a class="page-link block py-1 px-2 hover:text-brand pointer-events-none" href="#"><i class="xi-angle-left-min"></i></a></li>
-								<li class="page-item acitve"><a class="page-link block py-1 px-2 hover:text-brand text-brand" href="#">1</a></li>
-								<li class="page-item"><a class="page-link block py-1 px-2 hover:text-brand" href="#">2</a></li>
-								<li class="page-item"><a class="page-link block py-1 px-2 hover:text-brand" href="#">3</a></li>
-								<li class="page-item"><a class="page-link block py-1 px-2 hover:text-brand" href="#">4</a></li>
-								<li class="page-item"><a class="page-link block py-1 px-2 hover:text-brand" href="#">5</a></li>
-								<li class="page-item"><a class="page-link block py-1 px-2 hover:text-brand" href="#"><i class="xi-angle-right-min"></i></a></li>
 							</ul>
 						</div><!--응원글-->
 						<div id="qna" class="tab-content-item"><!--문의-->
 							<h1 class="my-4">Q&A</h1>
 							<div>
-								<form method="POST" action="<%=projectPath%>/campaign/camQnaOk.do" enctype="multipart/form-data" class="campaign-qna-form" onsubmit="return campaign_qna_validation(this);">
+								<c:if test="${loginStatus == null || loginStatus == '' || loginStatus =='N'}">
+								<div class="bg-warning-light border-t-4 border-warning rounded-b text-teal-900 px-4 py-3 shadow-md" role="alert">
+									<p class="text-warning-dark font-bold">로그인 해야 작성이 가능합니다.</p>
+								</div>
+								</c:if>
+								<c:if test="${loginStatus != null &&  loginStatus != '' && loginStatus=='Y'}">
+								<form method="POST" action="<%=projectPath%>/campaign/camQnaOk.do" class="campaign-qna-form" onsubmit="return campaign_qna_validation(this);">
 									<div class="mb-4">
 										<input type="text" name="qna_title" id="qna_title" placeholder="제목" class="appearance-none border border-gray rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline bg-gray-lightest">
 									</div>
 									<div class="mb-4">
-										<textarea name="qna_question" id="qna_question" placeholder="로그인해야 문의 작성이 가능합니다." class="appearance-none border border-gray rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline h-24 bg-gray-lightest"></textarea>
+										<textarea name="qna_content" id="qna_question" placeholder="캠페인에 대해 궁금한 점이 있나요?" class="appearance-none border border-gray rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline h-24 bg-gray-lightest"></textarea>
+										<input type="hidden" name="cam_no" value="${vo.camNo}">
 									</div>
 									<div class="text-right mb-4">
-										<label for="is_secret" class="mr-4"><span class="mr-2">비밀글</span><input type="checkbox" name="is_secret" id="is_secret"/></label>
+										<label for="is_secret" class="mr-4"><span class="mr-2">비밀글</span><input type="checkbox" name="qna_secret" value="1" id="is_secret"/></label>
 										<input type="submit" value="등록" class="bg-brand hover:bg-brand-dark text-white font-bold py-2 px-4 rounded"/>
 									</div>
 								</form>
+								</c:if>
+								
 							</div>
 							<div class="campaign-qna-wrapper w-full">
 								<div class="table table-fixed w-full text-center font-bold border-b-2 border-gray">
@@ -214,6 +233,7 @@
 									<div class="table-cell w-24 p-4">작성자</div>
 									<div class="table-cell w-32 p-4">작성일</div>
 								</div>
+								<c:if test="${fn:length(qnaLst)>0}">
 								<ul class="campaign-qna-list w-full">
 									<c:forEach var="qvo" items="${qnaLst}">
 									<li>
@@ -239,14 +259,18 @@
 									</li>
 									</c:forEach>
 								</ul>
+								<ul class="pagenation flex items-center justify-center my-4">
+									<li class="page-item disabled"><a class="page-link block py-1 px-2 hover:text-brand pointer-events-none" href="#"><i class="xi-angle-left-min"></i></a></li>
+									<li class="page-item acitve"><a class="page-link block py-1 px-2 hover:text-brand text-brand" href="#">1</a></li>
+									<li class="page-item"><a class="page-link block py-1 px-2 hover:text-brand" href="#">2</a></li>
+									<li class="page-item"><a class="page-link block py-1 px-2 hover:text-brand" href="#">3</a></li>
+									<li class="page-item"><a class="page-link block py-1 px-2 hover:text-brand" href="#"><i class="xi-angle-right-min"></i></a></li>
+								</ul>
+								</c:if>
+								<c:if test="${fn:length(qnaLst)<=0}">
+									<p class="py-8 text-center">문의글이 없습니다.</p>
+								</c:if>
 							</div>
-							<ul class="pagenation flex items-center justify-center my-4">
-								<li class="page-item disabled"><a class="page-link block py-1 px-2 hover:text-brand pointer-events-none" href="#"><i class="xi-angle-left-min"></i></a></li>
-								<li class="page-item acitve"><a class="page-link block py-1 px-2 hover:text-brand text-brand" href="#">1</a></li>
-								<li class="page-item"><a class="page-link block py-1 px-2 hover:text-brand" href="#">2</a></li>
-								<li class="page-item"><a class="page-link block py-1 px-2 hover:text-brand" href="#">3</a></li>
-								<li class="page-item"><a class="page-link block py-1 px-2 hover:text-brand" href="#"><i class="xi-angle-right-min"></i></a></li>
-							</ul>
 						</div><!--문의-->
 					</div>
 				</div>
@@ -295,6 +319,23 @@
 	</div>
 	<script>
 	$(function(){
+		//폼 제출 후 탭
+		var hash = window.location.hash;
+		if(hash != ''){
+			hash=hash.replace('#', '');
+			var currentTab = $('#'+hash);
+			
+			//$('.campaign-tab-nav .tab-item').removeClass('active');
+	        //$('.campaign-tab-content .tab-content-item').removeClass('active');
+
+	        $("a[href='#"+hash+"']").trigger('click');
+	        //$('#'+hash).addClass('active');
+	        
+	        //$('html,body').animate({
+	        //    scrollTop: currentTab.offset().top
+	        //});
+		}
+		
 		//상단 슬라이더
 		$('.campaign-slider').slick({
 			infinite: true,
@@ -348,11 +389,13 @@
 	<c:if test="${loginStatus != null &&  loginStatus != '' && loginStatus=='Y'}">
 	<script>
 	//위시리스트
+	/*
 	$('#addWishList').on('click', function(e){
 		e.preventDefault();
 		$.ajax({
 			url: $(this).attr('href'),
 		});
 	});
+	*/
 	</script>
 	</c:if>

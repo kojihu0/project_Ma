@@ -12,6 +12,7 @@ import com.project_Ma.home.VO.CamQnaVO;
 import com.project_Ma.home.VO.CamDetailVO;
 import com.project_Ma.home.VO.PaymentVO;
 import com.project_Ma.home.VO.RewardVO;
+import com.project_Ma.home.VO.WishlistVO;
 
 public class CamDetailDAO extends ConnectionDB{
 
@@ -343,7 +344,7 @@ public class CamDetailDAO extends ConnectionDB{
 				vo.setCamNo(result.getInt(3));
 				vo.setQnaTitle(result.getString(4));
 				vo.setQnaContent(result.getString(5));
-				vo.setQnaSecret(result.getString(6));
+				vo.setQnaSecret(result.getInt(6));
 				vo.setQnaRegi(result.getString(7));
 				vo.setQnaParentNo(result.getInt(8));
 				vo.setAnsQnaNo(result.getInt(9));
@@ -363,5 +364,27 @@ public class CamDetailDAO extends ConnectionDB{
 			closeDB();
 		}
 		return camQnaList;
+	}
+	
+	public int insertCamQna(CamQnaVO vo) {
+		int cnt = 0;
+		try {
+			connDB();
+			sql = "insert into cam_qna(qna_no, user_id, cam_no, qna_title, qna_content, qna_secret, qna_parent_no, qna_regi)"
+					+ " values(cam_qna_sq.nextval, ?, ?, ?, ?, ?, 0, sysdate)";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, vo.getUserid());
+			pstmt.setInt(2, vo.getCamNo());
+			pstmt.setString(3, vo.getQnaTitle());
+			pstmt.setString(4, vo.getQnaContent());
+			pstmt.setInt(5, vo.getQnaSecret());
+			cnt = pstmt.executeUpdate();
+		} catch (Exception e) {
+			System.out.println("캠페인 코멘트 등록 에러");
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		return cnt;
 	}
 }

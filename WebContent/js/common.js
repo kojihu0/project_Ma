@@ -50,23 +50,6 @@ $(function(){
             submenu.slideUp(400);
         }
     });
-    // $('#site-navigation>.nav-menu>.menu-item.has-child').hover(
-    //     function(e){
-    //         e.stopPropagation();
-    //         var submenu = $(this).children('.sub-menu');
-    //         submenu.css('top', navHeight+'px');
-    //         submenu.slideDown(400, function(){
-    //             submenu.removeClass('hidden');
-    //         });
-    //     },
-    //     function(e){
-    //         e.stopPropagation();
-    //         var submenu = $(this).children('.sub-menu');
-    //         submenu.slideUp(400, function(){
-    //             submenu.addClass('hidden');
-    //         });
-    //     }
-    // );
 
     /* 메뉴 모달 검색창 */
     $('#search-ico').on('click', function(e){
@@ -102,10 +85,10 @@ $(function(){
         });
     });
 
-    $('a.add-wishlist').on('click', function(e){
-        e.preventDefault();
-        $(this).toggleClass('added-this');
-    });
+//    $('a.add-wishlist').on('click', function(e){
+//        e.preventDefault();
+//        $(this).toggleClass('added-this');
+//    });
 
     $('.campaign-tab-nav .tab-item a').on('click', function(e){
         e.preventDefault();

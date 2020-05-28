@@ -7,7 +7,7 @@ public class CamQnaVO {
 	private int qnaParentNo;
 	private String qnaTitle;
 	private String qnaContent;
-	private String qnaSecret;
+	private int qnaSecret;
 	private String qnaRegi;
 	private int ansQnaNo;
 	private String ansUserid;
@@ -70,11 +70,11 @@ public class CamQnaVO {
 		this.qnaContent = qnaContent;
 	}
 
-	public String getQnaSecret() {
+	public int getQnaSecret() {
 		return qnaSecret;
 	}
 
-	public void setQnaSecret(String qnaSecret) {
+	public void setQnaSecret(int qnaSecret) {
 		this.qnaSecret = qnaSecret;
 	}
 
