@@ -34,6 +34,7 @@ public class Command_Copor_EditOk implements Command_Interface {
 		
 		MemberDataDAO dao = new MemberDataDAO();
 		int cnt = dao.corpoDataUpdate(vo);
+		
 		request.setAttribute("cnt", cnt);
 		return "/mypage/coporEditOk.jsp";
 	}

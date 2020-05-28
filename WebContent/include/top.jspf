@@ -63,7 +63,7 @@
 								</ul>
 							</div>
 						</li> 
-						<li class="menu-item text-center flex items-center mr-2"><a href="<%=projectPath %>/about_us/about_us.do" class="inline-block py-8 px-4">회사 소개</a></li>
+						<li class="menu-item text-center flex items-center mr-2"><a href="<%=projectPath %>/about_us/about_Us.do" class="inline-block py-8 px-4">회사 소개</a></li>
 						<li class="menu-item text-center flex items-center mr-2"><a href="<%=projectPath %>/news/notice.do" class="inline-block py-8 px-4">새 소식</a></li>
 						<li class="menu-item text-center flex items-center mr-2"><a href="<%=projectPath %>/contact/serviceCenter.do" class="inline-block py-8 px-4">고객센터</a></li>
 						<li class="menu-item text-center flex items-center"><a href="#" data-target="#searchModal" id="search-ico" class="inline-block py-8 px-4"><i class="xi-search"></i></a></li>

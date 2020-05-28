@@ -20,12 +20,11 @@ public class Command_Copor_Edit implements Command_Interface {
 	@Override
 	public String processStart(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-			HttpSession ses = request.getSession();
-				
+				HttpSession ses = request.getSession();
 				MemberVO vo = new MemberVO();
 				vo.setUser_id((String) ses.getAttribute("user_id"));
 				MemberDataDAO dao = new MemberDataDAO();
-				dao.userDataSelect(vo);
+				dao.corpoDataSelect(vo);
 				request.setAttribute("vo", vo);
 				
 				return "/mypage/coporatePage.jsp";

@@ -1,45 +1,52 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 	<ul class="mpMenu flex">
-			  <li class="flex-1 mr-2">
-			    <a class="text-center block border  rounded py-3 px-5 bg-danger hover:bg-danger-dark text-white" href="<%=projectPath %>/mypage/coporatePage.do">법인 정보</a>
-			  </li>
-			  <li class="flex-1 mr-2">
-			    <a class="text-center block border  rounded py-3 px-5 bg-danger-dark hover:bg-danger-dark text-white" href="<%=projectPath %>/mypage/campaignControlPage.do">캠페인 관리</a>
-			  </li>
-			  <li class="flex-1 mr-2">
-			    <a class="text-center block border  rounded py-3 px-5 bg-danger hover:bg-danger-dark text-white" href="<%=projectPath%>/mypage/campaignWrite.do">캠페인 등록</a>
-			  </li>
-			 </ul>
-			 <!--캠페인관리-->
-		 	 <div id="explain" class="w-full max-w-screen-xl my-2 mx-auto border-solid border-gray border-b  my-1 text-4xl py-4">캠페인 관리</div>
-	 			
-	 				<table id="table" class="table-auto">
-					  <thead>
-					    <tr>
-					      <th class="px-4 py-2">등록 번호</th>
-					      <th class="px-4 py-2">캠페인 명</th>
-					      <th class="px-4 py-2">등록 일자</th>
-					    </tr>
-					  </thead>
-					  <tbody>
-					    <tr class="text-center">
-					      <td class="border px-4 py-2">1</td>
-					      <td class="border px-4 py-2"><a href="/project_Ma/mypage/campaign_update.html">기아에 허덕이는 아프리카 국민들을 위한 펀딩 프로젝트</a></td>
-					      <td class="border px-4 py-2">858</td>
-					    </tr>
-					    <tr class="text-center">
-					      <td class="border px-4 py-2">2</td>
-					      <td class="border px-4 py-2">Adam</td>
-					      <td class="border px-4 py-2">112</td>
-					    </tr>
-					    <tr class="text-center">
-					      <td class="border px-4 py-2">3</td>
-					      <td class="border px-4 py-2">Chris</td>
-					      <td class="border px-4 py-2">1,280</td>
-					    </tr>
-					  </tbody>
-					</table>
-			</div><!-- 페이지 내용 #content -->
+	  <li class="flex-1 mr-2">
+	    <a class="text-center block border  rounded py-3 px-5 bg-danger hover:bg-danger-dark text-white" href="<%=projectPath %>/mypage/coporatePage.do">법인 정보</a>
+	  </li>
+	  <li class="flex-1 mr-2">
+	    <a class="text-center block border  rounded py-3 px-5 bg-danger-dark hover:bg-danger-dark text-white" href="<%=projectPath %>/mypage/campaignControlPage.do">캠페인 관리</a>
+	  </li>
+	  <li class="flex-1 mr-2">
+	    <a class="text-center block border  rounded py-3 px-5 bg-danger hover:bg-danger-dark text-white" href="<%=projectPath%>/mypage/campaignWrite.do">캠페인 등록</a>
+	  </li>
+	   <li class="flex-1 mr-2">
+	    <a class="text-center block border border-blue-500 rounded py-3 px-5 bg-danger hover:bg-danger-dark text-white" href="<%=projectPath %>/mypage/copor_Spon.do">후원 목록</a>
+	  </li>
+	</ul>
+	 <!--캠페인관리-->
+
+ 	<div id="explain" class="w-full max-w-screen-xl my-2 mx-auto border-solid border-gray border-b  my-1 text-4xl py-4">
+ 		캠페인 관리
+ 	</div>
+ 	
+ 		<c:forEach var="vo" items="${list}">
+			<div class="w-full max-w-4xl mx-auto my-8">
+				<div class="max-w-sm w-full lg:max-w-full lg:flex mb-8">
+		  			<div class="w-1/3 flex-none bg-cover rounded-t rounded-t-none rounded-l text-center overflow-hidden" title="Woman holding a mug">
+						<a href="<%=projectPath%>/mypage/campaignUpdate.do"><img class="w-full h-full object-cover"src="<%=projectPath%>/img/${vo.cam_img}"/></a> 			 
+		  			</div>
+		  			<a href="<%=projectPath %>/mypage/campaign">
+		  			
+		  			<input type="hidden" name="cam_no" value="${vo.cam_no}">
+		 		 <div class="w-2/3 border-r border-b border-l border-gray-light border-l-0 border-t border-gray-light bg-white rounded-b rounded-b-none rounded-r p-4 flex flex-col justify-between leading-normal">
+		 		 <a href="<%=projectPath%>/mypage/campaignUpdate.do">
+		    		<div>
+				      <p class="text-sm text-gray-darker flex items-center">
+				     	<div  class="font-bold text-xl mb-2">${vo.cam_title}</div>
+				      <p class="text-gray text-base">${vo.cam_desc}</p>
+		   			  <p class="mt-4 text-gray-darkest">목표금액:${vo.cam_goal_price}원 &nbsp;&nbsp;&nbsp;&nbsp;등록 날짜:${vo.cam_start}</p>
+		       		  <div class="relative w-full h-2 rounded-md bg-info-light mt-8">
+		             	<div class="absolute w-1/5 h-full border-solid border-gray border bg-danger rounded-md"></div>
+		             	<label class="text-danger font-semibold" style="font-size:14px;float:right;margin-top:15px">6일남음</label>
+			    	  </div>
+			  		</div>
+			  		
+			  		</a>
+			 	</div>
+		 		</div>
+			</div>
+			
+		</c:forEach>
 </body>
 </html>

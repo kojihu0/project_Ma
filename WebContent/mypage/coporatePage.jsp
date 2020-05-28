@@ -9,13 +9,16 @@
 <body>
 	<ul class="mpMenu flex">
 	  <li class="flex-1 mr-2">
-	    <a class="text-center block border border-blue-500 rounded py-3 px-5 bg-danger-dark hover:bg-danger-dark text-white" href="<%=projectPath%>/mypage/corporatePage.do">법인 정보</a>
+	    <a class="text-center block border border-blue-500 rounded py-3 px-5 bg-danger-dark hover:bg-danger-dark text-white" href="<%=projectPath%>/mypage/coporatePage.do">법인 정보</a>
 	  </li>
 	  <li class="flex-1 mr-2">
 	    <a class="text-center block border border-blue-500 rounded py-3 px-5 bg-danger hover:bg-danger-dark text-white" href="<%=projectPath%>/mypage/campaignControlPage.do">캠페인 관리</a>
 	  </li>
 	  <li class="flex-1 mr-2">
 	    <a class="text-center block border border-blue-500 rounded py-3 px-5 bg-danger hover:bg-danger-dark text-white" href="<%=projectPath%>/mypage/campaignWrite.do">캠페인 등록</a>
+	  </li>
+	   <li class="flex-1 mr-2">
+	    <a class="text-center block border border-blue-500 rounded py-3 px-5 bg-danger hover:bg-danger-dark text-white" href="<%=projectPath %>/mypage/copor_Spon.do">후원 목록</a>
 	  </li>
 	 </ul>
 <div id="myInformation" class="tab-content"><!-- 내정보 탭-->
@@ -29,7 +32,7 @@
 			      <label class="block uppercase tracking-wide text-gray-darker text-xs font-bold mb-2" for="grid-name">
 			       representative name
 			      </label>
-			      <input value="${vo.corpo_name}" class="appearance-none block w-full  text-gray-darkest text-2xl border-b border-info  py-5 px-5 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-danger" id="grid-name" type="text">
+			      <input name="user_name" value="${vo.user_name}" class="appearance-none block w-full  text-gray-darkest text-2xl border-b border-info  py-5 px-5 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-danger" id="grid-name" type="text">
 			    </div> 
 			  </div>
 			  <div class="flex flex-wrap -mx-3 mb-6">
@@ -37,7 +40,7 @@
 			      <label class="block uppercase tracking-wide text-gray-darker text-xs font-bold mb-2" for="grid-name">
 			       Corporate name
 			      </label>
-			      <input value="${vo.corpo_name}" class="appearance-none block w-full  text-gray-darkest text-2xl border-b border-info  py-5 px-5 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-danger" id="grid-name" type="text">
+			      <input name="corpo_name" value="${vo.corpo_name}" class="appearance-none block w-full  text-gray-darkest text-2xl border-b border-info  py-5 px-5 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-danger" id="grid-name" type="text">
 			    </div>
 			  </div>
 			  <div class="flex flex-wrap -mx-3 mb-6">
@@ -45,7 +48,7 @@
 			      <label class="block uppercase tracking-wide text-gray-darker text-xs font-bold mb-2" for="grid-name">
 			    	Business license number
 			      </label>
-			      <input value="${vo.corpo_regi_no}" class="appearance-none block w-full  text-gray-darkest text-2xl border-b border-info  py-5 px-5 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-danger" id="grid-name" type="text">
+			      <input name="corpo_regi_no" value="${vo.corpo_regi_no}" class="appearance-none block w-full  text-gray-darkest text-2xl border-b border-info  py-5 px-5 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-danger" id="grid-name" type="text">
 			    </div>
 			  </div>
 			  <div class="flex flex-wrap -mx-3 mb-6">
@@ -53,7 +56,7 @@
 			      <label class="block uppercase tracking-wide text-gray-darker text-xs font-bold mb-2" for="grid-name">
 			       Corporate registration number
 			      </label>
-			      <input value="${vo.corpo_no}" class="appearance-none block w-full  text-gray-darkest text-2xl border-b border-info  py-5 px-5 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-danger" id="grid-name" type="text">
+			      <input name="corpo_no" value="${vo.corpo_no}" class="appearance-none block w-full  text-gray-darkest text-2xl border-b border-info  py-5 px-5 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-danger" id="grid-name" type="text">
 			    </div>
 			  </div>
 			  <div class="flex flex-wrap -mx-3 mb-6">
@@ -61,7 +64,7 @@
 			      <label class="block uppercase tracking-wide text-gray-darker text-xs font-bold mb-2" for="grid-id">
 			        ID
 			      </label>
-			      <input readonly="readonly" value="${vo.user_id}" class="appearance-none block w-full  text-gray-darkest text-2xl border-b border-info   py-5 px-5 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-danger" id="grid-id" type="text">
+			      <input name="user_id" readonly="readonly" value="${vo.user_id}" class="appearance-none block w-full  text-gray-darkest text-2xl border-b border-info   py-5 px-5 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-danger" id="grid-id" type="text">
 			    </div>
 			  </div>
 			  
@@ -70,7 +73,7 @@
 			      <label class="block uppercase tracking-wide text-gray-darker text-xs font-bold mb-2" for="grid-password">
 			        Password
 			      </label>
-			      <input value="${vo.user_pw}" class="appearance-none block w-full bg-gray-200 text-gray-darkest text-2xl border-b border-info border-gray-200  py-5 px-5 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-danger" id="grid-password" type="password">
+			      <input name="user_pw" value="${vo.user_pw}" class="appearance-none block w-full bg-gray-200 text-gray-darkest text-2xl border-b border-info border-gray-200  py-5 px-5 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-danger" id="grid-password" type="password">
 			      <input data-target="#passwordUpdate" id="move-ico" type="submit" value="비밀번호 변경" class="absolute bg-danger text-white bg-blue-500 hover:bg-blue-700 text-white font-bold py-4 px-5 rounded">
 			    </div>
 			  </div>
@@ -80,7 +83,7 @@
 			      <label class="block uppercase tracking-wide text-gray-darker text-xs font-bold mb-2" for="grid-email">
 			        E-mail
 			      </label>
-			      <input value="${vo.user_email}" class="appearance-none block w-full  text-gray-darkest text-2xl border-b border-info border-gray-200  py-5 px-5 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-danger" id="grid-email" type="text">
+			      <input name="user_email"value="${vo.user_email}" class="appearance-none block w-full  text-gray-darkest text-2xl border-b border-info border-gray-200  py-5 px-5 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-danger" id="grid-email" type="text">
 			    </div>
 			  </div>
 			  <div class="flex flex-wrap -mx-3 mb-6">
@@ -88,7 +91,7 @@
 			      <label class="block uppercase tracking-wide text-gray-darker text-xs font-bold mb-2" for="grid-password">
 			        tel
 			      </label>
-			      <input value="${vo.user_tel}" class="appearance-none block w-full  text-gray-darkest text-2xl border-b border-info border-gray-200  py-5 px-5 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-danger" id="grid-password" type="text">
+			      <input name="user_tel" value="${vo.user_tel}" class="appearance-none block w-full  text-gray-darkest text-2xl border-b border-info border-gray-200  py-5 px-5 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-danger" id="grid-password" type="text">
 			    </div>
 			  </div>
 			    <div class="flex flex-wrap -mx-3 mb-6">
@@ -96,7 +99,7 @@
 			      <label class="block uppercase tracking-wide text-gray-darker text-xs font-bold mb-2" for="grid-address">
 			       Address
 			      </label>
-			      <input value="${vo.addr_no}" class="appearance-none block w-full  text-gray-darkest text-2xl border-b border-info py-5 px-5 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-danger" id="grid-address" type="text">
+			      <input name="addr_no" value="${vo.addr_no}" class="appearance-none block w-full  text-gray-darkest text-2xl border-b border-info py-5 px-5 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-danger" id="grid-address" type="text">
 			     <input id="move-ico" type="submit" value="우편번호 검색" class="absolute bg-danger text-white bg-blue-500 hover:bg-blue-700 text-white font-bold py-4 px-5 rounded">
 			    </div>
 			  </div>
@@ -105,13 +108,13 @@
 			      <label class="block uppercase tracking-wide text-gray-darker text-xs font-bold mb-2" for="grid-main">
 			        main
 			      </label>
-			      <input value="${vo.addr_main}" class="appearance-none block w-full  text-gray-darkest text-2xl border-b border-info py-5 px-5 leading-tight focus:outline-none focus:bg-white focus:border-danger" id="grid-main" type="text">
+			      <input name="addr_main" value="${vo.addr_main}" class="appearance-none block w-full  text-gray-darkest text-2xl border-b border-info py-5 px-5 leading-tight focus:outline-none focus:bg-white focus:border-danger" id="grid-main" type="text">
 			    </div>
 			    <div class="w-full md:w-3/6 px-3 mb-6 md:mb-0">
 			      <label class="block uppercase tracking-wide text-gray-darker text-xs font-bold mb-2" for="grid-sub">
 			        sub
 			      </label>
-			      <input value="${vo.addr_sub}" class="appearance-none block w-full  text-gray-darkest text-2xl border-b border-info py-5 px-5 leading-tight focus:outline-none focus:bg-white focus:border-danger" id="grid-sub" type="text">
+			      <input name="addr_sub" value="${vo.addr_sub}" class="appearance-none block w-full  text-gray-darkest text-2xl border-b border-info py-5 px-5 leading-tight focus:outline-none focus:bg-white focus:border-danger" id="grid-sub" type="text">
 			    </div>
 			    </div>
 			    <div style="width:200px;height:110px; margin : 0 auto ">
@@ -136,7 +139,7 @@
 		<div class="md:w-3/4  mt-4 m-0 m-auto">
 			<input name="user_id" class="bg-gray-200 appearance-none border-2 border-info rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-info-dark"type="text" placeholder="아이디">
 		</div>
-		<div class="md:w-3/4  mt-4 m-0 m-auto">
+		<div class="md:w-3/4  mt-4 m-0 sm-auto">
 			<input name="user_pw" class="bg-gray-200 appearance-none border-2 border-info rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-info-dark"id="modalDelPwChk" type="password" placeholder="비밀번호">
 		</div>
 		<div class="md:w-3/4  mt-4 m-0 m-auto">

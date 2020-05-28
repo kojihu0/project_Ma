@@ -13,9 +13,7 @@ public class Command_User_Edit implements Command_Interface {
 	@Override
 	public String processStart(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-			//세션의 아이디와 일치하는 정보 선택하여 뷰페이지 보낸다 
 		HttpSession ses = request.getSession();
-		
 		MemberVO vo = new MemberVO();
 		vo.setUser_id((String) ses.getAttribute("user_id"));
 		MemberDataDAO dao = new MemberDataDAO();
