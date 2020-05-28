@@ -277,7 +277,7 @@
 							<p class="text-brand mb-2">제한수량 ${rvo.reward_quantity}개 <span class="ml-2 px-2 bg-brand-light text-brand">90개 남음</span></p>
 							<p>10개 후원됨</p>
 						</div>
-						<a href="<%=projectPath %>/payment/paymentProcess.do?reward_no=${rvo.reward_no}&reward_status=${vo.camRewardStatus}" class="overlay absolute block top-0 bottom-0 left-0 w-full bg-brand opacity-0 hover:opacity-75 duration-300">
+						<a href="<%=projectPath %>/payment/paymentProcess.do?camNo=${vo.camNo}&reward_no=${rvo.reward_no}&reward_status=${vo.camRewardStatus}" class="overlay absolute block top-0 bottom-0 left-0 w-full bg-brand opacity-0 hover:opacity-75 duration-300">
 							<span class="donate-this absolute text-white font-bold text-lg">후원하기</span>
 						</a>
 					</div>
@@ -286,7 +286,7 @@
 				<c:if test="${vo.camRewardStatus == 0}">
 					<div class="reward-item relative my-4 p-8 bg-white border border-gray">
 						<p>리워드 없이 후원하기</p>
-						<a href="<%=projectPath %>/payment/paymentProcess.do?reward_status=${vo.camRewardStatus}" class="overlay absolute block top-0 bottom-0 left-0 w-full bg-brand opacity-0 duration-300">
+						<a href="<%=projectPath %>/payment/paymentProcess.do?camNo=${vo.camNo}&reward_status=${vo.camRewardStatus}" class="overlay absolute block top-0 bottom-0 left-0 w-full bg-brand opacity-0 duration-300">
 							<span class="donate-this absolute text-white font-bold text-lg">후원하기</span>
 						</a>
 					</div>

@@ -55,7 +55,7 @@
 								<div class="mid_cam_img rounded-lg my-4 my-0 mx-auto border-solid border-4 border-gray">
 									<a href="<%=projectPath %>/campaign/detail_Campaign.do?no=${lst.cam_no}"><img src="<%=projectPath %>/img/${lst.cam_img_path}" alt="${lst.cam_title }" /></a>
 								</div> 
-								<div class="mid_cam_name"><a href="<%=projectPath %>/campaign/detail_Campaign.do?no=${lst.cam_no}">${lst.cam_title }</a></div>
+								<div class="mid_cam_name"><a href="<%=projectPath %>/campaign/detail_Campaign.do?cam_no=${lst.cam_no}">${lst.cam_title }</a></div>
 								<div class="flex pre_date rounded-lg mt-2 my-0 mx-auto">
 									<div class="mid-genre">자선캠페인</div>
 									<div class="mid_bar_div flex-initial">

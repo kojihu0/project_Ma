@@ -8,15 +8,25 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.project_Ma.home.Command_Interface;
 import com.project_Ma.home.DAO.PaymentDAO;
+import com.project_Ma.home.VO.CampaignVO;
 import com.project_Ma.home.VO.PaymentVO;
+import com.project_Ma.home.VO.RewardVO;
 
 public class Command_PaymentCompletedOk implements Command_Interface {
+	CampaignVO cvo = new CampaignVO();
 	PaymentVO vo = new PaymentVO();
+	RewardVO rvo = new RewardVO();
 	PaymentDAO dao = new PaymentDAO();
 	@Override
 	public String processStart(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
+		
+		cvo.setCam_no(Integer.parseInt("cam_no"));
+		cvo.setCam_reward_status(Integer.parseInt("cam_reward_status"));
+		vo.setReward_no(Integer.parseInt("reward_no"));
+	
 		vo.setFunding_price(Integer.parseInt(request.getParameter("funding_price")));
+		
 		if(request.getParameter("name_anonymous")==null) {
 			vo.setName_anonymous(0);
 		}else {
@@ -28,10 +38,12 @@ public class Command_PaymentCompletedOk implements Command_Interface {
 			vo.setPrice_anonymous(Integer.parseInt(request.getParameter("price_anonymous")));
 		}
 		if(request.getParameter("delivery_memo")==null || request.getParameter("delivery_memo")=="") {
-			vo.setDelivery_memo("æ¯¿Ω");
+			vo.setDelivery_memo("ÏóÜÏùå");
 		}else {
 			vo.setDelivery_memo(request.getParameter("delivery_memo"));
 		}
+		
+		vo.setPayment_card_num(Integer.parseInt(request.getParameter("payment_card_num")));
 		vo.setReciever(request.getParameter("reciever"));
 		vo.setId(request.getParameter("id"));
 		vo.setDomain(request.getParameter("domain"));
@@ -55,10 +67,14 @@ public class Command_PaymentCompletedOk implements Command_Interface {
 		}else{
 			vo.setAdd_price(Integer.parseInt(request.getParameter("add_price")));
 		}
+
+		int result = dao.insertPayRecord(vo, cvo);
+		dao.getpaymentinfo(cvo, rvo, vo);
 		
-		int result = dao.insertPayRecord(vo);
 		request.setAttribute("result", result);
 		request.setAttribute("vo", vo);
+		request.setAttribute("cvo", cvo);
+		request.setAttribute("rvo", rvo);
 		return "/payment/paymentCompleted.jsp";
 	}
 

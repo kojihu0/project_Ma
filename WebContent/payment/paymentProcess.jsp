@@ -6,10 +6,11 @@
 <meta http-equiv="Content-Type" charset="text/html; UTF-8">
 <title>paymentProcess</title>
 <meta name="viewport" content="width=device-width, initial-scale=1"/> 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script type="text/JavaScript" src="http://code.jquery.com/jquery-1.7.min.js"></script>
+
+
 <script type="text/JavaScript" src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script type="text/javascript">
+
 $(function(){
 	$("input:checkbox").on("click", function(){
 		if($("#name_anonymous").prop("checked")){
@@ -24,8 +25,6 @@ $(function(){
 		}
 	});
 });
-	
-	
 	function openDaumZipAddress() {
 		new daum.Postcode({
 			oncomplete:function(data) {
@@ -36,16 +35,19 @@ $(function(){
 			}
 		}).open();
 	}
+	
+	
+	
 </script>
 </head>
 <body>
-<form method="post" action="<%=projectPath%>/payment/paymentCompletedOk.do" onsubmit="return pay()">
+<form method="post" action="<%=projectPath%>/payment/paymentCompletedOk.do?cam_no=${cvo.cam_no}&cam_reward_status=${cvo.cam_reward_status}&reward_no=${vo.reward_no}" onsubmit="return pay()">
 	<div class="w-full max-w-screen-xl my-12 mx-auto">
 				<div class="flex my-5">
 					<div class="border w-40 h-8 text-center bg-danger text-white rounded">펀딩금액</div>
 					<div>
 						<a id="a"><div class="ml-24">펀딩금액이 많은이들에게 큰도움이 됩니다.</div></a>
-						<div class="ml-24 mt-3"><input type="text" class="border h-12 text-center rounded" name="funding_price" id="fund" value="${vo.reward_price}" >원을 후원합니다</div>
+						<div class="ml-24 mt-3"><input type="text" class="border h-12 text-center rounded" name="funding_price" id="fund" value="${vo.reward_price}" readonly >원을 후원합니다</div>
 						<div class="text-danger ml-24 hidden" id="a1">펀딩금액을 입력해주세요.</div>
 						<div class="text-danger ml-24 hidden" id="a2">숫자를 입력해주세요.</div>
 					</div>
@@ -93,98 +95,100 @@ $(function(){
 						<div class="ml-24 leading-8">총 <span id="total" name="total_price">0</span>원을 후원합니다</div>
 					</div>
 				</div>
-				<div class="my-5 text-xl">배송지 정보</div>
-				<div class="flex my-5">
-					<div>수령인<i class="xi-star text-xl" style="color:rgb(255,153,000)"></i></div>
-					<a id="b"><input type="text" class="border h-8 ml-24 rounded" name="reciever" id="name"/></a>
-					<div class="text-danger ml-5 hidden" id="b1">수령인을 한글(2~7자리)로 입력해주세요.</div>
-				</div>
-				<div class="flex my-5">
-					<div>이메일<i class="xi-star text-xl" style="color:rgb(255,153,000)"></i></div>
-					<a id="f"><div>  
-						<input type="text" name="id" class="border h-8 ml-24 rounded email1"/>@  
-						<input id="domain" name="domain" type="text" class="border h-8 text-center rounded email2"/> 	
-						<div class="inline-block relative w-40">
-							<select id="email" onclick="inputDomain()" class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
-								<option>직접입력</option>
-							    <option>naver.com</option>
-							    <option>daum.net</option>
-							    <option>gmail.com</option>
-							    <option>hotmail.com</option>
-							    <option>nate.com</option>
-							    <option>korea.com</option>
-							    <option>chollian.net</option>
-						  	 </select>
-						  	 <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-				    			<svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
-				  			</div>
-			 			</div>
-			 			<div class="text-danger hidden" id="f1" style="margin-left:250px">이메일을 입력해주세요.</div>
-			 			<div class="text-danger hidden" id="f2" style="margin-left:250px">잘못된 이메일형식입니다. 다시입력해주세요.</div>
-					</div></a>
-				</div>
+				<c:if test="${cvo.cam_reward_status==1}">
+					<div class="my-5 text-xl">배송지 정보</div>
 					<div class="flex my-5">
-					<div>연락처1<i class="xi-star text-xl" style="color:rgb(255,153,000)"></i></div>
-					<a id="c"><div class="ml-24 flex">
-					     <div class="h-8 w-40 text-center">010</div>
-				 		- <input type="text" name="reward_phone1" class="border h-8 ml-1 mr-1 text-center rounded tel1" maxlength="4"/>
-						- <input type="text" name="reward_phone2" class="border h-8 ml-1 text-center rounded tel2" maxlength="4"/>
-					</div></a>
-					<div class="text-danger ml-5 hidden" id="c1">연락처를 입력해주세요.</div>
-					<div class="text-danger ml-5 hidden" id="c2">숫자 4자리를 입력해주세요.</div>
-				</div>
-				<div class="flex my-5">
-					<a id="n"><div>연락처2</div></a>
-					<div>
-						<div class="inline-block relative w-40 ml-24">
-							<select name="reward_tel1" class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
-								   <option>02</option>
-								   <option>051</option>
-								   <option>053</option>
-								   <option>032</option>
-								   <option>062</option>
-								   <option>042</option>
-								   <option>052</option>
-								   <option>044</option>
-								   <option>031</option>
-								   <option>033</option>
-								   <option>043</option>
-								   <option>063</option>
-								   <option>061</option>
-								   <option>054</option>
-								   <option>055</option>
-								   <option>064</option>
-							  </select>
-							<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-					    		<svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
-					  		</div>
-				 		</div>
-				 		- <input name="reward_tel2" type="text" class="border h-8 text-center rounded tel3" maxlength="4"/>
-						- <input name="reward_tel3" type="text" class="border h-8 text-center rounded tel4" maxlength="4"/>
-						<div class="text-danger hidden" style="margin-left:300px;"id="n1">숫자를 입력해주세요.</div>
-						<div class="text-danger hidden" style="margin-left:300px;" id="n2">잘못된 연락처입니다. 다시 입력해주세요.</div>
+						<div>수령인<i class="xi-star text-xl" style="color:rgb(255,153,000)"></i></div>
+						<a id="b"><input type="text" class="border h-8 ml-24 rounded" name="reciever" id="name"/></a>
+						<div class="text-danger ml-5 hidden" id="b1">수령인을 한글(2~7자리)로 입력해주세요.</div>
 					</div>
-				</div>
-				<div class="flex my-5">
-					<div>배송지<i class="xi-star text-xl" style="color:rgb(255,153,000)"></i></div>
-					<a id="d"><div class="ml-24">
-						<div class="flex">
-							<input id="reward_addr_num" name="reward_addr_num" type="text" class="border h-8 w-32 rounded addr1 text-center" maxlength="5" readonly/>
-							<input type="button" onClick="openDaumZipAddress();" class="ml-3 border rounded w-20" value="주소검색"/>
-							<div class="text-danger ml-5 hidden" id="d1">주소를 입력해주세요.</div>
-							<div class="text-danger ml-5 hidden" id="d2">잘못된 형식입니다. 다시 입력해주세요</div>
+					<div class="flex my-5">
+						<div>이메일<i class="xi-star text-xl" style="color:rgb(255,153,000)"></i></div>
+						<a id="f"><div>  
+							<input type="text" name="id" class="border h-8 ml-24 rounded email1"/>@  
+							<input id="domain" name="domain" type="text" class="border h-8 text-center rounded email2"/> 	
+							<div class="inline-block relative w-40">
+								<select id="email" onclick="inputDomain()" class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
+									<option>직접입력</option>
+								    <option>naver.com</option>
+								    <option>daum.net</option>
+								    <option>gmail.com</option>
+								    <option>hotmail.com</option>
+								    <option>nate.com</option>
+								    <option>korea.com</option>
+								    <option>chollian.net</option>
+							  	 </select>
+							  	 <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+					    			<svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+					  			</div>
+				 			</div>
+				 			<div class="text-danger hidden" id="f1" style="margin-left:250px">이메일을 입력해주세요.</div>
+				 			<div class="text-danger hidden" id="f2" style="margin-left:250px">잘못된 이메일형식입니다. 다시입력해주세요.</div>
+						</div></a>
+					</div>
+						<div class="flex my-5">
+						<div>연락처1<i class="xi-star text-xl" style="color:rgb(255,153,000)"></i></div>
+						<a id="c"><div class="ml-24 flex">
+						     <div class="h-8 w-40 text-center">010</div>
+					 		- <input type="text" name="reward_phone1" class="border h-8 ml-1 mr-1 text-center rounded tel1" maxlength="4"/>
+							- <input type="text" name="reward_phone2" class="border h-8 ml-1 text-center rounded tel2" maxlength="4"/>
+						</div></a>
+						<div class="text-danger ml-5 hidden" id="c1">연락처를 입력해주세요.</div>
+						<div class="text-danger ml-5 hidden" id="c2">숫자 4자리를 입력해주세요.</div>
+					</div>
+					<div class="flex my-5">
+						<a id="n"><div>연락처2</div></a>
+						<div>
+							<div class="inline-block relative w-40 ml-24">
+								<select name="reward_tel1" class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
+									   <option>02</option>
+									   <option>051</option>
+									   <option>053</option>
+									   <option>032</option>
+									   <option>062</option>
+									   <option>042</option>
+									   <option>052</option>
+									   <option>044</option>
+									   <option>031</option>
+									   <option>033</option>
+									   <option>043</option>
+									   <option>063</option>
+									   <option>061</option>
+									   <option>054</option>
+									   <option>055</option>
+									   <option>064</option>
+								  </select>
+								<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+						    		<svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+						  		</div>
+					 		</div>
+					 		- <input name="reward_tel2" type="text" class="border h-8 text-center rounded tel3" maxlength="4"/>
+							- <input name="reward_tel3" type="text" class="border h-8 text-center rounded tel4" maxlength="4"/>
+							<div class="text-danger hidden" style="margin-left:300px;"id="n1">숫자를 입력해주세요.</div>
+							<div class="text-danger hidden" style="margin-left:300px;" id="n2">잘못된 연락처입니다. 다시 입력해주세요.</div>
 						</div>
-						<input id="reward_addr_main" name="reward_addr_main" type="text" class="border mt-3 h-8 rounded addr2" style="width:630px" readonly>
-						<div><input id="reward_addr_sub" name="reward_addr_sub" type="text" class="border mt-3 h-8 rounded" style="width:315px"placeholder="상세주소"></div>
-					</div></a>
-				</div>
-				<div class="flex my-5">
-					<div>배송메모</div>
-					<div class="ml-20">
-						<textarea id="delivery_memo" name="delivery_memo" class="border rounded" style="width:640px; height:100px;" maxlength="100"></textarea>
-						<div><span id="txtLength">0</span>/100</div>
 					</div>
-				</div>
+					<div class="flex my-5">
+						<div>배송지<i class="xi-star text-xl" style="color:rgb(255,153,000)"></i></div>
+						<a id="d"><div class="ml-24">
+							<div class="flex">
+								<input id="reward_addr_num" name="reward_addr_num" type="text" class="border h-8 w-32 rounded addr1 text-center" maxlength="5" readonly/>
+								<input type="button" onClick="openDaumZipAddress();" class="ml-3 border rounded w-20" value="주소검색"/>
+								<div class="text-danger ml-5 hidden" id="d1">주소를 입력해주세요.</div>
+								<div class="text-danger ml-5 hidden" id="d2">잘못된 형식입니다. 다시 입력해주세요</div>
+							</div>
+							<input id="reward_addr_main" name="reward_addr_main" type="text" class="border mt-3 h-8 rounded addr2" style="width:630px" readonly>
+							<div><input id="reward_addr_sub" name="reward_addr_sub" type="text" class="border mt-3 h-8 rounded" style="width:315px"placeholder="상세주소"></div>
+						</div></a>
+					</div>
+					<div class="flex my-5">
+						<div>배송메모</div>
+						<div class="ml-20">
+							<textarea id="delivery_memo" name="delivery_memo" class="border rounded" style="width:640px; height:100px;" maxlength="100"></textarea>
+							<div><span id="txtLength">0</span>/100</div>
+						</div>
+					</div>
+				</c:if>
 				<div class="my-5 text-xl">결제 예약</div>
 				<div class="border w-40 h-8 text-center bg-danger text-white rounded">결제예약 수단 선택</div>
 				<a id="e"><div class="flex my-5">
