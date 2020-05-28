@@ -47,9 +47,16 @@
 					<!--버튼--> 
 					<div class="mt-8 mb-4 flex justify-end">
 						<a href="#donate" class="btn-donate bg-brand hover:bg-brand-dark text-white py-2 px-4 w-1/2 rounded inline-block text-lg text-center font-bold">후원하기</a>
-						<a id="addWishList" <c:if test="${wvo.wishNo=='' || wvo.wishNo==null}">href="<%=projectPath%>/campaign/camWishOk.do?cam_no=${vo.camNo}"</c:if> class="add-wishlist relative ml-2 bg-white border border-gray-dark text-gray-dark w-12 rounded inline-block text-2xl text-center">
-							${wvo.wishNo}<span class="wishlist-ico align-middle"></span>
+						<c:if test="${wvo.wishNo=='' || wvo.wishNo==null}">
+						<a id="addWishList" href="<%=projectPath%>/campaign/camWishOk.do?action=add&cam_no=${vo.camNo}" class="add-wishlist relative ml-2 bg-white border border-gray-dark text-gray-dark w-12 rounded inline-block text-2xl text-center">
+							<span class="wishlist-ico align-middle"></span>
 						</a>
+						</c:if>
+						<c:if test="${wvo.wishNo!='' && wvo.wishNo!=null}">
+						<a id="addWishList" href="<%=projectPath%>/campaign/camWishOk.do?action=delete&cam_no=${vo.camNo}" class="added-this add-wishlist relative ml-2 bg-white border border-gray-dark text-gray-dark w-12 rounded inline-block text-2xl text-center">
+							<span class="wishlist-ico align-middle"></span>
+						</a>
+						</c:if>
 					</div>
 					<div class="share text-2xl text-gray-darker my-4 text-right">
 						<div class="inline-block w-10 h-10 leading-10 text-center mr-2"><i class="xi-share-alt"></i></div>

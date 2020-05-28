@@ -13,7 +13,8 @@ public class CamWishDAO extends ConnectionDB {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, vo.getUserid());
 			pstmt.setInt(2, vo.getCamNo());
-			System.out.println(sql);
+			
+			result = pstmt.executeQuery();
 			if(result.next()) {
 				vo.setWishNo(result.getInt(1));
 				vo.setUserid(result.getString(2));
@@ -32,13 +33,32 @@ public class CamWishDAO extends ConnectionDB {
 		try {
 			connDB();
 			sql = "insert into user_wish(wish_no, user_id, cam_no, wish_regi)"
-					+ " values(wish_sq.nextval, ?, ?)";
+					+ " values(wish_sq.nextval, ?, ?, sysdate)";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, vo.getUserid());
 			pstmt.setInt(2, vo.getCamNo());
 			cnt = pstmt.executeUpdate();
 		} catch (Exception e) {
 			System.out.println("위시리스트 등록 에러");
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		return cnt;
+	}
+	
+	public int deleteCamWishlist(WishlistVO vo) {
+		int cnt = 0;
+		try {
+			connDB();
+			sql = "delete from user_wish"
+					+ " where user_id=? and cam_no=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, vo.getUserid());
+			pstmt.setInt(2, vo.getCamNo());
+			cnt = pstmt.executeUpdate();
+		} catch (Exception e) {
+			System.out.println("위시리스트 삭제 에러");
 			e.printStackTrace();
 		} finally {
 			closeDB();

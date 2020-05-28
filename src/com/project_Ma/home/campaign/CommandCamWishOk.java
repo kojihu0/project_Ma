@@ -16,16 +16,25 @@ public class CommandCamWishOk implements Command_Interface {
 	@Override
 	public String processStart(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		req.setCharacterEncoding("UTF-8");
-		WishlistVO vo = new WishlistVO();
+		
 		HttpSession session = req.getSession();
 		int camNo = Integer.parseInt(req.getParameter("cam_no"));
-		
-		vo.setUserid((String) session.getAttribute("user_id"));
+		String currentUser = (String) session.getAttribute("user_id");
+		String action = req.getParameter("action");
+		WishlistVO vo = new WishlistVO();
+		vo.setUserid(currentUser);
 		vo.setCamNo(camNo);
 		
 		CamWishDAO dao = new CamWishDAO();
-		int cnt = dao.insertCamWishlist(vo);
+		int cnt = 0;
+		if(action.equals("add")) {
+			cnt = dao.insertCamWishlist(vo);
+		}
+		else if(action.equals("delete")) {
+			cnt = dao.deleteCamWishlist(vo);
+		}
 		
+		req.setAttribute("action", action);
 		req.setAttribute("cnt", cnt);
 		req.setAttribute("cam_no", vo.getCamNo());
 		
