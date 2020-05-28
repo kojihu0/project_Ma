@@ -87,7 +87,11 @@
 				      </label>
 				      <input value="${vo.addr_sub }" name="addr_sub" class="appearance-none block w-full  text-gray-darkest text-2xl border-b border-info py-5 px-5 leading-tight focus:outline-none focus:bg-white focus:border-danger" id="grid-sub" type="text">
 				     </div>
-				    </div>
+				    </div><br/>
+				    <label class="block uppercase tracking-wide text-gray-darker text-xs font-bold mb-2" for="grid-sub">
+				       mileage
+				      </label>
+				    <input  name="mileage" class="appearance-none block w-full  text-gray-darkest text-2xl border-b border-info py-5 px-5 leading-tight focus:outline-none focus:bg-white focus:border-danger" id="grid-sub" type="text">
 				    <div style="width:200px;height:110px; margin : 0 auto;">
 				      <input type="submit" value="수정하기" class=" mb-12 mt-8 bg-danger text-white bg-blue-500 hover:bg-blue-700 text-white font-bold py-4 px-5 rounded">
 				  	  <input type="button" value="홈으로" class="gohome mb-12 mt-8 bg-danger text-white bg-blue-500 hover:bg-blue-700 text-white font-bold py-4 px-5 rounded">
@@ -140,6 +144,5 @@
 		<input type="submit" value="변경" id="mcBtn"class="bg-danger hover:bg-danger-dark  ml-12 w-3/4 text-white font-bold py-2 px-4 rounded mb-8 mt-8">
 	</form>
 </div>
-
 </body>
 </html>

@@ -4,10 +4,16 @@ public class CampaignSponVO {
 	private int cam_no;
 	private String user_id; 
 	private String cam_title;
+	private String cam_content;
 	private String cam_desc;
 	private String donate_date;
 	private String funding_price;
+	private String cam_min_price;
+	private String cam_max_price;
 	private String cam_img;
+	private String cam_start;
+	private String cam_end;
+	private String cam_goal_price;
 
 	public CampaignSponVO() {
 	
@@ -37,6 +43,14 @@ public class CampaignSponVO {
 		this.cam_title = cam_title;
 	}
 
+	public String getCam_content() {
+		return cam_content;
+	}
+
+	public void setCam_content(String cam_content) {
+		this.cam_content = cam_content;
+	}
+
 	public String getCam_desc() {
 		return  cam_desc;
 	}
@@ -61,12 +75,54 @@ public class CampaignSponVO {
 		this.funding_price = funding_price;
 	}
 
+	
+	public String getCam_min_price() {
+		return cam_min_price;
+	}
+
+	public void setCam_min_price(String cam_min_price) {
+		this.cam_min_price = cam_min_price;
+	}
+
+	
+	public String getCam_max_price() {
+		return cam_max_price;
+	}
+
+	public void setCam_max_price(String cam_max_price) {
+		this.cam_max_price = cam_max_price;
+	}
+
 	public String getCam_img() {
 		return cam_img;
 	}
 
 	public void setCam_img(String cam_img) {
 		this.cam_img = cam_img;
+	}
+
+	public String getCam_start() {
+		return cam_start;
+	}
+
+	public void setCam_start(String cam_start) {
+		this.cam_start = cam_start;
+	}
+
+	public String getCam_end() {
+		return cam_end;
+	}
+
+	public void setCam_end(String cam_end) {
+		this.cam_end = cam_end;
+	}
+
+	public String getCam_goal_price() {
+		return cam_goal_price;
+	}
+
+	public void setCam_goal_price(String cam_goal_price) {
+		this.cam_goal_price = cam_goal_price;
 	}
 	
 }

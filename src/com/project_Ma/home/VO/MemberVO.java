@@ -5,12 +5,9 @@ public class MemberVO {
 	private int user_no;//회원번호
 	private String user_pw;//회원비밀번호
 	private String user_name;//회원이름
-	
 	private String user_email;//회원이메일
 	private String user_email_id;
 	private String user_email_domain;
-	
-	
 	private String user_tel;//회원연락처
 	private String user_regi;//등록일
 	private String corpo_name;//법인명

@@ -28,6 +28,7 @@ public class Command_Spon_List implements Command_Interface {
 		String user_id = (String)ses.getAttribute("user_id");
 		System.out.println(user_id);
 		List<CampaignSponVO> list = dao.CampaignSponList(user_id);
+		System.out.println("!11111111111111111");
 		request.setAttribute("list", list);
 		return "/mypage/mypageSpon.jsp";
 	}
