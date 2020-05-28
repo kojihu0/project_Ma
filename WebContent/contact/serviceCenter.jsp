@@ -200,7 +200,7 @@ $(function(){
 					
 					
 					
-					</div><!--문의-->
+					</div><!--문의 end-->
 				</div>  
 			</div>	 
 </body>

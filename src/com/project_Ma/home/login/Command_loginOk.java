@@ -23,8 +23,8 @@ public class Command_loginOk implements Command_Interface {
 		vo.setUser_id(request.getParameter("user_id"));
 		vo.setUser_pw(request.getParameter("user_pw"));
 		
-		dao.memberLogin(vo);
-		String fileName = "";
+			dao.memberLogin(vo);
+			String fileName = "";
 		
 		if(vo.getLoginStatus().equals("Y")) {
 			HttpSession session = request.getSession();

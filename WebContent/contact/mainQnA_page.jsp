@@ -56,17 +56,15 @@
 							<div class="table-cell w-24 p-4">${sList.user_id }</div> 
 							<div class="table-cell w-32 p-4">${sList.service_regi }</div>
 						</div>
-					<c:if test="${sList.a_id != null}"> 
+					<c:if test="${sList.service_secret != 1 || (sList.service_secret == 1 && sList.user_id == logId)}">  
 						<div id="qna${sList.service_no }" class="qna-content px-8 bg-gray-lightest pl-24 border-b border-gray hidden">
-							<div class="qna-user py-4 border-b border-gray">
-								${sList.service_content}
-							</div> 
+							<div class="qna-user py-4 border-b border-gray">${sList.service_content}</div> 
 							<div class="qna-reply py-4 pl-8 relative">
-								<span class="absolute left-0 text-lg"><i class="xi-subdirectory-arrow"></i></span>
-								<div class="comment-author font-bold pb-4 mb-4 text-success border-b border-gray border-dashed">${sList.a_id}<span class="text-gray-dark text-sm font-normal ml-4">${sList.a_regi }</span></div>
-								<div class="comment-text text-gray-darkest">
-									${sList.a_content }
-								</div>
+								<c:if test="${sList.a_id != null }">
+									<span class="absolute left-0 text-lg"><i class="xi-subdirectory-arrow"></i></span>
+									<div class="comment-author font-bold pb-4 mb-4 text-success border-b border-gray border-dashed">${sList.a_id}<span class="text-gray-dark text-sm font-normal ml-4">${sList.a_regi }</span></div>
+									<div class="comment-text text-gray-darkest">${sList.a_content }</div>
+								</c:if>
 							</div>
 						</div>
 					</c:if>	 
