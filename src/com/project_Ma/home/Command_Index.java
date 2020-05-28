@@ -22,7 +22,8 @@ public class Command_Index implements Command_Interface {
 	@Override
 	public String processStart(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
- 		
+ 	
+		
 		//mid_Div_Campaign -> 최근 3개의 캠페인 사진.
 		list = dao.selectCampaign();
 		//open예정인 캠페인 목록 가져오기.
