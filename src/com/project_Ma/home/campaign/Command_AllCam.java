@@ -22,7 +22,6 @@ public class Command_AllCam implements Command_Interface {
 	public String processStart(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String pageNumStr = request.getParameter("pageNum");
 		PagingVO pageVO = new PagingVO();
-		//������ ��ȣ�� ���۵� ��츸  ��������ȣ�� �����Ѵ�.
 		if(pageNumStr != null) {
 			pageVO.setPageNum(Integer.parseInt(pageNumStr));
 		}

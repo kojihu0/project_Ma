@@ -17,7 +17,6 @@ public class Command_about implements Command_Interface {
 	@Override
 	public String processStart(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		return "/about_us/about_Us.jsp";
 	}
 
