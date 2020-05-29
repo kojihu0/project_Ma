@@ -2,6 +2,7 @@ package com.project_Ma.home.DAO;
 
 import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
 
+import com.project_Ma.home.CommandMemberShipService;
 import com.project_Ma.home.ConnectionDB;
 import com.project_Ma.home.VO.MemberVO;
 
@@ -10,7 +11,6 @@ public class JoinMemberShipDAO extends ConnectionDB implements CommandMemberShip
 	public JoinMemberShipDAO() {
 		
 	}
-	//¾ÆÀÌµð Áßº¹Ã¼Å©
 	public int idCheck(String user_id) {
 		int cnt = 0; 
 		try {
@@ -23,13 +23,13 @@ public class JoinMemberShipDAO extends ConnectionDB implements CommandMemberShip
 				cnt = result.getInt(1);		
 			}
 		}catch(Exception e) {
-			System.out.println("¾ÆÀÌµð Áßº¹Ã¼Å© ¿À·ù-->"+e.getMessage());
+			System.out.println("ï¿½ï¿½ï¿½Ìµï¿½ ï¿½ßºï¿½Ã¼Å© ï¿½ï¿½ï¿½ï¿½-->"+e.getMessage());
 		}finally {
 			closeDB();
 		}
 		return cnt;
 	}	
-	//»ç¾÷ÀÚ µî·Ï¹øÈ£ Á¶È¸ 
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ï¹ï¿½È£ ï¿½ï¿½È¸ 
 	public long cpNumCheck(long corpo_regi_no){
 		long cnt = 0; 
 		try {
@@ -42,7 +42,7 @@ public class JoinMemberShipDAO extends ConnectionDB implements CommandMemberShip
 				cnt = result.getInt(1);
 			}
 		} catch (Exception e) {
-			System.out.println("»ç¾÷ÀÚ µî·Ï¹øÈ£ Á¶È¸ ¿À·ù -->"+e.getMessage());
+			System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ï¹ï¿½È£ ï¿½ï¿½È¸ ï¿½ï¿½ï¿½ï¿½ -->"+e.getMessage());
 		}finally {
 			closeDB();
 		}
@@ -70,7 +70,7 @@ public class JoinMemberShipDAO extends ConnectionDB implements CommandMemberShip
 			cnt = pstmt.executeUpdate();
 			
 		} catch (Exception e) {
-			System.out.println("À¯Àú È¸¿ø°¡ÀÔ¿À·ù-->"+e.getMessage());
+			System.out.println("ï¿½ï¿½ï¿½ï¿½ È¸ï¿½ï¿½ï¿½ï¿½ï¿½Ô¿ï¿½ï¿½ï¿½-->"+e.getMessage());
 			e.printStackTrace();
 		}finally {
 			closeDB();
@@ -98,7 +98,7 @@ public class JoinMemberShipDAO extends ConnectionDB implements CommandMemberShip
 
 			cnt = pstmt.executeUpdate();
 		}catch(Exception e) {
-			System.out.println("¹ýÀÎÈ¸¿ø°¡ÀÔ ¿À·ù -->"+e.getMessage());
+			System.out.println("ï¿½ï¿½ï¿½ï¿½È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ -->"+e.getMessage());
 			e.printStackTrace();
 		}finally{
 			closeDB();

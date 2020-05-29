@@ -21,7 +21,7 @@ public class Command_IdCheck implements Command_Interface {
 			String user_id = request.getParameter("user_id");
 			JoinMemberShipDAO dao = new JoinMemberShipDAO();
 			int cnt = dao.idCheck(user_id);
-					request.setAttribute("user_id", user_id);
+			request.setAttribute("user_id", user_id);
 			request.setAttribute("cnt",cnt);
 		return "/joinMembership/idCheck.jsp";
 	}

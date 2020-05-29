@@ -15,7 +15,8 @@
 						<div class="slide-img w-full bg-cover relative" style="background-image:url('<%=projectPath%>/img/img_main/mainslider01.png')">
 							<div class="slide-text absolute text-white"> 
 								<h1 class="font-bold text-3xl mb-4">대통령은 헌법과 법률이<br> 정하는 바에 의하여 공무원을 임면한다.</h1>
-								<p>정부는 예산에 변경을 가할 필요가 있을 때에는 추가경정예산안을 편성하여 국회에 제출할 수 있다.</p>
+								<p
+								>정부는 예산에 변경을 가할 필요가 있을 때에는 추가경정예산안을 편성하여 국회에 제출할 수 있다.</p>
 							</div>
 						</div>
 						<div class="slide-img w-full bg-cover relative" style="background-image:url('<%=projectPath%>/img/img_main/mainslider02.png')">

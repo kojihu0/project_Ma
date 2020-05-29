@@ -8,6 +8,28 @@ public class PaymentDAO extends ConnectionDB{
 
 	public PaymentDAO() {
 	}
+	//ë§ˆì¼ë¦¬ì§€ ê°’ êµ¬í•˜ê¸° 
+	public int mileageValue(PaymentVO vo){
+		int cnt = 0;
+		try { 
+			connDB();
+			sql="select mileage_before from user_mileage where user_id=?";//user_mileageì—ì„œ ë§ˆì¼ë¦¬ì§€ê°’ì„ ê°€ì ¸ì™€ì„œ ë³´ì—¬ì¤€ë‹¤..
+			pstmt= conn.prepareStatement(sql);
+			pstmt.setString(1,vo.getUser_id());
+			
+			result = pstmt.executeQuery();
+			if(result.next()) {
+				cnt = result.getInt(1);		
+			}
+			
+		}catch(Exception e) {
+			System.out.println("ë§ˆì¼ë¦¬ì§€ê°’ ì¶œë ¥ ì‹¤íŒ¨"+e.getMessage());
+		}finally {
+			closeDB();
+		}
+		return cnt;
+	}
+	
 	public void payment(RewardVO vo) {
 		try {
 			connDB();
@@ -30,7 +52,7 @@ public class PaymentDAO extends ConnectionDB{
 		try {
 			connDB();
 			sql="insert into payment(payment_no, cam_no, user_id, reward_no, funding_price, add_price, price_anonymous, name_anonymous, mileage, total_price, donate_date, reward_addr_num, reward_addr_main, reward_addr_sub, reward_phone "
-			   +" , reward_tel, payment_status,  delivery_memo, reciever, reward_email)values(payment_sq.nextval, 1, 'admin', 0, ?, ?, ?, ?, ?, ?, to_date(sysdate,'yy-mm-dd'), ?, ?, ?, ?, ?, '°áÁ¦ ´ë±âÁß', ?, ?, ?)  ";
+			   +" , reward_tel, payment_status,  delivery_memo, reciever, reward_email)values(payment_sq.nextval, 1, 'admin', 0, ?, ?, ?, ?, ?, ?, to_date(sysdate,'yy-mm-dd'), ?, ?, ?, ?, ?, 'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½', ?, ?, ?)  ";
 			pstmt = conn.prepareStatement(sql);
 			
 			pstmt.setInt(1, vo.getFunding_price());
@@ -50,7 +72,7 @@ public class PaymentDAO extends ConnectionDB{
 			
 			result=pstmt.executeUpdate();
 		}catch(Exception e) {
-			System.out.println("°áÁ¦³»¿ª ¿¡·¯...."+e.getMessage());
+			System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½...."+e.getMessage());
 		}finally {
 			closeDB();
 		}

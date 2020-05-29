@@ -27,7 +27,7 @@ public class Command_CoporPw_EditOk implements Command_Interface {
 			int cnt = dao.userPwUpdate(vo);
 			
 			request.setAttribute("cnt", cnt);
-		return "/mypage/pwEditOk.jsp";
+		return "/mypage/copor_pwEditOk.jsp";
 	}
 
 }

@@ -5,6 +5,18 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script type="text/JavaScript" src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+<script>
+function openDaumZipAddress() {
+		new daum.Postcode({
+			oncomplete:function(data) {
+				jQuery("#copor_addr_num").val(data.zonecode);
+				jQuery("#copor_addr_main").val(data.address);
+				jQuery("#copor_addr_sub").focus();
+			}
+		}).open();
+	}
+</script>
 </head>
 <body>
 	<ul class="mpMenu flex">
@@ -20,7 +32,10 @@
 	   <li class="flex-1 mr-2">
 	    <a class="text-center block border border-blue-500 rounded py-3 px-5 bg-danger hover:bg-danger-dark text-white" href="<%=projectPath %>/mypage/copor_Spon.do">후원 목록</a>
 	  </li>
-	 </ul>
+	  <li class="flex-1 mr-2">
+	    <a class="text-center block border border-blue-500 rounded py-3 px-5 bg-danger hover:bg-danger-dark text-white" href="<%=projectPath %>/mypage/copor_WishList.do">위시 리스트</a>
+	  </li>
+	</ul>
 <div id="myInformation" class="tab-content"><!-- 내정보 탭-->
  <div id="explain" class="w-full max-w-screen-xl my-2 mx-auto border-solid border-gray border-b  my-1 text-4xl py-4">법인 정보</div>
  <!-- 법인명 -->
@@ -99,8 +114,8 @@
 			      <label class="block uppercase tracking-wide text-gray-darker text-xs font-bold mb-2" for="grid-address">
 			       Address
 			      </label>
-			      <input name="addr_no" value="${vo.addr_no}" class="appearance-none block w-full  text-gray-darkest text-2xl border-b border-info py-5 px-5 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-danger" id="grid-address" type="text">
-			     <input id="move-ico" type="submit" value="우편번호 검색" class="absolute bg-danger text-white bg-blue-500 hover:bg-blue-700 text-white font-bold py-4 px-5 rounded">
+			      <input id="copor_addr_num" name="addr_no" value="${vo.addr_no}" class="appearance-none block w-full  text-gray-darkest text-2xl border-b border-info py-5 px-5 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-danger" id="grid-address" type="text">
+			     <input onClick="openDaumZipAddress();" id="move-ico" type="button" value="우편번호 검색" class="absolute bg-danger text-white bg-blue-500 hover:bg-blue-700 text-white font-bold py-4 px-5 rounded">
 			    </div>
 			  </div>
 			   <div class="flex flex-wrap -mx-3 mb-2">
@@ -108,13 +123,13 @@
 			      <label class="block uppercase tracking-wide text-gray-darker text-xs font-bold mb-2" for="grid-main">
 			        main
 			      </label>
-			      <input name="addr_main" value="${vo.addr_main}" class="appearance-none block w-full  text-gray-darkest text-2xl border-b border-info py-5 px-5 leading-tight focus:outline-none focus:bg-white focus:border-danger" id="grid-main" type="text">
+			      <input id="copor_addr_main" name="addr_main" value="${vo.addr_main}" class="appearance-none block w-full  text-gray-darkest text-2xl border-b border-info py-5 px-5 leading-tight focus:outline-none focus:bg-white focus:border-danger" id="grid-main" type="text">
 			    </div>
 			    <div class="w-full md:w-3/6 px-3 mb-6 md:mb-0">
 			      <label class="block uppercase tracking-wide text-gray-darker text-xs font-bold mb-2" for="grid-sub">
 			        sub
 			      </label>
-			      <input name="addr_sub" value="${vo.addr_sub}" class="appearance-none block w-full  text-gray-darkest text-2xl border-b border-info py-5 px-5 leading-tight focus:outline-none focus:bg-white focus:border-danger" id="grid-sub" type="text">
+			      <input id="copor_addr_sub" name="addr_sub" value="${vo.addr_sub}" class="appearance-none block w-full  text-gray-darkest text-2xl border-b border-info py-5 px-5 leading-tight focus:outline-none focus:bg-white focus:border-danger" id="grid-sub" type="text">
 			    </div>
 			    </div>
 			    <div style="width:200px;height:110px; margin : 0 auto ">
@@ -128,7 +143,7 @@
  </div>
 <!-- 회원탈퇴  -->
 <div id="deleteFrm"class="modal w-full h-screen bg-black opacity-100 fixed top-0 hidden m-0 m-auto">
-	<form class="bg-white h-auto mt-32 w-3/12 m-0 m-auto" action="<%=projectPath%>/mypage/user_del.do">
+	<form class="bg-white h-auto mt-32 w-3/12 m-0 m-auto" action="<%=projectPath%>/mypage/copor_del.do">
 		<div class="close text-black inline-block text-xl top-0 left-0 p-4 cursor-pointer">
 			<i class="xi-close"></i>
 		</div>
@@ -149,10 +164,10 @@
 		</div>
 		<input type="submit" value="탈퇴하기" class="bg-danger hover:bg-danger-dark  ml-12 w-3/4 text-white font-bold py-2 px-4 rounded mb-8 mt-8">
 	</form>
-</div>	
-	   <!-- 비밀번호 변경창  -->
+</div>
+<!-- 비밀번호 변경창  -->
 <div id="passwordUpdate"class="modal w-full h-screen bg-black opacity-100 fixed top-0 hidden m-0 m-auto">
-	<form class="bg-white h-auto mt-32 w-3/12 m-0 m-auto" action="<%=projectPath%>/mypage/pwEditOk.do">
+	<form class="bg-white h-auto mt-32 w-3/12 m-0 m-auto" action="<%=projectPath%>/mypage/copor_pwEditOk.do">
 		<div class="close text-black inline-block text-xl top-0 left-0 p-4 cursor-pointer"><i class="xi-close"></i></div><br/>
 		<label class="text-3xl font-bold ml-12 mt-8">비밀번호 변경</label>
 		<div class="md:w-3/4  mt-4 m-0 m-auto">

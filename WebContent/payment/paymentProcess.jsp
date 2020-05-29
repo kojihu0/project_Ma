@@ -52,7 +52,7 @@ $(function(){
 				</div>
 				<div class="flex my-5">
 					<div class="border w-40 h-8 text-center bg-danger text-white rounded">후원금 더하기(선택)</div>
-					<div> 
+					<div>
 						<a id="z"><div class="ml-24">후원금을 더하여 펀딩할 수 있습니다. 추가 후원금을 입력하시겠습니까?</div></a>
 						<div class="ml-24 mt-3"><input type="text" class="border h-12 text-center rounded" name="add_price" id="addFund">원을 추가로 후원합니다</div>
 						<div class="text-danger ml-24 hidden" id="z1">숫자를 입력해주세요.</div>
@@ -80,7 +80,7 @@ $(function(){
 					<div> 
 						<div class="flex">
 							<div class="ml-24"><input type="checkbox" class="border mr-2 w-5 h-5" id="mBox"/></div>
-							<a id="mile1"><div style="position:relative; top:-3px;">모두사용(보유 마일리지 <span id="mileage">1234</span>M)</div></a>
+							<a id="mile1"><div style="position:relative; top:-3px;">모두사용(보유 마일리지 <span id="mileage">${vo.mileageBefore }</span>M)</div></a>
 						</div>
 						<input type="text" class="border h-12 ml-24 mt-3 text-center rounded" name="mileage" id="mTxt">M 사용하기
 						<div class="text-danger ml-24 hidden" id="txt">입력하신 값이 보유하신 마일리지보다 높습니다. 사용불가 합니다.</div>

@@ -21,6 +21,9 @@
 			  <li class="flex-1 mr-2">
 			    <a class="text-center block border border-blue-500 rounded py-3 px-5 bg-danger-dark hover:bg-danger-dark text-white" href="<%=projectPath %>/mypage/copor_Spon.do">후원 목록</a>
 			  </li>
+			  <li class="flex-1 mr-2">
+			    <a class="text-center block border border-blue-500 rounded py-3 px-5 bg-danger hover:bg-danger-dark text-white" href="<%=projectPath %>/mypage/copor_WishList.do">위시 리스트</a>
+			  </li>
 			 </ul>
 			 <div class="max-w-full w-full mt-8">
 		 	 	<div id="explain" class="w-full max-w-screen-xl my-2 mx-auto border-solid border-gray border-b  my-1 text-4xl py-4">후원 목록</div>
