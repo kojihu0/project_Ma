@@ -22,7 +22,8 @@ public class Command_PaymentProcess implements Command_Interface {
 		PaymentVO vo = new PaymentVO();
 		vo.setUser_id((String) ses.getAttribute("user_id"));
 		PaymentDAO dao = new PaymentDAO();
-		int cnt = dao.mileageValue(vo);
+		dao.mileageValue(vo);
+		System.out.println(vo.getMileageBefore());
 		request.setAttribute("vo", vo);
 		return "payment/paymentProcess.jsp"; 
 	}
