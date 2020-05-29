@@ -23,22 +23,15 @@ public class Command_loginOk implements Command_Interface {
 		vo.setUser_id(request.getParameter("user_id"));
 		vo.setUser_pw(request.getParameter("user_pw"));
 		
-			dao.memberLogin(vo);
-			String fileName = "";
-		
-		if(vo.getLoginStatus().equals("Y")) {
-			HttpSession session = request.getSession();
-			session.setAttribute("user_name", vo.getUser_name());
-			session.setAttribute("user_id", vo.getUser_id());
-			session.setAttribute("loginStatus", vo.getLoginStatus());
-			session.setAttribute("rank_code", vo.getRank_code());
-			fileName = "/index.jsp";
-		}else {
-			HttpSession session = request.getSession();
-			session.setAttribute("loginStatus", vo.getLoginStatus());
-			fileName = "/login/login.jsp";
-		}
-		return fileName;
+		dao.memberLogin(vo);
+	
+		HttpSession session = request.getSession();
+		session.setAttribute("user_name", vo.getUser_name());
+		session.setAttribute("user_id", vo.getUser_id());
+		session.setAttribute("loginStatus", vo.getLoginStatus());
+		session.setAttribute("rank_code", vo.getRank_code());
+
+		return "/login/loginOk.jsp";
 	}
 
 }

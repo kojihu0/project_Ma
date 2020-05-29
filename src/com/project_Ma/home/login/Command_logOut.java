@@ -19,7 +19,7 @@ public class Command_logOut implements Command_Interface {
 	public String processStart(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		session.invalidate();
-		return "/index.jsp";
+		return "/login/logOut.jsp";
 	}
 
 }

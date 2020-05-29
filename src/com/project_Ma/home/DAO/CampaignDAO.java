@@ -1,7 +1,14 @@
 package com.project_Ma.home.DAO;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.sql.DataSource;
 
 import com.project_Ma.home.ConnectionDB;
 import com.project_Ma.home.VO.CampaignVO;
@@ -52,11 +59,13 @@ public class CampaignDAO extends ConnectionDB{
 				}
 				vo.setCam_goal_price(result.getInt(6));
 				
+				int total= getpercent(vo.getCam_no());
+				vo.setTotal_price(total);	
 				list.add(vo);
 			}
 			
 		}catch(Exception e) {
-			System.out.println("ķ���� ����Ʈ ���� ����...."+e.getMessage());
+			System.out.println("전체 캠페인 리스트 에러...."+e.getMessage());
 		}finally {
 			closeDB();
 		}
@@ -107,7 +116,7 @@ public class CampaignDAO extends ConnectionDB{
 					list.add(vo);
 				}
 		}catch(Exception e) {
-			System.out.println("���¿��� ķ���� ����Ʈ ���� ����....");
+			System.out.println("오픈예정 캠페인 리스트 에러....");
 		}finally {
 			closeDB();
 		}
@@ -158,7 +167,7 @@ public class CampaignDAO extends ConnectionDB{
 					list.add(vo);
 				}
 		}catch(Exception e) {
-			System.out.println("���� ķ���� ����Ʈ ���� ����....");
+			System.out.println("지난 캠페인 리스트 에러....");
 		}finally {
 			closeDB();
 		}
@@ -177,7 +186,7 @@ public class CampaignDAO extends ConnectionDB{
 				totalRecord = result.getInt(1);
 			}
 		}catch(Exception e) {
-			System.out.println("�ѷ��ڵ� �� ���ϱ� ����...."+e.getMessage());
+			System.out.println("전체 레코드 수 구하기 에러...."+e.getMessage());
 		}finally {
 			closeDB();
 		}
@@ -196,7 +205,7 @@ public class CampaignDAO extends ConnectionDB{
 				preTotalRecord = result.getInt(1);
 			}
 		}catch(Exception e) {
-			System.out.println("���� ķ���� �ѷ��ڵ� �� ���ϱ� ����...."+e.getMessage());
+			System.out.println("지난 레코드 수 구하기 에러...."+e.getMessage());
 		}finally {
 			closeDB();
 		}
@@ -215,10 +224,51 @@ public class CampaignDAO extends ConnectionDB{
 				exTotalRecord = result.getInt(1);
 			}
 		}catch(Exception e) {
-			System.out.println("���¿��� ķ���� �ѷ��ڵ�� ���ϱ� ����...."+e.getMessage());
+			System.out.println("오픈예정 레코드 수 구하기 에러...."+e.getMessage());
 		}finally {
 			closeDB();
 		}
 		return exTotalRecord;
+	}
+	
+	public int getpercent(int cam_no) {
+		
+		 Connection 		conn 	= null;
+		 PreparedStatement pstmt 	= null;
+		 ResultSet 		result 	= null;
+		 String 			sql 	= "";
+		 int total=0;
+		 
+		try {
+			Context context 	= new InitialContext();
+			Context envContext 	= (Context)context.lookup("java:comp/env");
+			DataSource ds 		= (DataSource)envContext.lookup("jdbc/myOracle");
+			
+			conn = ds.getConnection();
+			
+			sql="select sum(total_price) from payment where cam_no=?";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, cam_no);
+			result = pstmt.executeQuery();
+			
+			if(result.next()) {
+				total=result.getInt(1);
+			}
+		}catch(Exception e) {
+			System.out.println("데이터베이스 연결에서 에러 발생." + e.getMessage());
+			e.getStackTrace();	
+		}finally {
+			try {
+				if(result != null) result.close();
+				if(pstmt != null) pstmt.close();
+				if(conn != null) conn.close();
+				
+			}catch(Exception e) {
+				System.out.println("데이터 베이스 연결 종료에서 에러 발생" + e.getMessage());
+				e.getStackTrace();
+			}
+		}
+		return total;
 	}
 }

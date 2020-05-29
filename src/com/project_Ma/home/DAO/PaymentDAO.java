@@ -61,10 +61,10 @@ public class PaymentDAO extends ConnectionDB{
 		return result;
 	}
 	
-	public void getFundingPrice(PaymentVO vo) {
+	public void getrewardPrice(PaymentVO vo) {
 		try {
 			connDB();
-			sql="select funding_price from payment p join reward r on p.reward_no = r.reward_no and reward_no=?";
+			sql="select reward_price from payment p join reward r on p.reward_no = r.reward_no and r.reward_no=?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, vo.getReward_no());
 			
@@ -82,7 +82,7 @@ public class PaymentDAO extends ConnectionDB{
 	public void getpaymentinfo(CampaignVO cvo, RewardVO rvo, PaymentVO vo) {
 		try {
 			connDB();
-			sql="select c.cam_title, c.user_id, c.cam_end, r.reward_name from campaign c join reward r on c.reward_no = r.reward_no and reward_no=?";
+			sql="select c.cam_title, c.user_id, c.cam_end, r.reward_name from campaign c join reward r on c.reward_no = r.reward_no and r.reward_no=?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, vo.getReward_no());
 			

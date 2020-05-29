@@ -22,17 +22,18 @@ public class Command_PaymentProcess implements Command_Interface {
 
 	@Override
 	public String processStart(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		cvo.setCam_reward_status(Integer.parseInt("reward_status"));
-		cvo.setCam_no(Integer.parseInt("camNo"));
-		vo.setReward_no(Integer.parseInt("reward_no"));
-		HttpSession session = request.getSession();
+		cvo.setCam_reward_status(Integer.parseInt(request.getParameter("reward_status")));
+		cvo.setCam_no(Integer.parseInt(request.getParameter("camNo")));
+		vo.setReward_no(Integer.parseInt(request.getParameter("reward_no")));
 		
+		HttpSession session = request.getSession();
 		vo.setUser_id((String)session.getAttribute("user_id"));
-		dao.getFundingPrice(vo);
+		
+		dao.getrewardPrice(vo);
 		
 		request.setAttribute("cvo", cvo);
 		request.setAttribute("vo", vo);
-		return "payment/paymentProcess.jsp"; 
+		return "/payment/paymentProcess.jsp"; 
 	}
 
 }

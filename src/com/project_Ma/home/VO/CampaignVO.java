@@ -1,20 +1,22 @@
 package com.project_Ma.home.VO;
 
 public class CampaignVO {
-	private int cam_no;//Ä·ÆäÀÎ ¹øÈ£
-	private String user_id;//±Û¾´ÀÌ
-	private String cam_title;//Ä·ÆäÀÎ Á¦¸ñ
-	private String cam_content;//Ä·ÆäÀÎ ³»¿ë
-	private String cam_desc;//Ä·ÆäÀÎ ¼³¸í
-	private String cam_start;//Ä·ÆäÀÎ ½ÃÀÛÀÏ
-	private String cam_end;//Ä·ÆäÀÎ ¸¶°¨ÀÏ
-	private int cam_remainday;//Ä·ÆäÀÎ ³²Àº ÀÏ¼ö
-	private int cam_goal_price;//¸ñÇ¥±Ý¾×
-	private int cam_min_price;//ÃÖ¼Ò ÆÝµù ±Ý¾×
-	private int cam_max_price;//ÃÖ´ë ÆÝµù±Ý¾×
-	private int cam_reward_status;//¸®¿öµå À¯¹« 0:¾øÀ½ 1:ÀÖÀ½
-	private String cam_img;//ÀÌ¹ÌÁö°æ·Î
-	private String cam_regi;//Ä·ÆäÀÎ µî·ÏÀÏ
+	private int cam_no;//Ä·ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È£
+	private String user_id;//ï¿½Û¾ï¿½ï¿½ï¿½
+	private String cam_title;//Ä·ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+	private String cam_content;//Ä·ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+	private String cam_desc;//Ä·ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+	private String cam_start;//Ä·ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	private String cam_end;//Ä·ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	private int cam_remainday;//Ä·ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ï¼ï¿½
+	private int cam_goal_price;//ï¿½ï¿½Ç¥ï¿½Ý¾ï¿½
+	private int cam_min_price;//ï¿½Ö¼ï¿½ ï¿½Ýµï¿½ ï¿½Ý¾ï¿½
+	private int cam_max_price;//ï¿½Ö´ï¿½ ï¿½Ýµï¿½ï¿½Ý¾ï¿½
+	private int cam_reward_status;//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ 0:ï¿½ï¿½ï¿½ï¿½ 1:ï¿½ï¿½ï¿½ï¿½
+	private String cam_img;//ï¿½Ì¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	private String cam_regi;//Ä·ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
+	private int total_price;
+	private double percent;
 	public int getCam_no() {
 		return cam_no;
 	}
@@ -98,6 +100,28 @@ public class CampaignVO {
 	}
 	public void setCam_regi(String cam_regi) {
 		this.cam_regi = cam_regi;
+	}
+	public int getTotal_price() {
+		return total_price;	
+	}
+	public void setTotal_price(int total_price) {
+		this.total_price = total_price;
+
+		try {
+			if(cam_goal_price!=0) {
+				percent = total_price/(double)cam_goal_price*100;
+			}
+
+		}catch(ArithmeticException ae) {
+			ae.getMessage();
+		}
+	}
+	public double getPercent() {
+		
+		return percent;
+	}
+	public void setPercent(double percent) {
+		this.percent = percent;
 	}
 	
 	
