@@ -3,7 +3,9 @@ package com.project_Ma.home.DAO;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.project_Ma.home.Command_CampaignList_Service;
 import com.project_Ma.home.ConnectionDB;
+import com.project_Ma.home.VO.CamDetailVO;
 import com.project_Ma.home.VO.CampaignSponVO;
 
 public class CampaignListDAO extends ConnectionDB implements Command_CampaignList_Service {
@@ -131,7 +133,34 @@ public class CampaignListDAO extends ConnectionDB implements Command_CampaignLis
 		}finally {
 			closeDB();
 		}
-		
-	};
-
+	}
+	
+	public List<CamDetailVO> camCtrlList(String Userid){
+		List<CamDetailVO> list = new ArrayList<CamDetailVO>();
+		try {
+			connDB();
+			sql = "select cam_title,cam_desc,cam_start,cam_end,cam_goal_price,cam_img,cam_no "
+					+ " from campaign where user_id=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, Userid);
+			result = pstmt.executeQuery();
+			while(result.next()) {
+				CamDetailVO vo = new CamDetailVO();
+				vo.setCamNo(result.getInt(1));
+				vo.setCamTitle(result.getString(1));
+				vo.setCamRegi(result.getString(2));
+				vo.setCamStart(result.getString(3));
+				vo.setCamEnd(result.getString(4));
+				vo.setCamGoalPrice(result.getInt(5));
+				vo.setCamImg(result.getString(6));
+				list.add(vo);
+			}
+		}catch(Exception e){
+			System.out.println("ķ���� ��� ��� ��� ���� -->"+e.getMessage());
+			e.printStackTrace();
+		}finally{
+			closeDB();
+		}
+		return list;
+	}
 }

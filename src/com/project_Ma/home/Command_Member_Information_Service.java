@@ -1,23 +1,23 @@
-package com.project_Ma.home.DAO;
+package com.project_Ma.home;
 
 import java.util.List;
 
 import com.project_Ma.home.VO.MemberVO;
 
 public interface Command_Member_Information_Service {
-		//À¯Àú Á¤º¸ °¡Á®¿À±â 
+		//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 
 		public void userDataSelect(MemberVO vo);
-		//À¯ÀúÁ¤º¸ ¼öÁ¤ÇÏ±â
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½
 		public int userDataUpdate(MemberVO vo);
-		//À¯Àú ºñ¹Ð¹øÈ£ ¼öÁ¤ 
+		//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ð¹ï¿½È£ ï¿½ï¿½ï¿½ï¿½ 
 		public int userPwUpdate(MemberVO vo);
-		//È¸¿øÅ»Åð (À¯Àú)
+		//È¸ï¿½ï¿½Å»ï¿½ï¿½ (ï¿½ï¿½ï¿½ï¿½)
 		public int userDataDelete(MemberVO vo);
-		//¹ýÀÎÁ¤º¸ °¡Á®¿À±â 
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 
 		public  void corpoDataSelect(MemberVO vo);
-		//¹ýÀÎÁ¤º¸ ¼öÁ¤ÇÏ±â 
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½ 
 		public int corpoDataUpdate(MemberVO vo);
-		//È¸¿øÅ»Åð(¹ýÀÎ)
+		//È¸ï¿½ï¿½Å»ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½)
 		public int corpoDataDelete(MemberVO vo);
 		
 }

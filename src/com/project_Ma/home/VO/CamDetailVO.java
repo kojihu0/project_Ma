@@ -26,6 +26,9 @@ public class CamDetailVO {
 	private int camRewardStatus = 0;
 	private String camRegi;
 	
+	private List<String> camCurrImgList;
+	private String camCurrImg;
+	
 	public CamDetailVO() {
 	}
 
@@ -201,4 +204,21 @@ public class CamDetailVO {
 		this.camRegi = camRegiDate;
 	}
 
+	public List<String> getCamCurrImgList() {
+		camCurrImgList = Arrays.asList(camCurrImg.split("|"));
+		return camCurrImgList;
+	}
+
+	public void setCamCurrImgList(List<String> camCurrImgList) {
+		camCurrImg = String.join("|", camCurrImgList.toArray(new String[camCurrImgList.size()]));
+		this.camCurrImgList = camCurrImgList;
+	}
+
+	public String getCamCurrImg() {
+		return camCurrImg;
+	}
+
+	public void setCamCurrImg(String camCurrImg) {
+		this.camCurrImg = camCurrImg;
+	}
 }

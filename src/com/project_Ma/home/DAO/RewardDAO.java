@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.project_Ma.home.ConnectionDB;
+import com.project_Ma.home.RewardService;
 import com.project_Ma.home.VO.RewardVO;
 
 public class RewardDAO extends ConnectionDB implements RewardService {

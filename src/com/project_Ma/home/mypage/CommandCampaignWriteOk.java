@@ -143,10 +143,10 @@ public class CommandCampaignWriteOk implements Command_Interface {
 				rvo.setDelivery_ex_date_detail(rewardList.get("reward[del_date_detail_"+i+"]"));
 				rwList.add(rvo);
 			}
-			camInsCnt = dao.updateCam(vo, rwList);
+			camInsCnt = dao.insertCam(vo, rwList);
 		}
 		else {
-			camInsCnt = dao.updateCam(vo);
+			camInsCnt = dao.insertCam(vo);
 		}
 		//캠페인추가 실패 시 업로드된 이미지 삭제
 		if(camInsCnt <= 0) {
@@ -158,7 +158,7 @@ public class CommandCampaignWriteOk implements Command_Interface {
 			}
 		}
 		req.setAttribute("camInsCnt", camInsCnt);
-		return "/mypage/campaignUpdateOk.jsp";
+		return "/mypage/campaignWriteOk.jsp";
 	}
 	
 }

@@ -3,6 +3,7 @@ package com.project_Ma.home.mypage;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -48,6 +49,8 @@ public class CommandCampaignUpdateOk implements Command_Interface {
 		vo.setUserid((String) session.getAttribute("user_id"));
 		
 		List<String> uploadFileList = new ArrayList<String>();
+		List<String> crrFileList = new ArrayList<String>();
+		HashMap<String, String> formFields = new HashMap<String, String>();
 		int maxSize = 1024 * 1024 * 15; //15MB
 		
 		DiskFileItemFactory fac = new DiskFileItemFactory();
@@ -63,11 +66,16 @@ public class CommandCampaignUpdateOk implements Command_Interface {
 			
 			while(iter.hasNext()) {
 				FileItem item = iter.next();
-			
 				if(item.isFormField()) { //input
+					formFields.put(item.getFieldName(), item.getString(encode));
 					String inputName = item.getFieldName();
 					int rewardSap = inputName.indexOf("[");
-					
+					if(inputName.equals("cam_no")) {
+						vo.setCamNo(Integer.parseInt(item.getString(encode)));
+					}
+//					if(inputName.equals("cam_crr_img")) { //현재 업로드되어있는 이미지
+//						vo.setCamCurrImg(item.getString(encode));
+//					}
 					if(inputName.equals("cam_title")) {
 						vo.setCamTitle(item.getString(encode));
 					}
@@ -107,25 +115,35 @@ public class CommandCampaignUpdateOk implements Command_Interface {
 						rewardList.put(inputName, item.getString(encode));
 					}
 				}
-				else { //file
+				if(!item.isFormField()) { //file
 					String fileName = item.getName();
-					
-					String fileId = UUID.randomUUID().toString().replace("-", ""); //고유한 파일이름 생성
-					String filExtension = FilenameUtils.getExtension(fileName); //파일확장자
-					String newFileName= fileId+"."+filExtension; //전체파일이름(파일명+확장자)
-					uploadFileList.add(newFileName);
-					
-					File uploadedFile = new File(imgPath, newFileName);
-					
-					item.write(uploadedFile);
-					vo.setCamImgList(uploadFileList);
+					if(fileName!=null && !fileName.equals("")) { //새로운 파일이 있을때 업로드
+						String fileId = UUID.randomUUID().toString().replace("-", ""); //고유한 파일이름 생성
+						String filExtension = FilenameUtils.getExtension(fileName); //파일확장자
+						String newFileName= fileId+"."+filExtension; //전체파일이름(파일명+확장자)
+						uploadFileList.add(newFileName);
+						
+						File uploadedFile = new File(imgPath, newFileName);
+						
+						item.write(uploadedFile);
+						vo.setCamImgList(uploadFileList);
+						vo.setCamCurrImg(formFields.get("cam_crr_img"));
+						System.out.println(vo.getCamCurrImgList().size()+"현재파일");
+						for(int i=0; i<vo.getCamCurrImgList().size(); i++) { //원래 파일 삭제
+							if(vo.getCamImgList().get(i) != null) {
+								File f = new File(imgPath, vo.getCamImgList().get(i));
+								f.delete();
+							}
+						}
+					}
 				}
 			} //while
+			
 		} catch (Exception e) {
 			System.out.println("파일업로드에러");
 			e.printStackTrace();
 		}
-		
+		System.out.println(formFields.get("cam_crr_img"));
 		CamDetailDAO dao = new CamDetailDAO();
 		int camInsCnt = 0;
 		
@@ -141,12 +159,14 @@ public class CommandCampaignUpdateOk implements Command_Interface {
 				rvo.setDelivery_ex_year(rewardList.get("reward[del_year_"+i+"]"));
 				rvo.setDelivery_ex_month(rewardList.get("reward[del_month_"+i+"]"));
 				rvo.setDelivery_ex_date_detail(rewardList.get("reward[del_date_detail_"+i+"]"));
+				rvo.setReward_no(Integer.parseInt(rewardList.get("reward[reward_no_"+i+"]")));
+				rvo.setCam_no(vo.getCamNo());
 				rwList.add(rvo);
 			}
-			camInsCnt = dao.insertCam(vo, rwList);
+			camInsCnt = dao.updateCam(vo, rwList);
 		}
 		else {
-			camInsCnt = dao.insertCam(vo);
+			camInsCnt = dao.updateCam(vo);
 		}
 		//캠페인추가 실패 시 업로드된 이미지 삭제
 		if(camInsCnt <= 0) {
@@ -158,7 +178,7 @@ public class CommandCampaignUpdateOk implements Command_Interface {
 			}
 		}
 		req.setAttribute("camInsCnt", camInsCnt);
-		return "/mypage/campaignWriteOk.jsp";
+		return "/mypage/campaignUpdateOk.jsp";
 	}
 	
 }

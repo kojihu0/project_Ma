@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %> 
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 	<div class="w-full bg-gray-lightest">
 		<div class="w-full max-w-screen-xl my-0 mx-auto px-8 xl:px-0 py-8"><!-- 상세페이지 -->
 			<div class="w-full flex mb-4"><!-- 상단 -->
@@ -9,21 +9,23 @@
 					<!--슬라이더-->
 					<div class="campaign-slider-wrapper relative mb-8">
 						<div class="campaign-slider w-full overflow-hidden">
-						<c:forTokens items="${vo.camImg}" delims="|" var="imgsrc">
+							<c:forTokens items="${vo.camImg}" delims="|" var="imgsrc">
 							<div class="slide">
 								<img src="<%=projectPath%>/img/campaign/${imgsrc}" class="object-cover w-full">
 							</div>
-						</c:forTokens>
+							</c:forTokens>
 						</div>
 						<button class="campaign-slider-arrow prev absolute left-0 z-50 bg-black text-white"><i class="xi-angle-left-thin"></i></button>
 						<button class="campaign-slider-arrow next absolute right-0 z-50 bg-black text-white"><i class="xi-angle-right-thin"></i></button>
 					</div>
-					<div class="campaign-slider-nav flex">
-					<c:forTokens items="${vo.camImg}" delims="|" var="imgsrc">
-						<div class="slider-nav-item w-1/3 h-32 mr-4 cursor-pointer rounded overflow-hidden active">
-							<img alt="prd_img" src="<%=projectPath%>/img/campaign/${imgsrc}" class="object-cover w-full h-32 transform hover:scale-125 duration-300">
+					<div class="campaign-slider-nav flex justify-between">
+						<c:forTokens items="${vo.camImg}" delims="|" var="imgsrc">
+						<div class="slider-nav-item w-1/3 h-32 px-2">
+							<div class="cursor-pointer rounded overflow-hidden">
+								<img alt="prd_img" src="<%=projectPath%>/img/campaign/${imgsrc}" class="object-cover w-full h-32 transform hover:scale-125 duration-300">
+							</div>
 						</div>
-					</c:forTokens>
+						</c:forTokens>
 					</div>
 					<!--슬라이더-->
 				</div>
