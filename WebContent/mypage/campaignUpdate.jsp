@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<style>
+.reward-ctrl-btn{visibility:hidden;}
+</style>
 <ul class="flex mpMenu">
 	<li class="flex-1 mr-2">
 		<a class="text-center block border border-blue-500 rounded py-3 px-5 bg-danger hover:bg-danger-dark text-white" href="<%=projectPath%>/mypage/coporatePage.do">법인 정보</a>
@@ -91,9 +94,8 @@
 			</div>
 			<!--캠페인 정보-->
 			<!--리워드 정보-->
-			<div class="mb-8">
-				<label for="cam_reward_status" class="inline-block my-4 mr-4 font-bold text-lg">리워드가 존재하는 캠페인입니다.</label><input type="checkbox" name="cam_reward_status" value="1" id="cam_reward_status" <c:if test="${vo.camRewardStatus == 1}">checked</c:if>/>
-			</div>
+			<!--  -->
+			<input type="checkbox" name="cam_reward_status" value="1" id="cam_reward_status" class="hidden" <c:if test="${vo.camRewardStatus == 1}">checked</c:if> disabled/>
 			<div id="rewards" class="hidden">
 			<input type="hidden" id="reward_cnt" name="reward_cnt" value="${fn:length(rwList)}">
 			<h2 class="mb-4 border-b border-solid border-gray-dark pb-4">리워드 정보</h2>

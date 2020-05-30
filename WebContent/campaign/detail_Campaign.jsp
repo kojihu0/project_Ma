@@ -18,7 +18,7 @@
 						<button class="campaign-slider-arrow prev absolute left-0 z-50 bg-black text-white"><i class="xi-angle-left-thin"></i></button>
 						<button class="campaign-slider-arrow next absolute right-0 z-50 bg-black text-white"><i class="xi-angle-right-thin"></i></button>
 					</div>
-					<div class="campaign-slider-nav flex justify-between">
+					<div class="campaign-slider-nav flex justify-start">
 						<c:forTokens items="${vo.camImg}" delims="|" var="imgsrc">
 						<div class="slider-nav-item w-1/3 h-32 px-2">
 							<div class="cursor-pointer rounded overflow-hidden">

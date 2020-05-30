@@ -107,11 +107,12 @@ public class CamDetailVO {
 	}
 
 	public String getCamDesc() {
-		camDesc = camDesc.replaceAll("\r\n","<br/>");
+		camDesc = camDesc.replaceAll("<br/>","\r\n");
 		return camDesc;
 	}
 
 	public void setCamDesc(String camDesc) {
+		camDesc = camDesc.replaceAll("\r\n","<br/>");
 		this.camDesc = camDesc;
 	}
 
@@ -205,7 +206,6 @@ public class CamDetailVO {
 	}
 
 	public List<String> getCamCurrImgList() {
-		camCurrImgList = Arrays.asList(camCurrImg.split("|"));
 		return camCurrImgList;
 	}
 
@@ -219,6 +219,7 @@ public class CamDetailVO {
 	}
 
 	public void setCamCurrImg(String camCurrImg) {
+		camCurrImgList = Arrays.asList(camCurrImg.split("|"));
 		this.camCurrImg = camCurrImg;
 	}
 }
