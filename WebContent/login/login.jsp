@@ -24,7 +24,60 @@
 			}
 		});
 	});
-  	
+
+$(function(){
+	 var userInputId = getCookie("userInputId");//저장된 쿠기값 가져오기
+	 $("input[name='user_id']").val(userInputId); 
+	  
+	 if($("input[name='user_id']").val() != ""){ // 그 전에 ID를 저장해서 처음 페이지 로딩
+		 // 아이디 저장하기 체크되어있을 시,
+	     $("#idSaveCheck").attr("checked", true); // ID 저장하기를 체크 상태로 두기.
+	 }
+	  
+	 $("#idSaveCheck").change(function(){ // 체크박스에 변화가 발생시
+	     if($("#idSaveCheck").is(":checked")){ // ID 저장하기 체크했을 때,
+	         var userInputId = $("input[name='user_id']").val();
+	         setCookie("userInputId", userInputId, 7); // 7일 동안 쿠키 보관
+	     }else{ // ID 저장하기 체크 해제 시,
+	         deleteCookie("userInputId");
+	     }
+	 });
+	  
+	 // ID 저장하기를 체크한 상태에서 ID를 입력하는 경우, 이럴 때도 쿠키 저장.
+	 $("input[name='user_id']").keyup(function(){ // ID 입력 칸에 ID를 입력할 때,
+	     if($("#idSaveCheck").is(":checked")){ // ID 저장하기를 체크한 상태라면,
+	         var userInputId = $("input[name='user_id']").val();
+	         setCookie("userInputId", userInputId, 7); // 7일 동안 쿠키 보관
+	     }
+	 });
+	});
+	
+	function setCookie(cookieName, value, exdays){
+	 var exdate = new Date();
+	 exdate.setDate(exdate.getDate() + exdays);
+	 var cookieValue = escape(value) + ((exdays==null) ? "" : "; expires=" + exdate.toGMTString());
+	 document.cookie = cookieName + "=" + cookieValue;
+	}
+	
+	function deleteCookie(cookieName){
+	 var expireDate = new Date();
+	 expireDate.setDate(expireDate.getDate() - 1);
+	 document.cookie = cookieName + "= " + "; expires=" + expireDate.toGMTString();
+	}
+	
+	function getCookie(cookieName) {
+	 cookieName = cookieName + '=';
+	 var cookieData = document.cookie;
+	 var start = cookieData.indexOf(cookieName);
+	 var cookieValue = '';
+	 if(start != -1){
+	     start += cookieName.length;
+	     var end = cookieData.indexOf(';', start);
+	     if(end == -1)end = cookieData.length;
+	     cookieValue = cookieData.substring(start, end);
+	 }
+	 return unescape(cookieValue);
+}
 </script>
 <body>
 
@@ -47,7 +100,7 @@
 					    </div>
 					    <div class="flex items-center justify-between">
 					    	<label class="inline-flex items-center">
-					    		<input type="checkbox" class=" w-5 h-5">
+					    		<input type="checkbox" class=" w-5 h-5" id="idSaveCheck">
 					    		<span>아이디 저장</span>
 					    	</label>
 					      <a class="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800 hover:text-gray" href="<%=projectPath%>/login/find_Id.do">
@@ -58,51 +111,57 @@
 						                    로그인
 						     </button>
 						 <div class="flex justify-center mb-8">
-							<div id="naver_id_login" class="flex mr-3" ></div> 
-							<script type="text/javascript">
-								  	var naver_id_login = new naver_id_login("V8e0tffyN2T8QLyH9O3w", "http://=localhost:9090/login.do");
-								  	var state = naver_id_login.getUniqState();
-								  	naver_id_login.setButton("white", 2,40);
-								  	naver_id_login.setDomain("http://127.0.0.1:9090/login.do");
-								  	naver_id_login.setState(state);
-								  	naver_id_login.setPopup();
-								  	naver_id_login.init_naver_id_login();
-  							</script>
-							 <a id="kakao-login-btn" class="flex ml-3"></a>
+							<div id="naver_id_login"></div>
+								<script type="text/javascript"
+										src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js"
+										charset="utf-8"></script>
+								
+								<script type="text/javascript">
+										var clientId = "XIjSOZY8lBjfkXq5jWmK";
+										var callbackUrl = "http://localhost:9090/project_Ma/login/callBack.do";
+										var naver_id_login = new naver_id_login(clientId, callbackUrl);
+										var state = naver_id_login.getUniqState();
+										naver_id_login.setButton("white", 3, 40);
+										naver_id_login.setDomain("localhost:9090/project_Ma/index.do");
+										naver_id_login.setState(state);
+										//naver_id_login.setPopup();
+										naver_id_login.init_naver_id_login();
+								</script>
 
+							 <a id="kakao-login-btn" class="flex ml-3"></a>
+  							<a href="http://developers.kakao.com/logout"></a>
 							<script type='text/javascript'>
-							  //<![CDATA[
-							    // 사용할 앱의 JavaScript 키를 설정해 주세요.
-							    Kakao.init('3201485c8b4e41d0146e1bf9eceada34');  //여기서 아까 발급받은 키 중 javascript키를 사용해준다.
-							    // 카카오 로그인 버튼을 생성합니다.
-							   Kakao.Auth.createLoginButton({
-							   container: '#kakao-login-btn',
-							   success: function(authObj) {
-							     Kakao.API.request({
-							       url: '/v1/user/me',
-							       success: function(res) {
-							      		console.log(res);
-							      		var email = res.kakao.account.email;
-							      		var name = res.properties.nickname;
-							      		console.log(email);
-							      		console.log(name);
-							           }
-							         })
-							       },
-							       fail: function(error) {
-							         alert(JSON.stringify(error));
-							       }
-							     });
-							    console.log(authObj);
-							    var token = authObj.access_token;
-							  //]]>
+							Kakao.init('3201485c8b4e41d0146e1bf9eceada34'); //아까 카카오개발자홈페이지에서 발급받은 자바스크립트 키를 입력함
+							//카카오 로그인 버튼을 생성합니다. 
+							Kakao.Auth.createLoginButton({ 
+							    container: '#kakao-login-btn', 
+							    success: function(authObj) { //authObj가 참일때, 자료를 성공적으로 보냈을때 출력되는 부분
+							           Kakao.API.request({
+							               url: '/v2/user/me',
+							               success: function(res) { //res가 참일때, 자료를 성공적으로 보냈을때 출력되는 부분
+							                     console.log(res.id);//<---- 콘솔 로그에 id 정보 출력(id는 res안에 있기 때문에  res.id 로 불러온다)			 
+							                     console.log(res.kaccount_email);//<---- 콘솔 로그에 email 정보 출력 (어딨는지 알겠죠?)						 
+							                     console.log(res.properties['nickname']);//<---- 콘솔 로그에 닉네임 출력(properties에 있는 nickname 접근 						                             
+							                     // res.properties.nickname으로도 접근 가능 )
+							                     console.log(authObj.access_token);//<---- 콘솔 로그에 토큰값 출력					         
+							          var kakaonickname = res.properties.nickname;    //카카오톡 닉네임을 변수에 저장
+							          var kakaoe_mail = res.properties.kaccount_email;    //카카오톡 이메일을 변수에 저장함
+							          //카카오톡의 닉네임과,mail을 url에 담아 같이 페이지를 이동한다.
+							          location.href="<%=projectPath%>/index.do?user_id="+kakaonickname+"&kakaoe_mail="+kakaoe_mail;						      
+							                   }
+							                 })
+							               },
+							               fail: function(error) { //에러 발생시 에러 메시지를 출력한다.
+							                 alert(JSON.stringify(error));
+							               }
+							             });
 							</script>
 						 </div>
 						<div class="flex justify-center">
 							<a class="inline-block align-baseline font-bold text-sm hover:text-gray mx-10 underline" href="<%=projectPath%>/joinMembership/join_MembershipSelect.do">
 					      	  일반 회원가입
 					         </a>
-					         <a class="inline-block align-baseline font-bold text-sm hover:text-gray mx-10 underline" href="<%=projectPath%>/joinMembership/join_Corporate.do">
+					         <a class="inline-block align-baseline font-bold text-sm hover:text-gray mx-10 underline" href="<%=projectPath%>/joinMembership/join_Coporate.do">
 					      	  법인 회원가입
 					         </a>
 						</div>

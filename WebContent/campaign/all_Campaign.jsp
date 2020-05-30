@@ -37,7 +37,7 @@
 						<div class="text-2xl my-2 hover:text-danger"><a href="<%=projectPath%>/campaign/detail_Campaign.do?cam_no=${vo.cam_no}&pageNum=${pageVO.pageNum}<c:if test='${pageVO.arrayKey!=null}'>&arrayKey=${pageVO.arrayKey}</c:if>">${vo.cam_title}</a></div>
 					
 						<div class="relative w-full h-2 rounded-md bg-info-light">
-							<div class="absolute w-1/5 h-full border-solid border-gray border bg-danger rounded-md"></div>
+							<div class="absolute h-full border-solid border-gray border bg-danger rounded-md" style="width:${vo.percent}%"></div>
 						</div> 
 						<div class="my-1">
 							${vo.cam_end}<span class="float-right text-danger">${vo.cam_remainday}일 남음</span>

@@ -1,6 +1,7 @@
 eclipse.preferences.version=1
 encoding//WebContent/contact/mainQnA_page.jsp=UTF-8
 encoding//WebContent/css/base.css=UTF-8
+encoding//WebContent/login/callBack.jsp=UTF-8
 encoding//src/com/project_Ma/home/ConnectionDB.java=UTF-8
 encoding//src/com/project_Ma/home/DAO/MemberDAO.java=UTF-8
 encoding//src/com/project_Ma/home/VO/CampaignVO.java=UTF-8
