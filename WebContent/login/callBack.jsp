@@ -9,12 +9,17 @@
   var clientId = "XIjSOZY8lBjfkXq5jWmK";
   var callbackUrl = "http://localhost:9090/project_Ma/login/callBack.do";
   var naver_id_login = new naver_id_login(clientId, callbackUrl);
+
+
+  
   // 네이버 사용자 프로필 조회
   naver_id_login.get_naver_userprofile("naverSignInCallback()");
   // 네이버 사용자 프로필 조회 이후 프로필 정보를 처리할 callback function
   function naverSignInCallback() {
-	  alert(naver_id_login.getProfileData('name'));
-      location.href="<%=projectPath%>/index.do";
+	  
+	  var name = naver_id_login.getProfileData('name');
+
+      location.href="<%=projectPath%>/index.do?name="+ name;
   }
 </script>
 </body>

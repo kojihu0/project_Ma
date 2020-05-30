@@ -77,7 +77,7 @@ $(function(){
 					</div>
 					
 				</div>
-				<div class="flex my-5">
+				<!--<div class="flex my-5">
 					<div class="border w-40 h-8 text-center bg-danger text-white rounded">마일리지 사용</div>
 					<div> 
 						<div class="flex">
@@ -88,7 +88,7 @@ $(function(){
 						<div class="text-danger ml-24 hidden" id="txt">입력하신 값이 보유하신 마일리지보다 높습니다. 사용불가 합니다.</div>
 						<div class="text-danger ml-24 hidden" id="mile2">숫자를 입력해주세요.</div>
 					</div> 
-				</div>
+				</div>-->
 				<div class="flex my-5">
 					<div class="border w-40 h-8 text-center bg-danger text-white rounded">최종금액</div>
 					<div>

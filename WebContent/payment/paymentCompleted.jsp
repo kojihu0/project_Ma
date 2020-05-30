@@ -60,10 +60,10 @@
 					<span>펀딩금액</span>
 					<span>${vo.funding_price}</span>
 				</div>
-				<div class="flex items-center justify-between my-2 text-xl">
+				<!--<div class="flex items-center justify-between my-2 text-xl">
 					<span>마일리지 차감금액</span>
 					<span>${vo.mileage}</span>
-				</div>
+				</div>-->
 				<div class="flex items-center justify-between my-2 text-xl">
 					<span>추가 후원금액</span>
 					<span>${vo.add_price}원</span>
