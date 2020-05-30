@@ -21,19 +21,19 @@ $(function(){
 			<div id="mainImgDiv" class="w-full my-0 mx-auto">
 				<div class="w-full my-0 mx-auto bg-gray-lighter"> 
 					<div class="slider single-item">
-						<div class="slide-img w-full bg-cover relative" style="background-image:url('<%=projectPath%>/img/mainslider01.png')">
+						<div class="slide-img w-full bg-cover bg-center relative" style="background-image:url('<%=projectPath%>/img/mainslider01.png')">
 							<div class="slide-text absolute text-white"> 
 								<h1 class="font-bold text-3xl mb-4">대통령은 헌법과 법률이<br> 정하는 바에 의하여 공무원을 임면한다.</h1>
 								<p>정부는 예산에 변경을 가할 필요가 있을 때에는 추가경정예산안을 편성하여 국회에 제출할 수 있다.</p>
 							</div>
 						</div>
-						<div class="slide-img w-full bg-cover relative" style="background-image:url('<%=projectPath%>/img/mainslider02.png')">
+						<div class="slide-img w-full bg-cover bg-center relative" style="background-image:url('<%=projectPath%>/img/mainslider02.png')">
 							<div class="slide-text absolute text-white">
 								<h1 class="font-bold text-3xl mb-4">모든 국민은 근로의 권리를 가진다.</h1>
 								<p>국가는 사회적·경제적 방법으로 근로자의 고용의 증진과 적정임금의 보장에 노력하여야 하며,<br>법률이 정하는 바에 의하여 최저임금제를 시행하여야 한다.</p>
 							</div>
 						</div>
-						<div class="slide-img w-full bg-cover relative" style="background-image:url('<%=projectPath%>/img/mainslider03.png')">
+						<div class="slide-img w-full bg-cover bg-center relative" style="background-image:url('<%=projectPath%>/img/mainslider03.png')">
 							<div class="slide-text absolute">
 								<h1 class="font-bold text-3xl mb-4">밝은 그들의 것이다.<br>보라, 지혜는 가치를 듣기만 위하여서.</h1>
 								<p>피가 그와 구하지 튼튼하며, 용감하고 생명을 끓는다.</p>
