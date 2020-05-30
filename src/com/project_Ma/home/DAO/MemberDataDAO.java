@@ -33,7 +33,7 @@ public class MemberDataDAO extends ConnectionDB implements Command_Member_Inform
 				}
 			
 		}catch(Exception e){
-			System.out.println("ȸ������ ���� ���� -->"+e.getMessage());
+			System.out.println("유저 정보 출력 에러 -->"+e.getMessage());
 			e.printStackTrace();
 		}finally {
 			closeDB();
@@ -57,7 +57,7 @@ public class MemberDataDAO extends ConnectionDB implements Command_Member_Inform
 			
 			cnt = pstmt.executeUpdate();
 		}catch(Exception e) {
-			System.out.println("ȸ������ ���� ����--->"+e.getMessage());
+			System.out.println("유저 정보 수정 에러 --->"+e.getMessage());
 			e.printStackTrace();
 		}finally{
 			closeDB();
@@ -74,7 +74,7 @@ public class MemberDataDAO extends ConnectionDB implements Command_Member_Inform
 			pstmt.setString(2, vo.getUser_id());
 			cnt = pstmt.executeUpdate();
 		}catch (Exception e) {
-			System.out.println("���� ��й�ȣ ���� ���� -->"+e.getMessage());
+			System.out.println("유저 비밀번호 변경 에러  -->"+e.getMessage());
 			e.printStackTrace();
 		}finally {
 			closeDB();
@@ -96,7 +96,7 @@ public class MemberDataDAO extends ConnectionDB implements Command_Member_Inform
 			cnt = pstmt.executeUpdate();
 			
 		}catch (Exception e){
-			System.out.println("ȸ��Ż�� ����-->"+e.getMessage());
+			System.out.println("유저 정보 삭제 에러 -->"+e.getMessage());
 			e.printStackTrace();
 		}finally {
 			closeDB();
@@ -127,7 +127,7 @@ public class MemberDataDAO extends ConnectionDB implements Command_Member_Inform
 					vo.setAddr_sub(result.getString(11));
 			 }
 		}catch (Exception e) {
-			System.out.println("���� ������ ���� ���� -->"+e.getMessage());
+			System.out.println("법인 정보 출력 에러  -->"+e.getMessage());
 			e.printStackTrace();
 		}finally {
 			closeDB();
@@ -154,7 +154,7 @@ public class MemberDataDAO extends ConnectionDB implements Command_Member_Inform
 			
 			cnt = pstmt.executeUpdate();
 		}catch (Exception e) {
-			System.out.println("�������� ���� ���� -- >"+e.getMessage());
+			System.out.println("법인 정보  수정 에러  -- >"+e.getMessage());
 			e.printStackTrace();
 		}finally {
 			closeDB();
@@ -167,7 +167,7 @@ public class MemberDataDAO extends ConnectionDB implements Command_Member_Inform
 		int cnt = 0; 
 		try {
 			connDB();
-			sql="delete from user_info where user_name=?,user_id=?,user_pw=?";
+			sql="delete from user_info where user_name=? and user_id=? and user_pw=?";
 			pstmt=conn.prepareStatement(sql);
 			pstmt.setString(1, vo.getUser_name());
 			pstmt.setString(2, vo.getUser_id());
@@ -175,7 +175,7 @@ public class MemberDataDAO extends ConnectionDB implements Command_Member_Inform
 			cnt = pstmt.executeUpdate();
 			
 		}catch (Exception e) {
-			System.out.println("�������� ���� ���� -->"+e.getMessage());
+			System.out.println("법인 정보 삭제 에러  -->"+e.getMessage());
 			e.printStackTrace();
 		}finally {
 			closeDB();

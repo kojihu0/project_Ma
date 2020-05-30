@@ -13,6 +13,9 @@
 	   <li class="flex-1 mr-2">
 	    <a class="text-center block border border-blue-500 rounded py-3 px-5 bg-danger hover:bg-danger-dark text-white" href="<%=projectPath %>/mypage/copor_Spon.do">후원 목록</a>
 	  </li>
+	  <li class="flex-1 mr-2">
+	    <a class="text-center block border border-blue-500 rounded py-3 px-5 bg-danger hover:bg-danger-dark text-white" href="<%=projectPath %>/mypage/copor_WishList.do">위시 리스트</a>
+	  </li>
 	</ul>
 	 <!--캠페인관리-->
 

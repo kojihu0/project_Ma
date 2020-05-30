@@ -27,7 +27,7 @@ public class Command_WishList_Del implements Command_Interface {
 		System.out.println(vo.getCam_no());
 		CampaignListDAO dao = new CampaignListDAO();
 		
-		int cnt = dao.CampaignWishListDel(vo);
+		int cnt = dao.campaignWishListDel(vo);
 		request.setAttribute("cnt",cnt);
 		return "/mypage/wishListDel.jsp";
 	}

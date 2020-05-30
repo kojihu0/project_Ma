@@ -11,7 +11,6 @@ public class JoinMemberShipDAO extends ConnectionDB implements CommandMemberShip
 	public JoinMemberShipDAO() {
 		
 	}
-	//���̵� �ߺ�üũ
 	public int idCheck(String user_id) {
 		int cnt = 0; 
 		try {

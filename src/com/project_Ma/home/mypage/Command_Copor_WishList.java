@@ -12,25 +12,23 @@ import com.project_Ma.home.Command_Interface;
 import com.project_Ma.home.DAO.CampaignListDAO;
 import com.project_Ma.home.VO.CampaignSponVO;
 
-public class Command_Copor_SponList implements Command_Interface {
+public class Command_Copor_WishList implements Command_Interface {
 
-	public Command_Copor_SponList() {
+	public Command_Copor_WishList() {
 		// TODO Auto-generated constructor stub
 	}
 
 	@Override
 	public String processStart(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-				HttpSession ses = request.getSession();
-				CampaignSponVO vo = new CampaignSponVO();
-				vo.setUser_id((String) ses.getAttribute("user_id"));
-				CampaignListDAO dao = new CampaignListDAO();
-				String user_id = (String)ses.getAttribute("user_id");
-				System.out.println(user_id);
-				List<CampaignSponVO> list = dao.CampaignSponList(user_id);
-				System.out.println("!11111111111111111");
-				request.setAttribute("list", list);
-				return "/mypage/copor_Spon.jsp";
+		HttpSession ses = request.getSession();
+		CampaignSponVO vo = new CampaignSponVO();
+		vo.setUser_id((String)ses.getAttribute("user_id"));
+		CampaignListDAO dao = new CampaignListDAO();
+		String user_id = (String) ses.getAttribute("user_id");
+		List<CampaignSponVO> list = dao.coporWishList(user_id);
+		request.setAttribute("list", list);
+		return "/mypage/copor_WishList.jsp";
 	}
 
 }

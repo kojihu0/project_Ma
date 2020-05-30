@@ -9,6 +9,24 @@ public class PaymentDAO extends ConnectionDB{
 
 	public PaymentDAO() {
 	}
+	//마일리지 값 구하기 
+	public void mileageValue(PaymentVO vo){
+		try { 
+			connDB();
+			sql="select mileage_before from user_mileage where user_id=?";//user_mileage에서 마일리지값을 가져와서 보여준다..
+			pstmt= conn.prepareStatement(sql);
+			pstmt.setString(1,vo.getUser_id());
+			result = pstmt.executeQuery();
+			if(result.next()) {
+				vo.setMileageBefore(result.getInt(1));
+			}
+		}catch(Exception e) {
+			System.out.println("마일리지값 출력 실패"+e.getMessage());
+		}finally{
+			closeDB();
+		}
+	}
+	
 	public void payment(RewardVO vo) {
 		try {
 			connDB();
@@ -31,7 +49,7 @@ public class PaymentDAO extends ConnectionDB{
 		try {
 			connDB();
 			sql="insert into payment(payment_no, cam_no, user_id, reward_no, funding_price, add_price, price_anonymous, name_anonymous, mileage, total_price, donate_date, reward_addr_num, reward_addr_main, reward_addr_sub, reward_phone "
-			   +" , reward_tel, payment_status,  delivery_memo, reciever, reward_email)values(payment_sq.nextval, ?, ?, ?, ?, ?, ?, ?, ?, ?, to_date(sysdate,'yy-mm-dd'), ?, ?, ?, ?, ?, '결제 대기중', ?, ?, ?)  ";
+			   +" , reward_tel, payment_status,  delivery_memo, reciever, reward_email)values(payment_sq.nextval, 1, 'admin', 0, ?, ?, ?, ?, ?, ?, to_date(sysdate,'yy-mm-dd'), ?, ?, ?, ?, ?, '���� �����', ?, ?, ?)  ";
 			pstmt = conn.prepareStatement(sql);
 			
 			pstmt.setInt(1, cvo.getCam_no());
@@ -53,6 +71,13 @@ public class PaymentDAO extends ConnectionDB{
 			pstmt.setString(17, vo.getReward_email());
 			
 			result=pstmt.executeUpdate();
+			
+			sql="INSERT INTO mileage() VALUES(????)";
+			
+			
+			
+			
+			
 		}catch(Exception e) {
 			System.out.println("결제 등록 ...."+e.getMessage());
 		}finally {

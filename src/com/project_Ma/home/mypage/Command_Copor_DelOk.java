@@ -29,7 +29,7 @@ public class Command_Copor_DelOk implements Command_Interface {
 			
 			request.setAttribute("cnt", cnt);
 			
-			return "/mypage/user_del.jsp";
+			return "/mypage/copor_del.jsp";
 	}
 
 }

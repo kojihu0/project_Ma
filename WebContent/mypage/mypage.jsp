@@ -5,6 +5,18 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script type="text/JavaScript" src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+<script>
+function openDaumZipAddress() {
+		new daum.Postcode({
+			oncomplete:function(data) {
+				jQuery("#mypage_addr_num").val(data.zonecode);
+				jQuery("#mypage_addr_main").val(data.address);
+				jQuery("#mypage_addr_sub").focus();
+			}
+		}).open();
+	}
+</script>
 </head>
 <body>
 	<nav>
@@ -70,8 +82,8 @@
 				      <label class="block uppercase tracking-wide text-gray-darker text-xs font-bold mb-2" for="grid-address">
 				       Address
 				      </label>
-				      <input value="${vo.addr_no }" name="addr_no"class="appearance-none block w-full  text-gray-darkest text-2xl border-b border-info py-5 px-5 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-danger" id="grid-address" type="text">
-				     <input id="move-ico" type="button" value="우편번호 검색" class="absolute bg-danger text-white hover:bg-danger-dark text-white font-bold py-4 px-5 rounded">
+				      <input id="mypage_addr_num" value="${vo.addr_no }" name="addr_no"class="appearance-none block w-full  text-gray-darkest text-2xl border-b border-info py-5 px-5 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-danger" id="grid-address" type="text">
+				     <input onClick="openDaumZipAddress();" id="move-ico" type="button" value="우편번호 검색" class="absolute bg-danger text-white hover:bg-danger-dark text-white font-bold py-4 px-5 rounded">
 				    </div>
 				  </div>
 				   <div class="flex flex-wrap -mx-3 mb-2">
@@ -79,13 +91,14 @@
 				      <label class="block uppercase tracking-wide text-gray-darker text-xs font-bold mb-2" for="grid-main">
 				        main
 				      </label>
-				      <input value="${vo.addr_main }" name="addr_main" class="appearance-none block w-full  text-gray-darkest text-2xl border-b border-info py-5 px-5 leading-tight focus:outline-none focus:bg-white focus:border-danger" id="grid-main" type="text">
+				      <input id="mypage_addr_main" value="${vo.addr_main }" name="addr_main" class="appearance-none block w-full  text-gray-darkest text-2xl border-b border-info py-5 px-5 leading-tight focus:outline-none focus:bg-white focus:border-danger" id="grid-main" type="text">
+				      
 				    </div>
 				     <div class="w-full md:w-3/6 px-3 mb-6 md:mb-0">
 				      <label class="block uppercase tracking-wide text-gray-darker text-xs font-bold mb-2" for="grid-sub">
 				        sub
 				      </label>
-				      <input value="${vo.addr_sub }" name="addr_sub" class="appearance-none block w-full  text-gray-darkest text-2xl border-b border-info py-5 px-5 leading-tight focus:outline-none focus:bg-white focus:border-danger" id="grid-sub" type="text">
+				      <input id="mypage_addr_sub" value="${vo.addr_sub }" name="addr_sub" class="appearance-none block w-full  text-gray-darkest text-2xl border-b border-info py-5 px-5 leading-tight focus:outline-none focus:bg-white focus:border-danger" id="grid-sub" type="text">
 				     </div>
 				    </div><br/>
 				    <label class="block uppercase tracking-wide text-gray-darker text-xs font-bold mb-2" for="grid-sub">

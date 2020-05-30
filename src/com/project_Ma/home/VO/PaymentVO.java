@@ -40,7 +40,7 @@ public class PaymentVO {
 	private String reciever;//수취인
 	private int delivery_price;
 	private int payment_card_num;//결제카드 끝에 4자리 번호
-	
+	private int mileageBefore;
 	public PaymentVO() {
 	}
 	
@@ -321,6 +321,14 @@ public class PaymentVO {
 
 	public void setPayment_card_num(int payment_card_num) {
 		this.payment_card_num = payment_card_num;
+	}
+
+	public int getMileageBefore() {
+		return mileageBefore;
+	}
+
+	public void setMileageBefore(int mileageBefore) {
+		this.mileageBefore = mileageBefore;
 	}
 	
 	

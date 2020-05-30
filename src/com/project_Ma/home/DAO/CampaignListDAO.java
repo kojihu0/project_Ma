@@ -12,7 +12,7 @@ public class CampaignListDAO extends ConnectionDB implements Command_CampaignLis
 
 	public CampaignListDAO() {
 	}
-	public List<CampaignSponVO> CampaignSponList(String user_id) {
+	public List<CampaignSponVO> campaignSponList(String user_id) {
 		List<CampaignSponVO> list = new ArrayList<CampaignSponVO>();
 		try {
 			connDB();
@@ -31,13 +31,13 @@ public class CampaignListDAO extends ConnectionDB implements Command_CampaignLis
 				list.add(vo);
 			}
 		}catch (Exception e){
-			System.out.println("�Ŀ���� ���� --->"+e.getMessage());
+			System.out.println("유저 후원 목록 에러 --->"+e.getMessage());
 		}finally {
 			closeDB();
 		}
 		return list;
 	}
-	public List<CampaignSponVO> CampaignWishList(String user_id) {
+	public List<CampaignSponVO> campaignWishList(String user_id) {
 		List<CampaignSponVO> list = new ArrayList<CampaignSponVO>();
 		try {
 			connDB();
@@ -53,14 +53,38 @@ public class CampaignListDAO extends ConnectionDB implements Command_CampaignLis
 				list.add(vo);
 			}
 		}catch (Exception e) {
-			System.out.println("���ø���Ʈ ��� ���� -->"+e.getMessage());
+			System.out.println("유저 위시리스트 목록 에러 -->"+e.getMessage());
 		}finally {
 			closeDB();
 		}
 		return list;
 	}
 	
-	public int CampaignWishListDel(CampaignSponVO vo) {
+	
+	public List<CampaignSponVO> coporWishList(String user_id) {
+		List<CampaignSponVO> list = new ArrayList<CampaignSponVO>();
+		try {
+			connDB();
+			sql="select w.cam_no, c.cam_img, c.cam_title from user_wish w  join campaign c on w.cam_no = c.cam_no where w.user_id=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1,user_id);
+			result = pstmt.executeQuery();
+			while(result.next()) {
+				CampaignSponVO vo = new CampaignSponVO();
+				vo.setCam_no(result.getInt(1));
+				vo.setCam_img(result.getString(2));
+				vo.setCam_title(result.getString(3));
+				list.add(vo);
+			}
+		}catch (Exception e) {
+			System.out.println("유저 위시리스트 목록 에러 -->"+e.getMessage());
+		}finally {
+			closeDB();
+		}
+		return list;
+	}
+	
+	public int coporWishListDel(CampaignSponVO vo) {
 		int cnt = 0;
 		try {
 			connDB();
@@ -70,7 +94,24 @@ public class CampaignListDAO extends ConnectionDB implements Command_CampaignLis
 			pstmt.setString(2,vo.getUser_id());
 			cnt=pstmt.executeUpdate();
 		}catch(Exception e){
-			System.out.println("���ø���Ʈ ��� ���� ���� --> "+e.getMessage());
+			System.out.println("법인 위시리스트목록 삭제--> "+e.getMessage());
+		}finally {
+			closeDB();
+		}
+		return cnt;
+	}
+	
+	public int campaignWishListDel(CampaignSponVO vo) {
+		int cnt = 0;
+		try {
+			connDB();
+			sql="delete from user_wish where cam_no=? and user_id=?";
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setInt(1,vo.getCam_no());
+			pstmt.setString(2,vo.getUser_id());
+			cnt=pstmt.executeUpdate();
+		}catch(Exception e){
+			System.out.println("유저 위시리스트목록 삭제 --> "+e.getMessage());
 		}finally {
 			closeDB();
 		}
@@ -97,7 +138,7 @@ public class CampaignListDAO extends ConnectionDB implements Command_CampaignLis
 				list.add(vo);
 			}
 		}catch(Exception e){
-			System.out.println("ķ���� ��� ��� ��� ���� -->"+e.getMessage());
+			System.out.println("법인 등록 목록 에러 -->"+e.getMessage());
 			e.printStackTrace();
 		}finally{
 			closeDB();
@@ -124,13 +165,13 @@ public class CampaignListDAO extends ConnectionDB implements Command_CampaignLis
 				vo.setCam_max_price(result.getString(8));
 				vo.setCam_img(result.getString(9));
 				vo.setCam_no(result.getInt(10));
-				
 		
 			}
-		}catch (Exception e) {
+			
+		}catch(Exception e){
 			System.out.println("캠페인 정보 수정 에러-->"+e.getMessage());
 			
-		}finally {
+		}finally{
 			closeDB();
 		}
 	}
