@@ -5,35 +5,26 @@
 <html> 
 <head>
 <meta charset="UTF-8">
-<title>main page</title>
-
-<script>
-$(function(){
-	$("#moreButton").on('click', function(){
-		location.href="<%=projectPath%>/campaign/all_Campaign.do";
-	});
-
-});
-</script> 
+<title>main page</title> 
 </head>
 <body>
 	<!-- img slide --> 
 			<div id="mainImgDiv" class="w-full my-0 mx-auto">
-				<div class="w-full my-0 mx-auto bg-gray-lighter"> 
+				<div class="w-full my-0 mx-auto bg-gray-lighter">
 					<div class="slider single-item">
-						<div class="slide-img w-full bg-cover relative" style="background-image:url('<%=projectPath%>/img/mainslider01.png')">
+						<div class="slide-img w-full bg-cover bg-center relative" style="background-image:url('<%=projectPath%>/img/img_main/mainslider01.png')">
 							<div class="slide-text absolute text-white"> 
 								<h1 class="font-bold text-3xl mb-4">대통령은 헌법과 법률이<br> 정하는 바에 의하여 공무원을 임면한다.</h1>
 								<p>정부는 예산에 변경을 가할 필요가 있을 때에는 추가경정예산안을 편성하여 국회에 제출할 수 있다.</p>
 							</div>
 						</div>
-						<div class="slide-img w-full bg-cover relative" style="background-image:url('<%=projectPath%>/img/mainslider02.png')">
+						<div class="slide-img w-full bg-cover bg-center relative" style="background-image:url('<%=projectPath%>/img/img_main/mainslider02.png')">
 							<div class="slide-text absolute text-white">
 								<h1 class="font-bold text-3xl mb-4">모든 국민은 근로의 권리를 가진다.</h1>
 								<p>국가는 사회적·경제적 방법으로 근로자의 고용의 증진과 적정임금의 보장에 노력하여야 하며,<br>법률이 정하는 바에 의하여 최저임금제를 시행하여야 한다.</p>
 							</div>
 						</div>
-						<div class="slide-img w-full bg-cover relative" style="background-image:url('<%=projectPath%>/img/mainslider03.png')">
+						<div class="slide-img w-full bg-cover bg-center relative" style="background-image:url('<%=projectPath%>/img/img_main/mainslider03.png')">
 							<div class="slide-text absolute">
 								<h1 class="font-bold text-3xl mb-4">밝은 그들의 것이다.<br>보라, 지혜는 가치를 듣기만 위하여서.</h1>
 								<p>피가 그와 구하지 튼튼하며, 용감하고 생명을 끓는다.</p>
@@ -51,7 +42,7 @@ $(function(){
 					<div class="mid_title">
 						이 캠페인은 어떠세요?<br /> <span id="mid_title_word" class="mid_title_word"> 당신의 작은 <span class="text-danger" >사랑</span>이 큰 도움이 됩니다 </span> 
 						<button id="moreButton" class="text-2xl border-b">
-							more  
+							<a href="<%=projectPath %>/campaign/all_Campaign.do">more</a>  
 						</button>
 					</div>
 				</div>
@@ -68,12 +59,12 @@ $(function(){
 								<div class="flex pre_date rounded-lg mt-2 my-0 mx-auto">
 									<div class="mid-genre">자선캠페인</div>
 									<div class="mid_bar_div flex-initial">
-										<div class="mid_emptyBar relative  h-2 rounded"> 
-											<div class="mid_colorBar relative bg-danger h-2 rounded" style="width:${lst.achievement }%"></div> 
+										<div id="mid_emptyBar_01" class="relative  h-2 rounded"> 
+											<div id="mid_colorBar_01" class="relative bg-danger h-2 rounded"></div>
 										</div>
 									</div>
 									<div class="mid_D_day w-1/3 flex-initial"> 
-										<span class="percentage text-danger">${lst.achievement }%</span><br/>${lst.cam_remainDay}&nbsp;일 남음.
+										<span class="percentage text-danger">50.00%</span><br/>${lst.cam_remainDay}&nbsp;일 남음.
 									</div>
 								</div>
 							</div>
@@ -128,9 +119,8 @@ $(function(){
 							<div class="dead_scroll_box flex w-full">
 								<div class="d_box mx-2  flex-initial w-2/3">
 									<div class="d_camBar  w-full my-2 h-8">
-										<div class="d_emptyBar relative mx-4  h-2 rounded">
-											<div class="d_colorBar relative  bg-danger h-2 rounded" style="width:${lst3.achievement}%"></div>
-											${lst3.achievement}
+										<div id="d_emptyBar_01" class="relative mx-4  h-2 rounded">
+											<div id="d_colorBar_01" class="relative  bg-danger h-2 rounded"></div>
 										</div>
 									</div>
 									<div class="d_camName  w-full h-16">
@@ -166,7 +156,7 @@ $(function(){
 					<span><a href="#">코로나</a></span><br/> 
 					 당신의 도움이 필요합니다.<br/><br/>  
 					<div class="article bg-white"> 
-						<img src="<%=projectPath %>/img/main_article_01.PNG"/>  
+						<img src="/project_Ma/img/img_main/main_article_01.PNG"/>  
 					</div> 
 					<a href="#">
 					 	<input type="button" id="resisterInput_02" class="bg-danger hover:bg-danger-light text-white font-bold py-2 px-4 border border-danger rounded"value="바로가기" />
@@ -187,12 +177,18 @@ $(function(){
 			</div>         
   
 			<!-- siteReisterBanner start --> 
-			<div id="siteReisterBanner" class="w-full max-w-screen-xl my-0 mx-auto">
+			<div id="siteReisterBanner"
+				class="w-full max-w-screen-xl my-0 mx-auto">
 				<div id="banner_ment_01" class="">
 					<span>ChariTree</span>에서 당신을 기다립니다.
 				</div>
 				<div id="banner_ment_02" class="">여러분의 따스한 관심을 나누어주세요.</div>
-					<a href="<%=projectPath%>/mypage/campaignWrite.do" id="resisterInput"><input type="button"  class="bg-danger hover:bg-danger-light text-white font-bold py-2 px-4 border border-danger rounded" value="바로가기" /></a>
+				<a href="#"> <input type="button" id="resisterInput"
+					class="bg-danger hover:bg-danger-light text-white font-bold py-2 px-4 border border-danger rounded"
+					value="바로가기" />
+				</a>
 			</div> <!-- siteReisterBanner end -->
+		<!---------------------------------------------->
+		<!---------------------------------------------->
 </body>
 </html>

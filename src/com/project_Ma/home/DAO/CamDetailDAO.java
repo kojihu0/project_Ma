@@ -336,6 +336,26 @@ public class CamDetailDAO extends ConnectionDB{
 		return camNoticeList;
 	}
 	
+	public int insertCamNotice(CamNoticeVO vo) {
+		int cnt = 0;
+		try {
+			connDB();
+			sql = "insert into cam_notice(notice_no, cam_no, cam_notice_title, cam_notice_content, cam_notice_date)"
+					+ " values(cam_notice_sq.nextval, ?, ?, ?, sysdate)";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, vo.getCamNo());
+			pstmt.setString(2, vo.getCamNoticeTitle());
+			pstmt.setString(3, vo.getCamNoticeContent());
+			cnt = pstmt.executeUpdate();
+		} catch (Exception e) {
+			System.out.println("캠페인 업데이트 등록 에러");
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		return cnt;
+	}
+	
 	public List<PaymentVO> camDonatorList(int camNo){
 		List<PaymentVO> camDonatorList = new ArrayList<PaymentVO>();
 		try {
@@ -449,11 +469,12 @@ public class CamDetailDAO extends ConnectionDB{
 		try {
 			connDB();
 			sql = "insert into cam_comment(comment_no, user_id, cam_no, comment_content, comment_parent_no, comment_regi)"
-					+ " values(comment_sq.nextval, ?, ?, ?, 0, sysdate)";
+					+ " values(comment_sq.nextval, ?, ?, ?, ?, sysdate)";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, vo.getUserid());
 			pstmt.setInt(2, vo.getCamNo());
 			pstmt.setString(3, vo.getCommentContent());
+			pstmt.setInt(4, vo.getCommentParentNo());
 			cnt = pstmt.executeUpdate();
 		} catch (Exception e) {
 			System.out.println("캠페인 코멘트 등록 에러");
@@ -511,13 +532,14 @@ public class CamDetailDAO extends ConnectionDB{
 		try {
 			connDB();
 			sql = "insert into cam_qna(qna_no, user_id, cam_no, qna_title, qna_content, qna_secret, qna_parent_no, qna_regi)"
-					+ " values(cam_qna_sq.nextval, ?, ?, ?, ?, ?, 0, sysdate)";
+					+ " values(cam_qna_sq.nextval, ?, ?, ?, ?, ?, ?, sysdate)";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, vo.getUserid());
 			pstmt.setInt(2, vo.getCamNo());
 			pstmt.setString(3, vo.getQnaTitle());
 			pstmt.setString(4, vo.getQnaContent());
 			pstmt.setInt(5, vo.getQnaSecret());
+			pstmt.setInt(6, vo.getQnaParentNo());
 			cnt = pstmt.executeUpdate();
 		} catch (Exception e) {
 			System.out.println("캠페인 코멘트 등록 에러");
