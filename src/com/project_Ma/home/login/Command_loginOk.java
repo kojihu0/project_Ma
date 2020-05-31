@@ -20,11 +20,12 @@ public class Command_loginOk implements Command_Interface {
 
 	@Override
 	public String processStart(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		vo.setUser_id(request.getParameter("user_id"));
 		vo.setUser_pw(request.getParameter("user_pw"));
 		
 		dao.memberLogin(vo);
-	
+		System.out.println(vo.getLoginStatus());
 		HttpSession session = request.getSession();
 		session.setAttribute("user_name", vo.getUser_name());
 		session.setAttribute("user_id", vo.getUser_id());
