@@ -39,7 +39,7 @@ public class Command_CampaignUpdate implements Command_Interface {
 		dao.selectCam(vo);
 		List<CamNoticeVO> noticeLst = dao.camNoticeList(camNo);
 		//List<PaymentVO> donatorLst = dao.camDonatorList(camNo);
-		List<CamCommentVO> commentLst = dao.camCommentList(camNo);
+		//List<CamCommentVO> commentLst = dao.camCommentList(camNo);
 		List<CamQnaVO> qnaLst = dao.camQnaList(camNo);
 		
 		RewardDAO rdao = new RewardDAO();
@@ -50,7 +50,7 @@ public class Command_CampaignUpdate implements Command_Interface {
 		req.setAttribute("rwList", rwList); //리워드정보
 		req.setAttribute("noticeLst", noticeLst);//업데이트(공지사항)
 		//req.setAttribute("donatorLst", donatorLst);//후원자목록
-		req.setAttribute("commentLst", commentLst); //응원글
+//		req.setAttribute("commentLst", commentLst); //응원글
 		req.setAttribute("qnaLst", qnaLst); //질문답변
 		
 		return "/mypage/campaignUpdate.jsp";

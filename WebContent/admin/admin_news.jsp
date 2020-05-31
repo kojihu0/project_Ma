@@ -274,8 +274,7 @@
 				</div>
 				
 				<div class="editDiv w-1/2 border">
-				
-					<form method="post" enctype="multipart/form-data" action="<%=adminPath%>/admin/admin_news.do">
+					<form method="post" action="<%=adminPath%>/admin/admin_news.do">
 						<input type="hidden" name="regi" id="regi" value="startRegi"/><br/>
 						<input type="text" name="title" id="title" class="border"/> <br/>
 						<select name="category" id="category">
