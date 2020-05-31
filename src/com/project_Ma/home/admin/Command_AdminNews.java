@@ -23,7 +23,7 @@ public class Command_AdminNews implements Command_Interface {
 	@Override
 	public String processStart(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-		request.setCharacterEncoding("UTF-8");
+			request.setCharacterEncoding("UTF-8");
 	
 			List<NewVO> listNews    = new ArrayList<NewVO>();
 			List<NewVO> listEvent   = new ArrayList<NewVO>();
@@ -37,10 +37,10 @@ public class Command_AdminNews implements Command_Interface {
 			pVo.setOnePageRecord(4);
 			pVo.setLastPageRecord(4);
 			
-			
+System.out.println("asdasdasd" + request.getParameter("regi")); 
 			int num = 0;
 			if(request.getParameter("regi") != null) {
-				
+				System.out.println("asdasd");
 				int no = Integer.parseInt(request.getParameter("category"));
 				vo.setNews_title(request.getParameter("title"));
 				vo.setNews_category(Integer.parseInt(request.getParameter("category")));

@@ -7,6 +7,7 @@ import java.util.List;
 
 import com.project_Ma.home.ConnectionDB;
 import com.project_Ma.home.VO.CamCommentVO;
+import com.project_Ma.home.VO.CamDetailPageVO;
 import com.project_Ma.home.VO.CamNoticeVO;
 import com.project_Ma.home.VO.CamQnaVO;
 import com.project_Ma.home.VO.CamDetailVO;
@@ -52,7 +53,7 @@ public class CamDetailDAO extends ConnectionDB{
 				vo.setUserid(result.getString(2));
 				vo.setUserName(result.getString(3));
 				vo.setCorpoName(result.getString(4));
-				vo.setCorpoNo(result.getInt(5));
+				vo.setCorpoNo(result.getLong(5));
 				vo.setCamTitle(result.getString(6));
 				vo.setCamStart(result.getString(7));
 				vo.setCamEnd(result.getString(8));
@@ -385,17 +386,58 @@ public class CamDetailDAO extends ConnectionDB{
 		return camDonatorList;
 	}
 	
-	public List<CamCommentVO> camCommentList(int camNo){
+	public int getTotalRecord(int cam_no, String tab) {
+		int totalRecord = 0;
+		try {
+			connDB();
+			if(tab=="comments") {
+				sql = "SELECT count(c.comment_no)"
+						+ " from cam_comment c left outer join cam_comment re"
+						+ " on c.comment_no=re.comment_parent_no"
+						+ " where c.cam_no=? and c.comment_parent_no=0";
+			}
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, cam_no);
+			result = pstmt.executeQuery();
+			
+			if(result.next()) {
+				totalRecord = result.getInt(1);
+				System.out.println("모든 질문" + totalRecord);
+			}
+		}catch(Exception e) {
+			System.out.println("모든 레코드의 수를 구하면서 에러 발생.");
+			e.printStackTrace();
+		}finally {
+			closeDB();
+		}
+		return totalRecord;
+	}
+	
+	public List<CamCommentVO> camCommentList(int camNo, CamDetailPageVO pVO){
 		List<CamCommentVO> camCommentList = new ArrayList<CamCommentVO>();
 		try {
 			connDB();
-			sql = "select c.comment_no, c.user_id, c.cam_no, c.comment_content, c.comment_parent_no, to_char(c.comment_regi, 'yyyy-mm-dd hh:mi'),"
-					+ " re.comment_no, re.user_id, re.cam_no, re.comment_content, re.comment_parent_no, to_char(re.comment_regi, 'yyyy-mm-dd hh:mi')"
+			sql = "select * from"
+					+ "(select * from("
+					+ "select c.comment_no, c.user_id, c.cam_no, c.comment_content, c.comment_parent_no, to_char(c.comment_regi, 'yyyy-mm-dd hh:mi'),"
+					+ " re.comment_no a_comment_no, re.user_id a_userid, re.cam_no a_cam_no, re.comment_content a_content, re.comment_parent_no a_parent_no, to_char(re.comment_regi, 'yyyy-mm-dd hh:mi') a_regi"
 					+ " from cam_comment c left outer join cam_comment re"
 					+ " on c.comment_no=re.comment_parent_no"
-					+ " where c.cam_no=? and c.comment_parent_no=0 order by c.comment_regi desc";
+					+ " where c.cam_no=? and c.comment_parent_no=0 order by c.comment_no desc) tbl1"
+					+ " where rownum<=? order by tbl1.comment_no asc) tbl2"
+					+ " where rownum<=? order by tbl2.comment_no desc";
+			
 			pstmt = conn.prepareStatement(sql);
+			
 			pstmt.setInt(1, camNo);
+			pstmt.setInt(2, pVO.getPageNum() * pVO.getOnePageRecord());
+
+			if(pVO.getPageNum() == pVO.getTotalPage()) {
+				pstmt.setInt(3, pVO.getLastPageRecord());
+			}else {
+				pstmt.setInt(3, pVO.getOnePageRecord());
+			}
+			
 			result = pstmt.executeQuery();
 			while(result.next()) {
 				CamCommentVO vo = new CamCommentVO();

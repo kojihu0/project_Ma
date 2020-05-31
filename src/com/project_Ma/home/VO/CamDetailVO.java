@@ -8,7 +8,7 @@ public class CamDetailVO {
 	private String userid;
 	private String userName;
 	private String corpoName;
-	private int corpoNo;
+	private long corpoNo;
 	private List<String> camImgList;
 	private String camImg;
 	private String camTitle;
@@ -64,11 +64,11 @@ public class CamDetailVO {
 		this.corpoName = corpoName;
 	}
 
-	public int getCorpoNo() {
+	public long getCorpoNo() {
 		return corpoNo;
 	}
 
-	public void setCorpoNo(int corpoNo) {
+	public void setCorpoNo(long corpoNo) {
 		this.corpoNo = corpoNo;
 	}
 

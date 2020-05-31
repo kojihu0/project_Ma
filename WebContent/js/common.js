@@ -93,9 +93,7 @@ $(function(){
     $('.campaign-tab-nav .tab-item a').on('click', function(e){
         e.preventDefault();
         
-        $('html,body').animate({
-            scrollTop: $("#donate").offset().top
-        });
+        window.scrollTo(0, $("#donate").offset().top);
 
         $('.campaign-tab-nav .tab-item').removeClass('active');
         $('.campaign-tab-content .tab-content-item').removeClass('active');

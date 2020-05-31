@@ -28,13 +28,10 @@ public class adminNewsDAO extends ConnectionDB{
 				sql	+= " ,news_img";
 			}
 				sql += ")VALUES(";
-					if(no == 1) {
-						sql += " main_new_sq.nextval, ";
-					}else if(no == 2) {
-						sql += " main_event_sq.nextval, ";
-					}else if(no == 3) {
-						sql += " main_notice_sq.nextval, ";
-					}
+					
+				sql += " main_new_sq.nextval, ";
+
+					
 					sql += " 'admin', "
 					+ " ?,"
 					+ " ?,"
