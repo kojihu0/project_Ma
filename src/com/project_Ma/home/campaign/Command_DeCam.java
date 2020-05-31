@@ -14,6 +14,7 @@ import com.project_Ma.home.DAO.CamDetailDAO;
 import com.project_Ma.home.DAO.CamWishDAO;
 import com.project_Ma.home.DAO.RewardDAO;
 import com.project_Ma.home.VO.CamCommentVO;
+import com.project_Ma.home.VO.CamDetailPageVO;
 import com.project_Ma.home.VO.CamNoticeVO;
 import com.project_Ma.home.VO.CamQnaVO;
 import com.project_Ma.home.VO.CampaignVO;
@@ -34,6 +35,21 @@ public class Command_DeCam implements Command_Interface {
 		String currentUser = (String)session.getAttribute("user_id");
 		
 		CamDetailVO vo = new CamDetailVO();
+		CamDetailPageVO pVO = new CamDetailPageVO();
+		pVO.setOnePageRecord(5);
+		pVO.setLastPageRecord(5);
+		
+		//페이지번호
+		String pageNumStr = req.getParameter("pageNum"); 
+		 
+		System.out.println("command_ajax pageNum=" + pageNumStr);
+		  
+		if(pageNumStr != null) {
+			pVO.setPageNum(Integer.parseInt(pageNumStr));
+		}else {
+			pVO.setPageNum(1);
+		}
+		
 		
 		vo.setCamNo(Integer.parseInt(req.getParameter("cam_no")));
 		int camNo = vo.getCamNo();

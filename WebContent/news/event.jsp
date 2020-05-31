@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <title>news_event</title>
 </head>
+
 <body>
 
 		<!-- card_box start --> 
@@ -81,6 +82,6 @@
 								</li> 
 							</ul>	
 						</div>		
-		</div>
+		
 </body>
 </html>

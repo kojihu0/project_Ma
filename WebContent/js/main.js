@@ -4,7 +4,7 @@
 
 //2020-04-23
 //slickslider 
-$(function(){  
+$(function(){
 	$(".single-item").slick({
 		infinite: true,  
 		speed : 1000, 
@@ -55,6 +55,9 @@ $(function(){
 		      ]   
 	});
 });	
+
+
+
 
  
 function dateDiff(_date_01, _date_02){ 

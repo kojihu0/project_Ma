@@ -53,7 +53,8 @@
 				</div>
 				<nav id="site-navigation" class="flex items-center justify-between flex-wrap flex-grow w-3/4">
 					<ul class="nav-menu flex items-center flex-wrap flex-grow block text-lg">
-						<li class="menu-item text-center has-child flex items-center mr-2">
+					<c:if test="${logStart != 'N' }">	
+						<li class="menu-item text-center has-child flex items-center mr-2">	
 							<a href="<%=projectPath %>/campaign/all_Campaign.do" class="inline-block py-8 px-4">캠페인</a>
 							<div class="sub-menu absolute z-50 border-b border-solid border-gray bg-white w-full left-0 hidden">
 								<ul class="w-full max-w-screen-xl my-0 mx-auto flex items-center h-20 text-white">
@@ -67,10 +68,13 @@
 						<li class="menu-item text-center flex items-center mr-2"><a href="<%=projectPath %>/news/notice.do" class="inline-block py-8 px-4">새 소식</a></li>
 						<li class="menu-item text-center flex items-center mr-2"><a href="<%=projectPath %>/contact/serviceCenter.do" class="inline-block py-8 px-4">고객센터</a></li>
 						<li class="menu-item text-center flex items-center"><a href="#" data-target="#searchModal" id="search-ico" class="inline-block py-8 px-4"><i class="xi-search"></i></a></li>
+					</c:if>
+					
+					
 					</ul>
 					<ul class="login-menu flex items-center justify-between flex-wrap block text-gray-darker"> 		
 					<c:if test="${loginStatus == null || loginStatus == '' || loginStatus =='N'}">
-						<li class="menu-item text-center mr-4"><a href="<%=projectPath %>/login/login.do" class="inline-block">로그인</a></li>
+						<li class="menu-item text-center mr-4"><a href="<%=projectPath %>/login/login.do?logStart=N" class="inline-block">로그인</a></li>
 						<li class="menu-item text-center"><a href="<%=projectPath %>/joinMembership/join_MembershipSelect.do" class="inline-block">회원가입</a></li>
 					</c:if>
 					<c:if test="${loginStatus != null &&  loginStatus != '' && loginStatus=='Y'}">

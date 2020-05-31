@@ -81,6 +81,6 @@
 				<div class="page_up_div text-2xl border border-gray text-center rounded h-12 w-12 bg-black opacity-75 text-white">
 					<a id="scrollToTop" class="align-middle" href="#"><i class="xi-angle-up"></i></a>  
 				</div>     
-		</div>
+		
 </body>
 </html>

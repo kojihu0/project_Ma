@@ -222,6 +222,32 @@
 									<li class="page-item"><a class="page-link block py-1 px-2 hover:text-brand" href="#">5</a></li>
 									<li class="page-item"><a class="page-link block py-1 px-2 hover:text-brand" href="#"><i class="xi-angle-right-min"></i></a></li>
 								</ul>
+								<ul id="main_QnA_page" class="pagenation flex items-center justify-center my-4">
+									<!-- prev -->
+									<li class="page-item"> 
+										<c:if test="${pVo.pageNum == 1 }">
+											<a class="page-link block py-1 px-2 hover:text-danger pointer-events-none" href=""><i class="xi-angle-left-min"></i></a>
+										</c:if> 
+										<c:if test="${pVo.pageNum > 1 }">
+											<a class="page-link block py-1 px-2 hover:text-danger" href="<%=projectPath%>/contact/serviceCenter.do?pageNum=${pVo.pageNum - 1}"><i class="xi-angle-left-min"></i></a>
+										</c:if>	
+									</li>
+									<!-- 페이지 수 -->
+									<c:forEach var="i" begin="${pVo.startPage }" end="${pVo.startPage + pVo.pageCount - 1 }">
+										<c:if test="${i <= pVo.totalPage }">  
+											<li class="page-item acitve"><a class="pn page-link block py-1 px-2 hover:text-brand text-black" href="<%=projectPath%>/contact/serviceCenterAjax.do?pageNum=${i}"<c:if test="${i == pVo.pageNum }">style='color:red'</c:if>>${i}</a></li>
+										</c:if>
+									</c:forEach>	
+									<!-- next -->
+									<li class="page-item">
+										<c:if test="${pVo.pageNum == pVo.totalPage}">
+											<a class="page-link block py-1 px-2 hover:text-danger pointer-events-none" href=""><i class="xi-angle-right-min"></i></a>
+										</c:if>
+										<c:if test="${pVo.pageNum < pVo.totalPage}">  
+											<a class="page-link block py-1 px-2 hover:text-danger" href="<%=projectPath%>/contact/serviceCenter.do?pageNum=${pVo.pageNum + 1}"><i class="xi-angle-right-min"></i></a>
+										</c:if>		
+									</li>
+								</ul>	
 							</c:if>
 							<c:if test="${fn:length(commentLst)<=0}">
 								<p class="py-8 text-center">아직 이 캠페인에 대한 응원·의견이 없습니다.</p>
