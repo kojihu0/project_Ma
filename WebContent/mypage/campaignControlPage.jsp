@@ -27,13 +27,11 @@
 			<div class="w-full max-w-4xl mx-auto my-8">
 				<div class="max-w-sm w-full lg:max-w-full lg:flex mb-8">
 		  			<div class="w-1/3 flex-none bg-cover rounded-t rounded-t-none rounded-l text-center overflow-hidden" title="Woman holding a mug">
-						<a href="<%=projectPath%>/mypage/campaignUpdate.do"><img class="w-full h-full object-cover"src="<%=projectPath%>/img/${vo.cam_img}"/></a> 			 
+						<a href="<%=projectPath%>/campaign/detail_Campaign.do?cam_no=${vo.cam_no}"><img class="w-full h-full object-cover"src="<%=projectPath%>/img/${vo.cam_img}"/></a> 			 
 		  			</div>
-		  			<a href="<%=projectPath %>/mypage/campaign">
-		  			
-		  			<input type="hidden" name="cam_no" value="${vo.cam_no}">
+		  			<a href="<%=projectPath%>/campaign/detail_Campaign.do?cam_no=${vo.cam_no}">
 		 		 <div class="w-2/3 border-r border-b border-l border-gray-light border-l-0 border-t border-gray-light bg-white rounded-b rounded-b-none rounded-r p-4 flex flex-col justify-between leading-normal">
-		 		 <a href="<%=projectPath%>/mypage/campaignUpdate.do">
+		 		 <a href="<%=projectPath%>/campaign/detail_Campaign.do?cam_no=${vo.cam_no}">
 		    		<div>
 				      <p class="text-sm text-gray-darker flex items-center">
 				     	<div  class="font-bold text-xl mb-2">${vo.cam_title}</div>
@@ -42,10 +40,11 @@
 		       		  <div class="relative w-full h-2 rounded-md bg-info-light mt-8">
 		             	<div class="absolute w-1/5 h-full border-solid border-gray border bg-danger rounded-md"></div>
 		             	<label class="text-danger font-semibold" style="font-size:14px;float:right;margin-top:15px">6일남음</label>
+		             	
 			    	  </div>
 			  		</div>
-			  		
 			  		</a>
+			  		<a href="<%=projectPath%>/mypage/campaignUpdate.do?cam_no=${vo.cam_no}" style="margin-top:10px" class=" text-gray">수정하기</a>
 			 	</div>
 		 		</div>
 			</div>
