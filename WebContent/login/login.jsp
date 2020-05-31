@@ -170,9 +170,9 @@ $(function(){
 				</div><!----------------------------- 로그인  ----------------------------------->
 				<div class="w-1/2"><!----------------- 광고 창 ----------------------------------->
 					<div id="imgList">
-						<img class="slide1" src="../img/img_List/dokdo2.jpg"/>
-						<img class="slide1" src="../img/img_List/culture2.jpg"/>
-						<img class="slide1" src="../img/img_List/women_in_war2.jpg"/>
+						<img class="slide1" src="../img/dokdo2.jpg"/>
+						<img class="slide1" src="../img/culture2.jpg"/>
+						<img class="slide1" src="../img/women_in_war2.jpg"/>
 					</div>
 				</div><!----------------- 광고 창 끝 ----------------------------------->
 			</div>
