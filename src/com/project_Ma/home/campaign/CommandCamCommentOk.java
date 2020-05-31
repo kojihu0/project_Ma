@@ -15,7 +15,6 @@ import com.project_Ma.home.VO.CamCommentVO;
 public class CommandCamCommentOk implements Command_Interface {
 
 	public CommandCamCommentOk() {
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
@@ -26,7 +25,12 @@ public class CommandCamCommentOk implements Command_Interface {
 		vo.setCamNo(Integer.parseInt(req.getParameter("cam_no")));
 		vo.setUserid((String) session.getAttribute("user_id"));
 		vo.setCommentContent(req.getParameter("comment_content"));
-		
+		if(req.getParameter("comment_ans")!=null && !req.getParameter("comment_ans").equals("") && req.getParameter("comment_ans").equals("answer")) {
+			vo.setCommentParentNo(Integer.parseInt(req.getParameter("comment_parent_no")));
+		}
+		else {
+			vo.setCommentParentNo(0);
+		}
 		CamDetailDAO dao = new CamDetailDAO();
 		int cnt=dao.insertCamComment(vo);
 		

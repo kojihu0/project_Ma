@@ -18,10 +18,9 @@
 	    <div class="w-full max-w-screen-xl my-2 mx-auto">
 		    <div class="inline-block relative w-40 my-10">
 				  <select  name="arrayKey" id="arrayKey" class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
-				    <option value="cam_no">최신순</option>
-				    <option value="cam_goal_price">펀딩금액순</option>
-				    <option value="cam_regi">펀딩달성도순</option>
-				    <option value="cam_end">마감순</option>
+				    <option value="cam_no" <c:if test="${pageVO.arrayKey=='cam_no'}">selected</c:if>>최신순</option>
+				    <option value="cam_goal_price"<c:if test="${pageVO.arrayKey=='cam_goal_price'}">selected</c:if>>펀딩금액순</option>
+				    <option value="cam_end"<c:if test="${pageVO.arrayKey=='cam_end'}">selected</c:if>>마감순</option>
 			  	  </select>
 			  	    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
 	    				<svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
@@ -37,7 +36,7 @@
 						<div class="text-2xl my-2 hover:text-danger"><a href="<%=projectPath%>/campaign/detail_Campaign.do">${vo.cam_title}</a></div>
 					
 						<div class="relative w-full h-2 rounded-md bg-info-light">
-							<div class="absolute w-1/5 h-full border-solid border-gray border bg-danger rounded-md"></div>
+							<div class="absolute h-full border-solid border-gray border bg-danger rounded-md" style="width:${vo.percent}%"></div>
 						</div> 
 						<div class="my-1">
 							${vo.cam_end}<span class="float-right text-danger">${vo.cam_remainday}일 남음</span>

@@ -12,20 +12,19 @@
 			<div id="mainImgDiv" class="w-full my-0 mx-auto">
 				<div class="w-full my-0 mx-auto bg-gray-lighter">
 					<div class="slider single-item">
-						<div class="slide-img w-full bg-cover relative" style="background-image:url('<%=projectPath%>/img/img_main/mainslider01.png')">
+						<div class="slide-img w-full bg-cover bg-center relative" style="background-image:url('<%=projectPath%>/img/img_main/mainslider01.png')">
 							<div class="slide-text absolute text-white"> 
 								<h1 class="font-bold text-3xl mb-4">대통령은 헌법과 법률이<br> 정하는 바에 의하여 공무원을 임면한다.</h1>
-								<p
-								>정부는 예산에 변경을 가할 필요가 있을 때에는 추가경정예산안을 편성하여 국회에 제출할 수 있다.</p>
+								<p>정부는 예산에 변경을 가할 필요가 있을 때에는 추가경정예산안을 편성하여 국회에 제출할 수 있다.</p>
 							</div>
 						</div>
-						<div class="slide-img w-full bg-cover relative" style="background-image:url('<%=projectPath%>/img/img_main/mainslider02.png')">
+						<div class="slide-img w-full bg-cover bg-center relative" style="background-image:url('<%=projectPath%>/img/img_main/mainslider02.png')">
 							<div class="slide-text absolute text-white">
 								<h1 class="font-bold text-3xl mb-4">모든 국민은 근로의 권리를 가진다.</h1>
 								<p>국가는 사회적·경제적 방법으로 근로자의 고용의 증진과 적정임금의 보장에 노력하여야 하며,<br>법률이 정하는 바에 의하여 최저임금제를 시행하여야 한다.</p>
 							</div>
 						</div>
-						<div class="slide-img w-full bg-cover relative" style="background-image:url('<%=projectPath%>/img/img_main/mainslider03.png')">
+						<div class="slide-img w-full bg-cover bg-center relative" style="background-image:url('<%=projectPath%>/img/img_main/mainslider03.png')">
 							<div class="slide-text absolute">
 								<h1 class="font-bold text-3xl mb-4">밝은 그들의 것이다.<br>보라, 지혜는 가치를 듣기만 위하여서.</h1>
 								<p>피가 그와 구하지 튼튼하며, 용감하고 생명을 끓는다.</p>
@@ -54,9 +53,9 @@
 						<c:forEach var="lst" items="${list }"> 
 							<div id="mid_cam_01" class="mx-2 flex-initial w-1/3">
 								<div class="mid_cam_img rounded-lg my-4 my-0 mx-auto border-solid border-4 border-gray">
-									<a href="<%=projectPath %>/campaign/detail_Campaign.do?no=${lst.cam_no}"><img src="<%=projectPath %>/img/${lst.cam_img_path}" alt="${lst.cam_title }" /></a>
+									<a href="<%=projectPath %>/campaign/detail_Campaign.do?cam_no=${lst.cam_no}"><img src="<%=projectPath %>/img/${lst.cam_img_path}" alt="${lst.cam_title }" /></a>
 								</div> 
-								<div class="mid_cam_name"><a href="<%=projectPath %>/campaign/detail_Campaign.do?no=${lst.cam_no}">${lst.cam_title }</a></div>
+								<div class="mid_cam_name"><a href="<%=projectPath %>/campaign/detail_Campaign.do?cam_no=${lst.cam_no}">${lst.cam_title }</a></div>
 								<div class="flex pre_date rounded-lg mt-2 my-0 mx-auto">
 									<div class="mid-genre">자선캠페인</div>
 									<div class="mid_bar_div flex-initial">

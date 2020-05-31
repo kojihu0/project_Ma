@@ -17,14 +17,6 @@ public class Command_FindId implements Command_Interface {
 
 	@Override
 	public String processStart(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		vo.setUser_email_id(request.getParameter("user_email_id"));
-		vo.setUser_email_domain(request.getParameter("user_email_domain"));
-		
-		vo.setUser_name(request.getParameter("user_name"));
-		
-		MemberDAO dao = new MemberDAO();
-		dao.getIdFind(vo);
-		request.setAttribute("vo", vo);
 		
 		return "/login/find_Id.jsp"; 
 	}

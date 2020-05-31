@@ -2,6 +2,7 @@ package com.project_Ma.home.DAO;
 
 import java.util.List;
 
+import com.project_Ma.home.Command_Member_Information_Service;
 import com.project_Ma.home.ConnectionDB;
 import com.project_Ma.home.VO.MemberVO;
 

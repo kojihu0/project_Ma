@@ -16,7 +16,6 @@ public class Command_CampaignWrite implements Command_Interface {
 
 	@Override
 	public String processStart(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		return "/mypage/campaignWrite.jsp";
 	}
 

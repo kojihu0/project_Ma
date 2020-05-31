@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %> 
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 	<div class="w-full bg-gray-lightest">
 		<div class="w-full max-w-screen-xl my-0 mx-auto px-8 xl:px-0 py-8"><!-- 상세페이지 -->
 			<div class="w-full flex mb-4"><!-- 상단 -->
@@ -9,21 +9,23 @@
 					<!--슬라이더-->
 					<div class="campaign-slider-wrapper relative mb-8">
 						<div class="campaign-slider w-full overflow-hidden">
-						<c:forTokens items="${vo.camImg}" delims="|" var="imgsrc">
+							<c:forTokens items="${vo.camImg}" delims="|" var="imgsrc">
 							<div class="slide">
 								<img src="<%=projectPath%>/img/campaign/${imgsrc}" class="object-cover w-full">
 							</div>
-						</c:forTokens>
+							</c:forTokens>
 						</div>
 						<button class="campaign-slider-arrow prev absolute left-0 z-50 bg-black text-white"><i class="xi-angle-left-thin"></i></button>
 						<button class="campaign-slider-arrow next absolute right-0 z-50 bg-black text-white"><i class="xi-angle-right-thin"></i></button>
 					</div>
-					<div class="campaign-slider-nav flex">
-					<c:forTokens items="${vo.camImg}" delims="|" var="imgsrc">
-						<div class="slider-nav-item w-1/3 h-32 mr-4 cursor-pointer rounded overflow-hidden active">
-							<img alt="prd_img" src="<%=projectPath%>/img/campaign/${imgsrc}" class="object-cover w-full h-32 transform hover:scale-125 duration-300">
+					<div class="campaign-slider-nav flex justify-start">
+						<c:forTokens items="${vo.camImg}" delims="|" var="imgsrc">
+						<div class="slider-nav-item w-1/3 h-32 px-2">
+							<div class="cursor-pointer rounded overflow-hidden">
+								<img alt="prd_img" src="<%=projectPath%>/img/campaign/${imgsrc}" class="object-cover w-full h-32 transform hover:scale-125 duration-300">
+							</div>
 						</div>
-					</c:forTokens>
+						</c:forTokens>
 					</div>
 					<!--슬라이더-->
 				</div>
@@ -102,8 +104,8 @@
 						<div id="updates" class="tab-content-item"><!--업데이트-->
 						<c:if test="${fn:length(noticeLst)<=0}">
 							<p class="py-8 text-center">아직 이 캠페인에 대한 업데이트 내역이 없습니다.</p>
-						</c:if>
-						<c:if test="${fn:length(noticeLst)>0}">
+							</c:if>
+							<c:if test="${fn:length(noticeLst)>0}">
 							<ul class="campaign-update">
 							<c:forEach var="nvo" items="${noticeLst}">
 								<li class="relative px-4 mb-8">
@@ -116,14 +118,17 @@
 								</li>
 							</c:forEach>
 							</ul>
-							<ul class="pagenation flex items-center justify-center mx-4">
-								<li class="page-item disabled"><a class="page-link block py-1 px-2 hover:text-brand pointer-events-none" href="#"><i class="xi-angle-left-min"></i></a></li>
-								<li class="page-item acitve"><a class="page-link block py-1 px-2 hover:text-brand text-brand" href="#">1</a></li>
-								<li class="page-item"><a class="page-link block py-1 px-2 hover:text-brand" href="#">2</a></li>
-								<li class="page-item"><a class="page-link block py-1 px-2 hover:text-brand" href="#">3</a></li>
-								<li class="page-item"><a class="page-link block py-1 px-2 hover:text-brand" href="#"><i class="xi-angle-right-min"></i></a></li>
-							</ul>
-						</c:if>
+							</c:if>
+							<c:if test="${user_id==vo.userid}">
+							<form method="POST" action="<%=projectPath%>/campaign/camNoticeOk.do" onsubmit="return campaign_comment_validation()" class="campaign-comment-form">
+								<input type="text" name="cam_notice_title" id="cam_notice_title" class="appearance-none border border-gray rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline">
+								<textarea name="cam_notice_content" id="cam_notice_content"></textarea>
+								<input type="hidden" name="cam_no" value="${vo.camNo}"/>
+								<div class="text-right mt-4">
+									<input type="submit" value="작성" class="bg-brand hover:bg-brand-dark text-white font-bold py-2 px-4 rounded"/>
+								</div>
+							</form>
+							</c:if>
 						</div><!--업데이트-->
 						<div id="beckers" class="tab-content-item"><!--후원자-->
 							<c:if test="${vo.camTotalDonator<=0}">
@@ -184,6 +189,21 @@
 										<p class="comment-author font-bold mb-2">${cvo.userid}<span class="px-1 text-info-dark text-sm font-normal ml-2 bg-info-light">후원자</span><span class="text-gray-dark text-sm font-normal ml-4">${cvo.commentDate}</span></p>
 										<div class="comment-text text-gray-darkest">${cvo.commentContent}</div>
 									</div>
+									</c:if>
+									<c:if test="${user_id==vo.userid}">
+									<c:if test="${qvo.replyCommentNo=='' || qvo.replyCommentNo==null}">
+									<div class="p-4">
+										<div class="ans-form">
+											<form action="<%=projectPath%>/campaign/camCommentOk.do" method="post">
+												<input type="hidden" name="comment_ans" value="answer">
+												<input type="hidden" name="cam_no" value="${vo.camNo}"/>
+												<input type="hidden" name="comment_parent_no" value="${cvo.commentNo}">
+												<textarea name="comment_content" class="appearance-none border border-gray rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline h-24"></textarea>
+												<p class="text-right"><input type="submit" value="답변하기" class="bg-brand hover:bg-brand-dark text-white font-bold py-2 px-4 rounded"></p>
+											</form>
+										</div>
+									</div>
+									</c:if>
 									</c:if>
 									<c:if test="${cvo.replyCommentParentNo == cvo.commentNo}">
 									<div class="comment-reply mt-4 py-4 px-8 bg-gray-lightest">
@@ -254,7 +274,24 @@
 											<div class="table-cell w-32 p-4">${qvo.qnaRegi}</div>
 										</div>
 										<div id="qna${qvo.qnaNo}" class="qna-content px-8 bg-gray-lightest pl-24 border-b border-gray hidden">
-											<div class="qna-user py-4 border-b border-gray">${qvo.qnaContent}</div>
+											<div class="qna-user py-4 border-b border-gray">
+											${qvo.qnaContent}
+											</div>
+											<c:if test="${user_id==vo.userid}">
+											<c:if test="${qvo.ansQnaNo=='' || qvo.ansQnaNo==null}">
+											<div class="p-4">
+												<div class="ans-form">
+													<form action="<%=projectPath%>/campaign/camQnaOk.do" method="post">
+														<input type="hidden" name="qna_ans" value="answer">
+														<input type="hidden" name="cam_no" value="${vo.camNo}"/>
+														<input type="hidden" name="qna_parent_no" value="${qvo.qnaNo}">
+														<textarea name="qna_content" class="appearance-none border border-gray rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline h-24"></textarea>
+														<p class="text-right"><input type="submit" value="답변하기" class="bg-brand hover:bg-brand-dark text-white font-bold py-2 px-4 rounded"></p>
+													</form>
+												</div>
+											</div>
+											</c:if>
+											</c:if>
 											<c:if test="${qvo.ansQnaNo!='' && qvo.ansQnaNo!=null}">
 											<div class="qna-reply py-4 pl-8 relative">
 												<span class="absolute left-0 text-lg"><i class="xi-subdirectory-arrow"></i></span>
@@ -305,7 +342,7 @@
 							<p class="text-brand mb-2">제한수량 ${rvo.reward_quantity}개 <span class="ml-2 px-2 bg-brand-light text-brand">${rvo.reward_quantity-rvo.donateCnt}개 남음</span></p>
 							<p>${rvo.donateCnt}개 후원됨</p>
 						</div>
-						<a href="<%=projectPath %>/payment/paymentProcess.do?reward_no=${rvo.reward_no}&reward_status=${vo.camRewardStatus}" class="overlay absolute block top-0 bottom-0 left-0 w-full bg-brand opacity-0 hover:opacity-75 duration-300">
+						<a href="<%=projectPath %>/payment/paymentProcess.do?camNo=${vo.camNo}&reward_no=${rvo.reward_no}&reward_status=${vo.camRewardStatus}" class="overlay absolute block top-0 bottom-0 left-0 w-full bg-brand opacity-0 hover:opacity-75 duration-300">
 							<span class="donate-this absolute text-white font-bold text-lg">후원하기</span>
 						</a>
 					</div>
@@ -314,7 +351,7 @@
 				<c:if test="${vo.camRewardStatus == 0}">
 					<div class="reward-item relative my-4 p-8 bg-white border border-gray">
 						<p>리워드 없이 후원하기</p>
-						<a href="<%=projectPath %>/payment/paymentProcess.do?reward_status=${vo.camRewardStatus}" class="overlay absolute block top-0 bottom-0 left-0 w-full bg-brand opacity-0 duration-300">
+						<a href="<%=projectPath %>/payment/paymentProcess.do?camNo=${vo.camNo}&reward_status=${vo.camRewardStatus}" class="overlay absolute block top-0 bottom-0 left-0 w-full bg-brand opacity-0 duration-300">
 							<span class="donate-this absolute text-white font-bold text-lg">후원하기</span>
 						</a>
 					</div>
@@ -393,16 +430,12 @@
 	});
 	</script>
 	</c:if>
-	<c:if test="${loginStatus != null &&  loginStatus != '' && loginStatus=='Y'}">
-	<script>
-	//위시리스트
-	/*
-	$('#addWishList').on('click', function(e){
-		e.preventDefault();
-		$.ajax({
-			url: $(this).attr('href'),
+	<c:if test="${user_id==vo.userid}">
+	<script type="text/javascript">
+	$(function(){
+		CKEDITOR.replace('cam_notice_content', {
+			filebrowserUploadUrl:'<%=projectPath%>/editorImgUpload/editorImgUpload.do'
 		});
 	});
-	*/
 	</script>
 	</c:if>

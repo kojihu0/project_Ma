@@ -55,7 +55,7 @@ public class Command_DeCam implements Command_Interface {
 		CamWishDAO wdao = new CamWishDAO();
 		wdao.selectCamWish(wvo);
 		
-		System.out.println(vo.getUserid());
+		//System.out.println(vo.getUserid());
 		req.setAttribute("vo", vo); //캠페인정보
 		req.setAttribute("wvo", wvo);
 		req.setAttribute("rwList", rwList); //리워드정보

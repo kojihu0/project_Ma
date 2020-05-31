@@ -191,18 +191,116 @@ public class CamDetailDAO extends ConnectionDB{
 		} finally {
 			closeDB();
 		}
-		System.out.println("캠페인등록 cnt값");
 		return cnt;
 	}
 	
 	public int updateCam(CamDetailVO vo) {
-		// TODO Auto-generated method stub
-		return 0;
+		int cnt = 0;
+		try {
+			connDB();
+			
+			sql = "update campaign set cam_title=?, cam_start=?, cam_end=?, cam_goal_price=?, cam_min_price=?, cam_max_price=?, "
+					+ "cam_img=?, cam_content=?, cam_desc=?"
+					+ " where cam_no=? and user_id=?";
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, vo.getCamTitle());
+			pstmt.setString(2, vo.getCamStart());
+			pstmt.setString(3, vo.getCamEnd());
+			pstmt.setInt(4, vo.getCamGoalPrice());
+			pstmt.setInt(5, vo.getCamMinPrice());
+			pstmt.setInt(6, vo.getCamMaxPrice());
+			pstmt.setString(7, vo.getCamImg());
+			pstmt.setString(8, vo.getCamContent());
+			pstmt.setString(9, vo.getCamDesc());
+			pstmt.setInt(10, vo.getCamNo());
+			pstmt.setString(11, vo.getUserid());
+			
+			cnt = pstmt.executeUpdate();
+		} catch (Exception e) {
+			System.out.println("ㅎㅎㅎ캠페인업데이트에러");
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		System.out.println("ggg캠페인업데이트 cnt값"+cnt);
+		return cnt;
 	}
 	
 	public int updateCam(CamDetailVO vo, List<RewardVO> rwList) {
-		// TODO Auto-generated method stub
-		return 0;
+		int cnt = 0;
+		try {
+			connDB();
+			//conn.setAutoCommit(false);
+			
+			sql = "update campaign set cam_title=?, cam_start=?, cam_end=?, cam_goal_price=?, cam_min_price=?, cam_max_price=?, "
+					+ "cam_img=?, cam_reward_status=?, cam_content=?, cam_desc=?"
+					+ " where cam_no=? and user_id=?";
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, vo.getCamTitle());
+			pstmt.setString(2, vo.getCamStart());
+			pstmt.setString(3, vo.getCamEnd());
+			pstmt.setInt(4, vo.getCamGoalPrice());
+			pstmt.setInt(5, vo.getCamMinPrice());
+			pstmt.setInt(6, vo.getCamMaxPrice());
+			pstmt.setString(7, vo.getCamImg());
+			pstmt.setInt(8, vo.getCamRewardStatus());
+			pstmt.setString(9, vo.getCamContent());
+			pstmt.setString(10, vo.getCamDesc());
+			pstmt.setInt(11, vo.getCamNo());
+			pstmt.setString(12, vo.getUserid());
+			
+			cnt = pstmt.executeUpdate();
+			
+//			if(cnt>0) {
+//				cnt = 0;
+//				for(RewardVO rvo:rwList) {
+//					sql = "update reward set reward_name=?, reward_quantity=?, reward_price=?, reward_content=?, delivery_ex_date=to_date(?, 'yyyy-mm'), delivery_ex_date_detail=?, delivery_price=?"
+//							+ " where reward_no=? and cam_no=?";
+//					
+//					pstmt = conn.prepareStatement(sql);
+//					
+//					pstmt.setString(1, rvo.getReward_name());
+//					pstmt.setInt(2, rvo.getReward_quantity());
+//					pstmt.setInt(3, rvo.getReward_price());
+//					pstmt.setString(4, rvo.getReward_content());
+//					pstmt.setString(5, rvo.getDelivery_ex_date());
+//					pstmt.setString(6, rvo.getDelivery_ex_date_detail());
+//					pstmt.setInt(7, rvo.getDelivery_price());
+//					pstmt.setInt(8, rvo.getReward_no());
+//					pstmt.setInt(9, rvo.getCam_no());
+//					
+//					cnt += pstmt.executeUpdate();
+//					System.out.println(rvo.getCam_no());
+//				}
+//				if(cnt == rwList.size()) { //모든 리워드 등록 성공 시 커밋
+//					conn.commit();
+//				}
+//				else {
+//					try {
+//						conn.rollback();
+//					} catch (SQLException e1) {
+//						e1.printStackTrace();
+//						System.out.println("트랜잭션 처리중 롤백에러");
+//					}
+//				}
+//			}
+		} catch (Exception e) {
+//			try {
+//				conn.rollback();
+//			} catch (SQLException e1) {
+//				e1.printStackTrace();
+//				System.out.println("트랜잭션 처리중 롤백에러");
+//			}
+			
+			System.out.println("ㅎㅎㅎ캠페인업데이트에러");
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		System.out.println("ggg캠페인업데이트 cnt값");
+		return cnt;
 	}
 	
 	public int deleteCam(CamDetailVO vo) {
@@ -235,6 +333,26 @@ public class CamDetailDAO extends ConnectionDB{
 			closeDB();
 		}
 		return camNoticeList;
+	}
+	
+	public int insertCamNotice(CamNoticeVO vo) {
+		int cnt = 0;
+		try {
+			connDB();
+			sql = "insert into cam_notice(notice_no, cam_no, cam_notice_title, cam_notice_content, cam_notice_date)"
+					+ " values(cam_notice_sq.nextval, ?, ?, ?, sysdate)";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, vo.getCamNo());
+			pstmt.setString(2, vo.getCamNoticeTitle());
+			pstmt.setString(3, vo.getCamNoticeContent());
+			cnt = pstmt.executeUpdate();
+		} catch (Exception e) {
+			System.out.println("캠페인 업데이트 등록 에러");
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		return cnt;
 	}
 	
 	public List<PaymentVO> camDonatorList(int camNo){
@@ -309,11 +427,12 @@ public class CamDetailDAO extends ConnectionDB{
 		try {
 			connDB();
 			sql = "insert into cam_comment(comment_no, user_id, cam_no, comment_content, comment_parent_no, comment_regi)"
-					+ " values(comment_sq.nextval, ?, ?, ?, 0, sysdate)";
+					+ " values(comment_sq.nextval, ?, ?, ?, ?, sysdate)";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, vo.getUserid());
 			pstmt.setInt(2, vo.getCamNo());
 			pstmt.setString(3, vo.getCommentContent());
+			pstmt.setInt(4, vo.getCommentParentNo());
 			cnt = pstmt.executeUpdate();
 		} catch (Exception e) {
 			System.out.println("캠페인 코멘트 등록 에러");
@@ -371,13 +490,14 @@ public class CamDetailDAO extends ConnectionDB{
 		try {
 			connDB();
 			sql = "insert into cam_qna(qna_no, user_id, cam_no, qna_title, qna_content, qna_secret, qna_parent_no, qna_regi)"
-					+ " values(cam_qna_sq.nextval, ?, ?, ?, ?, ?, 0, sysdate)";
+					+ " values(cam_qna_sq.nextval, ?, ?, ?, ?, ?, ?, sysdate)";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, vo.getUserid());
 			pstmt.setInt(2, vo.getCamNo());
 			pstmt.setString(3, vo.getQnaTitle());
 			pstmt.setString(4, vo.getQnaContent());
 			pstmt.setInt(5, vo.getQnaSecret());
+			pstmt.setInt(6, vo.getQnaParentNo());
 			cnt = pstmt.executeUpdate();
 		} catch (Exception e) {
 			System.out.println("캠페인 코멘트 등록 에러");

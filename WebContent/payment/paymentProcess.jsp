@@ -1,15 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ include file="/include/loginCheck.jspf" %>
 <!DOCTYPE html>
 <html> 
 <head>
 <meta http-equiv="Content-Type" charset="text/html; UTF-8">
 <title>paymentProcess</title>
 <meta name="viewport" content="width=device-width, initial-scale=1"/> 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script type="text/JavaScript" src="http://code.jquery.com/jquery-1.7.min.js"></script>
+
 <script type="text/JavaScript" src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script type="text/javascript">
+
 $(function(){
 	$("input:checkbox").on("click", function(){
 		if($("#name_anonymous").prop("checked")){
@@ -24,8 +25,6 @@ $(function(){
 		}
 	});
 });
-	
-	
 	function openDaumZipAddress() {
 		new daum.Postcode({
 			oncomplete:function(data) {
@@ -36,16 +35,19 @@ $(function(){
 			}
 		}).open();
 	}
+	
+	
+	
 </script>
 </head>
 <body>
-<form method="post" action="<%=projectPath%>/payment/paymentCompletedOk.do" onsubmit="return pay()">
+<form method="post" action="<%=projectPath%>/payment/paymentCompletedOk.do?cam_no=${cvo.cam_no}&cam_reward_status=${cvo.cam_reward_status}&reward_no=${vo.reward_no}" onsubmit="return pay()">
 	<div class="w-full max-w-screen-xl my-12 mx-auto">
 				<div class="flex my-5">
 					<div class="border w-40 h-8 text-center bg-danger text-white rounded">펀딩금액</div>
 					<div>
-						<a id="a"><div class="ml-24">펀딩금액이 많은이들에게 큰도움이 됩니다.</div></a>
-						<div class="ml-24 mt-3"><input type="text" class="border h-12 text-center rounded" name="funding_price" id="fund" value="${vo.reward_price}" >원을 후원합니다</div>
+						<div class="ml-24"><a id="a">펀딩금액이 많은이들에게 큰도움이 됩니다.</a></div>
+						<div class="ml-24 mt-3"><input type="text" class="border h-12 text-center rounded" name="funding_price" id="fund" value="${vo.funding_price}" readonly >원을 후원합니다</div>
 						<div class="text-danger ml-24 hidden" id="a1">펀딩금액을 입력해주세요.</div>
 						<div class="text-danger ml-24 hidden" id="a2">숫자를 입력해주세요.</div>
 					</div>
@@ -75,7 +77,7 @@ $(function(){
 					</div>
 					
 				</div>
-				<div class="flex my-5">
+				<!--<div class="flex my-5">
 					<div class="border w-40 h-8 text-center bg-danger text-white rounded">마일리지 사용</div>
 					<div> 
 						<div class="flex">
@@ -86,114 +88,116 @@ $(function(){
 						<div class="text-danger ml-24 hidden" id="txt">입력하신 값이 보유하신 마일리지보다 높습니다. 사용불가 합니다.</div>
 						<div class="text-danger ml-24 hidden" id="mile2">숫자를 입력해주세요.</div>
 					</div> 
-				</div>
+				</div>-->
 				<div class="flex my-5">
 					<div class="border w-40 h-8 text-center bg-danger text-white rounded">최종금액</div>
 					<div>
 						<div class="ml-24 leading-8">총 <span id="total" name="total_price">0</span>원을 후원합니다</div>
 					</div>
 				</div>
-				<div class="my-5 text-xl">배송지 정보</div>
-				<div class="flex my-5">
-					<div>수령인<i class="xi-star text-xl" style="color:rgb(255,153,000)"></i></div>
-					<a id="b"><input type="text" class="border h-8 ml-24 rounded" name="reciever" id="name"/></a>
-					<div class="text-danger ml-5 hidden" id="b1">수령인을 한글(2~7자리)로 입력해주세요.</div>
-				</div>
-				<div class="flex my-5">
-					<div>이메일<i class="xi-star text-xl" style="color:rgb(255,153,000)"></i></div>
-					<a id="f"><div>  
-						<input type="text" name="id" class="border h-8 ml-24 rounded email1"/>@  
-						<input id="domain" name="domain" type="text" class="border h-8 text-center rounded email2"/> 	
-						<div class="inline-block relative w-40">
-							<select id="email" onclick="inputDomain()" class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
-								<option>직접입력</option>
-							    <option>naver.com</option>
-							    <option>daum.net</option>
-							    <option>gmail.com</option>
-							    <option>hotmail.com</option>
-							    <option>nate.com</option>
-							    <option>korea.com</option>
-							    <option>chollian.net</option>
-						  	 </select>
-						  	 <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-				    			<svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
-				  			</div>
-			 			</div>
-			 			<div class="text-danger hidden" id="f1" style="margin-left:250px">이메일을 입력해주세요.</div>
-			 			<div class="text-danger hidden" id="f2" style="margin-left:250px">잘못된 이메일형식입니다. 다시입력해주세요.</div>
-					</div></a>
-				</div>
+				<c:if test="${cvo.cam_reward_status==1}">
+					<div class="my-5 text-xl">배송지 정보</div>
 					<div class="flex my-5">
-					<div>연락처1<i class="xi-star text-xl" style="color:rgb(255,153,000)"></i></div>
-					<a id="c"><div class="ml-24 flex">
-					     <div class="h-8 w-40 text-center">010</div>
-				 		- <input type="text" name="reward_phone1" class="border h-8 ml-1 mr-1 text-center rounded tel1" maxlength="4"/>
-						- <input type="text" name="reward_phone2" class="border h-8 ml-1 text-center rounded tel2" maxlength="4"/>
-					</div></a>
-					<div class="text-danger ml-5 hidden" id="c1">연락처를 입력해주세요.</div>
-					<div class="text-danger ml-5 hidden" id="c2">숫자 4자리를 입력해주세요.</div>
-				</div>
-				<div class="flex my-5">
-					<a id="n"><div>연락처2</div></a>
-					<div>
-						<div class="inline-block relative w-40 ml-24">
-							<select name="reward_tel1" class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
-								   <option>02</option>
-								   <option>051</option>
-								   <option>053</option>
-								   <option>032</option>
-								   <option>062</option>
-								   <option>042</option>
-								   <option>052</option>
-								   <option>044</option>
-								   <option>031</option>
-								   <option>033</option>
-								   <option>043</option>
-								   <option>063</option>
-								   <option>061</option>
-								   <option>054</option>
-								   <option>055</option>
-								   <option>064</option>
-							  </select>
-							<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-					    		<svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
-					  		</div>
-				 		</div>
-				 		- <input name="reward_tel2" type="text" class="border h-8 text-center rounded tel3" maxlength="4"/>
-						- <input name="reward_tel3" type="text" class="border h-8 text-center rounded tel4" maxlength="4"/>
-						<div class="text-danger hidden" style="margin-left:300px;"id="n1">숫자를 입력해주세요.</div>
-						<div class="text-danger hidden" style="margin-left:300px;" id="n2">잘못된 연락처입니다. 다시 입력해주세요.</div>
+						<div>수령인<i class="xi-star text-xl" style="color:rgb(255,153,000)"></i></div>
+						<a id="b"><input type="text" class="border h-8 ml-24 rounded" name="reciever" id="name"/></a>
+						<div class="text-danger ml-5 hidden" id="b1">수령인을 한글(2~7자리)로 입력해주세요.</div>
 					</div>
-				</div>
-				<div class="flex my-5">
-					<div>배송지<i class="xi-star text-xl" style="color:rgb(255,153,000)"></i></div>
-					<a id="d"><div class="ml-24">
-						<div class="flex">
-							<input id="reward_addr_num" name="reward_addr_num" type="text" class="border h-8 w-32 rounded addr1 text-center" maxlength="5" readonly/>
-							<input type="button" onClick="openDaumZipAddress();" class="ml-3 border rounded w-20" value="주소검색"/>
-							<div class="text-danger ml-5 hidden" id="d1">주소를 입력해주세요.</div>
-							<div class="text-danger ml-5 hidden" id="d2">잘못된 형식입니다. 다시 입력해주세요</div>
+					<div class="flex my-5">
+						<div><a id="f">이메일<i class="xi-star text-xl" style="color:rgb(255,153,000)"></i></a></div>
+						<div> 
+							<input type="text" name="id" class="border h-8 ml-24 rounded email1"/>@  
+							<input id="domain" name="domain" type="text" class="border h-8 text-center rounded email2"/> 	
+							<div class="inline-block relative w-40">
+								<select id="email" onclick="inputDomain()" class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
+									<option>직접입력</option>
+								    <option>naver.com</option>
+								    <option>daum.net</option>
+								    <option>gmail.com</option>
+								    <option>hotmail.com</option>
+								    <option>nate.com</option>
+								    <option>korea.com</option>
+								    <option>chollian.net</option>
+							  	 </select>
+							  	 <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+					    			<svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+					  			</div>
+				 			</div>
+				 			<div class="text-danger hidden" id="f1" style="margin-left:250px">이메일을 입력해주세요.</div>
+				 			<div class="text-danger hidden" id="f2" style="margin-left:250px">잘못된 이메일형식입니다. 다시입력해주세요.</div>
 						</div>
-						<input id="reward_addr_main" name="reward_addr_main" type="text" class="border mt-3 h-8 rounded addr2" style="width:630px" readonly>
-						<div><input id="reward_addr_sub" name="reward_addr_sub" type="text" class="border mt-3 h-8 rounded" style="width:315px"placeholder="상세주소"></div>
-					</div></a>
-				</div>
-				<div class="flex my-5">
-					<div>배송메모</div>
-					<div class="ml-20">
-						<textarea id="delivery_memo" name="delivery_memo" class="border rounded" style="width:640px; height:100px;" maxlength="100"></textarea>
-						<div><span id="txtLength">0</span>/100</div>
 					</div>
-				</div>
-				<div class="my-5 text-xl">결제 예약</div>
+						<div class="flex my-5">
+						<div><a id="c">연락처1<i class="xi-star text-xl" style="color:rgb(255,153,000)"></i></a></div>
+						<div class="ml-24 flex">
+						     <div class="h-8 w-40 text-center">010</div>
+					 		- <input type="text" name="reward_phone1" class="border h-8 ml-1 mr-1 text-center rounded tel1" maxlength="4"/>
+							- <input type="text" name="reward_phone2" class="border h-8 ml-1 text-center rounded tel2" maxlength="4"/>
+						</div>
+						<div class="text-danger ml-5 hidden" id="c1">연락처를 입력해주세요.</div>
+						<div class="text-danger ml-5 hidden" id="c2">숫자 4자리를 입력해주세요.</div>
+					</div>
+					<div class="flex my-5">
+						<div><a id="n">연락처2</a></div>
+						<div>
+							<div class="inline-block relative w-40 ml-24">
+								<select name="reward_tel1" class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
+									   <option>02</option>
+									   <option>051</option>
+									   <option>053</option>
+									   <option>032</option>
+									   <option>062</option>
+									   <option>042</option>
+									   <option>052</option>
+									   <option>044</option>
+									   <option>031</option>
+									   <option>033</option>
+									   <option>043</option>
+									   <option>063</option>
+									   <option>061</option>
+									   <option>054</option>
+									   <option>055</option>
+									   <option>064</option>
+								  </select>
+								<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+						    		<svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+						  		</div>
+					 		</div>
+					 		- <input name="reward_tel2" type="text" class="border h-8 text-center rounded tel3" maxlength="4"/>
+							- <input name="reward_tel3" type="text" class="border h-8 text-center rounded tel4" maxlength="4"/>
+							<div class="text-danger hidden" style="margin-left:300px;"id="n1">숫자를 입력해주세요.</div>
+							<div class="text-danger hidden" style="margin-left:300px;" id="n2">잘못된 연락처입니다. 다시 입력해주세요.</div>
+						</div>
+					</div>
+					<div class="flex my-5">
+						<div><a id="d">배송지<i class="xi-star text-xl" style="color:rgb(255,153,000)"></i></a></div>
+						<div class="ml-24">
+							<div class="flex">
+								<input id="reward_addr_num" name="reward_addr_num" type="text" class="border h-8 w-32 rounded addr1 text-center" maxlength="5" readonly/>
+								<input type="button" onClick="openDaumZipAddress();" class="ml-3 border rounded w-20" value="주소검색"/>
+								<div class="text-danger ml-5 hidden" id="d1">주소를 입력해주세요.</div>
+								<div class="text-danger ml-5 hidden" id="d2">잘못된 형식입니다. 다시 입력해주세요</div>
+							</div>
+							<input id="reward_addr_main" name="reward_addr_main" type="text" class="border mt-3 h-8 rounded addr2" style="width:630px" readonly>
+							<div><input id="reward_addr_sub" name="reward_addr_sub" type="text" class="border mt-3 h-8 rounded" style="width:315px"placeholder="상세주소"></div>
+						</div>
+					</div>
+					<div class="flex my-5">
+						<div>배송메모</div>
+						<div class="ml-20">
+							<textarea id="delivery_memo" name="delivery_memo" class="border rounded" style="width:640px; height:100px;" maxlength="100"></textarea>
+							<div><span id="txtLength">0</span>/100</div>
+						</div>
+					</div>
+				</c:if>
+				<div class="my-5 text-xl"><a id="e">결제 예약</a></div>
 				<div class="border w-40 h-8 text-center bg-danger text-white rounded">결제예약 수단 선택</div>
-				<a id="e"><div class="flex my-5">
+				<div class="flex my-5">
 					<div><input type="checkbox" class="border mr-2 border-gray-400 w-5 h-5" id="card"></div>
 					<div class="text-lg" style="position:relative; top:-4px">신용(체크)카드</div> 
 					<div class="text-danger ml-5 hidden" id="e1">결제예약 수단을 선택해주세요.</div>
-				</div></a>
+				</div>
 				<div class="mb-10">현재 신용(체크)카드 결제만 제공중으로 결제에 어려움이 있으시다면 죄송합니다. 다른 결제 수단도 곧 추가할 예정이오니 양해부탁드립니다.</div>
-				<a id="g"><div class="border w-40 h-8 text-center bg-danger text-white rounded my-5">결제 정보 입력</div></a>
+				<div class="border w-40 h-8 text-center bg-danger text-white rounded my-5"><a id="g">결제 정보 입력</a></div>
 				<div class="border mb-12" style="width:950px; background:rgb(204,204,204);">
 					<div class="flex" style="width:950px;">
 						<div class="w-1/2 my-4 mx-3">
@@ -270,8 +274,8 @@ $(function(){
 						</div>
 					</div>
 				</div>
-				<a id="k"><div class="h-40 w-full border overflow-y-auto mt-5">
-					<div class="text-center text-lg my-5">제 1조 결제</div>
+				<div class="h-40 w-full border overflow-y-auto mt-5">
+					<div class="text-center text-lg my-5"><a id="k">제 1조 결제</a></div>
 					①회원은회사가 제공하는 결제수단을 통하여 후원에 참여할 수 있습니다.<br>
 					②후원 취소는 프로젝트의 후원 마감기한 이내에만 가능하며, 후원 금액을 수정하고 싶은 경우는 이전 결과를 취소한 후 재결제를 하여야 합니다. <br>
 					③회원은 하나의 프로젝트에 중복으로 참여할 수 있으며, 참여시 최저금액은 각 펀딩의 최저금액 이상입니다.<br>
@@ -282,7 +286,7 @@ $(function(){
 					⑧<br>
 					⑨<br>
 					⑩
-				</div></a>
+				</div>
 				<div class="mt-2">
 					<label class="inline-flex items-center">
 						  <input type="checkbox" name="chk" class="border mr-2 w-5 h-5" id="clause1">
@@ -291,8 +295,8 @@ $(function(){
 			    </div>
 			    <div class="text-danger hidden" id="k1">동의사항 확인부탁드립니다.</div>
 			    
-			    <a id="l"><div class="h-40 w-full border overflow-y-auto" style="margin-top:70px;">
-					<div class="text-center text-lg my-5">제 3자에 대한 개인정보 제공 동의</div> 
+			    <div class="h-40 w-full border overflow-y-auto" style="margin-top:70px;">
+					<div class="text-center text-lg my-5"><a id="l">제 3자에 대한 개인정보 제공 동의</a></div> 
 					<div>
 						'펀딩하기'를 통한 결제 및 리워드 전달 서비스를 제공하기 위해, 이용자의 사전 동의 아래 제3자(프로젝트 메이커)에게 제공합니다.<br>
 						메이커에게 전달되는 개인 정보는 기재된 목적 달성 후 파기에 대한 책임이 메이커에게 있으면, 파기하지 않아 생기는 문제에 대한 법적 책임은 메이커에게 있습니다.<br>
@@ -301,7 +305,7 @@ $(function(){
 						<span class="text-lg">개인 정보 이용 내역</span><br>
 						1<br>2<br>3<br>4<br>5<br>
 					</div>
-				</div></a>
+				</div>
 				<div class="mt-2">
 					<label class="inline-flex items-center">
 						  <input type="checkbox" name="chk" class="border mr-2 w-5 h-5" id="clause2">
@@ -310,14 +314,14 @@ $(function(){
 			    </div>
 			    <div class="text-danger hidden" id="l1">동의사항 확인부탁드립니다.</div>
 			    
-			    <a id="m"><div class="h-40 w-full border overflow-y-auto" style="margin-top:70px;">
-					<div class="text-center text-lg my-5">책임 규정</div>
+			    <div class="h-40 w-full border overflow-y-auto" style="margin-top:70px;">
+					<div class="text-center text-lg my-5"><a id="m">책임 규정</a></div>
 					<div>
 						ChariTree는 플랫폼을 제공하는 중개자(통신판매중개자)로 크라우드펀딩을 받는 당사자가 아님니다.<br>
 						보삼품 제공 등에 관한 지연, 제품의 하자 등으로 인한 일체의 법적책임은 펀딩을 받는 프로젝트 개설자가 부담합니다.<br>
 						하지만 와디즈는 프로젝트 진행자와 후원자간의 원할한 의사소통을 위해 최선의 노력을 다하고 있습니다. 
 					</div>
-				</div></a>
+				</div>
 				<div class="mt-2">
 					<label class="inline-flex items-center">
 						  <input type="checkbox" name="chk" class="border mr-2 w-5 h-5" id="clause3">

@@ -24,7 +24,7 @@ public class CommandCamQnaOk implements Command_Interface {
 		HttpSession session = req.getSession();
 		vo.setCamNo(Integer.parseInt(req.getParameter("cam_no")));
 		vo.setUserid((String) session.getAttribute("user_id"));
-		vo.setQnaTitle(req.getParameter("qna_title"));
+		
 		vo.setQnaContent(req.getParameter("qna_content"));
 		if(req.getParameter("qna_secret")!=null && !req.getParameter("qna_secret").equals("")) {
 			vo.setQnaSecret(Integer.parseInt(req.getParameter("qna_secret")));
@@ -32,7 +32,14 @@ public class CommandCamQnaOk implements Command_Interface {
 		else {
 			vo.setQnaSecret(0);
 		}
-		
+		if(req.getParameter("qna_ans")!=null && !req.getParameter("qna_ans").equals("") && req.getParameter("qna_ans").equals("answer")) {
+			vo.setQnaTitle("답변");
+			vo.setQnaParentNo(Integer.parseInt(req.getParameter("qna_parent_no")));
+		}
+		else {
+			vo.setQnaTitle(req.getParameter("qna_title"));
+			vo.setQnaParentNo(0);
+		}
 		CamDetailDAO dao = new CamDetailDAO();
 		int cnt = dao.insertCamQna(vo);
 		

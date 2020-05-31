@@ -33,12 +33,12 @@ public class MainQnADAO extends ConnectionDB{
 					+ "?,"
 					+ "?,"
 					+ "?,"
-					+ "TO_DATE(SYSDATE, 'YY-MM-DD hh:mi')"
+					+ "TO_DATE(SYSDATE, 'YY-MM-DD HH:MI')"
 					+ ")";
 					
 			pstmt = conn.prepareStatement(sql);
-			
-			pstmt.setString(1, "aaaa");
+			 
+			pstmt.setString(1, vo.getUser_id());
 			pstmt.setString(2, vo.getService_title());
 			pstmt.setInt(3, vo.getService_secret()); 
 			pstmt.setString(4, vo.getService_content());
@@ -71,14 +71,15 @@ public class MainQnADAO extends ConnectionDB{
 				+	"    	questioner.service_title, " 
 				+	"    	questioner.service_secret, " 
 				+	"    	questioner.service_content, " 
-				+	"    	questioner.service_regi, "
+				+	"    	TO_CHAR(questioner.service_regi, 'YY-MM-DD HH:MI'), "
 						//답변자 정보
 				+	"    	answer.service_parent_no a_parent_no, " 
 				+	"    	answer.user_id a_id, " 
 				+	"    	answer.service_title a_title, " 
 				+	"    	answer.service_secret a_secret, " 
 				+	"    	answer.service_content a_content, " 
-				+	"    	answer.service_regi a_regi " 
+				+	"    	TO_CHAR(answer.service_regi, 'YY-MM-DD HH:MI') a_regi " 
+				
 				+	"    	FROM main_qna questioner, main_qna answer " 
 				+	"    	WHERE  questioner.service_no = answer.service_parent_no(+) " 
 				+	"    	AND questioner.user_id  != 'admin'"

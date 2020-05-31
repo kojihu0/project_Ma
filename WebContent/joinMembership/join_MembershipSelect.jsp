@@ -7,7 +7,7 @@
 <title>join_MembershipSelect</title>
 </head>
 <body>
-	
+		
 		<div style="width: 1000px; margin: 0 auto; margin-top: 50px">
 				<label style="margin-left: 250px;" class="font-bold text-4xl">회원가입</label><br />
 				<label style="margin-left: 250px;" class="font-thin text2xl">체리트리
@@ -30,6 +30,7 @@
 						</div>
 					</div>
 				</div>
+				
 				<div class="text-center mt-4 mb-4">또는</div>
 				<div class="w-12/12 px-2">
 					<div class="h-12 text-center" style="border: 1px lightgray solid">

@@ -1,18 +1,18 @@
-package com.project_Ma.home.DAO;
+package com.project_Ma.home;
 
 import java.util.List;
 
 import com.project_Ma.home.VO.CamCommentVO;
 
 public interface CampaignCommentService {
-	//ÀüÃ¼¸ñ·Ï
+	//ï¿½ï¿½Ã¼ï¿½ï¿½ï¿½
 	public List<CamCommentVO> camCommentList();
 	
 	public List<CamCommentVO> camCommentList(int camNo);
-	//µî·Ï
+	//ï¿½ï¿½ï¿½
 	public int insertCamComment(CamCommentVO vo);
-	//¼öÁ¤
+	//ï¿½ï¿½ï¿½ï¿½
 	public int updateCamComment(CamCommentVO vo);
-	//»èÁ¦
+	//ï¿½ï¿½ï¿½ï¿½
 	public int deleteCamComment(CamCommentVO vo);
 }
