@@ -366,16 +366,14 @@ public class CamDetailDAO extends ConnectionDB{
 		return camDonatorList;
 	}
 	
-	public int getTotalRecord(int cam_no, String tab) {
+	public int getCommentTotalRecord(int cam_no) {
 		int totalRecord = 0;
 		try {
 			connDB();
-			if(tab=="comments") {
-				sql = "SELECT count(c.comment_no)"
-						+ " from cam_comment c left outer join cam_comment re"
-						+ " on c.comment_no=re.comment_parent_no"
-						+ " where c.cam_no=? and c.comment_parent_no=0";
-			}
+			sql = "SELECT count(c.comment_no)"
+					+ " from cam_comment c left outer join cam_comment re"
+					+ " on c.comment_no=re.comment_parent_no"
+					+ " where c.cam_no=? and c.comment_parent_no=0";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, cam_no);
 			result = pstmt.executeQuery();
@@ -392,6 +390,32 @@ public class CamDetailDAO extends ConnectionDB{
 		}
 		return totalRecord;
 	}
+	
+	public int getQnaTotalRecord(int cam_no) {
+		int totalRecord = 0;
+		try {
+			connDB();
+			sql = "SELECT count(c.qna_no)"
+					+ " from cam_qna c left outer join cam_qna re"
+					+ " on c.qna_no=re.qna_parent_no"
+					+ " where c.cam_no=? and c.qna_parent_no=0";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, cam_no);
+			result = pstmt.executeQuery();
+			
+			if(result.next()) {
+				totalRecord = result.getInt(1);
+				System.out.println("모든 질문" + totalRecord);
+			}
+		}catch(Exception e) {
+			System.out.println("모든 레코드의 수를 구하면서 에러 발생.");
+			e.printStackTrace();
+		}finally {
+			closeDB();
+		}
+		return totalRecord;
+	}
+	
 	
 	public List<CamCommentVO> camCommentList(int camNo, CamDetailPageVO pVO){
 		List<CamCommentVO> camCommentList = new ArrayList<CamCommentVO>();
@@ -412,7 +436,7 @@ public class CamDetailDAO extends ConnectionDB{
 			pstmt.setInt(1, camNo);
 			pstmt.setInt(2, pVO.getPageNum() * pVO.getOnePageRecord());
 
-			if(pVO.getPageNum() == pVO.getTotalPage()) {
+			if(pVO.getPageNum() == pVO.getCmTotalPage()) {
 				pstmt.setInt(3, pVO.getLastPageRecord());
 			}else {
 				pstmt.setInt(3, pVO.getOnePageRecord());
@@ -463,19 +487,32 @@ public class CamDetailDAO extends ConnectionDB{
 		}
 		return cnt;
 	}
-	public List<CamQnaVO> camQnaList(int camNo){
+	public List<CamQnaVO> camQnaList(int camNo, CamDetailPageVO pVO){
 		List<CamQnaVO> camQnaList = new ArrayList<CamQnaVO>();
 		try {
 			connDB();
-			sql = "select q.qna_no, q.user_id, q.cam_no, q.qna_title, q.qna_content,"
-					+ " q.qna_secret, to_char(q.qna_regi, 'yyyy-mm-dd'), q.qna_parent_no," + 
-					" a.qna_no, a.user_id, a.cam_no, a.qna_title, a.qna_content,"
-					+ " a.qna_secret, to_char(a.qna_regi, 'yyyy-mm-dd'), a.qna_parent_no" + 
-					" from cam_qna q left outer join cam_qna a"
+			sql = "select * from"
+					+ " (select * from(select q.qna_no, q.user_id, q.cam_no, q.qna_title, q.qna_content,"
+					+ " q.qna_secret, to_char(q.qna_regi, 'yyyy-mm-dd'), q.qna_parent_no,"
+					+ " a.qna_no a_no, a.user_id a_userid, a.cam_no a_cam_no, a.qna_title a_title, a.qna_content a_content,"
+					+ " a.qna_secret a_secret, to_char(a.qna_regi, 'yyyy-mm-dd') a_regi, a.qna_parent_no a_parent_no" 
+					+ " from cam_qna q left outer join cam_qna a"
 					+ " on q.qna_no=a.qna_parent_no"
-					+ " where q.cam_no=? and q.qna_parent_no=0 order by q.qna_regi desc";
+					+ " where q.cam_no=? and q.qna_parent_no=0 order by q.qna_no desc) tbl1"
+					+ " where rownum<=? order by tbl1.qna_no asc) tbl2"
+					+ " where rownum<=? order by tbl2.qna_no desc";
+			
 			pstmt = conn.prepareStatement(sql);
+			
 			pstmt.setInt(1, camNo);
+			pstmt.setInt(2, pVO.getPageNum() * pVO.getOnePageRecord());
+			
+			if(pVO.getPageNum() == pVO.getCmTotalPage()) {
+				pstmt.setInt(3, pVO.getLastPageRecord());
+			}else {
+				pstmt.setInt(3, pVO.getOnePageRecord());
+			}
+			
 			result = pstmt.executeQuery();
 			while(result.next()) {
 				CamQnaVO vo = new CamQnaVO();

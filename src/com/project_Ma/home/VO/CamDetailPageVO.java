@@ -9,8 +9,10 @@ public class CamDetailPageVO {
 	//페이징용 변수
 		private int 	pageNum = 1;		//현재 페이지
 		private int 	onePageRecord = 4;	//한 페이지에 들어가는 레코드의 수
-		private int 	totalPage;			//총 페이지의 수
-		private int 	totalRecord;		//총 레코드의 수(질문의 수)
+		private int 	cmTotalPage;			//총 페이지의 수
+		private int 	qnaTotalPage;			//총 페이지의 수
+		private int 	cmTotalRecord;		//총 레코드의 수(질문의 수)
+		private int 	qnaTotalRecord;		//총 레코드의 수(질문의 수)
 		private int 	startPage = 1;		//페이지 시작
 		private int 	pageCount = 4;		//출력되는 페이지의 수
 		private int 	lastPageRecord = 4; //마지막 페이지에 남아있는 레코드의 수
@@ -19,61 +21,78 @@ public class CamDetailPageVO {
 			return pageNum;
 		}
 
-
-
 		public void setPageNum(int pageNum) {
 			this.pageNum = pageNum;
 		}
-
-
 
 		public int getOnePageRecord() {
 			return onePageRecord;
 		}
 
-
-
 		public void setOnePageRecord(int onePageRecord) {
 			this.onePageRecord = onePageRecord;
 		}
 
-
-
-		public int getTotalPage() {
-			return totalPage;
+		public int getCmTotalPage() {
+			return cmTotalPage;
 		}
 
-
-
-		public void setTotalPage(int totalPage) {
-			this.totalPage = totalPage;
+		public void setCmTotalPage(int cmTotalPage) {
+			this.cmTotalPage = cmTotalPage;
 		}
 
-
-
-		public int getTotalRecord() {
-			return totalRecord;
+		public int getQnaTotalPage() {
+			return qnaTotalPage;
 		}
 
+		public void setQnaTotalPage(int qnaTotalPage) {
+			this.qnaTotalPage = qnaTotalPage;
+		}
 
+		public int getCmTotalRecord() {
+			return cmTotalRecord;
+		}
 
-		public void setTotalRecord(int totalRecord) {
-			this.totalRecord = totalRecord;
+		public void setCmTotalRecord(int cmTotalRecord) {
+			this.cmTotalRecord = cmTotalRecord;
 			//총 페이지 = 전체 질문 수 / 한페이지에 보여주는 질문수
-			totalPage = (int)Math.ceil((double)totalRecord / onePageRecord);
+			cmTotalPage = (int)Math.ceil((double)cmTotalRecord / onePageRecord);
 
 			//전체 질문을 4로 나누었을 때, 그 나머지가 0이라먄.
 			//즉 4로 딱 떨어지면
-			if(totalRecord % 4 == 0) {
+			if(cmTotalRecord % 4 == 0) {
 				//마지막 페이지의 레코드 수는 = 한 페이지의 레코드 수와 같고
 				lastPageRecord = onePageRecord;
 			}else { 
 				//만약 딱 떨어지지 않으면
 				//마지막 레코드의 수는 = 전체 질문을 한 페이지에 보이는 질문수로 나눈 나머지.
-				lastPageRecord = totalRecord % onePageRecord;
+				lastPageRecord = cmTotalRecord % onePageRecord;
 			}
 			
-			System.out.println("totalPage이게 왜 0이 나와 =  " + totalPage);
+			System.out.println("totalPage이게 왜 0이 나와 =  " + cmTotalPage);
+		}
+
+		public int getQnaTotalRecord() {
+			return qnaTotalRecord;
+		}
+
+		public void setQnaTotalRecord(int qnaTotalRecord) {
+			this.qnaTotalRecord = qnaTotalRecord;
+			//총 페이지 = 전체 질문 수 / 한페이지에 보여주는 질문수
+			qnaTotalPage = (int)Math.ceil((double)qnaTotalRecord / onePageRecord);
+
+			//전체 질문을 4로 나누었을 때, 그 나머지가 0이라먄.
+			//즉 4로 딱 떨어지면
+			if(qnaTotalRecord % 4 == 0) {
+				//마지막 페이지의 레코드 수는 = 한 페이지의 레코드 수와 같고
+				lastPageRecord = onePageRecord;
+			}else { 
+				//만약 딱 떨어지지 않으면
+				//마지막 레코드의 수는 = 전체 질문을 한 페이지에 보이는 질문수로 나눈 나머지.
+				lastPageRecord = qnaTotalRecord % onePageRecord;
+			}
+			
+			System.out.println("totalPage이게 왜 0이 나와 =  " + qnaTotalPage);
 		}
 
 		public int getStartPage() {

@@ -76,7 +76,7 @@
 							<li class="tab-item text-center mr-4 active"><a href="#story" class="inline-block py-4 px-4">스토리</a></li>
 							<li class="tab-item text-center mr-4"><a href="#updates" class="inline-block py-4 px-4">새 소식</a></li>
 							<li class="tab-item text-center mr-4"><a href="#beckers" class="inline-block py-4 px-4">후원자 <span class="text-brand">${fn:length(donatorLst)}</span></a></li>
-							<li class="tab-item text-center mr-4"><a href="#comments" class="inline-block py-4 px-4">응원하기 <span class="text-brand">${fn:length(commentLst)}</span></a></li>
+							<li class="tab-item text-center mr-4"><a href="#comments" class="inline-block py-4 px-4">응원하기 <span class="text-brand">${cmCnt}</span></a></li>
 							<li class="tab-item text-center mr-4"><a href="#qna" class="inline-block py-4 px-4">Q&A</a></li>
 						</ul>
 						<a href="#donate" class="sticky-btn-donate inline-block bg-brand hover:bg-brand-dark text-white py-2 px-4 rounded inline-block text-lg text-center ml-4">후원하기</a>
@@ -202,22 +202,22 @@
 											<a class="page-link block py-1 px-2 hover:text-brand pointer-events-none" href="#"><i class="xi-angle-left-min"></i></a>
 										</c:if> 
 										<c:if test="${pVO.pageNum > 1 }">
-											<a class="page-link block py-1 px-2 hover:text-danger" href="<%=projectPath%>/campaign/detail_Campaign.do#comment?cam_no=${vo.camNo}&tab=comments&&tabPageNum=${pVO.pageNum - 1}#comments"><i class="xi-angle-left-min"></i></a>
+											<a class="page-link block py-1 px-2 hover:text-danger" href="<%=projectPath%>/campaign/detail_Campaign.do?cam_no=${vo.camNo}&tabPageNum=${pVO.pageNum - 1}#comments"><i class="xi-angle-left-min"></i></a>
 										</c:if>	
 									</li>
 									<!-- 페이지 수 -->
 									<c:forEach var="i" begin="${pVO.startPage}" end="${pVO.startPage + pVO.pageCount - 1}">
-										<c:if test="${i <= pVO.totalPage }">  
-											<li class="page-item acitve"><a class="pn page-link block py-1 px-2 hover:text-brand <c:if test="${i == pVO.pageNum }">text-brand</c:if>" href="<%=projectPath%>/campaign/detail_Campaign.do?cam_no=${vo.camNo}&tab=comments&&tabPageNum=${i}#comments">${i}</a></li>
+										<c:if test="${i <= pVO.cmTotalPage }">  
+											<li class="page-item acitve"><a class="pn page-link block py-1 px-2 hover:text-brand <c:if test="${i == pVO.pageNum }">text-brand</c:if>" href="<%=projectPath%>/campaign/detail_Campaign.do?cam_no=${vo.camNo}&tabPageNum=${i}#comments">${i}</a></li>
 										</c:if>
 									</c:forEach>	
 									<!-- next -->
 									<li class="page-item">
-										<c:if test="${pVO.pageNum == pVO.totalPage}">
+										<c:if test="${pVO.pageNum == pVO.cmTotalPage}">
 											<a class="page-link block py-1 px-2 hover:text-brand pointer-events-none" href="#"><i class="xi-angle-right-min"></i></a>
 										</c:if>
-										<c:if test="${pVO.pageNum < pVO.totalPage}">  
-											<a class="page-link block py-1 px-2 hover:text-danger" href="<%=projectPath%>/campaign/detail_Campaign.do?cam_no=${vo.camNo}&tab=comments&&tabPageNum=${pVO.pageNum + 1}#comments"><i class="xi-angle-right-min"></i></a>
+										<c:if test="${pVO.pageNum < pVO.cmTotalPage}">  
+											<a class="page-link block py-1 px-2 hover:text-danger" href="<%=projectPath%>/campaign/detail_Campaign.do?cam_no=${vo.camNo}&tabPageNum=${pVO.pageNum + 1}#comments"><i class="xi-angle-right-min"></i></a>
 										</c:if>		
 									</li>
 								</ul>	
@@ -285,12 +285,31 @@
 									</li>
 									</c:forEach>
 								</ul>
-								<ul class="pagenation flex items-center justify-center my-4">
-									<li class="page-item disabled"><a class="page-link block py-1 px-2 hover:text-brand pointer-events-none" href="#"><i class="xi-angle-left-min"></i></a></li>
-									<li class="page-item acitve"><a class="page-link block py-1 px-2 hover:text-brand text-brand" href="#">1</a></li>
-									<li class="page-item"><a class="page-link block py-1 px-2 hover:text-brand" href="#">2</a></li>
-									<li class="page-item"><a class="page-link block py-1 px-2 hover:text-brand" href="#">3</a></li>
-									<li class="page-item"><a class="page-link block py-1 px-2 hover:text-brand" href="#"><i class="xi-angle-right-min"></i></a></li>
+								<ul id="camQnaPaging" class="pagenation flex items-center justify-center my-4">
+									<!-- prev -->
+									<li class="page-item"> 
+										<c:if test="${pVO.pageNum == 1 }">
+											<a class="page-link block py-1 px-2 hover:text-brand pointer-events-none" href="#"><i class="xi-angle-left-min"></i></a>
+										</c:if> 
+										<c:if test="${pVO.pageNum > 1 }">
+											<a class="page-link block py-1 px-2 hover:text-danger" href="<%=projectPath%>/campaign/detail_Campaign.do?cam_no=${vo.camNo}&tabPageNum=${pVO.pageNum - 1}#qna"><i class="xi-angle-left-min"></i></a>
+										</c:if>	
+									</li>
+									<!-- 페이지 수 -->
+									<c:forEach var="i" begin="${pVO.startPage}" end="${pVO.startPage + pVO.pageCount - 1}">
+										<c:if test="${i <= pVO.qnaTotalPage }">  
+											<li class="page-item acitve"><a class="pn page-link block py-1 px-2 hover:text-brand <c:if test="${i == pVO.pageNum }">text-brand</c:if>" href="<%=projectPath%>/campaign/detail_Campaign.do?cam_no=${vo.camNo}&tabPageNum=${i}#qna">${i}</a></li>
+										</c:if>
+									</c:forEach>	
+									<!-- next -->
+									<li class="page-item">
+										<c:if test="${pVO.pageNum == pVO.qnaTotalPage}">
+											<a class="page-link block py-1 px-2 hover:text-brand pointer-events-none" href="#"><i class="xi-angle-right-min"></i></a>
+										</c:if>
+										<c:if test="${pVO.pageNum < pVO.qnaTotalPage}">  
+											<a class="page-link block py-1 px-2 hover:text-danger" href="<%=projectPath%>/campaign/detail_Campaign.do?cam_no=${vo.camNo}&tabPageNum=${pVO.pageNum + 1}#qna"><i class="xi-angle-right-min"></i></a>
+										</c:if>		
+									</li>
 								</ul>
 								</c:if>
 								<c:if test="${fn:length(qnaLst)<=0}">
