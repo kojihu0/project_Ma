@@ -366,17 +366,18 @@ public class CamDetailDAO extends ConnectionDB{
 		return camDonatorList;
 	}
 	
-	public int getTotalRecord(CamDetailPageVO vo) {
+	public int getTotalRecord(int cam_no, String tab) {
 		int totalRecord = 0;
 		try {
 			connDB();
-
-			sql = "SELECT count(c.comment_no)"
-					+ " from cam_comment c left outer join cam_comment re"
-					+ " on c.comment_no=re.comment_parent_no"
-					+ " where c.cam_no=? and c.comment_parent_no=0";
-			
+			if(tab=="comments") {
+				sql = "SELECT count(c.comment_no)"
+						+ " from cam_comment c left outer join cam_comment re"
+						+ " on c.comment_no=re.comment_parent_no"
+						+ " where c.cam_no=? and c.comment_parent_no=0";
+			}
 			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, cam_no);
 			result = pstmt.executeQuery();
 			
 			if(result.next()) {

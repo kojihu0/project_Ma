@@ -195,39 +195,29 @@
 									</c:if>
 								</li>
 								</c:forEach>
-								<ul class="pagenation flex items-center justify-center my-4">
-									<li class="page-item disabled"><a class="page-link block py-1 px-2 hover:text-brand pointer-events-none" href="#"><i class="xi-angle-left-min"></i></a></li>
-									<li class="page-item acitve"><a class="page-link block py-1 px-2 hover:text-brand text-brand" href="#">1</a></li>
-									<li class="page-item"><a class="page-link block py-1 px-2 hover:text-brand" href="#">2</a></li>
-									<li class="page-item"><a class="page-link block py-1 px-2 hover:text-brand" href="#">3</a></li>
-									<li class="page-item"><a class="page-link block py-1 px-2 hover:text-brand" href="#">4</a></li>
-									<li class="page-item"><a class="page-link block py-1 px-2 hover:text-brand" href="#">5</a></li>
-									<li class="page-item"><a class="page-link block py-1 px-2 hover:text-brand" href="#"><i class="xi-angle-right-min"></i></a></li>
-								</ul>
-								<ul id="main_QnA_page" class="pagenation flex items-center justify-center my-4">
-								${pVO.totalPage}
+								<ul id="camCommentPaging" class="pagenation flex items-center justify-center my-4">
 									<!-- prev -->
 									<li class="page-item"> 
 										<c:if test="${pVO.pageNum == 1 }">
-											<a class="page-link block py-1 px-2 hover:text-danger pointer-events-none" href=""><i class="xi-angle-left-min"></i></a>
+											<a class="page-link block py-1 px-2 hover:text-brand pointer-events-none" href="#"><i class="xi-angle-left-min"></i></a>
 										</c:if> 
 										<c:if test="${pVO.pageNum > 1 }">
-											<a class="page-link block py-1 px-2 hover:text-danger" href="<%=projectPath%>/campaign/detail_Campaign.do?cam_no=${vo.camNo}&pageNum=${pVO.pageNum - 1}"><i class="xi-angle-left-min"></i></a>
+											<a class="page-link block py-1 px-2 hover:text-danger" href="<%=projectPath%>/campaign/detail_Campaign.do#comment?cam_no=${vo.camNo}&tab=comments&&tabPageNum=${pVO.pageNum - 1}#comments"><i class="xi-angle-left-min"></i></a>
 										</c:if>	
 									</li>
 									<!-- 페이지 수 -->
 									<c:forEach var="i" begin="${pVO.startPage}" end="${pVO.startPage + pVO.pageCount - 1}">
 										<c:if test="${i <= pVO.totalPage }">  
-											<li class="page-item acitve"><a class="pn page-link block py-1 px-2 hover:text-brand text-black" href="<%=projectPath%>/c/serviceCenterAjax.do?pageNum=${i}"<c:if test="${i == pVO.pageNum }">style='color:red'</c:if>>${i}</a></li>
+											<li class="page-item acitve"><a class="pn page-link block py-1 px-2 hover:text-brand <c:if test="${i == pVO.pageNum }">text-brand</c:if>" href="<%=projectPath%>/campaign/detail_Campaign.do?cam_no=${vo.camNo}&tab=comments&&tabPageNum=${i}#comments">${i}</a></li>
 										</c:if>
 									</c:forEach>	
 									<!-- next -->
 									<li class="page-item">
 										<c:if test="${pVO.pageNum == pVO.totalPage}">
-											<a class="page-link block py-1 px-2 hover:text-danger pointer-events-none" href=""><i class="xi-angle-right-min"></i></a>
+											<a class="page-link block py-1 px-2 hover:text-brand pointer-events-none" href="#"><i class="xi-angle-right-min"></i></a>
 										</c:if>
 										<c:if test="${pVO.pageNum < pVO.totalPage}">  
-											<a class="page-link block py-1 px-2 hover:text-danger" href="<%=projectPath%>/contact/serviceCenter.do?pageNum=${pVO.pageNum + 1}"><i class="xi-angle-right-min"></i></a>
+											<a class="page-link block py-1 px-2 hover:text-danger" href="<%=projectPath%>/campaign/detail_Campaign.do?cam_no=${vo.camNo}&tab=comments&&tabPageNum=${pVO.pageNum + 1}#comments"><i class="xi-angle-right-min"></i></a>
 										</c:if>		
 									</li>
 								</ul>	
@@ -361,15 +351,7 @@
 			hash=hash.replace('#', '');
 			var currentTab = $('#'+hash);
 			
-			//$('.campaign-tab-nav .tab-item').removeClass('active');
-	        //$('.campaign-tab-content .tab-content-item').removeClass('active');
-
 	        $("a[href='#"+hash+"']").trigger('click');
-	        //$('#'+hash).addClass('active');
-	        
-	        //$('html,body').animate({
-	        //    scrollTop: currentTab.offset().top
-	        //});
 		}
 		
 		//상단 슬라이더

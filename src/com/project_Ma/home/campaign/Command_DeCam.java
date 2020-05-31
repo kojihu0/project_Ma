@@ -41,8 +41,8 @@ public class Command_DeCam implements Command_Interface {
 		pVO.setLastPageRecord(5);
 		
 		//페이지번호
-		String pageNumStr = req.getParameter("pageNum"); 
-		 
+		String pageNumStr = req.getParameter("tabPageNum"); 
+		//String tabPart = req.getParameter("tab");
 		System.out.println("command_ajax pageNum=" + pageNumStr);
 		  
 		if(pageNumStr != null) {
@@ -56,7 +56,7 @@ public class Command_DeCam implements Command_Interface {
 		CamDetailDAO dao = new CamDetailDAO();
 		dao.selectCam(vo);
 		
-		pVO.setTotalRecord(dao.getTotalRecord(pVO));
+		pVO.setTotalRecord(dao.getTotalRecord(vo.getCamNo(), "comments"));
 		
 		List<CamNoticeVO> noticeLst = dao.camNoticeList(camNo);
 		List<PaymentVO> donatorLst = dao.camDonatorList(camNo);
