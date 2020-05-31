@@ -14,7 +14,7 @@ $(function(){
 			return false;
 		}else{
 		//아이디 중복 체크 
-		window.open("<%=projectPath%>/joinMembership/idCheck.do?user_id="+$('#idText').val(),"joinMembershipCheckBtn","width=400px, height=300px");
+		window.open("<%=projectPath%>/nTnB/idCheck.do?user_id="+$('#idText').val(),"joinMembershipCheckBtn","width=400px, height=300px");
 		}
 	});
 });
