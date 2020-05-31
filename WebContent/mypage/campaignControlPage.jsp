@@ -27,11 +27,11 @@
 			<div class="w-full max-w-4xl mx-auto my-8">
 				<div class="max-w-sm w-full lg:max-w-full lg:flex mb-8">
 		  			<div class="w-1/3 flex-none bg-cover rounded-t rounded-t-none rounded-l text-center overflow-hidden" title="Woman holding a mug">
-						<a href="<%=projectPath%>/campaign/detail_Campaign.do?cam_no=${vo.cam_no}"><img class="w-full h-full object-cover"src="<%=projectPath%>/img/${vo.cam_img}"/></a> 			 
+						<a href="<%=projectPath%>/mypage/campaignUpdate.do?cam_no=${vo.cam_no}"><img class="w-full h-full object-cover"src="<%=projectPath%>/img/${vo.cam_img}"/></a> 			 
 		  			</div>
-		  			<a href="<%=projectPath%>/campaign/detail_Campaign.do?cam_no=${vo.cam_no}">
+		  			<a href="<%=projectPath %>/mypage/campaign">
 		 		 <div class="w-2/3 border-r border-b border-l border-gray-light border-l-0 border-t border-gray-light bg-white rounded-b rounded-b-none rounded-r p-4 flex flex-col justify-between leading-normal">
-		 		 <a href="<%=projectPath%>/campaign/detail_Campaign.do?cam_no=${vo.cam_no}">
+		 		 <a href="<%=projectPath%>/mypage/campaignUpdate.do?cam_no=${vo.cam_no}">
 		    		<div>
 				      <p class="text-sm text-gray-darker flex items-center">
 				     	<div  class="font-bold text-xl mb-2">${vo.cam_title}</div>
