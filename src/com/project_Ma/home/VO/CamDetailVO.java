@@ -107,12 +107,16 @@ public class CamDetailVO {
 	}
 
 	public String getCamDesc() {
-		camDesc = camDesc.replaceAll("<br/>","\r\n");
+//		if(camDesc.indexOf("<br/>")>0) {
+//			camDesc = camDesc.replaceAll("<br/>","\r\n");
+//		}
 		return camDesc;
 	}
 
 	public void setCamDesc(String camDesc) {
-		camDesc = camDesc.replaceAll("\r\n","<br/>");
+//		if(camDesc.indexOf("\r\n")>0) {
+//			camDesc.replaceAll("\r\n","<br/>");
+//		}
 		this.camDesc = camDesc;
 	}
 
