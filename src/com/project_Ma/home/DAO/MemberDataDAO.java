@@ -15,13 +15,14 @@ public class MemberDataDAO extends ConnectionDB implements Command_Member_Inform
 	public void userDataSelect(MemberVO vo) {
 		try {
 			connDB();
-			sql="select user_name, user_id,user_pw,user_email,user_tel,addr_no,addr_main,addr_sub "
+			sql="select user_name,user_id,user_pw,user_email,user_tel,addr_no,addr_main,addr_sub "
 					+ "  from user_info where user_id=?";
 			pstmt=conn.prepareStatement(sql);
 			pstmt.setString(1,vo.getUser_id());
 			result= pstmt.executeQuery();
 			
 				if(result.next()) {
+					
 					vo.setUser_name(result.getString(1));
 					vo.setUser_id(result.getString(2));
 					vo.setUser_pw(result.getString(3));
@@ -30,6 +31,8 @@ public class MemberDataDAO extends ConnectionDB implements Command_Member_Inform
 					vo.setAddr_no(result.getString(6));
 					vo.setAddr_main(result.getString(7));
 					vo.setAddr_sub(result.getString(8));
+					
+					
 				}
 			
 		}catch(Exception e){
@@ -120,8 +123,8 @@ public class MemberDataDAO extends ConnectionDB implements Command_Member_Inform
 					vo.setUser_email(result.getString(4));
 					vo.setUser_tel(result.getString(5));
 					vo.setCorpo_name(result.getString(6));
-					vo.setCorpo_no(result.getInt(7));
-					vo.setCorpo_regi_no(result.getInt(8));
+					vo.setCorpo_no(result.getLong(7));
+					vo.setCorpo_regi_no(result.getLong(8));
 					vo.setAddr_no(result.getString(9));
 					vo.setAddr_main(result.getString(10));
 					vo.setAddr_sub(result.getString(11));

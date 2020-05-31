@@ -9,23 +9,7 @@ public class PaymentDAO extends ConnectionDB{
 
 	public PaymentDAO() {
 	}
-	//마일리지 값 구하기 
-	public void mileageValue(PaymentVO vo){
-		try { 
-			connDB();
-			sql="select mileage_before from user_mileage where user_id=?";//user_mileage에서 마일리지값을 가져와서 보여준다..
-			pstmt= conn.prepareStatement(sql);
-			pstmt.setString(1,vo.getUser_id());
-			result = pstmt.executeQuery();
-			if(result.next()) {
-				vo.setMileageBefore(result.getInt(1));
-			}
-		}catch(Exception e) {
-			System.out.println("마일리지값 출력 실패"+e.getMessage());
-		}finally{
-			closeDB();
-		}
-	}
+	
 	
 	public void payment(RewardVO vo) {
 		try {
