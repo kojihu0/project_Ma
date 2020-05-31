@@ -40,10 +40,11 @@
 		       		  <div class="relative w-full h-2 rounded-md bg-info-light mt-8">
 		             	<div class="absolute w-1/5 h-full border-solid border-gray border bg-danger rounded-md"></div>
 		             	<label class="text-danger font-semibold" style="font-size:14px;float:right;margin-top:15px">6일남음</label>
+		             	
 			    	  </div>
 			  		</div>
-			  		
 			  		</a>
+			  		<a href="<%=projectPath%>/mypage/campaignUpdate.do?cam_no=${vo.cam_no}" style="margin-top:10px" class=" text-gray">수정하기</a>
 			 	</div>
 		 		</div>
 			</div>

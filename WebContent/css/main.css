@@ -207,10 +207,8 @@
 button:focus {
     outline: 0;
 }
- 
- /*=====================
-  	마감임박, 오픈예정~이미지 등
-  */
+
+/*마감임박*/
 #dead_Line_Div{ 
 	margin-left: 21px;
 	margin-top: 70px;
@@ -269,36 +267,23 @@ button:focus {
 .mid_bar_div{
 	width:202px;     
 }
-#mid_emptyBar_01,
-#mid_emptyBar_02,
-#mid_emptyBar_03{
+.mid_emptyBar{
 	margin-top:15px; 
 	width:200px;  
 	background-color:#e4eef2;
 }
-#mid_colorBar_01{
+.mid_colorBar{
 	margin-top:-1px;
 	margin-left:-1px;
-	width:50%;  
 }
 
-#mid_colorBar_02{
-	margin-top:-1px;
-	margin-left:-1px;
-	width:85%;   
-} 
-#mid_colorBar_03{
-	margin-top:-1px;
-	margin-left:-1px;
-	width:75%;   
-}  
 /*d-color*/
 .d_box{  
 	margin-top: 5px; 
 }
 #d_colorBar_01{
  	margin-top:-1px;
- 	width:75%;  
+
  	margin-left:-1px;
  	text-align: center;
  } 
@@ -318,24 +303,8 @@ button:focus {
  	font-size:1.5em;  
  	text-align:right;
  }
-  #d_colorBar_02{
+  .d_colorBar{
   	margin-top:-1px;
-  	width:50%;   
-  	margin-left:-1px;
- }
-  #d_colorBar_03{
-  	margin-top:-1px;
-  	width:85%;  
-  	margin-left:-1px;
- }
-  #d_colorBar_04{
-  	margin-top:-1px;
-  	width:15%; 
-  	margin-left:-1px;
- }
-  #d_colorBar_05{
-  	margin-top:-1px;
-  	width:45%; 
   	margin-left:-1px;
  }
  .d_camBar{  
@@ -343,11 +312,7 @@ button:focus {
  	height: 1px; 
  }
   
-#d_emptyBar_01,
-#d_emptyBar_02,
-#d_emptyBar_03,
-#d_emptyBar_04,
-#d_emptyBar_05{
+.d_emptyBar{
 	margin-top:10px; 
 	background-color:#e4eef2;
 }
@@ -358,18 +323,12 @@ button:focus {
 	font-size:0.8em; 
 } 
    
-#resisterInput{    
-	margin-left: 530px;
+#resisterInput{     
+	margin-left: 572px;
     margin-top: 30px;
     width: 200px;
     font-size: 1.6em;
-}   
-#resisterInput_02{     
-	margin-left: 180px;
-    margin-top: 58px;  
-    width: 200px;
-    font-size: 1.6em;
-} 
+}    
 #mid_title_word{
 	font-size:16px; 
 	margin-left:21px; 
@@ -378,7 +337,7 @@ button:focus {
 	color:white;
 	font-size:2em;
 	text-align:center;
-	padding-top:100px;
+	padding-top:100px; 
 	 
 } 
 #banner_ment_02{
@@ -427,14 +386,6 @@ button:focus {
   	-ms-transform: scale(1.2);
   	-o-transform: scale(1.2);
 } 
-  
-  
-  
-  
-  
-  
-  
-  
   /*유튜브 부분*/
 .youtube_ment_01{
 	margin-bottom:10px;

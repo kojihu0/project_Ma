@@ -159,4 +159,88 @@ public class MainQnADAO extends ConnectionDB{
 	}
 	
 	
-}
+	
+	
+	//---질문 및 답
+	public void selectRecord(MainQnAVO vo, int no) {
+		
+		try {
+			connDB();
+			
+			sql	= "SELECT "
+					+ " service_no,"
+					+ " service_title,"
+					+ " user_id,"
+					+ " service_content"
+				+ " FROM main_qna"
+				+ " WHERE service_no = ?";
+			
+			pstmt = conn.prepareStatement(sql); 
+			
+			pstmt.setInt(1, no);
+			
+			result = pstmt.executeQuery();
+			
+			if(result.next()) {
+				
+				vo.setService_no(result.getInt(1));
+				vo.setUser_id(result.getString(2));
+				vo.setService_title(result.getString(3));
+				vo.setService_content(result.getString(4));
+			
+			}
+			
+		}catch(Exception e) {
+			System.out.println("레코드 하나 선택" + e.getMessage());
+			e.getStackTrace();
+		}finally {
+			closeDB();
+		}
+	}
+	
+	//---질문등록을 위한 insert
+		public int insertAnswer(MainQnAVO vo) {
+			int result = 0;
+			
+			try {
+				connDB();
+				sql = "INSERT INTO main_qna("
+						+ "service_no,"
+						+ "service_parent_no,"
+						+ "user_id, "
+						+ "service_title,"
+						+ "service_secret,"
+						+ "service_content,"
+						+ "service_regi)"
+						
+						+ "VALUES("
+						+ "main_qna_sq.nextval,"
+						+ " ?,"
+						+ " 'admin',"
+						+ " '질문해주신 사항에 답변 드립니다.',"
+						+ " 0,"
+						+ " ?,"
+						+ " TO_DATE(SYSDATE, 'YY-MM-DD HH:MI')"
+						+ ")";
+						
+				pstmt = conn.prepareStatement(sql);
+				 
+				pstmt.setInt(1, vo.getService_parent_no());
+				pstmt.setString(2, vo.getService_content());
+				
+				result = pstmt.executeUpdate();
+				
+			}catch(Exception e) {
+				System.out.println("메인 QnA 등록에서 문제가 생겼습니다." + e.getMessage());
+				e.getStackTrace();
+			}finally {
+				closeDB();
+			}
+			
+			
+			return result;
+		}
+	
+	
+	
+}//class end

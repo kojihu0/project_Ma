@@ -9,6 +9,9 @@ public class IndexVO {
 	private String  cam_end;
 	private String  cam_img_path;
 	private int  	cam_remainDay;
+	private int 	cam_goal_price;
+	private int 	total_price;
+	private double   achievement;
 	 
 	public IndexVO() {
 		
@@ -20,6 +23,59 @@ public class IndexVO {
 	public int getCam_no() {
 		return cam_no;
 	}
+
+	public double getAchievement() {
+		
+		return achievement;
+	}
+
+
+
+	public void setAchievement(float achievement) {
+		this.achievement = achievement;
+	}
+
+
+
+	public int getTotal_price() {
+		return total_price;
+	}
+
+
+
+	public void setTotal_price(int total_price) {
+		this.total_price = total_price;
+		
+		double achievement_result = 0.0;
+		
+		try {
+			System.out.println("총 후원 금액 : " + total_price + "  캠페인 목표 금액 : " + cam_goal_price);
+			if(cam_goal_price != 0) {
+				achievement_result = (double)total_price / (double)cam_goal_price * 100;
+			}
+			System.out.println("achievement : "+ achievement);
+			achievement = Double.parseDouble(String.format("%.2f",achievement_result));
+			
+		}catch(ArithmeticException ae) {
+			System.out.println(ae.getMessage());
+		}
+		
+		
+	}
+
+
+
+	public int getCam_goal_price() {
+		return cam_goal_price;
+	}
+
+
+
+	public void setCam_goal_price(int cam_goal_price) {
+		this.cam_goal_price = cam_goal_price;
+	}
+
+
 
 	public int getCam_remainDay() {
 		return cam_remainDay; 

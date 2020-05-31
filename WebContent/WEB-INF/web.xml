@@ -46,14 +46,138 @@
   <servlet-mapping>
   	<servlet-name>homeControl</servlet-name>
   	<url-pattern>*.do</url-pattern>
+	<url-pattern>/index.do</url-pattern>
+	<url-pattern>/news/notice.do</url-pattern>
+	<url-pattern>/news/event.do</url-pattern>
+	<url-pattern>/news/article.do</url-pattern>
+	<url-pattern>/news/newsContent.do</url-pattern>
+	<url-pattern>/campaign/all_Campaign.do</url-pattern>
+	<url-pattern>/campaign/pre_Campaign.do</url-pattern>
+	<url-pattern>/campaign/ex_Campaign.do</url-pattern>
+	<url-pattern>/campaign/detail_Campaign.do</url-pattern>
+	<url-pattern>/campaign/camCommentOk.do</url-pattern>
+	<url-pattern>/campaign/camQnaOk.do</url-pattern>
+	<url-pattern>/campaign/camWishOk.do</url-pattern>
+	<url-pattern>/payment/paymentProcess.do</url-pattern>
+	<url-pattern>/payment/paymentCompleted.do</url-pattern>
+	<url-pattern>/payment/paymentNoRewardPC.do</url-pattern>
+	<url-pattern>/payment/paymentNoRewardPP.do</url-pattern>
+	<url-pattern>/payment/paymentError.do</url-pattern>
+	<url-pattern>/payment/paymentProcessOk.do</url-pattern>
+	<url-pattern>/payment/paymentCompletedOk.do</url-pattern>
+	<url-pattern>/mypage/mypage.do</url-pattern>
+	<url-pattern>/mypage/editOk.do</url-pattern>
+	<url-pattern>/mypage/user_del.do</url-pattern> 
+	<url-pattern>/mypage/coporatePage.do</url-pattern>
+	<url-pattern>/mypage/coporEditOk.do</url-pattern>
+	<url-pattern>/mypage/pwEditOk.do</url-pattern>
+	<url-pattern>/mypage/mypageWishList.do</url-pattern>
+	<url-pattern>/mypage/campaignControlPage.do</url-pattern>
+	<url-pattern>/mypage/campaignUpdate.do</url-pattern>
+	<url-pattern>/mypage/campaignWrite.do</url-pattern>
+	<url-pattern>/mypage/mypageSpon.do</url-pattern>
+	<url-pattern>/mypage/wishListDel.do</url-pattern>
+	<url-pattern>/mypage/copor_Spon.do</url-pattern>
+	<url-pattern>/mypage/campaignWriteOk.do</url-pattern>
+	<url-pattern>/mypage/campaignUpdateOk.do</url-pattern>
+	<url-pattern>/mypage/campaignDeleteOk.do</url-pattern>
+	<url-pattern>/contact/serviceCenter.do</url-pattern>
+	<url-pattern>/contact/serviceCenterAjax.do</url-pattern>
+	<url-pattern>/contact/serviceCenterWriteOk.do</url-pattern>
+	<url-pattern>/joinMembership/join_User.do</url-pattern>
+	<url-pattern>/joinMembership/join_MembershipSelect.do</url-pattern>
+	<url-pattern>/joinMembership/join_Coporate.do</url-pattern>
+	<url-pattern>/joinMembership/join_Completed.do</url-pattern>
+	<url-pattern>/joinMembership/join_MemberShipCpOk.do</url-pattern>
+	<url-pattern>/joinMembership/join_MemberShipOk.do</url-pattern>  	  	 	
+	<url-pattern>/joinMembership/emailCheckCode.do</url-pattern>
+	<url-pattern>/joinMembership/emailCode.do</url-pattern>
+	<url-pattern>/joinMembership/regi_no.do</url-pattern>
+	<url-pattern>/login/login.do</url-pattern>
+	<url-pattern>/login/loginOk.do</url-pattern>
+	<url-pattern>/login/logOut.do</url-pattern>
+	<url-pattern>/login/find_Id.do</url-pattern>
+	<url-pattern>/login/find_IdOk.do</url-pattern>
+	<url-pattern>/login/find_PwOk.do</url-pattern>
+	<url-pattern>/login/callBack.do</url-pattern>
+	<url-pattern>/terms/private.do</url-pattern>
+	<url-pattern>/terms/tos.do</url-pattern>   
+	<url-pattern>/about_us/about_Us.do</url-pattern>
   </servlet-mapping>
+
+<jsp-config>
   
-  <jsp-config>
   	<jsp-property-group>
-  		<url-pattern>*.jsp</url-pattern> 
+  		<url-pattern>/about_us/*</url-pattern>	
+  		 
   		<include-prelude>/include/top.jspf</include-prelude>
   		<include-coda>/include/bottom.jspf</include-coda>
-  	</jsp-property-group> 
-  </jsp-config>
+  	</jsp-property-group>
+  	
+  	<jsp-property-group>
+  		<url-pattern>/campaign/*</url-pattern>	
+  		 
+  		<include-prelude>/include/top.jspf</include-prelude>
+  		<include-coda>/include/bottom.jspf</include-coda>
+  	</jsp-property-group>
+  	
+  	 <jsp-property-group>
+  		<url-pattern>/contact/*</url-pattern>	
+  		 
+  		<include-prelude>/include/top.jspf</include-prelude>
+  		<include-coda>/include/bottom.jspf</include-coda>
+  	</jsp-property-group>
+  	
+  	  	<jsp-property-group>
+  		<url-pattern>/joinMembership/*</url-pattern>	
+  		 
+  		<include-prelude>/include/top.jspf</include-prelude>
+  		<include-coda>/include/bottom.jspf</include-coda>
+  	</jsp-property-group>
+  	
+  	<jsp-property-group>
+  		<url-pattern>/login/*</url-pattern>	
+  		 
+  		<include-prelude>/include/top.jspf</include-prelude>
+  		<include-coda>/include/bottom.jspf</include-coda>
+  	</jsp-property-group>
+  	
+  	<jsp-property-group>
+  		<url-pattern>/mypage/*</url-pattern>	
+  		 
+  		<include-prelude>/include/top.jspf</include-prelude>
+  		<include-coda>/include/bottom.jspf</include-coda>
+  	</jsp-property-group>
+  	  
+  	<jsp-property-group>
+  		<url-pattern>/payment/*</url-pattern>	
+  		 
+  		<include-prelude>/include/top.jspf</include-prelude>
+  		<include-coda>/include/bottom.jspf</include-coda>
+  	</jsp-property-group>  
+  	
+  	<jsp-property-group>
+  		<url-pattern>/terms/*</url-pattern>	
+  		 
+  		<include-prelude>/include/top.jspf</include-prelude>
+  		<include-coda>/include/bottom.jspf</include-coda>
+  	</jsp-property-group>
+  	
+  	<jsp-property-group>
+  		<url-pattern>/index.jsp</url-pattern>	
+  		 
+  		<include-prelude>/include/top.jspf</include-prelude>
+  		<include-coda>/include/bottom.jspf</include-coda>
+  	</jsp-property-group>
+  	
+  	 <jsp-property-group>
+  		<url-pattern>/news/*</url-pattern>	
+  		 
+  		<include-prelude>/include/top.jspf</include-prelude>
+  		<include-coda>/include/bottom.jspf</include-coda>
+  	</jsp-property-group>
+  	  
+</jsp-config>
+
 
 </web-app>

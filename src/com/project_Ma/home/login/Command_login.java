@@ -16,6 +16,11 @@ public class Command_login implements Command_Interface {
 	@Override
 	public String processStart(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
+		String logStart = request.getParameter("logStart");
+		
+		request.setAttribute("logStart", logStart);
+		
 		return "/login/login.jsp";
 	}
 
