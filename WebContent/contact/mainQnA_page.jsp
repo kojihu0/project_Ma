@@ -61,6 +61,7 @@
 							<div class="qna-user py-4 border-b border-gray">${sList.service_content}</div> 
 							<div class="qna-reply py-4 pl-8 relative">
 								<c:if test="${sList.a_id != null }">
+									<span>${sList.a_title}</span>
 									<span class="absolute left-0 text-lg"><i class="xi-subdirectory-arrow"></i></span>
 									<div class="comment-author font-bold pb-4 mb-4 text-success border-b border-gray border-dashed">${sList.a_id}<span class="text-gray-dark text-sm font-normal ml-4">${sList.a_regi }</span></div>
 									<div class="comment-text text-gray-darkest">${sList.a_content }</div>

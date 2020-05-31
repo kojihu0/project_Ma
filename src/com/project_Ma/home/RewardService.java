@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.project_Ma.home.DAO;
+package com.project_Ma.home;
 
 import java.util.List;
 
@@ -12,14 +12,14 @@ import com.project_Ma.home.VO.RewardVO;
  *
  */
 public interface RewardService {
-	//ÀüÃ¼¸ñ·Ï
+	//ï¿½ï¿½Ã¼ï¿½ï¿½ï¿½
 	public List<RewardVO> allRewardList();
-	//Ä·ÆäÀÎ¿¡´ëÇÑ ¸ñ·Ï
+	//Ä·ï¿½ï¿½ï¿½Î¿ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
 	public List<RewardVO> allRewardList(int camNo);
-	//µî·Ï
+	//ï¿½ï¿½ï¿½
 	public int insertRewardList(RewardVO vo);
-	//¼öÁ¤
+	//ï¿½ï¿½ï¿½ï¿½
 	public int updateRewardList(RewardVO vo);
-	//»èÁ¦
+	//ï¿½ï¿½ï¿½ï¿½
 	public int deleteRewardList(RewardVO vo);
 }

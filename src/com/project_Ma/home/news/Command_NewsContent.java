@@ -26,6 +26,10 @@ public class Command_NewsContent implements Command_Interface {
 		MainQnAPageVO	 pVo  = new MainQnAPageVO();
 		LeadLagVO        pnVo = new LeadLagVO();
 		
+		
+		pVo.setOnePageRecord(10);
+		pVo.setLastPageRecord(10);
+		
 		if(request.getParameter("pageNum") != null) {
 			//페이지 정보
 			pVo.setPageNum(Integer.parseInt(request.getParameter("pageNum")));

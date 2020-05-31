@@ -23,7 +23,7 @@ public class Command_IdCheck implements Command_Interface {
 			int cnt = dao.idCheck(user_id);
 					request.setAttribute("user_id", user_id);
 			request.setAttribute("cnt",cnt);
-		return "/joinMembership/idCheck.jsp";
+		return "/nTnB/idCheck.jsp";
 	}
 
 }

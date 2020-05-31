@@ -61,15 +61,15 @@ $(function(){
 			<hr class="border"/>  
 				<div id="siteReisterBanner" class="my-8 w-full max-w-screen-xl my-0 mx-auto border-solid border-4 border-brand-dark ">
 					<div id="banner_ment_01" class="">
-						<a href="#"><span>ChariTree</span>에서 당신을 기다립니다.</a> 
+						<a href="<%=projectPath %>/mypage/campaignWrite.do"><span>ChariTree</span>에서 당신을 기다립니다.</a> 
 					</div>      
 					<div id="banner_ment_02" class="">
-						<a href="#">여러분의 따스한 관심을 나누어주세요.</a> 
+						<a href="<%=projectPath %>/mypage/campaignWrite.do">여러분의 따스한 관심을 나누어주세요.</a> 
 					</div>    
-					<a href="#">
-						<input type="button" id="resisterInput" class="bg-danger hover:bg-danger-light text-white font-bold py-2 px-4 border border-danger rounded" value="바로가기"/>
+					<a href="<%=projectPath %>/mypage/campaignWrite.do" id="resisterInput">
+						<input type="button" class="bg-danger hover:bg-danger-light text-white font-bold py-2 px-4 border border-danger rounded" value="바로가기"/>
 					</a>  
-				</div><!-- siteReisterBanner end -->   
+				</div><!-- siteReisterBanner end -->    
 			   
      		<div class="modal  w-full bg-gray-lightest">
 				<div class="repeatQuestion">자주하시는 질문들</div>

@@ -1,15 +1,15 @@
-package com.project_Ma.home.DAO;
+package com.project_Ma.home;
 
 import com.project_Ma.home.VO.MemberVO;
 
 public interface CommandMemberShipService {
-	//È¸¿ø°¡ÀÔ(À¯Àú)
+	//È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½)
 	public int userInsert(MemberVO vo);
-	//È¸¿ø°¡ÀÔ(±â¾÷)
+	//È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½)
 	public int coporateInsert(MemberVO vo);
-	//¾ÆÀÌµð Áßº¹Ã¼Å© 
+	//ï¿½ï¿½ï¿½Ìµï¿½ ï¿½ßºï¿½Ã¼Å© 
 	public int idCheck(String user_id);
-	//»ç¾÷ÀÚ µî·Ï¹øÈ£ Á¶È¸ 
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ï¹ï¿½È£ ï¿½ï¿½È¸ 
 	public long cpNumCheck(long corpo_num);
 }
 	

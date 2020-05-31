@@ -112,8 +112,7 @@
 			<div class="justify-center leading-9 home h-full"><div class="w-24 h-10 border my-5 mx-auto text-center rounded"><a href="<%=projectPath%>/index.do">홈으로</a></div>
 		</div>
 	</div>
-</div>
-
+</div> 
 
 
 

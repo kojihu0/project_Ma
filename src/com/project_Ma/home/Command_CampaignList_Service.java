@@ -1,4 +1,4 @@
-package com.project_Ma.home.DAO;
+package com.project_Ma.home;
 
 import java.util.List;
 

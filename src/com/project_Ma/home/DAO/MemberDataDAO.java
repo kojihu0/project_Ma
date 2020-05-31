@@ -2,6 +2,7 @@ package com.project_Ma.home.DAO;
 
 import java.util.List;
 
+import com.project_Ma.home.Command_Member_Information_Service;
 import com.project_Ma.home.ConnectionDB;
 import com.project_Ma.home.VO.MemberVO;
 
@@ -32,7 +33,7 @@ public class MemberDataDAO extends ConnectionDB implements Command_Member_Inform
 				}
 			
 		}catch(Exception e){
-			System.out.println("È¸¿øÁ¤º¸ ¼±ÅÃ ¿¡·¯ -->"+e.getMessage());
+			System.out.println("È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ -->"+e.getMessage());
 			e.printStackTrace();
 		}finally {
 			closeDB();
@@ -56,7 +57,7 @@ public class MemberDataDAO extends ConnectionDB implements Command_Member_Inform
 			
 			cnt = pstmt.executeUpdate();
 		}catch(Exception e) {
-			System.out.println("È¸¿øÁ¤º¸ ¼öÁ¤ ½ÇÆÐ--->"+e.getMessage());
+			System.out.println("È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½--->"+e.getMessage());
 			e.printStackTrace();
 		}finally{
 			closeDB();
@@ -73,7 +74,7 @@ public class MemberDataDAO extends ConnectionDB implements Command_Member_Inform
 			pstmt.setString(2, vo.getUser_id());
 			cnt = pstmt.executeUpdate();
 		}catch (Exception e) {
-			System.out.println("À¯Àú ºñ¹Ð¹øÈ£ ¼öÁ¤ ¿¡·¯ -->"+e.getMessage());
+			System.out.println("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ð¹ï¿½È£ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ -->"+e.getMessage());
 			e.printStackTrace();
 		}finally {
 			closeDB();
@@ -95,7 +96,7 @@ public class MemberDataDAO extends ConnectionDB implements Command_Member_Inform
 			cnt = pstmt.executeUpdate();
 			
 		}catch (Exception e){
-			System.out.println("È¸¿øÅ»Åð ¿¡·¯-->"+e.getMessage());
+			System.out.println("È¸ï¿½ï¿½Å»ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½-->"+e.getMessage());
 			e.printStackTrace();
 		}finally {
 			closeDB();
@@ -126,7 +127,7 @@ public class MemberDataDAO extends ConnectionDB implements Command_Member_Inform
 					vo.setAddr_sub(result.getString(11));
 			 }
 		}catch (Exception e) {
-			System.out.println("¹ýÀÎ µ¥ÀÌÅÍ ¼±ÅÃ ¿À·ù -->"+e.getMessage());
+			System.out.println("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ -->"+e.getMessage());
 			e.printStackTrace();
 		}finally {
 			closeDB();
@@ -153,7 +154,7 @@ public class MemberDataDAO extends ConnectionDB implements Command_Member_Inform
 			
 			cnt = pstmt.executeUpdate();
 		}catch (Exception e) {
-			System.out.println("¹ýÀÎÁ¤º¸ ¼öÁ¤ ¿¡·¯ -- >"+e.getMessage());
+			System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ -- >"+e.getMessage());
 			e.printStackTrace();
 		}finally {
 			closeDB();
@@ -174,7 +175,7 @@ public class MemberDataDAO extends ConnectionDB implements Command_Member_Inform
 			cnt = pstmt.executeUpdate();
 			
 		}catch (Exception e) {
-			System.out.println("¹ýÀÎÁ¤º¸ »èÁ¦ ¿¡·¯ -->"+e.getMessage());
+			System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ -->"+e.getMessage());
 			e.printStackTrace();
 		}finally {
 			closeDB();

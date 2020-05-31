@@ -172,7 +172,7 @@
 <script type="text/javascript">
 $(function(){
 	CKEDITOR.replace('cam_content', {
-		filebrowserUploadUrl:'<%=projectPath%>/editorImgUpload/editorImgUpload.do'
+		filebrowserUploadUrl:'<%=projectPath%>/nTnB/editorImgUpload.do'
 	});
 });
 </script>

@@ -1,26 +1,27 @@
-package com.project_Ma.home.login;
+package com.project_Ma.home.admin;
 
 import java.io.IOException;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import com.project_Ma.home.Command_Interface;
 
-public class Command_logOut implements Command_Interface {
+public class Command_AdminNews implements Command_Interface {
 
-	public Command_logOut() {
+	public Command_AdminNews() {
 		
 	}
 
 	@Override
 	public String processStart(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session = request.getSession();
-		session.invalidate();
+	
 		
-		return "/index.jsp";
+		
+		
+		
+		return "/admin/admin_news.jsp";
 	}
 
 }

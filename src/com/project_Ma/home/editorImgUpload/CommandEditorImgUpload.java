@@ -64,7 +64,7 @@ public class CommandEditorImgUpload implements Command_Interface {
 		req.setAttribute("filename", filename);
 		req.setAttribute("url", url);
 		
-		return "/editorImgUpload/editorImgUpload.jsp";
+		return "/nTnB/editorImgUpload.jsp";
 	}
 
 }
