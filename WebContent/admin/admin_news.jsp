@@ -31,10 +31,6 @@
 		
 	</style>
    <!--js-->
-   
-
-
-
 </head>
 <body>
 	<script>
@@ -59,33 +55,26 @@
 			        $($(this).attr('href')).addClass('active');
 			    });
 			   
-			   
-			   
-			   
 		});//end
 	</script>
-	<header class="header p-4 my-4 bg-danger text-xl text-white">
-		<span class="danger"><a href="admin.jsp">ChariTree</a></span>&nbsp;&nbsp;관리자 페이지
-		<c:if test="${login == 'Y' }">
-			<a href="<%=adminPath %>/admin/admin_Logout.do">로그아웃</a>
-		</c:if>
+	<header class="header p-4 bg-white text-xl border-b border-gray flex justify-between">
+		<div><span class="text-brand pr-4"><a href="admin.jsp">ChariTree</a></span>관리자 페이지</div>
+		<div><c:if test="${login == 'Y' }"><a href="<%=adminPath %>/admin/admin_Logout.do">로그아웃</a></c:if></div>
 	</header>	
-	<div class="content flex"> 
-		
+	<div class="content flex w-full"> 
 		<!-- 메뉴선택 영역 -->
-		<div class="flex-initial"><!-- 가장 왼쪽, 메인 선택메뉴 -->
+		<div class="flex-initial w-48 p-4 border-r border-gray-light"><!-- 가장 왼쪽, 메인 선택메뉴 -->
 			<ul>
-				<li class="hover:bg-danger-dark p-4 m-2 leading-relaxed text-xl border-b text-white bg-danger rounded text-center"><a href="<%=adminPath %>/admin/admin.do">관리자 홈</a></li>
-				<li class="hover:bg-danger-dark p-4 m-2 leading-relaxed text-xl border-b text-white bg-danger-dark rounded text-center"><a href="<%=adminPath %>/admin/admin_news.do">새소식 관리</a></li>
-				<li class="hover:bg-danger-dark p-4 m-2 leading-relaxed text-xl border-b text-white bg-danger rounded text-center"><a href="<%=adminPath %>/admin/admin_servicecenter.do">질문 관리</a></li>
+				<li class="border-b-2 border-gray hover:border-brand hover:text-brand p-2 m-2 leading-relaxed text-center"><a href="<%=adminPath %>/admin/admin.do">관리자 홈</a></li>
+				<li class="border-b-2 border-gray hover:border-brand hover:text-brand p-2 m-2 leading-relaxed text-center"><a href="<%=adminPath %>/admin/admin_news.do">새소식 관리</a></li>
+				<li class="border-b-2 border-gray hover:border-brand hover:text-brand p-2 m-2 leading-relaxed text-center"><a href="<%=adminPath %>/admin/admin_servicecenter.do">질문 관리</a></li>
 			</ul>
 		</div>
-
-		<section class="border flex-initial  w-full" id="top"><!-- 해당 내용이 들어갈 부분. -->
-			<div class="border flex">
-				<div class="viewDiv w-1/2 border">
+		<section class="w-full pt-8 px-4" id="top"><!-- 해당 내용이 들어갈 부분. -->
+			<div class="flex">
+				<div class="viewDiv w-1/2">
 					<div class="campaign-tab-nav w-full bg-white flex items-center justify-center">
-						<ul class="flex items-center justify-center block py-8 font-bold">
+						<ul class="flex items-center justify-center block py-4 font-bold">
 							<li class="flex-initial tab-item text-center mr-4 active"><a href="#news" class="inline-block py-4 px-4">공지사항</a></li>
 							<li class="flex-initial tab-item text-center mr-4"><a href="#event" class="inline-block py-4 px-4">이벤트</a></li>
 							<li class="flex-initial tab-item text-center mr-4"><a href="#article" class="inline-block py-4 px-4">보도자료 </a></li>
@@ -100,8 +89,8 @@
 							<c:forEach var="vo" items="${listNews }">
 								<div class="w-full my-0 mx-auto  max-w-screen-xl">  
 									<div class="card mx-auto">    
-										<div class="max-w-sm w-full lg:max-w-full lg:flex">  
-											<div class="border-b border-l border-gray-lighte lg:border-l-0 lg:border-gray-lighte bg-white px-4 py-8 flex justify-between leading-normal">
+										<div class="w-full flex">  
+											<div class="w-full border-b border-l border-gray-light lg:border-l-0 lg:border-gray-lighte bg-white px-4 py-8 flex justify-between leading-normal">
 					  							<div class="w-2/3">  
 					    							<div class="mb-8"> 
 					      		 						<p class="text-sm"><i class="xi-lock text-brand"></i> ${vo.news_date }</p>    
@@ -152,14 +141,13 @@
 									</ul>	
 							</div>				
 						</div><!-- news -->
-						
 						<div id="event" class="tab-content-item">
 							<!-- 공지사항 폼 -->
 							<c:forEach var="vo" items="${listEvent }">
 								<div class="w-full my-0 mx-auto  max-w-screen-xl">  
 									<div class="card mx-auto">    
-										<div class="max-w-sm w-full lg:max-w-full lg:flex">  
-											<div class="border-b border-l border-gray-lighte lg:border-l-0 lg:border-gray-lighte bg-white px-4 py-8 flex justify-between leading-normal">
+										<div class="w-full flex">  
+											<div class="w-full border-b border-l border-gray-light lg:border-l-0 lg:border-gray-lighte bg-white px-4 py-8 flex justify-between leading-normal">
 					  							<div class="w-2/3">  
 					    							<div class="mb-8"> 
 					      		 						<p class="text-sm"><i class="xi-lock text-brand"></i> ${vo.news_date }</p>    
@@ -214,11 +202,11 @@
 					
 						<div id="article" class="tab-content-item">
 							<!-- 공지사항 폼 -->
-							<c:forEach var="vo" items="${listArticle }">
+							<c:forEach var="vo" items="${listArticle}">
 								<div class="w-full my-0 mx-auto  max-w-screen-xl">  
 									<div class="card mx-auto">    
 										<div class="max-w-sm w-full lg:max-w-full lg:flex">  
-											<div class="border-b border-l border-gray-lighte lg:border-l-0 lg:border-gray-lighte bg-white px-4 py-8 flex justify-between leading-normal">
+											<div class="w-full border-b border-l border-gray-light lg:border-l-0 lg:border-gray-lighte bg-white px-4 py-8 flex justify-between leading-normal">
 					  							<div class="w-2/3">  
 					    							<div class="mb-8"> 
 					      		 						<p class="text-sm"><i class="xi-lock text-brand"></i> ${vo.news_date }</p>    
@@ -272,22 +260,39 @@
 						
 					</div>
 				</div>
-				
-				<div class="editDiv w-1/2 border">
+				<div class="editDiv w-1/2 pt-24 pl-8">
 					<form method="post" action="<%=adminPath%>/admin/admin_news.do">
-						<input type="hidden" name="regi" id="regi" value="startRegi"/><br/>
-						<input type="text" name="title" id="title" class="border"/> <br/>
-						<select name="category" id="category">
-							<option value="1">공지사항</option>
-							<option value="2">이벤트</option>
-							<option value="3">보도자료</option>
-						</select><br/>
-						<textArea name="content" id="content" cols="10" rows="10"></textArea><br/>
-						<input type="submit" value="등록" />
+						<input type="hidden" name="regi" id="regi" value="startRegi"/>
+						<div class="mb-4">
+						<input type="text" name="title" id="title" placeholder="제목" class="appearance-none border border-gray rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"/>
+						</div>
+						<div class="inline-block relative w-1/2 mr-2 mb-4">
+							<select name="category" id="category" class="appearance-none w-full bg-white border border-gray hover:border-gray-dark px-4 py-2 pr-8 rounded leading-tight focus:outline-none focus:shadow-outline">
+								<option value="1">공지사항</option>
+								<option value="2">이벤트</option>
+								<option value="3">보도자료</option>
+							</select>
+							<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2">
+								<i class="xi-angle-down-min"></i>
+							</div><!--select-->
+						</div>
+						<div class="mb-4">
+							<textarea name="content" id="content"></textarea>
+						</div>
+						<div>
+							<input type="submit" value="등록" class="bg-brand hover:bg-brand-dark text-white font-bold py-2 px-4 rounded"/>
+						</div>
 					</form>
 				</div>
 			</div>
 		</section>
 	</div>
+	<script type="text/javascript">
+	$(function(){
+		CKEDITOR.replace('content', {
+			filebrowserUploadUrl:'<%=adminPath%>/nTnB/editorImgUpload.do'
+		});
+	});
+	</script>
 </body>
 </html>
