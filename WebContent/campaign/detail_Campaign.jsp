@@ -205,28 +205,29 @@
 									<li class="page-item"><a class="page-link block py-1 px-2 hover:text-brand" href="#"><i class="xi-angle-right-min"></i></a></li>
 								</ul>
 								<ul id="main_QnA_page" class="pagenation flex items-center justify-center my-4">
+								${pVO.totalPage}
 									<!-- prev -->
 									<li class="page-item"> 
-										<c:if test="${pVo.pageNum == 1 }">
+										<c:if test="${pVO.pageNum == 1 }">
 											<a class="page-link block py-1 px-2 hover:text-danger pointer-events-none" href=""><i class="xi-angle-left-min"></i></a>
 										</c:if> 
-										<c:if test="${pVo.pageNum > 1 }">
-											<a class="page-link block py-1 px-2 hover:text-danger" href="<%=projectPath%>/contact/serviceCenter.do?pageNum=${pVo.pageNum - 1}"><i class="xi-angle-left-min"></i></a>
+										<c:if test="${pVO.pageNum > 1 }">
+											<a class="page-link block py-1 px-2 hover:text-danger" href="<%=projectPath%>/campaign/detail_Campaign.do?cam_no=${vo.camNo}&pageNum=${pVO.pageNum - 1}"><i class="xi-angle-left-min"></i></a>
 										</c:if>	
 									</li>
 									<!-- 페이지 수 -->
-									<c:forEach var="i" begin="${pVo.startPage }" end="${pVo.startPage + pVo.pageCount - 1 }">
-										<c:if test="${i <= pVo.totalPage }">  
-											<li class="page-item acitve"><a class="pn page-link block py-1 px-2 hover:text-brand text-black" href="<%=projectPath%>/contact/serviceCenterAjax.do?pageNum=${i}"<c:if test="${i == pVo.pageNum }">style='color:red'</c:if>>${i}</a></li>
+									<c:forEach var="i" begin="${pVO.startPage}" end="${pVO.startPage + pVO.pageCount - 1}">
+										<c:if test="${i <= pVO.totalPage }">  
+											<li class="page-item acitve"><a class="pn page-link block py-1 px-2 hover:text-brand text-black" href="<%=projectPath%>/c/serviceCenterAjax.do?pageNum=${i}"<c:if test="${i == pVO.pageNum }">style='color:red'</c:if>>${i}</a></li>
 										</c:if>
 									</c:forEach>	
 									<!-- next -->
 									<li class="page-item">
-										<c:if test="${pVo.pageNum == pVo.totalPage}">
+										<c:if test="${pVO.pageNum == pVO.totalPage}">
 											<a class="page-link block py-1 px-2 hover:text-danger pointer-events-none" href=""><i class="xi-angle-right-min"></i></a>
 										</c:if>
-										<c:if test="${pVo.pageNum < pVo.totalPage}">  
-											<a class="page-link block py-1 px-2 hover:text-danger" href="<%=projectPath%>/contact/serviceCenter.do?pageNum=${pVo.pageNum + 1}"><i class="xi-angle-right-min"></i></a>
+										<c:if test="${pVO.pageNum < pVO.totalPage}">  
+											<a class="page-link block py-1 px-2 hover:text-danger" href="<%=projectPath%>/contact/serviceCenter.do?pageNum=${pVO.pageNum + 1}"><i class="xi-angle-right-min"></i></a>
 										</c:if>		
 									</li>
 								</ul>	

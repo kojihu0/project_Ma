@@ -36,6 +36,7 @@ public class Command_DeCam implements Command_Interface {
 		
 		CamDetailVO vo = new CamDetailVO();
 		CamDetailPageVO pVO = new CamDetailPageVO();
+		
 		pVO.setOnePageRecord(5);
 		pVO.setLastPageRecord(5);
 		
@@ -50,14 +51,16 @@ public class Command_DeCam implements Command_Interface {
 			pVO.setPageNum(1);
 		}
 		
-		
 		vo.setCamNo(Integer.parseInt(req.getParameter("cam_no")));
 		int camNo = vo.getCamNo();
 		CamDetailDAO dao = new CamDetailDAO();
 		dao.selectCam(vo);
+		
+		pVO.setTotalRecord(dao.getTotalRecord(pVO));
+		
 		List<CamNoticeVO> noticeLst = dao.camNoticeList(camNo);
 		List<PaymentVO> donatorLst = dao.camDonatorList(camNo);
-		List<CamCommentVO> commentLst = dao.camCommentList(camNo);
+		List<CamCommentVO> commentLst = dao.camCommentList(camNo, pVO);
 		List<CamQnaVO> qnaLst = dao.camQnaList(camNo);
 		
 		RewardDAO rdao = new RewardDAO();
@@ -71,8 +74,11 @@ public class Command_DeCam implements Command_Interface {
 		CamWishDAO wdao = new CamWishDAO();
 		wdao.selectCamWish(wvo);
 		
+		
+		
 		//System.out.println(vo.getUserid());
 		req.setAttribute("vo", vo); //캠페인정보
+		req.setAttribute("pVO", pVO);
 		req.setAttribute("wvo", wvo);
 		req.setAttribute("rwList", rwList); //리워드정보
 		req.setAttribute("noticeLst", noticeLst);//업데이트(공지사항)
