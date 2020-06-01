@@ -1,5 +1,7 @@
 package com.project_Ma.home.VO;
 
+import java.util.StringTokenizer;
+
 public class IndexVO {
 	
 	//DB랑 같게하기 위해, 대소문자 구분 안줌.
@@ -11,7 +13,7 @@ public class IndexVO {
 	private int  	cam_remainDay;
 	private int 	cam_goal_price;
 	private int 	total_price;
-	private double   achievement;
+	private double  achievement;
 	 
 	public IndexVO() {
 		
@@ -90,6 +92,15 @@ public class IndexVO {
 
 
 	public String getCam_img_path() {
+		
+		
+		StringTokenizer st = new StringTokenizer(cam_img_path, "|");
+		
+		if(st.hasMoreTokens()) {
+			cam_img_path = st.nextToken();
+			System.out.println(cam_img_path);
+		}
+		
 		return cam_img_path;
 	}
 

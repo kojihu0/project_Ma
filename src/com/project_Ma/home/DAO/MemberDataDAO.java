@@ -120,8 +120,8 @@ public class MemberDataDAO extends ConnectionDB implements Command_Member_Inform
 					vo.setUser_email(result.getString(4));
 					vo.setUser_tel(result.getString(5));
 					vo.setCorpo_name(result.getString(6));
-					vo.setCorpo_no(result.getInt(7));
-					vo.setCorpo_regi_no(result.getInt(8));
+					vo.setCorpo_no(result.getLong(7));
+					vo.setCorpo_regi_no(result.getLong(8));
 					vo.setAddr_no(result.getString(9));
 					vo.setAddr_main(result.getString(10));
 					vo.setAddr_sub(result.getString(11));

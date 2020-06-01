@@ -33,7 +33,7 @@
 		<div class="w-full max-w-4xl mx-auto my-8">
 			<div class="max-w-sm w-full lg:max-w-full lg:flex mb-8">
 			  <div class="w-1/3 flex-none bg-cover rounded-t rounded-t-none rounded-l text-center overflow-hidden" title="Woman holding a mug">
-				<img class="w-full h-full object-cover"src="<%=projectPath%>/img/${vo.cam_img}"/> 			 
+				<img class="w-full h-full object-cover"src="<%=projectPath%>/img/campaign/${vo.cam_img}"/> 			 
 			  </div>
 			  <div class="w-2/3 border-r border-b border-l border-gray-light border-l-0 border-t border-gray-light bg-white rounded-b rounded-b-none rounded-r p-4 flex flex-col justify-between leading-normal">
 			    <div>

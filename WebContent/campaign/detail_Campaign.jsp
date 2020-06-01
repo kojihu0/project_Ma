@@ -191,7 +191,7 @@
 									</div>
 									</c:if>
 									<c:if test="${user_id==vo.userid}">
-									<c:if test="${qvo.replyCommentNo=='' || qvo.replyCommentNo==null}">
+									<c:if test="${cvo.replyCommentNo=='' || cvo.replyCommentNo==null}">
 									<div class="p-4">
 										<div class="ans-form">
 											<form action="<%=projectPath%>/campaign/camCommentOk.do" method="post">

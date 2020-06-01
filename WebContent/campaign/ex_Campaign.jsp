@@ -30,10 +30,10 @@
 		<div id="total" class="w-full max-w-screen-xl my-0 mx-auto flex flex-wrap mb-12">
 			<c:forEach var="vo" items="${list}">
 				<div class=" w-1/3 px-4 mb-12">
-					<a href="<%=projectPath%>/campaign/detail_Campaign.do">
-						<img src="<%=projectPath%>/${vo.cam_img}" class="rounded-md"/>
+					<a class="block" href="<%=projectPath%>/campaign/detail_Campaign.do?cam_no=${vo.cam_no}&pageNum=${pageVO.pageNum}<c:if test='${pageVO.arrayKey!=null}'>&arrayKey=${pageVO.arrayKey}</c:if>">
+						<img class="h-64 w-full object-cover" src="<%=projectPath%>/img/campaign/${vo.cam_img}" class="rounded-md"/>
 					</a>
-						<div class="text-2xl my-2 hover:text-danger"><a href="<%=projectPath%>/campaign/detail_Campaign.do">${vo.cam_title}</a></div>
+						<div class="text-2xl my-2 hover:text-danger"><a href="<%=projectPath%>/campaign/detail_Campaign.do?cam_no=${vo.cam_no}&pageNum=${pageVO.pageNum}<c:if test='${pageVO.arrayKey!=null}'>&arrayKey=${pageVO.arrayKey}</c:if>">${vo.cam_title}</a></div>
 					
 						<div class="relative w-full h-2 rounded-md bg-info-light">
 							<div class="absolute h-full border-solid border-gray border bg-danger rounded-md" style="width:${vo.percent}%"></div>

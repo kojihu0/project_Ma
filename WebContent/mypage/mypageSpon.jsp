@@ -21,7 +21,7 @@
 <div class="w-full max-w-4xl mx-auto my-8">
 	<div class="max-w-sm w-full lg:max-w-full lg:flex mb-8">
 	  <div class="w-1/3 flex-none bg-cover rounded-t rounded-t-none rounded-l text-center overflow-hidden" title="Woman holding a mug">
-		<img class="w-full h-full object-cover"src="<%=projectPath%>/img/${vo.cam_img}"/> 			 
+		<img class="w-full h-full object-cover"src="<%=projectPath%>/img/campaign/${vo.cam_img}"/> 			 
 	  </div>
 	  <div class="w-2/3 border-r border-b border-l border-gray-light border-l-0 border-t border-gray-light bg-white rounded-b rounded-b-none rounded-r p-4 flex flex-col justify-between leading-normal">
 	    <div>
@@ -31,10 +31,6 @@
 	      ${vo.cam_desc}
 	      </p>
 	      <p class="mt-4 text-gray-darkest">후원 금액:${vo.funding_price}원 &nbsp;&nbsp;&nbsp;&nbsp;후원 날짜:${vo.donate_date} </p>
-	       <div class="relative w-full h-2 rounded-md bg-info-light mt-8">
-                      <div class="absolute w-1/5 h-full border-solid border-gray border bg-danger rounded-md"></div>
-                      <label class="text-danger font-semibold" style="font-size:14px;float:right;margin-top:15px">6일남음</label>
-	    	</div>
 	  	</div>
 	   </div>
  	 </div>

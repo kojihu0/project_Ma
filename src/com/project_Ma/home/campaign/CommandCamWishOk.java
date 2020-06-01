@@ -17,6 +17,7 @@ public class CommandCamWishOk implements Command_Interface {
 	public String processStart(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		req.setCharacterEncoding("UTF-8");
 		
+		
 		HttpSession session = req.getSession();
 		int camNo = Integer.parseInt(req.getParameter("cam_no"));
 		String currentUser = (String) session.getAttribute("user_id");
@@ -26,8 +27,11 @@ public class CommandCamWishOk implements Command_Interface {
 		vo.setCamNo(camNo);
 		
 		CamWishDAO dao = new CamWishDAO();
+		
+		
 		int cnt = 0;
 		if(action.equals("add")) {
+			
 			cnt = dao.insertCamWishlist(vo);
 		}
 		else if(action.equals("delete")) {

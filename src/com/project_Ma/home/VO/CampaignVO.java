@@ -1,5 +1,7 @@
 package com.project_Ma.home.VO;
 
+import java.util.StringTokenizer;
+
 public class CampaignVO {
 	private int cam_no;//ķ���� ��ȣ
 	private String user_id;//�۾���
@@ -90,6 +92,12 @@ public class CampaignVO {
 		this.cam_reward_status = cam_reward_status;
 	}
 	public String getCam_img() {
+		
+		StringTokenizer st = new StringTokenizer(cam_img, "|");
+	
+		if(st.hasMoreTokens()) {
+			cam_img = st.nextToken();
+		}
 		return cam_img;
 	}
 	public void setCam_img(String cam_img) {

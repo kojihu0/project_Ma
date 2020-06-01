@@ -137,6 +137,11 @@ public class CamDetailVO {
 	}
 	
 	public String getCamRemain() {
+		
+		//Double dou = Math.floor(Double.parseDouble(camRemain));
+		
+		//camRemain = dou.toString();
+		
 		return camRemain;
 	}
 

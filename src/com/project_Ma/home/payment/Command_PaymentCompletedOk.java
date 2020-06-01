@@ -5,6 +5,7 @@ import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.project_Ma.home.Command_Interface;
 import com.project_Ma.home.DAO.PaymentDAO;
@@ -21,15 +22,15 @@ public class Command_PaymentCompletedOk implements Command_Interface {
 	public String processStart(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		
-		cvo.setCam_no(Integer.parseInt("cam_no"));
-		cvo.setCam_reward_status(Integer.parseInt("cam_reward_status"));
-		vo.setReward_no(Integer.parseInt("reward_no"));
+		cvo.setCam_no(Integer.parseInt(request.getParameter("cam_no")));
+		cvo.setCam_reward_status(Integer.parseInt(request.getParameter("cam_reward_status")));
+		vo.setReward_no(Integer.parseInt(request.getParameter("reward_no")));
 	
 		vo.setFunding_price(Integer.parseInt(request.getParameter("funding_price")));
 		
 		if(request.getParameter("name_anonymous")==null) {
 			vo.setName_anonymous(0);
-		}else {
+		}else { 
 			vo.setName_anonymous(Integer.parseInt(request.getParameter("name_anonymous")));
 		}
 		if(request.getParameter("price_anonymous")==null) {
@@ -42,10 +43,12 @@ public class Command_PaymentCompletedOk implements Command_Interface {
 		}else {
 			vo.setDelivery_memo(request.getParameter("delivery_memo"));
 		}
+	
+		HttpSession ses = request.getSession();
 		
 		vo.setPayment_card_num(Integer.parseInt(request.getParameter("payment_card_num")));
 		vo.setReciever(request.getParameter("reciever"));
-		vo.setId(request.getParameter("id"));
+		vo.setUser_id((String)(ses.getAttribute(("user_id")))); 
 		vo.setDomain(request.getParameter("domain"));
 		vo.setReward_phone1(request.getParameter("reward_phone1"));
 		vo.setReward_phone2(request.getParameter("reward_phone2"));
@@ -70,6 +73,7 @@ public class Command_PaymentCompletedOk implements Command_Interface {
 
 		int result = dao.insertPayRecord(vo, cvo);
 		dao.getpaymentinfo(cvo, rvo, vo);
+		dao.getdonatedate(vo);
 		
 		request.setAttribute("result", result);
 		request.setAttribute("vo", vo);

@@ -36,7 +36,7 @@ public class Command_Index implements Command_Interface {
 		deadLineList = dao.selectDeadLineCampaign();
 		//===========================================
 		String kakaoLoginName = request.getParameter("user_id");
-		if(kakaoLoginName!=null && kakaoLoginName!="") {
+		if(kakaoLoginName != null && kakaoLoginName != "") {
 				vo.setLoginStatus("Y");
 				vo.setRank_code(1);
 				HttpSession session = request.getSession();
@@ -45,7 +45,7 @@ public class Command_Index implements Command_Interface {
 				session.setAttribute("rank_code", vo.getRank_code());
 		}
 		String naverLoginName 	= request.getParameter("name");
-		if(naverLoginName!=null && naverLoginName!="") {
+		if(naverLoginName != null && naverLoginName != "") {
 			vo.setLoginStatus("Y");
 			vo.setRank_code(1);
 			HttpSession session = request.getSession();

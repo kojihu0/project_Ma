@@ -27,8 +27,8 @@ public class Command_Regi_no_Check implements Command_Interface {
 		System.out.println(cnt);
 		request.setAttribute("corpo_regi_no", corpo_regi_no);
 		request.setAttribute("cnt",cnt);
-		return "/joinMembership/regi_no.jsp";
+		return "/nTnB/regi_no.jsp";
 	}
-
+ 
 
 }

@@ -12,7 +12,7 @@ public class MemberVO {
 	private String user_regi;//등록일
 	private String corpo_name;//법인명
 	private long corpo_no;//법인등록번호
-	private int corpo_regi_no;//사업자등록번호
+	private long corpo_regi_no;//사업자등록번호
 	private int rank_code;//유저분류코드 0:관리자, 1:일반유저, 2:회사
 	private String addr_no;//우편번호
 	private String addr_main;//주소
@@ -116,11 +116,11 @@ public class MemberVO {
 		this.corpo_no = corpo_no;
 	}
 
-	public int getCorpo_regi_no() {
+	public long getCorpo_regi_no() {
 		return corpo_regi_no;
 	}
 
-	public void setCorpo_regi_no(int corpo_regi_no) {
+	public void setCorpo_regi_no(long corpo_regi_no) {
 		this.corpo_regi_no = corpo_regi_no;
 	}
 

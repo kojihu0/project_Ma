@@ -59,16 +59,14 @@ $(function(){
 				<!-----------------페이지 내용-----------------> 
 			<p class="main_title">고객센터</p> 
 			<hr class="border"/>  
-				<div id="siteReisterBanner" class="my-8 w-full max-w-screen-xl my-0 mx-auto border-solid border-4 border-brand-dark ">
-					<div id="banner_ment_01" class="">
-						<a href="<%=projectPath %>/mypage/campaignWrite.do"><span>ChariTree</span>에서 당신을 기다립니다.</a> 
+				<div id="siteReisterBanner" class="my-8 w-full max-w-screen-xl my-0 mx-auto border-solid border-4 border-brand-dark text-center">
+					<div id="banner_ment_01" class=""> 
+						<a href="<%=projectPath %>/joinMembership/join_Coporate.do"><span>ChariTree</span>에서 당신을 기다립니다.</a> 
 					</div>      
 					<div id="banner_ment_02" class="">
-						<a href="<%=projectPath %>/mypage/campaignWrite.do">여러분의 따스한 관심을 나누어주세요.</a> 
+						<a href="<%=projectPath %>/joinMembership/join_Coporate.do">여러분의 따스한 관심을 나누어주세요.</a> 
 					</div>    
-					<a href="<%=projectPath %>/mypage/campaignWrite.do" id="resisterInput">
-						<input type="button" class="bg-danger hover:bg-danger-light text-white font-bold py-2 px-4 border border-danger rounded" value="바로가기"/>
-					</a>  
+						<a href="<%=projectPath%>/joinMembership/join_Coporate.do" class="inline-block bg-danger hover:bg-danger-light my-8 text-white text-xl font-bold py-2 px-4 border border-danger rounded">바로가기</a>
 				</div><!-- siteReisterBanner end -->    
 			   
      		<div class="modal  w-full bg-gray-lightest">

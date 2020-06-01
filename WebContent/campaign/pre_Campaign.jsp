@@ -26,14 +26,14 @@
 	    				<svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
 	  				</div>
 			 </div>
-		 </div>
+		 </div> 
 		<div id="total" class="w-full max-w-screen-xl my-0 mx-auto flex flex-wrap mb-12">
 				<c:forEach var="vo" items="${list}">
-					<div class=" w-1/3 px-4 mb-12">
-						<a href="<%=projectPath%>/campaign/detail_Campaign.do?cam_no=${vo.cam_no}&pageNum=${pageVO.pageNum}<c:if test='${pageVO.arrayKey!=null}'>&arraykey=${pageVO.arrayKey}</c:if>">
-							<img src="<%=projectPath%>/${vo.cam_img}" class="rounded-md"/>
+					<div class=" w-1/3 px-4 mb-12"> 
+						<a class="block" href="<%=projectPath%>/campaign/detail_Campaign.do?cam_no=${vo.cam_no}&pageNum=${pageVO.pageNum}<c:if test='${pageVO.arrayKey!=null}'>&arraykey=${pageVO.arrayKey}</c:if>">
+							<img class="h-64 w-full object-cover" src="<%=projectPath%>/img/campaign/${vo.cam_img}" class="rounded-md"/>
 						</a>
-							<div class="text-2xl my-2 hover:text-danger"><a href="<%=projectPath%>/campaign/detail_Campaign.do?cam_no=${vo.cam_no}&pageNum=${pageVO.pageNum}<c:if test='${pageVO.arrayKey!=null}'>&arraykey=${pageVO.arrayKey}</c:if>">${vo.cam_title}</a></div>
+							<div class=" truncate text-2xl my-2 hover:text-danger"><a href="<%=projectPath%>/campaign/detail_Campaign.do?cam_no=${vo.cam_no}&pageNum=${pageVO.pageNum}<c:if test='${pageVO.arrayKey!=null}'>&arraykey=${pageVO.arrayKey}</c:if>">${vo.cam_title}</a></div>
 						
 							<div class="relative w-full h-2 rounded-md bg-info-light">
 								<div class="absolute h-full border-solid border-gray border bg-danger rounded-md" style="width:${vo.percent}%"></div>

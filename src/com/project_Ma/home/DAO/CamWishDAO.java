@@ -36,7 +36,13 @@ public class CamWishDAO extends ConnectionDB {
 					+ " values(wish_sq.nextval, ?, ?, sysdate)";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, vo.getUserid());
+			
 			pstmt.setInt(2, vo.getCamNo());
+			
+			System.out.println("vo.getUserid() = " + vo.getUserid());
+			System.out.println("vo.getCamNo()() = " + vo.getCamNo());
+			
+			
 			cnt = pstmt.executeUpdate();
 		} catch (Exception e) {
 			System.out.println("위시리스트 등록 에러");

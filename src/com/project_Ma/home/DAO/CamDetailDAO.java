@@ -35,7 +35,7 @@ public class CamDetailDAO extends ConnectionDB{
 		try {
 			connDB();
 			sql = "select cam_no, cam.user_id, author.user_name, author.corpo_name, author.corpo_no, cam_title,"
-					+ " to_char(cam_start, 'yyyy-mm-dd') cam_start, to_char(cam_end, 'yyyy-mm-dd') cam_end , to_char(cam_end-cam_start) cam_remain,"
+					+ " to_char(cam_start, 'yyyy-mm-dd') cam_start, to_char(cam_end, 'yyyy-mm-dd') cam_end , FLOOR(to_char(cam_end-SYSDATE + 1)) cam_remain,"
 					+ " cam_goal_price, cam_min_price, cam_max_price, cam_total_price, cam_total_donator,"
 					+ " cam_img, cam_reward_status, cam_content, cam_desc, cam_regi"
 					+ " from (select sum(total_price) cam_total_price, count(user_id) cam_total_donator"

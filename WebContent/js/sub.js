@@ -1,29 +1,29 @@
 $(function(){
-	$("#replyTxt").on("keyup",function(){
-		var cnt = $("#replyTxt").val().length;
+	$("#delivery_memo").on("keyup",function(){
+		var cnt = $("#delivery_memo").val().length;
 		$("#txtLength").text(cnt);
 	});
 	
 	var fund;
 	var addFund;
 	var total;
-//	$("#fund").on("keyup",function(){
-//		if(isNaN($("#fund").val())==true){
-//			$("#a2").css({
-//				"display":"block" 	 
-//			});
-//			$("#total").text("0");
-//		}else{
-//			$("#a2").css({
-//				"display":"none" 	 
-//			});
-//			fund = parseInt($("#fund").val());
-//			$("#total").text(numberFormat(fund));	
-//			if($("#fund").val()==""){
-//				$("#total").text("0");
-//			}	
-//		}
-//	});
+	$("#fund").on("keyup",function(){
+		if(isNaN($("#fund").val())==true){
+			$("#a2").css({
+				"display":"block" 	 
+			});
+			$("#total").text("0");
+		}else{
+			$("#a2").css({
+				"display":"none" 	 
+			});
+			fund = parseInt($("#fund").val());
+			$("#total").text(numberFormat(fund));	
+			if($("#fund").val()==""){
+				$("#total").text("0");
+			}	
+		}
+	});
 	$("#addFund").on("keyup",function(){
 		if(isNaN($("#addFund").val())==true){
 			$("#z1").css({
@@ -41,9 +41,9 @@ $(function(){
 			if($("#addFund").val()==""){
 				$("#total").text(numberFormat(fund));
 			}
-//			if($("#fund").val()==""){
-//				$("#total").text("0");
-//			}
+			if($("#fund").val()==""){
+				$("#total").text("0");
+			}
 		}
 	});
 	

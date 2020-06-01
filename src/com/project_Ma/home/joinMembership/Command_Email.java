@@ -30,7 +30,7 @@ public class Command_Email implements Command_Interface {
 		System.out.println(email);
 		String sesId = request.getSession().getId();
 		Properties p = new Properties();
-		//³×ÀÌ¹öÀÇ ¸ŞÀÏ È¯°æ¼³Á¤¿¡¼­ imap.smtp »ç¿ëÇÔÀ¸·Î º¯°æÇÏ¿©¾ß ÇÑ´Ù 
+		//ï¿½ï¿½ï¿½Ì¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ È¯ï¿½æ¼³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ imap.smtp ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¿ï¿½ï¿½ï¿½ ï¿½Ñ´ï¿½ 
 		p.put("mail.smtp.host", "smtp.naver.com");
 		p.put("mail.smtp.port","25");
 		p.put("defaultEncoding","UTF-8");
@@ -38,8 +38,8 @@ public class Command_Email implements Command_Interface {
 		System.out.println("1111111111");
 		try {
 			Session ses = Session.getDefaultInstance(p, new Authenticator() {
-				String un = "insunok0715@naver.com";//³×ÀÌ¹ö ÀÌ¸ŞÀÏ ÁÖ¼Ò 
-				String pw = "wjd1234!";//³×ÀÌ¹öÀÇ ÀÌ¸ŞÀÏ ºñ¹Ğ¹øÈ£ 
+				String un = "insunok0715@naver.com";//ï¿½ï¿½ï¿½Ì¹ï¿½ ï¿½Ì¸ï¿½ï¿½ï¿½ ï¿½Ö¼ï¿½ 
+				String pw = "wjd1234!";//ï¿½ï¿½ï¿½Ì¹ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½ï¿½ï¿½ ï¿½ï¿½Ğ¹ï¿½È£ 
 				
 				protected PasswordAuthentication getPasswordAuthentication() {
 					return new PasswordAuthentication(un, pw);
@@ -48,17 +48,17 @@ public class Command_Email implements Command_Interface {
 			
 			ses.setDebug(false);
 		
-			MimeMessage mM = new MimeMessage(ses);//¸ŞÀÏ¿¡ ´ãÀ» °´Ã¼ 
-			mM.setFrom(new InternetAddress("insunok0715@naver.com"));//º¸³»´Â »ç¶÷ ÀÌ¸ŞÀÏ ÁÖ¼Ò 
+			MimeMessage mM = new MimeMessage(ses);//ï¿½ï¿½ï¿½Ï¿ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ã¼ 
+			mM.setFrom(new InternetAddress("insunok0715@naver.com"));//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½ï¿½ï¿½ ï¿½Ö¼ï¿½ 
 			InternetAddress[] toAddr = new InternetAddress[1];
 			toAddr[0] =new InternetAddress(email);
 			
 			mM.setRecipients(Message.RecipientType.TO, toAddr);
-			mM.setSubject("ÀÌ¸ŞÀÏ ÀÎÁõÄÚµå Å×½ºÆ® Áß ..."); //Á¦¸ñ¼¼ÆÃ
+			mM.setSubject("ì´ë©”ì¼ ì¸ì¦ ì½”ë“œì…ë‹ˆë‹¤. "); //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 			
 			
-			String content = "ÀÌ ÀÌ¸ŞÀÏÀº È¸¿ø°¡ÀÔÀ» À§ÇÑ ÀÎÁõÄÚµå ÀÔ´Ï´Ù\n";
-				   content+="ÀÎÁõÄÚµå:"+sesId;
+			String content = "ì´ë©”ì¼ ì¸ì¦ ì½”ë“œì…ë‹ˆë‹¤.\n";
+				   content+="ì¸ì¦ì½”ë“œ:"+sesId;
 			
 				   
 			mM.setText(content);
@@ -67,11 +67,11 @@ public class Command_Email implements Command_Interface {
 			
 			
 			request.setAttribute("code", "ok");
-			System.out.println("¸ŞÀÏ ¹ß¼Û ¼º°ø -->"+email);
+			System.out.println("ï¿½ï¿½ï¿½ï¿½ ï¿½ß¼ï¿½ ï¿½ï¿½ï¿½ï¿½ -->"+email);
 			
 		}catch(Exception e) {
 			e.printStackTrace();
-			System.out.println("¸ŞÀÏ ¹ß¼Û ¿À·ù  -->"+e.getMessage());
+			System.out.println("ï¿½ï¿½ï¿½ï¿½ ï¿½ß¼ï¿½ ï¿½ï¿½ï¿½ï¿½  -->"+e.getMessage());
 		}
 		return "/joinMembership/emailCode.jsp";
 	

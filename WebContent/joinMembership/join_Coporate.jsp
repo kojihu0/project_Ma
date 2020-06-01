@@ -14,7 +14,7 @@ $(function(){
 			return false;
 		}else{
 		//아이디 중복 체크 
-		window.open("<%=projectPath%>/joinMembership/idCheck.do?user_id="+$('#idText').val(),"joinMembershipCheckBtn","width=400px, height=300px");
+		window.open("<%=projectPath%>/nTnB/idCheck.do?user_id="+$('#idText').val(),"joinMembershipCheckBtn","width=400px, height=300px");
 		}
 	});
 });
@@ -26,9 +26,9 @@ $(function(){
 			return false;
 		}else{
 		//사업자 등록번호 중복체크 
-		window.open("<%=projectPath%>/joinMembership/regi_no.do?corpo_regi_no="+$('#coporateText').val(),"blnCheckBtn","width=400px, height=300px");
+		window.open("<%=projectPath%>/nTnB/regi_no.do?corpo_regi_no="+$('#coporateText').val(),"blnCheckBtn","width=400px, height=300px");
 		}
-	});
+	}); 
 });
 $(function(){ 
 	function email(url,params,msg){

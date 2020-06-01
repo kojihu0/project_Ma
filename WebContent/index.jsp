@@ -5,26 +5,34 @@
 <html> 
 <head>
 <meta charset="UTF-8">
-<title>main page</title> 
+<title>main page</title>
+
+<script>
+$(function(){
+	$("#moreButton").on('click', function(){
+		location.href="<%=projectPath%>/campaign/all_Campaign.do";
+	});
+});
+</script> 
 </head>
 <body>
 	<!-- img slide --> 
 			<div id="mainImgDiv" class="w-full my-0 mx-auto">
-				<div class="w-full my-0 mx-auto bg-gray-lighter">
+				<div class="w-full my-0 mx-auto bg-gray-lighter"> 
 					<div class="slider single-item">
-						<div class="slide-img w-full bg-cover bg-center relative" style="background-image:url('<%=projectPath%>/img/img_main/mainslider01.png')">
+						<div class="slide-img w-full bg-cover relative" style="background-image:url('<%=projectPath%>/img/img_main/mainslider01.png')">
 							<div class="slide-text absolute text-white"> 
 								<h1 class="font-bold text-3xl mb-4">대통령은 헌법과 법률이<br> 정하는 바에 의하여 공무원을 임면한다.</h1>
 								<p>정부는 예산에 변경을 가할 필요가 있을 때에는 추가경정예산안을 편성하여 국회에 제출할 수 있다.</p>
 							</div>
 						</div>
-						<div class="slide-img w-full bg-cover bg-center relative" style="background-image:url('<%=projectPath%>/img/img_main/mainslider02.png')">
+						<div class="slide-img w-full bg-cover relative" style="background-image:url('<%=projectPath%>/img/img_main/mainslider02.png')">
 							<div class="slide-text absolute text-white">
 								<h1 class="font-bold text-3xl mb-4">모든 국민은 근로의 권리를 가진다.</h1>
 								<p>국가는 사회적·경제적 방법으로 근로자의 고용의 증진과 적정임금의 보장에 노력하여야 하며,<br>법률이 정하는 바에 의하여 최저임금제를 시행하여야 한다.</p>
 							</div>
 						</div>
-						<div class="slide-img w-full bg-cover bg-center relative" style="background-image:url('<%=projectPath%>/img/img_main/mainslider03.png')">
+						<div class="slide-img w-full bg-cover relative" style="background-image:url('<%=projectPath%>/img/img_main/mainslider03.png')">
 							<div class="slide-text absolute">
 								<h1 class="font-bold text-3xl mb-4">밝은 그들의 것이다.<br>보라, 지혜는 가치를 듣기만 위하여서.</h1>
 								<p>피가 그와 구하지 튼튼하며, 용감하고 생명을 끓는다.</p>
@@ -42,7 +50,7 @@
 					<div class="mid_title">
 						이 캠페인은 어떠세요?<br /> <span id="mid_title_word" class="mid_title_word"> 당신의 작은 <span class="text-danger" >사랑</span>이 큰 도움이 됩니다 </span> 
 						<button id="moreButton" class="text-2xl border-b">
-							<a href="<%=projectPath %>/campaign/all_Campaign.do">more</a>  
+							more  
 						</button>
 					</div>
 				</div>
@@ -52,19 +60,19 @@
 					<div id="mid_Div_Campaign" class="flex">
 						<c:forEach var="lst" items="${list }"> 
 							<div id="mid_cam_01" class="mx-2 flex-initial w-1/3">
-								<div class="mid_cam_img rounded-lg my-4 my-0 mx-auto border-solid border-4 border-gray">
-									<a href="<%=projectPath %>/campaign/detail_Campaign.do?cam_no=${lst.cam_no}"><img src="<%=projectPath %>/img/${lst.cam_img_path}" alt="${lst.cam_title }" /></a>
+								<div class="mid_cam_img rounded-lg my-4 my-0 mx-auto border-solid border-4 border-gray overflow-hidden"> 
+									<a class="block" href ="<%=projectPath %>/campaign/detail_Campaign.do?cam_no=${lst.cam_no}"><img class="h-64 object-fit" src="<%=projectPath %>/img/campaign/${lst.cam_img_path}" alt="${lst.cam_title }" /></a>
 								</div> 
-								<div class="mid_cam_name"><a href="<%=projectPath %>/campaign/detail_Campaign.do?cam_no=${lst.cam_no}">${lst.cam_title }</a></div>
+								<div class="mid_cam_name truncate"><a href="<%=projectPath %>/campaign/detail_Campaign.do?cam_no=${lst.cam_no}">${lst.cam_title }</a></div>
 								<div class="flex pre_date rounded-lg mt-2 my-0 mx-auto">
 									<div class="mid-genre">자선캠페인</div>
 									<div class="mid_bar_div flex-initial">
-										<div id="mid_emptyBar_01" class="relative  h-2 rounded"> 
-											<div id="mid_colorBar_01" class="relative bg-danger h-2 rounded"></div>
+										<div class="mid_emptyBar relative  h-2 rounded overflow-hidden"> 
+											<div class="mid_colorBar relative bg-danger h-2 rounded" style="width:${lst.achievement }%"></div> 
 										</div>
 									</div>
 									<div class="mid_D_day w-1/3 flex-initial"> 
-										<span class="percentage text-danger">50.00%</span><br/>${lst.cam_remainDay}&nbsp;일 남음.
+										<span class="percentage text-danger">${lst.achievement }%</span><br/>${lst.cam_remainDay}&nbsp;일 남음.
 									</div>
 								</div>
 							</div>
@@ -86,13 +94,13 @@
 						<c:forEach var="lst2" items="${exOpenList }">				
 								<div class="carousel_Div flex-initial"> 
 									<div class="carou_cam_img rounded-lg mb-4 mx-auto"> 
-										<img src="<%=projectPath %>/img/${lst2.cam_img_path}" alt="${lst2.cam_title}" /> 
+										<img src="<%=projectPath %>/img/campaign/${lst2.cam_img_path}" alt="${lst2.cam_title}" /> 
 									</div>
-									<div class="carou_cam_name rounded-lg my-0 mx-auto">${lst2.cam_title }</div>
+									<div class="carou_cam_name rounded-lg my-0 mx-auto truncate">${lst2.cam_title }</div>
 									<div class="date_01 carou_cam_date rounded-lg mt-2 my-0 mx-auto"> 
 										시작일 : ${lst2.cam_start }					
 										<c:if test="${lst2.cam_remainDay > 0}">
-											<span class="re_01 remainDay text-danger">${lst2.cam_remainDay }&nbsp;일 후 OPEN</span>
+											<span class="re_01 remainDay text-danger">${lst2.cam_remainDay + 1 }&nbsp;일 후 OPEN</span>
 										</c:if>
 										<c:if test="${lst2.cam_remainDay <= 0}">
 											<span class="re_01 remainDay text-danger">&nbsp;OPEN!</span>
@@ -119,22 +127,23 @@
 							<div class="dead_scroll_box flex w-full">
 								<div class="d_box mx-2  flex-initial w-2/3">
 									<div class="d_camBar  w-full my-2 h-8">
-										<div id="d_emptyBar_01" class="relative mx-4  h-2 rounded">
-											<div id="d_colorBar_01" class="relative  bg-danger h-2 rounded"></div>
+										<div class="d_emptyBar relative mx-4  h-2 rounded overflow-hidden">
+											<div class="d_colorBar relative  bg-danger h-2 rounded" style="width:${lst3.achievement}%"></div>
+											${lst3.achievement}%
 										</div>
 									</div>
 									<div class="d_camName  w-full h-16">
 										<c:if test="${lst3.cam_remainDay > 0}">
-											<span>${lst3.cam_remainDay }일 후 마감</span>
+											<span>${lst3.cam_remainDay + 1 }일 후 마감</span>
 										</c:if>
 										<c:if test="${lst3.cam_remainDay <= 0}">
 											<span>마 감!</span>
 										</c:if>		
 									</div>
-									<div class="d_camTitle w-full h-16">${lst3.cam_title }</div>
+									<div class="d_camTitle w-full h-16 truncate">${lst3.cam_title }</div>
 								</div>
 								<div class="d_Img  flex-initial w-1/3">
-									<a href="<%=projectPath %>/campaign/detail_Campaign.do"><img src="<%=projectPath %>/img/${lst3.cam_img_path}" alt="${lst.cam_title }" /></a>
+									<a href="<%=projectPath %>/campaign/detail_Campaign.do?cam_no=${lst3.cam_no}"><img src="<%=projectPath %>/img/campaign/${lst3.cam_img_path}" alt="${lst.cam_title }" /></a>
 								</div>
 							</div>
 						</c:forEach>
@@ -156,9 +165,9 @@
 					<span><a href="#">코로나</a></span><br/> 
 					 당신의 도움이 필요합니다.<br/><br/>  
 					<div class="article bg-white"> 
-						<img src="/project_Ma/img/img_main/main_article_01.PNG"/>  
+						<img src="<%=projectPath %>/img/img_main/main_article_01.PNG"/>  
 					</div> 
-					<a href="#">
+					<a href="<%=projectPath%>/joinMembership/join_Coporate.do"> 
 					 	<input type="button" id="resisterInput_02" class="bg-danger hover:bg-danger-light text-white font-bold py-2 px-4 border border-danger rounded"value="바로가기" />
 					</a>    
 				</div>   
@@ -171,24 +180,18 @@
 				</div>  
 			</div> 
 
-   			<!-- 위로 이동 -->  
+   			<!-- 위로 이동 -->   
 			<div class="page_up_div text-2xl border border-gray text-center rounded h-12 w-12 bg-black opacity-75 text-white">
 				<a id="scrollToTop" class="align-middle" href="#"><i class="xi-angle-up"></i></a>  
 			</div>         
   
 			<!-- siteReisterBanner start --> 
-			<div id="siteReisterBanner"
-				class="w-full max-w-screen-xl my-0 mx-auto">
+			<div id="siteReisterBanner" class="w-full max-w-screen-xl my-0 mx-auto text-center">
 				<div id="banner_ment_01" class="">
 					<span>ChariTree</span>에서 당신을 기다립니다.
 				</div>
-				<div id="banner_ment_02" class="">여러분의 따스한 관심을 나누어주세요.</div>
-				<a href="#"> <input type="button" id="resisterInput"
-					class="bg-danger hover:bg-danger-light text-white font-bold py-2 px-4 border border-danger rounded"
-					value="바로가기" />
-				</a>
+				<div id="banner_ment_02" class="">여러분의 따스한 관심을 나누어주세요.</div> 
+					<a href="<%=projectPath%>/joinMembership/join_Coporate.do" class="inline-block bg-danger hover:bg-danger-light my-8 text-white text-xl font-bold py-2 px-4 border border-danger rounded">바로가기</a>
 			</div> <!-- siteReisterBanner end -->
-		<!---------------------------------------------->
-		<!---------------------------------------------->
 </body>
 </html>

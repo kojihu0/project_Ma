@@ -26,7 +26,7 @@
 						<div class="w-full my-0 mx-auto  max-w-screen-xl">  
 							<div class="card mx-auto">    
 								<div class="max-w-sm w-full lg:max-w-full lg:flex">  
-									<div class="border-b border-l border-gray-lighte lg:border-l-0 lg:border-gray-lighte bg-white px-4 py-8 flex justify-between leading-normal">
+									<div class="border-b border-l border-gray-lighte lg:border-l-0 lg:border-gray-lighte bg-white px-4 py-8 flex justify-between leading-normal w-full">
 					  					<div class="w-2/3">  
 					    					<div class="mb-8"> 
 					      		 				<p class="text-sm"><i class="xi-lock text-brand"></i>${vo.news_date }</p>  
@@ -40,7 +40,7 @@
 					    					</div>  
 					 					</div>  	 
 					 					<div class="notice_img_box h-48 flex-initial w-1/3 rounded-t lg:rounded-t-none lg:rounded-l text-center"title="">
-					 						<a href="<%=projectPath %>/news/newsContent.do?news_no=${vo.news_no}&pageNum=${pVo.pageNum}&news_category=${vo.news_category}"><img class="notice_img object-cover" src="<%=projectPath %>/img/${vo.news_img}"/></a>
+					 						<a href="<%=projectPath %>/news/newsContent.do?news_no=${vo.news_no}&pageNum=${pVo.pageNum}&news_category=${vo.news_category}"></a>
 					 						</div>  
 					 				</div>
 								</div>

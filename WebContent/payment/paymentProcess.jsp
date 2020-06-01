@@ -47,7 +47,7 @@ $(function(){
 					<div class="border w-40 h-8 text-center bg-danger text-white rounded">펀딩금액</div>
 					<div>
 						<div class="ml-24"><a id="a">펀딩금액이 많은이들에게 큰도움이 됩니다.</a></div>
-						<div class="ml-24 mt-3"><input type="text" class="border h-12 text-center rounded" name="funding_price" id="fund" value="${vo.funding_price}" readonly >원을 후원합니다</div>
+						<div class="ml-24 mt-3"><input type="text" class="border h-12 text-center rounded" name="funding_price" id="fund" <c:if test="${vo.funding_price != 0}"> value='${vo.funding_price}'</c:if> <c:if test="${vo.reward_no != 0}">readonly</c:if> >원을 후원합니다</div>
 						<div class="text-danger ml-24 hidden" id="a1">펀딩금액을 입력해주세요.</div>
 						<div class="text-danger ml-24 hidden" id="a2">숫자를 입력해주세요.</div>
 					</div>
@@ -92,7 +92,7 @@ $(function(){
 				<div class="flex my-5">
 					<div class="border w-40 h-8 text-center bg-danger text-white rounded">최종금액</div>
 					<div>
-						<div class="ml-24 leading-8">총 <span id="total" name="total_price">0</span>원을 후원합니다</div>
+						<div class="ml-24 leading-8">총 <span id="total" name="total_price">${vo.funding_price}</span>원을 후원합니다</div>
 					</div>
 				</div>
 				<c:if test="${cvo.cam_reward_status==1}">

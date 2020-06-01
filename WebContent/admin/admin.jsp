@@ -22,34 +22,25 @@
    <!--css-->
 
    <!--js-->
-   
-
-
-
 </head>
 <body> 
-	<header class="header p-4 my-4 bg-danger text-xl text-white">
-		<span class="danger"><a href="admin.do">ChariTree</a></span>&nbsp;&nbsp;관리자 페이지
-		<c:if test="${login == 'Y' }">
-			<a href="<%=adminPath %>/admin/admin_Logout.do">로그아웃</a>
-		</c:if>
-	</header>
-	<div class="content flex"> 
-		
+	<header class="header p-4 bg-white text-xl border-b border-gray flex justify-between fixed w-full z-20 top-0">
+		<div><span class="text-brand pr-4"><a href="admin.jsp">ChariTree</a></span>관리자 페이지</div>
+		<div><c:if test="${login == 'Y' }"><a href="<%=adminPath %>/admin/admin_Logout.do" class="text-lg">로그아웃</a></c:if></div>
+	</header>	
+	<div class="content flex w-full"> 
 		<!-- 메뉴선택 영역 -->
-		<div class="flex-initial"><!-- 가장 왼쪽, 메인 선택메뉴 -->
-			<ul> 
-				<li class="hover:bg-danger-dark p-4 m-2 leading-relaxed text-xl border-b text-white bg-danger-dark rounded text-center"><a href="<%=adminPath %>/admin/admin.do">관리자 홈</a></li>
-				<li class="hover:bg-danger-dark p-4 m-2 leading-relaxed text-xl border-b text-white bg-danger rounded text-center"><a href="<%=adminPath %>/admin/admin_news.do">새소식 관리</a></li>
-				<li class="hover:bg-danger-dark p-4 m-2 leading-relaxed text-xl border-b text-white bg-danger rounded text-center"><a href="<%=adminPath %>/admin/admin_servicecenter.do">질문 관리</a></li>
+		<div class="bg-white h-16 fixed bottom-0 mt-12 md:relative md:h-screen z-10 w-full md:w-48 border-r border-gray"><!-- 가장 왼쪽, 메인 선택메뉴 -->
+			<ul class="mt-16 p-4 w-48 fixed left-0 top-0 content-start text-left justify-between">
+				<li class="border-b-2 border-gray hover:border-brand hover:text-brand p-2 m-2 leading-relaxed text-center"><a href="<%=adminPath %>/admin/admin.do">관리자 홈</a></li>
+				<li class="border-b-2 border-gray hover:border-brand hover:text-brand p-2 m-2 leading-relaxed text-center"><a href="<%=adminPath %>/admin/admin_news.do">새소식 관리</a></li>
+				<li class="border-b-2 border-gray hover:border-brand hover:text-brand p-2 m-2 leading-relaxed text-center"><a href="<%=adminPath %>/admin/admin_servicecenter.do">질문 관리</a></li>
 			</ul>
 		</div>
-
-		
-		<section class="border flex-initial h-128"><!-- 해당 내용이 들어갈 부분. -->
-		
-			환영합니다 관리자님 불라불라불라. 여기 들어갈 내용은 같이 생각해봅세.
-	
+		<section class="flex-1 bg-gray-lightest mt-12 p-8"><!-- 해당 내용이 들어갈 부분. -->
+			<div>
+				<div class="text-xl">ChariTree 관리자 페이지 입니다!</div>
+			</div>
 		</section>
 	</div>
 </body>

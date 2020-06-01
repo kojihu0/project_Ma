@@ -27,7 +27,7 @@
 				 <div style="height :335px ; width:275px" id ="dokdo" class=" max-w-xs rounded overflow-hidden shadow-lg xs:flex ">
 				 	<input type="submit" id="delete"style="width:20px;height:20px;display:none"class="WL-checkbox absolute" name="cam_no" value="${vo.cam_no}">
 				 	<label style="margin-left:255px;cursor:pointer" for="delete">X</label>
-					  <a href="<%=projectPath%>/campaign/detail_Campaign.do"><img class="w-full"src="<%=projectPath%>/img/img_main/${vo.cam_img}"></a>
+					  <a href="<%=projectPath%>/campaign/detail_Campaign.do"><img class="w-full"src="<%=projectPath%>/img/campaign/${vo.cam_img}"></a>
 					  <div style="height:100px;"class="px-6 py-4">
 					    <div class="font-medium text-xl mb-2"> <a href="<%=projectPath%>/campaign/detail_Campaign.do">${vo.cam_title}</a></div>
 					  </div>

@@ -24,7 +24,11 @@ public class Command_PaymentProcess implements Command_Interface {
 	public String processStart(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		cvo.setCam_reward_status(Integer.parseInt(request.getParameter("reward_status")));
 		cvo.setCam_no(Integer.parseInt(request.getParameter("camNo")));
-		vo.setReward_no(Integer.parseInt(request.getParameter("reward_no")));
+	
+		
+		if(request.getParameter("reward_no") != null) {
+			vo.setReward_no(Integer.parseInt(request.getParameter("reward_no")));
+		}
 		
 		HttpSession session = request.getSession();
 		vo.setUser_id((String)session.getAttribute("user_id"));

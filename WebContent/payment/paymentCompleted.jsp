@@ -24,15 +24,15 @@
 				</div>
 				<div class="flex items-center justify-between my-2 text-xl">
 					<span>펀딩날짜</span>
-					<span>2020-04-23</span>
+					<span>${vo.donate_date}</span>
 				</div>
 				<div class="flex items-center justify-between my-2 text-xl">
 					<span>펀딩마감일</span>
 					<span>${cvo.cam_end}</span>
 				</div>
 				<div class="flex items-center justify-between my-2 text-xl">
-					<span>펀딩금액</span>
-					<span>${vo.funding_price}</span>
+					<span>펀딩모금액</span>
+					<span>${cvo.cam_goal_price}</span>
 				</div>
 				<div class="flex items-center justify-between my-2 text-xl">
 					<span>펀딩상태</span>
@@ -41,7 +41,7 @@
 			</div>
 		</div><!------------------------------- 리워드 -------------------------------------->
 		<!---------------------------------- 결제내역 ---------------------------------------->
-		<c:if test="${cvo_reward_status==1}">
+		<c:if test="${cvo.cam_reward_status==1}">
 			<div class="w-full mt-5"style="background:rgb(240,255,255)">
 				<div class="mx-8 py-2">
 					<div class="my-5 text-xl">결제내역</div>
@@ -68,7 +68,7 @@
 					<span>추가 후원금액</span>
 					<span>${vo.add_price}원</span>
 			    </div>
-			    <c:if test="${cvo_reward_status==1}">
+			    <c:if test="${cvo.cam_reward_status==1}">
 				    <div class="flex items-center justify-between my-2 text-xl">
 						<span>배송비</span>
 						<span>3,000원</span>
@@ -94,7 +94,7 @@
 			    </div>
 			</div>
 		</div>
-		<c:if test="${cvo_reward_status==1}">
+		<c:if test="${cvo.cam_reward_status == 1}">
 			<div class="w-full mt-5 mb-16"style="background:rgb(240,255,255)">
 				<div class="mx-8 py-2">
 					<div class="my-5 text-xl">배송지 정보</div>
@@ -109,10 +109,8 @@
 			</div>
 		</c:if>
 		<!---------------------------------- 결제내역 ---------------------------------------->
-		<div class="w-24 h-10 border my-5 mx-auto text-center rounded">
-			<div class="justify-center leading-9 home h-full"><div class="w-24 h-10 border my-5 mx-auto text-center rounded"><a href="<%=projectPath%>/index.do">홈으로</a></div>
-		</div>
-	</div>
+		<div class="w-24 h-10 border my-5 mx-auto text-center rounded home leading-9"><a href="<%=projectPath%>/index.do">홈으로</a></div>
+
 </div> 
 
 

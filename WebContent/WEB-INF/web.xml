@@ -58,6 +58,7 @@
 	<url-pattern>/campaign/camCommentOk.do</url-pattern>
 	<url-pattern>/campaign/camQnaOk.do</url-pattern>
 	<url-pattern>/campaign/camWishOk.do</url-pattern>
+	<url-pattern>/campaign/camNoticeOk.do</url-pattern>
 	<url-pattern>/payment/paymentProcess.do</url-pattern>
 	<url-pattern>/payment/paymentCompleted.do</url-pattern>
 	<url-pattern>/payment/paymentNoRewardPC.do</url-pattern>
@@ -78,6 +79,7 @@
 	<url-pattern>/mypage/mypageSpon.do</url-pattern>
 	<url-pattern>/mypage/wishListDel.do</url-pattern>
 	<url-pattern>/mypage/copor_Spon.do</url-pattern>
+	<url-pattern>/mypage/copor_WishList.do</url-pattern>
 	<url-pattern>/mypage/campaignWriteOk.do</url-pattern>
 	<url-pattern>/mypage/campaignUpdateOk.do</url-pattern>
 	<url-pattern>/mypage/campaignDeleteOk.do</url-pattern>
@@ -92,7 +94,6 @@
 	<url-pattern>/joinMembership/join_MemberShipOk.do</url-pattern>  	  	 	
 	<url-pattern>/joinMembership/emailCheckCode.do</url-pattern>
 	<url-pattern>/joinMembership/emailCode.do</url-pattern>
-	<url-pattern>/joinMembership/regi_no.do</url-pattern>
 	<url-pattern>/login/login.do</url-pattern>
 	<url-pattern>/login/loginOk.do</url-pattern>
 	<url-pattern>/login/logOut.do</url-pattern>
